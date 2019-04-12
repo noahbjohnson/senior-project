@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>&lt;no title&gt; &#8212; Senior-Project 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">Senior-Project 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p># Analysis of National Correlates of Tourist Industry Activity
+Proposal prepared by Noah B Johnson for Data Science senior project at Luther College</p>
+<p>## Introduction
+Tourism is often regarded as a positive force for its perceived effects on economic development, modernization, and globalization of destination populations. Much of the analysis of this issue relies on a number of assumptions about the nature of ‘development’ and its accoutrement. Significant relationships are often taken out of context or extrapolated inappropriately. The purpose of this analysis is to identify other correlations with tourist activity to provide further context to relationships and demonstrate the limitations of underlying assumptions.</p>
+<p>## Methods
+Data on tourism activity will be analyzed with data on topics of national importance. Indicators will be normalized and used for linear regression with tourism metrics as the response.</p>
+<p>$$
+y=beta 0 +beta 1x1 +beta2x2 + beta kxkdots + epsilon
+$$</p>
+<p>Further analysis will be done on categorizing countries using k-means clustering with and without response variables.</p>
+<p>$$
+mathcal{U}^* =
+text{arg}min_{hspace{-1in}phantom{hat{U}}Uinmathcal{P}},max_{c_kinchi}
+sum_{k=1}^C sum_{i=1}^n
+U_{k,i} ||c_k - vec {x}_i||_d^2
+$$</p>
+<p>More advanced data mining techniques may be used to further analyze any interesting relationships identified in preliminary linear regressions and to identify complex interactions or clusters.</p>
+<p>To provide context and control for the factor analysis, basic relationships between traditional national economic indicators and tourism information will also be modeled and presented.</p>
+<p>## Data Collection and Management
+Data will be downloaded directly when available, or through APIs if not. Country names will be cleaned to ISO standards to assist in comparison.</p>
+<p>The Tourism data set will be used as a master table that the other data is left joined onto. This means that countries and regions in the issue data may not be included in the analysis if there is not comparable entries on the master table.</p>
+<p>A final full dataset will be created including all of the issue-based data and the master table. This dataset will be used for most of the advanced data mining and model training.</p>
+<p>## Issues &amp; Data Sources
+Below are the issues that will be analyzed, as well as sources for data that have been identified so far. Those issues without data sources will be analyzed if reliable data can be found. Each issue will be independently analyzed prior to combination for more advanced data mining.</p>
+<p>### Tourism
+&gt; Sources that provide quantitative time-series data on tourism on a national level. Data from these sources will be used as indicators for statistical analysis.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[UWTO](<a class="reference external" href="http://www2.unwto.org/content/data">http://www2.unwto.org/content/data</a>), World Tourism Organization
+- United Nations agency responsible for the promotion of responsible, sustainable and universally accessible tourism.</p></li>
+<li><p>[WDI](<a class="reference external" href="http://datatopics.worldbank.org/world-development-indicators/">http://datatopics.worldbank.org/world-development-indicators/</a>), The World Bank’s World Development Indicators
+- The World Development Indicators is a compilation of relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty. The database contains 1,600 time series indicators for 217 economies and more than 40 country groups, with data for many indicators going back more than 50 years.</p></li>
+</ul>
+</div></blockquote>
+<p>### Equality
+&gt; Sources that provide quantitative time-series data on social and economic equality on a national level.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[WDI](<a class="reference external" href="http://datatopics.worldbank.org/world-development-indicators/">http://datatopics.worldbank.org/world-development-indicators/</a>), The World Bank’s World Development Indicators</p></li>
+<li><p>[WID](<a class="reference external" href="https://wid.world/data/">https://wid.world/data/</a>), World Inequality Database
+- The World Inequality Database (WID.world) aims to provide open and convenient access to the most extensive available database on the historical evolution of the world distribution of income and wealth, both within countries and between countries.</p></li>
+<li><p>[WIID](<a class="reference external" href="https://www.wider.unu.edu/data">https://www.wider.unu.edu/data</a>), World Income Inequality Database
+- The WIID collects and stores information on income inequality for developed, developing, and transition countries. The database, its documentation, as well as a data query and visualization app are available on this website.</p></li>
+<li><p>[HDI](<a class="reference external" href="http://hdr.undp.org/en/statistics/data">http://hdr.undp.org/en/statistics/data</a>), United Nations Development Programme Human Development Index
+- The Human Development Report is a reliable source and an alternative perspective on critical issues for human development worldwide. Featuring the Human Development Index, every report presents agenda-setting data and analysis and calls international attention to issues and policy options that put people at the center of strategies to meet the challenges of development today - economic, social, political, and cultural.</p></li>
+</ul>
+</div></blockquote>
+<p>### Labor
+&gt; Sources that provide quantitative time-series data on labor on a national level.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[ILO](<a class="reference external" href="http://www.ilo.org/empelm/what/WCMS_114240/lang--en/index.htm">http://www.ilo.org/empelm/what/WCMS_114240/lang–en/index.htm</a>), International Labour Organization
+- The International Labour Organization (ILO) is devoted to promoting social justice and internationally recognized human and labour rights, pursuing its founding mission that social justice is essential to universal and lasting peace.</p></li>
+<li><p>[WDI](<a class="reference external" href="http://datatopics.worldbank.org/world-development-indicators/">http://datatopics.worldbank.org/world-development-indicators/</a>), The World Bank’s World Development Indicators</p></li>
+</ul>
+</div></blockquote>
+<p>### Urbanization
+&gt; Sources that provide quantitative time-series data on urbanization and population distribution on a national level.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[UNPD](<a class="reference external" href="https://population.un.org/wup/Download/">https://population.un.org/wup/Download/</a>), United Nations Population Division
+- The Population Division was established in the earlier years of the United Nations to serve as the Secretariat of the then Population Commission, created in 1946. Over the years, the Division has played an active role in the intergovernmental dialogue on population and development, producing constantly updated demographic estimates and projections for all countries, including data essential for the monitoring of the progress in achieving the Millennium Development Goals, developing and disseminating new methodologies, leading the substantive preparations for the United Nations major conferences on population and development as well as the annual sessions of the Commission on Population and Development.</p></li>
+</ul>
+</div></blockquote>
+<p>### Health
+&gt; Sources that provide quantitative time-series data on population health on a national level.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[GHO](<a class="reference external" href="https://www.who.int/gho/en/">https://www.who.int/gho/en/</a>), The World Health Organization’s Global Health Observatory</p></li>
+</ul>
+</div></blockquote>
+<p>### Education
+&gt; Sources that provide quantitative time-series data on education and academic achievement on a national level.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[UIS](<a class="reference external" href="http://data.uis.unesco.org">http://data.uis.unesco.org</a>), UNESCO Institute for Statistics
+- The UIS Data Centre contains indicators and raw data on education, literacy, science, culture and communication. The UIS collects these data from more than 200 countries and international organizations.</p></li>
+</ul>
+</div></blockquote>
+<p>### Crime
+&gt; Sources that provide quantitative time-series crime rates and statistics on a national level.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[UNODC](<a class="reference external" href="https://www.unodc.org/unodc/en/data-and-analysis/statistics.html">https://www.unodc.org/unodc/en/data-and-analysis/statistics.html</a>), United Nations Office On Drugs and Crime
+- UNODC was established to assist the UN in better addressing a coordinated, comprehensive response to the interrelated issues of illicit trafficking in and abuse of drugs, crime prevention and criminal justice, international terrorism, and political corruption.</p></li>
+</ul>
+</div></blockquote>
+<p>### Corruption
+&gt; Sources that provide quantitative time-series data on governmental corruption and rule-of-law on a national level.
+### Trade
+&gt; Sources that provide quantitative time-series data on foreign trade on a national level.
+### Industry
+&gt; Sources that provide quantitative time-series data on economic activity by industry on a national level.</p>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Proposal.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">Senior-Project 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

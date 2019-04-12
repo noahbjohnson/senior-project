@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>3. Tourism Missing Data &#8212; Senior-Project 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Tourism Exploratory Data Analysis and Feature Engineering" href="3.html" />
+    <link rel="prev" title="2. Tourism Master Dataset Merge" href="1.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="3.html" title="4. Tourism Exploratory Data Analysis and Feature Engineering"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="1.html" title="2. Tourism Master Dataset Merge"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Senior-Project 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tourism-missing-data">
+<h1>3. Tourism Missing Data<a class="headerlink" href="#tourism-missing-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="initial-dimensions">
+<h2>3.1. Initial Dimensions<a class="headerlink" href="#initial-dimensions" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ST.INT.ARVL</p></td>
+<td><p>International tourism, number of arrivals</p></td>
+</tr>
+<tr class="row-odd"><td><p>ST.INT.RCPT.CD</p></td>
+<td><p>International tourism, receipts (current US$)</p></td>
+</tr>
+<tr class="row-even"><td><p>ST.INT.TVLR.CD</p></td>
+<td><p>International tourism, receipts for passenger transport items (current US$)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ST.INT.TRNR.CD</p></td>
+<td><p>International tourism, receipts for travel items (current US$)</p></td>
+</tr>
+<tr class="row-even"><td><p>ST.INT.DPRT</p></td>
+<td><p>International tourism, expenditures (current US$)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ST.INT.XPND.CD</p></td>
+<td><p>International tourism, expenditures for passenger transport items (current US$)</p></td>
+</tr>
+<tr class="row-even"><td><p>ST.INT.TVLX.CD</p></td>
+<td><p>International tourism, expenditures for travel items (current US$)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ST.INT.TRNX.CD</p></td>
+<td><p>International tourism, number of departures</p></td>
+</tr>
+<tr class="row-even"><td><p>ST.INT.RCPT.XP.ZS</p></td>
+<td><p>International tourism, receipts (% of total exports)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ST.INT.XPND.MP.ZS</p></td>
+<td><p>International tourism, expenditures (% of total imports)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">missingno</span> <span class="k">as</span> <span class="nn">msno</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.float_format&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read dataframe from parsing notebook</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s2">&quot;../data/interim/Tourism.pickle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="missing-data-drop">
+<h2>3.2. Missing Data Drop<a class="headerlink" href="#missing-data-drop" title="Permalink to this headline">¶</a></h2>
+<p>There appears to be a large amount of missing data.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize missing data</span>
+<span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x2b2d9230e2e8</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="notebooks/../docs/notebooks/2_files/../docs/notebooks/2_5_1.png" src="notebooks/../docs/notebooks/2_files/../docs/notebooks/2_5_1.png" />
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Describe missing by variable</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">ratios</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span>
+<span class="n">ratios</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Year</span>                <span class="mf">1.000</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">ARVL</span>         <span class="mf">0.350</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">XPND</span><span class="o">.</span><span class="n">MP</span><span class="o">.</span><span class="n">ZS</span>   <span class="mf">0.295</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">XPND</span><span class="o">.</span><span class="n">CD</span>      <span class="mf">0.320</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">TRNX</span><span class="o">.</span><span class="n">CD</span>      <span class="mf">0.261</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">TVLX</span><span class="o">.</span><span class="n">CD</span>      <span class="mf">0.313</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">DPRT</span>         <span class="mf">0.177</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">RCPT</span><span class="o">.</span><span class="n">XP</span><span class="o">.</span><span class="n">ZS</span>   <span class="mf">0.296</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">RCPT</span><span class="o">.</span><span class="n">CD</span>      <span class="mf">0.336</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">TRNR</span><span class="o">.</span><span class="n">CD</span>      <span class="mf">0.239</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">TVLR</span><span class="o">.</span><span class="n">CD</span>      <span class="mf">0.314</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># count data points by year</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Country Code&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Year</span>
+<span class="mi">1960</span>       <span class="mi">0</span>
+<span class="mi">1961</span>       <span class="mi">0</span>
+<span class="mi">1962</span>       <span class="mi">0</span>
+<span class="mi">1963</span>       <span class="mi">0</span>
+<span class="mi">1964</span>       <span class="mi">0</span>
+<span class="mi">1965</span>       <span class="mi">0</span>
+<span class="mi">1966</span>       <span class="mi">0</span>
+<span class="mi">1967</span>       <span class="mi">0</span>
+<span class="mi">1968</span>       <span class="mi">0</span>
+<span class="mi">1969</span>       <span class="mi">0</span>
+<span class="mi">1970</span>       <span class="mi">0</span>
+<span class="mi">1971</span>       <span class="mi">0</span>
+<span class="mi">1972</span>       <span class="mi">0</span>
+<span class="mi">1973</span>       <span class="mi">0</span>
+<span class="mi">1974</span>       <span class="mi">0</span>
+<span class="mi">1975</span>       <span class="mi">0</span>
+<span class="mi">1976</span>       <span class="mi">0</span>
+<span class="mi">1977</span>       <span class="mi">0</span>
+<span class="mi">1978</span>       <span class="mi">0</span>
+<span class="mi">1979</span>       <span class="mi">0</span>
+<span class="mi">1980</span>       <span class="mi">0</span>
+<span class="mi">1981</span>       <span class="mi">0</span>
+<span class="mi">1982</span>       <span class="mi">0</span>
+<span class="mi">1983</span>       <span class="mi">0</span>
+<span class="mi">1984</span>       <span class="mi">0</span>
+<span class="mi">1985</span>       <span class="mi">0</span>
+<span class="mi">1986</span>       <span class="mi">0</span>
+<span class="mi">1987</span>       <span class="mi">0</span>
+<span class="mi">1988</span>       <span class="mi">0</span>
+<span class="mi">1989</span>       <span class="mi">0</span>
+<span class="mi">1990</span>       <span class="mi">0</span>
+<span class="mi">1991</span>       <span class="mi">0</span>
+<span class="mi">1992</span>       <span class="mi">0</span>
+<span class="mi">1993</span>       <span class="mi">0</span>
+<span class="mi">1994</span>       <span class="mi">0</span>
+<span class="mi">1995</span>    <span class="mi">1426</span>
+<span class="mi">1996</span>    <span class="mi">1457</span>
+<span class="mi">1997</span>    <span class="mi">1477</span>
+<span class="mi">1998</span>    <span class="mi">1479</span>
+<span class="mi">1999</span>    <span class="mi">1491</span>
+<span class="mi">2000</span>    <span class="mi">1504</span>
+<span class="mi">2001</span>    <span class="mi">1527</span>
+<span class="mi">2002</span>    <span class="mi">1563</span>
+<span class="mi">2003</span>    <span class="mi">1577</span>
+<span class="mi">2004</span>    <span class="mi">1591</span>
+<span class="mi">2005</span>    <span class="mi">1653</span>
+<span class="mi">2006</span>    <span class="mi">1660</span>
+<span class="mi">2007</span>    <span class="mi">1691</span>
+<span class="mi">2008</span>    <span class="mi">1694</span>
+<span class="mi">2009</span>    <span class="mi">1705</span>
+<span class="mi">2010</span>    <span class="mi">1696</span>
+<span class="mi">2011</span>    <span class="mi">1697</span>
+<span class="mi">2012</span>    <span class="mi">1714</span>
+<span class="mi">2013</span>    <span class="mi">1693</span>
+<span class="mi">2014</span>    <span class="mi">1693</span>
+<span class="mi">2015</span>    <span class="mi">1679</span>
+<span class="mi">2016</span>    <span class="mi">1663</span>
+<span class="mi">2017</span>    <span class="mi">1485</span>
+<span class="mi">2018</span>       <span class="mi">0</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+
+
+
+<span class="n">There</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">data</span> <span class="n">before</span> <span class="mi">1995</span> <span class="ow">or</span> <span class="n">after</span> <span class="mi">2017</span><span class="p">,</span> <span class="n">so</span> <span class="n">those</span> <span class="n">years</span> <span class="n">should</span> <span class="n">be</span>
+<span class="n">dropped</span> <span class="ow">and</span> <span class="n">variables</span> <span class="n">reassesed</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dy</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1994</span><span class="p">)]</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="n">dy</span><span class="p">[(</span><span class="n">dy</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2018</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize missing data</span>
+
+<span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">dy</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x2b2d9217b748</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="notebooks/../docs/notebooks/2_files/../docs/notebooks/2_10_1.png" src="notebooks/../docs/notebooks/2_files/../docs/notebooks/2_10_1.png" />
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Describe missing by variable</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">dy</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">ratios</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span>
+<span class="n">ratios</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Year</span>                <span class="mf">1.000</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">ARVL</span>         <span class="mf">0.899</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">XPND</span><span class="o">.</span><span class="n">MP</span><span class="o">.</span><span class="n">ZS</span>   <span class="mf">0.758</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">XPND</span><span class="o">.</span><span class="n">CD</span>      <span class="mf">0.821</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">TRNX</span><span class="o">.</span><span class="n">CD</span>      <span class="mf">0.669</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">TVLX</span><span class="o">.</span><span class="n">CD</span>      <span class="mf">0.803</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">DPRT</span>         <span class="mf">0.454</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">RCPT</span><span class="o">.</span><span class="n">XP</span><span class="o">.</span><span class="n">ZS</span>   <span class="mf">0.759</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">RCPT</span><span class="o">.</span><span class="n">CD</span>      <span class="mf">0.863</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">TRNR</span><span class="o">.</span><span class="n">CD</span>      <span class="mf">0.613</span>
+<span class="n">ST</span><span class="o">.</span><span class="n">INT</span><span class="o">.</span><span class="n">TVLR</span><span class="o">.</span><span class="n">CD</span>      <span class="mf">0.806</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="save-data">
+<h2>3.3. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dy</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;../data/interim/Tourism2.pickle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mising-analysis">
+<h2>3.4. Mising Analysis<a class="headerlink" href="#mising-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="country-level">
+<h3>3.4.1. Country-level<a class="headerlink" href="#country-level" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># data points by country</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">dy</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span>
+                    <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Country Code&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">no_data</span> <span class="o">=</span> <span class="n">countries</span><span class="p">[(</span><span class="n">countries</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="n">countries</span><span class="p">[(</span><span class="n">countries</span> <span class="o">==</span> <span class="mi">230</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>{{ no_data.count() }} countries have no data: {{
+no_data.index.tolist() }}</p>
+<p>{{ all_data.count() }} countries have all 10 variables for all 23
+years: {{ all_data.index.tolist() }}</p>
+</div>
+<div class="section" id="histogram-of-countries-data-values">
+<h3>3.4.2. Histogram of countries data values<a class="headerlink" href="#histogram-of-countries-data-values" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It looks like most of the countries have 200 or more data points.</p>
+</div></blockquote>
+<p>{{ countries.hist(bins=23) }}</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3. Tourism Missing Data</a><ul>
+<li><a class="reference internal" href="#initial-dimensions">3.1. Initial Dimensions</a></li>
+<li><a class="reference internal" href="#missing-data-drop">3.2. Missing Data Drop</a></li>
+<li><a class="reference internal" href="#save-data">3.3. Save Data</a></li>
+<li><a class="reference internal" href="#mising-analysis">3.4. Mising Analysis</a><ul>
+<li><a class="reference internal" href="#country-level">3.4.1. Country-level</a></li>
+<li><a class="reference internal" href="#histogram-of-countries-data-values">3.4.2. Histogram of countries data values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="1.html"
+                        title="previous chapter">2. Tourism Master Dataset Merge</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="3.html"
+                        title="next chapter">4. Tourism Exploratory Data Analysis and Feature Engineering</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/notebooks/2.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="3.html" title="4. Tourism Exploratory Data Analysis and Feature Engineering"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="1.html" title="2. Tourism Master Dataset Merge"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Senior-Project 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

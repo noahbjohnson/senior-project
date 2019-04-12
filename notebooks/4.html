@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>5. Economic Data Processing (MADDISON) &#8212; Senior-Project 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Economic Data Processing (WDI)" href="5.html" />
+    <link rel="prev" title="4. Tourism Exploratory Data Analysis and Feature Engineering" href="3.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="5.html" title="6. Economic Data Processing (WDI)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="3.html" title="4. Tourism Exploratory Data Analysis and Feature Engineering"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Senior-Project 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="economic-data-processing-maddison">
+<h1>5. Economic Data Processing (MADDISON)<a class="headerlink" href="#economic-data-processing-maddison" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>Maddison Project Database, version 2018. Bolt, Jutta, Robert
+Inklaar, Herman de Jong and Jan Luiten van Zanden (2018), “Rebasing
+‘Maddison’: new income comparisons and the shape of long-run
+economic development”, Maddison Project Working paper 10</p>
+</div></blockquote>
+<div class="section" id="data-dictionary">
+<h2>5.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Full data</p></th>
+<th class="head"><p>Data in single table</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>countrycode</p></td>
+<td><p>3-letter ISO country code</p></td>
+</tr>
+<tr class="row-odd"><td><p>country</p></td>
+<td><p>Country name</p></td>
+</tr>
+<tr class="row-even"><td><p>year</p></td>
+<td><p>Year</p></td>
+</tr>
+<tr class="row-odd"><td><p>cgdppc</p></td>
+<td><p>Real GDP per capita in 2011US$, multiple benchmarks (suitable for cross-country income comparisons)</p></td>
+</tr>
+<tr class="row-even"><td><p>rgdpnapc</p></td>
+<td><p>Real GDP per capita in 2011US$, 2011 benchmark (suitable for cross-country growth comparisons)</p></td>
+</tr>
+<tr class="row-odd"><td><p>pop</p></td>
+<td><p>Population, mid-year (thousands)</p></td>
+</tr>
+<tr class="row-even"><td><p>i_cig</p></td>
+<td><p>0/1/2: observation is extrapolated (0), benchmark (1), or interpolated (2)</p></td>
+</tr>
+<tr class="row-odd"><td><p>i_bm</p></td>
+<td><p>For benchmark observations: 1: ICP PPP estimates, 2: Historical income benchmarks, 3: Real wages and urbanization, 4: Multiple of subsistence, 5: Braithwaite (1968) PPPs</p></td>
+</tr>
+<tr class="row-even"><td><p>Partial countries</p></td>
+<td><p>Data for selected sub-national units with long time series</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pycountry</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.float_format&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="load-the-file">
+<h2>5.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/external/Economy/MADDISON/mpd2018.xlsx&quot;</span><span class="p">,</span>
+                   <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Full data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>countrycode</th>
+      <th>country</th>
+      <th>year</th>
+      <th>cgdppc</th>
+      <th>rgdpnapc</th>
+      <th>pop</th>
+      <th>i_cig</th>
+      <th>i_bm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7127</th>
+      <td>GRC</td>
+      <td>Greece</td>
+      <td>1829</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>2511.000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16262</th>
+      <td>SRB</td>
+      <td>Serbia</td>
+      <td>1970</td>
+      <td>4890.000</td>
+      <td>10311.000</td>
+      <td>8167.000</td>
+      <td>Extrapolated</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7731</th>
+      <td>HTI</td>
+      <td>Haiti</td>
+      <td>1901</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>1583.000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18500</th>
+      <td>UGA</td>
+      <td>Uganda</td>
+      <td>2000</td>
+      <td>1129.000</td>
+      <td>1176.000</td>
+      <td>24172.000</td>
+      <td>Interpolated</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1320</th>
+      <td>BEN</td>
+      <td>Benin</td>
+      <td>1999</td>
+      <td>1382.000</td>
+      <td>1677.000</td>
+      <td>6407.000</td>
+      <td>Interpolated</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+<div class="section" id="standardize-country-codes">
+<h2>5.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Only Select rows with valid country codes</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">country_locations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;countrycode&#39;</span><span class="p">]:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">pycountry</span><span class="o">.</span><span class="n">countries</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
+        <span class="n">country_locations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+        <span class="n">country_locations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">country_locations</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="standardize-indexes">
+<h2>5.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="years-1995-x-2017">
+<h3>5.4.1. Years (1995≤ x ≥2017)<a class="headerlink" href="#years-1995-x-2017" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1995</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">2017</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reindex-rename">
+<h3>5.4.2. Reindex &amp; Rename<a class="headerlink" href="#reindex-rename" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="s2">&quot;Year&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;countrycode&quot;</span><span class="p">:</span> <span class="s2">&quot;Country Code&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cgdppc&quot;</span><span class="p">:</span> <span class="s2">&quot;Maddison GDPPC&quot;</span>
+    <span class="p">},</span>
+    <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span>
+    <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;Country Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="clean-data">
+<h2>5.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="remove-unneeded-variables">
+<h3>5.5.1. Remove unneeded variables<a class="headerlink" href="#remove-unneeded-variables" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;i_cig&quot;</span><span class="p">,</span> <span class="s2">&quot;i_bm&quot;</span><span class="p">,</span> <span class="s2">&quot;rgdpnapc&quot;</span><span class="p">,</span> <span class="s2">&quot;pop&quot;</span><span class="p">],</span>
+        <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span>
+        <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-types">
+<h3>5.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Maddison</span> <span class="n">GDPPC</span>    <span class="n">float64</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="save-data">
+<h2>5.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;../data/processed/Economic_MADDISON.pickle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5. Economic Data Processing (MADDISON)</a><ul>
+<li><a class="reference internal" href="#data-dictionary">5.1. Data Dictionary</a></li>
+<li><a class="reference internal" href="#load-the-file">5.2. Load The File</a></li>
+<li><a class="reference internal" href="#standardize-country-codes">5.3. Standardize Country Codes</a></li>
+<li><a class="reference internal" href="#standardize-indexes">5.4. Standardize Indexes</a><ul>
+<li><a class="reference internal" href="#years-1995-x-2017">5.4.1. Years (1995≤ x ≥2017)</a></li>
+<li><a class="reference internal" href="#reindex-rename">5.4.2. Reindex &amp; Rename</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#clean-data">5.5. Clean Data</a><ul>
+<li><a class="reference internal" href="#remove-unneeded-variables">5.5.1. Remove unneeded variables</a></li>
+<li><a class="reference internal" href="#data-types">5.5.2. Data Types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#save-data">5.6. Save Data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="3.html"
+                        title="previous chapter">4. Tourism Exploratory Data Analysis and Feature Engineering</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="5.html"
+                        title="next chapter">6. Economic Data Processing (WDI)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/notebooks/4.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="5.html" title="6. Economic Data Processing (WDI)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="3.html" title="4. Tourism Exploratory Data Analysis and Feature Engineering"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Senior-Project 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

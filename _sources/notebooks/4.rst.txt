@@ -1,0 +1,230 @@
+
+Economic Data Processing (MADDISON)
+===================================
+
+    Maddison Project Database, version 2018. Bolt, Jutta, Robert
+    Inklaar, Herman de Jong and Jan Luiten van Zanden (2018), “Rebasing
+    ‘Maddison’: new income comparisons and the shape of long-run
+    economic development”, Maddison Project Working paper 10
+
+Data Dictionary
+---------------
+
++---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Full data           | Data in single table                                                                                                                                                        |
++=====================+=============================================================================================================================================================================+
+| countrycode         | 3-letter ISO country code                                                                                                                                                   |
++---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| country             | Country name                                                                                                                                                                |
++---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| year                | Year                                                                                                                                                                        |
++---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| cgdppc              | Real GDP per capita in 2011US$, multiple benchmarks (suitable for cross-country income comparisons)                                                                         |
++---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| rgdpnapc            | Real GDP per capita in 2011US$, 2011 benchmark (suitable for cross-country growth comparisons)                                                                              |
++---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| pop                 | Population, mid-year (thousands)                                                                                                                                            |
++---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| i\_cig              | 0/1/2: observation is extrapolated (0), benchmark (1), or interpolated (2)                                                                                                  |
++---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| i\_bm               | For benchmark observations: 1: ICP PPP estimates, 2: Historical income benchmarks, 3: Real wages and urbanization, 4: Multiple of subsistence, 5: Braithwaite (1968) PPPs   |
++---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Partial countries   | Data for selected sub-national units with long time series                                                                                                                  |
++---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+.. code:: ipython3
+
+    import pandas as pd
+    import pycountry
+    
+    %matplotlib inline
+    
+    pd.set_option('display.float_format', lambda x: '%.3f' % x)
+
+Load The File
+-------------
+
+.. code:: ipython3
+
+    df = pd.read_excel("../data/external/Economy/MADDISON/mpd2018.xlsx",
+                       sheet_name='Full data')
+
+.. code:: ipython3
+
+    df.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>countrycode</th>
+          <th>country</th>
+          <th>year</th>
+          <th>cgdppc</th>
+          <th>rgdpnapc</th>
+          <th>pop</th>
+          <th>i_cig</th>
+          <th>i_bm</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>7127</th>
+          <td>GRC</td>
+          <td>Greece</td>
+          <td>1829</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>2511.000</td>
+          <td>NaN</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>16262</th>
+          <td>SRB</td>
+          <td>Serbia</td>
+          <td>1970</td>
+          <td>4890.000</td>
+          <td>10311.000</td>
+          <td>8167.000</td>
+          <td>Extrapolated</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>7731</th>
+          <td>HTI</td>
+          <td>Haiti</td>
+          <td>1901</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1583.000</td>
+          <td>NaN</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>18500</th>
+          <td>UGA</td>
+          <td>Uganda</td>
+          <td>2000</td>
+          <td>1129.000</td>
+          <td>1176.000</td>
+          <td>24172.000</td>
+          <td>Interpolated</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>1320</th>
+          <td>BEN</td>
+          <td>Benin</td>
+          <td>1999</td>
+          <td>1382.000</td>
+          <td>1677.000</td>
+          <td>6407.000</td>
+          <td>Interpolated</td>
+          <td>NaN</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Standardize Country Codes
+-------------------------
+
+.. code:: ipython3
+
+    """ Only Select rows with valid country codes
+    """
+    country_locations = []
+    for country in df['countrycode']:
+        try:
+            pycountry.countries.lookup(country)
+            country_locations.append(True)
+        except LookupError:
+            country_locations.append(False)
+    df = df[country_locations]
+
+Standardize Indexes
+-------------------
+
+Years (1995≤ x ≥2017)
+~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    df = df[df['year'] >= 1995]
+    df = df[df['year'] <= 2017]
+
+Reindex & Rename
+~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    df.rename(
+        {
+            "year": "Year",
+            "countrycode": "Country Code",
+            "cgdppc": "Maddison GDPPC"
+        },
+        axis='columns',
+        inplace=True)
+
+.. code:: ipython3
+
+    df.set_index(["Country Code", "Year"], inplace=True)
+
+Clean Data
+----------
+
+Remove unneeded variables
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    df.drop(["country", "i_cig", "i_bm", "rgdpnapc", "pop"],
+            axis='columns',
+            inplace=True)
+
+Data Types
+~~~~~~~~~~
+
+.. code:: ipython3
+
+    df.dtypes
+
+
+
+
+.. parsed-literal::
+
+    Maddison GDPPC    float64
+    dtype: object
+
+
+
+Save Data
+---------
+
+.. code:: ipython3
+
+    df.to_pickle("../data/processed/Economic_MADDISON.pickle")

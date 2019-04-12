@@ -1,0 +1,681 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>4. Tourism Exploratory Data Analysis and Feature Engineering &#8212; Senior-Project 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Economic Data Processing (MADDISON)" href="4.html" />
+    <link rel="prev" title="3. Tourism Missing Data" href="2.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="4.html" title="5. Economic Data Processing (MADDISON)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="2.html" title="3. Tourism Missing Data"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Senior-Project 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tourism-exploratory-data-analysis-and-feature-engineering">
+<h1>4. Tourism Exploratory Data Analysis and Feature Engineering<a class="headerlink" href="#tourism-exploratory-data-analysis-and-feature-engineering" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">IPython.display</span> <span class="k">as</span> <span class="nn">disp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pandas_profiling</span>
+<span class="kn">import</span> <span class="nn">pycountry</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">boxcox</span><span class="p">,</span> <span class="n">kurtosis</span><span class="p">,</span> <span class="n">kurtosistest</span><span class="p">,</span> <span class="n">skew</span><span class="p">,</span> <span class="n">skewtest</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">preprocessing</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <span class="n">PCA</span><span class="p">,</span> <span class="n">FactorAnalysis</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.float_format&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s2">&quot;../data/interim/Tourism2.pickle&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;Country Code&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">])</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Mean&quot;</span>
+<span class="n">md</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">md</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Median&quot;</span>
+</pre></div>
+</div>
+<div class="section" id="descriptive-statistics">
+<h2>4.1. Descriptive Statistics<a class="headerlink" href="#descriptive-statistics" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ST.INT.ARVL</p></td>
+<td><p>International tourism, number of arrivals</p></td>
+</tr>
+<tr class="row-odd"><td><p>ST.INT.RCPT.CD</p></td>
+<td><p>International tourism, receipts (current US$)</p></td>
+</tr>
+<tr class="row-even"><td><p>ST.INT.TVLR.CD</p></td>
+<td><p>International tourism, receipts for passenger transport items (current US$)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ST.INT.TRNR.CD</p></td>
+<td><p>International tourism, receipts for travel items (current US$)</p></td>
+</tr>
+<tr class="row-even"><td><p>ST.INT.DPRT</p></td>
+<td><p>International tourism, expenditures (current US$)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ST.INT.XPND.CD</p></td>
+<td><p>International tourism, expenditures for passenger transport items (current US$)</p></td>
+</tr>
+<tr class="row-even"><td><p>ST.INT.TVLX.CD</p></td>
+<td><p>International tourism, expenditures for travel items (current US$)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ST.INT.TRNX.CD</p></td>
+<td><p>International tourism, number of departures</p></td>
+</tr>
+<tr class="row-even"><td><p>ST.INT.RCPT.XP.ZS</p></td>
+<td><p>International tourism, receipts (% of total exports)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ST.INT.XPND.MP.ZS</p></td>
+<td><p>International tourism, expenditures (% of total imports)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="central-tendency">
+<h3>4.1.1. Central Tendency<a class="headerlink" href="#central-tendency" title="Permalink to this headline">¶</a></h3>
+<p>| {{ m.to_frame() }} | {{ md.to_frame() }} | |
+|————————————————————–|———————————————————————|—|</p>
+</div>
+<div class="section" id="variance-and-ranges">
+<h3>4.1.2. Variance and Ranges<a class="headerlink" href="#variance-and-ranges" title="Permalink to this headline">¶</a></h3>
+<p>{{ df.describe().transpose()[[‘std’,’min’,’max’]].rename(index=str,
+columns={“std”:”Standard Deviation”,”min”:”Minimum Value”,”max”:”Maximum
+Value”}) }}</p>
+</div>
+<div class="section" id="skewness">
+<h3>4.1.3. Skewness<a class="headerlink" href="#skewness" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate skews of variables</span>
+<span class="n">skews</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">var_name</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">variable</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">var_name</span><span class="p">][(</span><span class="n">df</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">())]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">skew</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
+    <span class="n">zscore</span><span class="p">,</span> <span class="n">pvalue</span> <span class="o">=</span> <span class="n">skewtest</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
+    <span class="n">skews</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="n">var_name</span><span class="p">,</span>
+        <span class="s1">&#39;skewness&#39;</span><span class="p">:</span> <span class="n">s</span><span class="p">,</span>
+        <span class="s1">&#39;z-score&#39;</span><span class="p">:</span> <span class="n">zscore</span><span class="p">,</span>
+        <span class="s1">&#39;p-value&#39;</span><span class="p">:</span> <span class="n">pvalue</span><span class="p">,</span>
+        <span class="s1">&#39;normal&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">pvalue</span> <span class="o">&gt;=</span> <span class="o">.</span><span class="mi">05</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="n">skew_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">skews</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="s1">&#39;skewness&#39;</span><span class="p">,</span> <span class="s1">&#39;z-score&#39;</span><span class="p">,</span> <span class="s1">&#39;p-value&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>H0: Variable sample has skew of the normal distribution (p ≥ .05)</p>
+<p>Ha: Variable does not have the skew of the normal distribution</p>
+<p>{{ skew_df }}</p>
+</div>
+<div class="section" id="kurtosis">
+<h3>4.1.4. Kurtosis<a class="headerlink" href="#kurtosis" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate kurtosis of variables</span>
+<span class="n">kurt</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">var_name</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">variable</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">var_name</span><span class="p">][(</span><span class="n">df</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">())]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">kurtosis</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
+    <span class="n">zscore</span><span class="p">,</span> <span class="n">pvalue</span> <span class="o">=</span> <span class="n">kurtosistest</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
+    <span class="n">kurt</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="n">var_name</span><span class="p">,</span>
+        <span class="s1">&#39;kurtosis&#39;</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span>
+        <span class="s1">&#39;z-score&#39;</span><span class="p">:</span> <span class="n">zscore</span><span class="p">,</span>
+        <span class="s1">&#39;p-value&#39;</span><span class="p">:</span> <span class="n">pvalue</span><span class="p">,</span>
+        <span class="s1">&#39;normal&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">pvalue</span> <span class="o">&gt;=</span> <span class="o">.</span><span class="mi">05</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="n">kurt_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">kurt</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="s1">&#39;kurtosis&#39;</span><span class="p">,</span> <span class="s1">&#39;z-score&#39;</span><span class="p">,</span> <span class="s1">&#39;p-value&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>H0: Variable sample has kurtosis of the normal distribution (p ≥ .05)</p>
+<p>Ha: Variable does not have the kurtosis of the normal distribution</p>
+<p>{{ kurt_df }}</p>
+</div>
+<div class="section" id="quartiles">
+<h3>4.1.5. Quartiles<a class="headerlink" href="#quartiles" title="Permalink to this headline">¶</a></h3>
+<p>{{ df.describe().transpose()[[“min”,”25%”,”50%”,”75%”,”max”]] }}</p>
+</div>
+</div>
+<div class="section" id="eda-reduction">
+<h2>4.2. EDA &amp; Reduction<a class="headerlink" href="#eda-reduction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="correlation-matrix-heatmap">
+<h3>4.2.1. Correlation Matrix Heatmap<a class="headerlink" href="#correlation-matrix-heatmap" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Plot a (non-square) correlation heatmap</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">corr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+<span class="n">mask</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">triu_indices_from</span><span class="p">(</span><span class="n">mask</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">diverging_palette</span><span class="p">(</span><span class="mi">220</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span>
+            <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">linewidths</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span>
+            <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="o">.</span><span class="mi">5</span><span class="p">})</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x2ae64190ce80</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="notebooks/../docs/notebooks/3_files/../docs/notebooks/3_14_1.png" src="notebooks/../docs/notebooks/3_files/../docs/notebooks/3_14_1.png" />
+</div>
+<div class="section" id="data-profile-report">
+<h3>4.2.2. Data Profile Report<a class="headerlink" href="#data-profile-report" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span> <span class="o">=</span> <span class="n">pandas_profiling</span><span class="o">.</span><span class="n">ProfileReport</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">profile</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;../docs/profile.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="highly-correlated-variables">
+<h3>4.2.3. Highly correlated variables<a class="headerlink" href="#highly-correlated-variables" title="Permalink to this headline">¶</a></h3>
+<p>Anything with <code class="docutils literal notranslate"><span class="pre">ρ</span> <span class="pre">≥</span> <span class="pre">.9</span></code> could end up skewing the calculations.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span><span class="o">.</span><span class="n">description_set</span><span class="p">[</span><span class="s1">&#39;correlations&#39;</span><span class="p">][</span><span class="s1">&#39;pearson&#39;</span><span class="p">][</span>
+    <span class="n">profile</span><span class="o">.</span><span class="n">get_rejected_variables</span><span class="p">(</span><span class="o">.</span><span class="mi">9</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ST.INT.RCPT.CD</th>
+      <th>ST.INT.TRNR.CD</th>
+      <th>ST.INT.TRNX.CD</th>
+      <th>ST.INT.TVLR.CD</th>
+      <th>ST.INT.TVLX.CD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Year</th>
+      <td>0.125</td>
+      <td>0.083</td>
+      <td>0.061</td>
+      <td>0.120</td>
+      <td>0.111</td>
+    </tr>
+    <tr>
+      <th>ST.INT.ARVL</th>
+      <td>0.805</td>
+      <td>0.722</td>
+      <td>0.678</td>
+      <td>0.824</td>
+      <td>0.660</td>
+    </tr>
+    <tr>
+      <th>ST.INT.XPND.MP.ZS</th>
+      <td>-0.031</td>
+      <td>-0.008</td>
+      <td>0.028</td>
+      <td>-0.035</td>
+      <td>0.062</td>
+    </tr>
+    <tr>
+      <th>ST.INT.XPND.CD</th>
+      <td>0.777</td>
+      <td>0.893</td>
+      <td>0.944</td>
+      <td>0.765</td>
+      <td>0.993</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TRNX.CD</th>
+      <td>0.909</td>
+      <td>0.913</td>
+      <td>1.000</td>
+      <td>0.897</td>
+      <td>0.916</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TVLX.CD</th>
+      <td>0.726</td>
+      <td>0.875</td>
+      <td>0.916</td>
+      <td>0.719</td>
+      <td>1.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.DPRT</th>
+      <td>0.623</td>
+      <td>0.684</td>
+      <td>0.738</td>
+      <td>0.608</td>
+      <td>0.821</td>
+    </tr>
+    <tr>
+      <th>ST.INT.RCPT.XP.ZS</th>
+      <td>-0.090</td>
+      <td>-0.109</td>
+      <td>-0.138</td>
+      <td>-0.084</td>
+      <td>-0.167</td>
+    </tr>
+    <tr>
+      <th>ST.INT.RCPT.CD</th>
+      <td>1.000</td>
+      <td>0.952</td>
+      <td>0.909</td>
+      <td>0.996</td>
+      <td>0.726</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TRNR.CD</th>
+      <td>0.952</td>
+      <td>1.000</td>
+      <td>0.913</td>
+      <td>0.929</td>
+      <td>0.875</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TVLR.CD</th>
+      <td>0.996</td>
+      <td>0.929</td>
+      <td>0.897</td>
+      <td>1.000</td>
+      <td>0.719</td>
+    </tr>
+  </tbody>
+</table>
+</div><ul>
+<li><p>ST.INT.TVLR.CD with ST.INT.TRNR.CD (ρ = 0.9294)</p></li>
+<li><p>Receipts for travel items in country</p></li>
+<li><p>Receipts for passenger transport items in country</p>
+<blockquote>
+<div><p>93% of tourism travel receipts are from passenger transport</p>
+</div></blockquote>
+</li>
+<li><p>ST.INT.TRNR.CD with ST.INT.RCPT.CD (ρ = 0.952)</p></li>
+<li><p>Receipts for passenger transport items in country</p></li>
+<li><p>Receipts for tourism in country</p>
+<blockquote>
+<div><p>Passenger transport makes up 95.2% of export tourism</p>
+</div></blockquote>
+</li>
+<li><p>ST.INT.RCPT.CD with ST.INT.TRNX.CD (ρ = 0.90905)</p></li>
+<li><p>Receipts for tourism in country</p></li>
+<li><p>Expenditures for passenger transport items abroad</p>
+<blockquote>
+<div><p>Total tourism income and passenger transport abroad are highly
+correlated.</p>
+</div></blockquote>
+</li>
+<li><p>ST.INT.TVLX.CD with ST.INT.TRNX.CD (ρ = 0.91601)</p></li>
+<li><p>Expenditures for travel items abroad</p></li>
+<li><p>Expenditures for passenger transport items abroad</p>
+<blockquote>
+<div><p>92% of tourism travel expenditures are from passenger transport</p>
+</div></blockquote>
+</li>
+<li><p>ST.INT.TRNX.CD with ST.INT.XPND.CD (ρ = 0.94419)</p></li>
+<li><p>Expenditures for passenger transport items abroad</p></li>
+<li><p>Expenditures for tourism abroad</p>
+<blockquote>
+<div><p>Passenger transport makes up 94.42% of import tourism</p>
+</div></blockquote>
+</li>
+</ul>
+<p>#### Summary:</p>
+<ul class="simple">
+<li><p>About 95% of tourism spending is on transportation. This is
+interesting, but for comparison analysis, these variables will skew
+the models and not provide much more insight.</p></li>
+</ul>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_small</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span>
+    <span class="s1">&#39;ST.INT.TRNX.CD&#39;</span><span class="p">,</span> <span class="s1">&#39;ST.INT.TVLX.CD&#39;</span><span class="p">,</span> <span class="s1">&#39;ST.INT.TRNX.CD&#39;</span><span class="p">,</span> <span class="s1">&#39;ST.INT.TRNR.CD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ST.INT.TVLR.CD&#39;</span>
+<span class="p">],</span>
+    <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="remaining-variables">
+<h3>4.2.4. Remaining Variables<a class="headerlink" href="#remaining-variables" title="Permalink to this headline">¶</a></h3>
+<p>5 of the 11 original variables were dropped due to high correlation. The
+rest are in the pair plot below.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_small</span><span class="p">)</span>  <span class="c1"># ¯\_(ツ)_/¯</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">travis</span><span class="o">/</span><span class="n">virtualenv</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numpy</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">histograms</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">602</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">greater_equal</span>
+  <span class="n">keep</span> <span class="o">=</span> <span class="p">(</span><span class="n">tmp_a</span> <span class="o">&gt;=</span> <span class="n">first_edge</span><span class="p">)</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">travis</span><span class="o">/</span><span class="n">virtualenv</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numpy</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">histograms</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">603</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">less_equal</span>
+  <span class="n">keep</span> <span class="o">&amp;=</span> <span class="p">(</span><span class="n">tmp_a</span> <span class="o">&lt;=</span> <span class="n">last_edge</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">seaborn</span><span class="o">.</span><span class="n">axisgrid</span><span class="o">.</span><span class="n">PairGrid</span> <span class="n">at</span> <span class="mh">0x2ae641d33a20</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="notebooks/../docs/notebooks/3_files/../docs/notebooks/3_22_2.png" src="notebooks/../docs/notebooks/3_files/../docs/notebooks/3_22_2.png" />
+</div>
+</div>
+<div class="section" id="pair-plot-analysis">
+<h2>4.3. Pair-plot analysis<a class="headerlink" href="#pair-plot-analysis" title="Permalink to this headline">¶</a></h2>
+<p>There are some interesting visual relationships in the pair plot above.</p>
+<ul class="simple">
+<li><p>International tourism receipts (ST.INT.RCPT.XP.ZS &amp; ST.INT.RCPT.CD)</p></li>
+<li><p>Two disparate coefficients</p></li>
+<li><p>International departures (ST.INT.DPRT)</p></li>
+<li><p>3-5 disparate coefficients</p></li>
+</ul>
+</div>
+<div class="section" id="feature-construction">
+<h2>4.4. Feature Construction<a class="headerlink" href="#feature-construction" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Tourist defecit (# More arrivals than departures)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">df_small</span><span class="p">[</span><span class="s2">&quot;Tourist Defecit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_small</span><span class="p">[</span><span class="s2">&quot;ST.INT.ARVL&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df_small</span><span class="p">[</span><span class="s2">&quot;ST.INT.DPRT&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Tourist net ($ More exports than imports)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">df_small</span><span class="p">[</span><span class="s2">&quot;Tourism Net&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_small</span><span class="p">[</span><span class="s2">&quot;ST.INT.RCPT.CD&quot;</span><span class="p">]</span> <span class="o">-</span> \
+    <span class="n">df_small</span><span class="p">[</span><span class="s2">&quot;ST.INT.XPND.CD&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Tourist avg net ($ receipt per arrival)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">df_small</span><span class="p">[</span><span class="s2">&quot;Tourist Avg Net&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_small</span><span class="p">[</span><span class="s2">&quot;ST.INT.RCPT.CD&quot;</span><span class="p">]</span> <span class="o">/</span> \
+    <span class="n">df_small</span><span class="p">[</span><span class="s2">&quot;ST.INT.ARVL&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="population-based-feature-construction">
+<h2>4.5. Population-based feature construction<a class="headerlink" href="#population-based-feature-construction" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop nan rows to avoid div/0 errors and load population data</span>
+<span class="c1"># 4945 rows to start</span>
+<span class="c1"># 4609 rows if drop where all = nan</span>
+<span class="c1"># 2057 rows if drop where any = nan</span>
+<span class="n">df_small</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">pop_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/external/Population/population.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clean and join population data</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Create a mask without regions and custom groupings,</span>
+<span class="sd">selecting only valid country entries</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">country_bool</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">pop_df</span><span class="p">[</span><span class="s1">&#39;Country or Area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">pycountry</span><span class="o">.</span><span class="n">countries</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
+        <span class="n">country_bool</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+        <span class="n">country_bool</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pop_df</span> <span class="o">=</span> <span class="n">pop_df</span><span class="p">[</span><span class="n">country_bool</span><span class="p">]</span>
+<span class="sd">&quot;&quot;&quot; Standardize the country codes</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">country_codes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">pop_df</span><span class="p">[</span><span class="s1">&#39;Country or Area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">():</span>
+    <span class="n">country_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pycountry</span><span class="o">.</span><span class="n">countries</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="n">country</span><span class="p">)</span><span class="o">.</span><span class="n">alpha_3</span><span class="p">)</span>
+
+<span class="n">pop_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Country Code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">country_codes</span>
+<span class="sd">&quot;&quot;&quot;Drop unneeded columns</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">pop_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Country or Area&#39;</span><span class="p">,</span> <span class="s1">&#39;Variant&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot; Change values from thousands to plain integers and rename columns</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">pop_df</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pop_df</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">pop_df</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span>
+    <span class="s1">&#39;Year(s)&#39;</span><span class="p">:</span> <span class="s1">&#39;Year&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Value&#39;</span><span class="p">:</span> <span class="s1">&#39;Population Estimate&#39;</span>
+<span class="p">},</span>
+    <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span>
+    <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot; Standardize index for join</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">pop_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Country Code&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot; Join the population data</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">df_with_pop</span> <span class="o">=</span> <span class="n">df_small</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pop_df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="arrivals-and-departures-per-capita">
+<h3>4.5.1. Arrivals and Departures per capita<a class="headerlink" href="#arrivals-and-departures-per-capita" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_with_pop</span><span class="p">[</span><span class="s1">&#39;ST.INT.ARVL.PER.CAPITA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_with_pop</span><span class="p">[</span>
+    <span class="s1">&#39;ST.INT.ARVL&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_with_pop</span><span class="p">[</span><span class="s1">&#39;Population Estimate&#39;</span><span class="p">]</span>
+
+<span class="n">df_with_pop</span><span class="p">[</span><span class="s1">&#39;ST.INT.DPRT.PER.CAPITA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_with_pop</span><span class="p">[</span>
+    <span class="s1">&#39;ST.INT.DPRT&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_with_pop</span><span class="p">[</span><span class="s1">&#39;Population Estimate&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="eda-part-two">
+<h2>4.6. EDA Part Two<a class="headerlink" href="#eda-part-two" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Plot a (non-square) correlation heatmap</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">corr</span> <span class="o">=</span> <span class="n">df_with_pop</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+<span class="n">mask</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">triu_indices_from</span><span class="p">(</span><span class="n">mask</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">diverging_palette</span><span class="p">(</span><span class="mi">220</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span>
+            <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">linewidths</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span>
+            <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="o">.</span><span class="mi">5</span><span class="p">})</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x2ae643257908</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="notebooks/../docs/notebooks/3_files/../docs/notebooks/3_35_1.png" src="notebooks/../docs/notebooks/3_files/../docs/notebooks/3_35_1.png" />
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">New profile report suggests that none of the variables</span>
+<span class="sd">are highly correlated enough to remove or ignore</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">profile_two</span> <span class="o">=</span> <span class="n">pandas_profiling</span><span class="o">.</span><span class="n">ProfileReport</span><span class="p">(</span><span class="n">df_with_pop</span><span class="p">)</span>
+<span class="n">profile_two</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;../docs/profile_two.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h3>4.6.1. Descriptive Statistics<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">desc</span> <span class="o">=</span> <span class="n">df_with_pop</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">pretty_table</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">desc</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;x̄&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+        <span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;𝑛&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;std&quot;</span><span class="p">,</span>
+                                  <span class="s2">&quot;𝑠&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;25%&quot;</span><span class="p">,</span> <span class="s2">&quot;𝑸₁&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                                      <span class="s2">&quot;50%&quot;</span><span class="p">,</span> <span class="s2">&quot;𝑸₂&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;75%&quot;</span><span class="p">,</span> <span class="s2">&quot;𝑸₃&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_dist</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">notna</span><span class="p">()])</span>
+</pre></div>
+</div>
+<div class="section" id="international-arrivals-per-capita">
+<h4>4.6.1.1. International Arrivals Per Capita<a class="headerlink" href="#international-arrivals-per-capita" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p>The mean is slightly higher than 1, but this must be highly skewed
+because the max value is ~52 and the mean is outside the quartile
+ranges</p>
+</div></blockquote>
+<p>| {{pretty_table(‘ST.INT.ARVL.PER.CAPITA’)}} |
+{{plot_dist(df_with_pop[‘ST.INT.ARVL.PER.CAPITA’])}} | |
+|————————————————————–|———————————————————————|—|</p>
+</div>
+<div class="section" id="international-departures-per-capita">
+<h4>4.6.1.2. International Departures Per Capita<a class="headerlink" href="#international-departures-per-capita" title="Permalink to this headline">¶</a></h4>
+<p>| {{pretty_table(‘ST.INT.DPRT.PER.CAPITA’)}} |
+{{plot_dist(df_with_pop[‘ST.INT.DPRT.PER.CAPITA’])}} | |
+|————————————————————–|———————————————————————|—|</p>
+</div>
+<div class="section" id="population-estimate">
+<h4>4.6.1.3. Population Estimate<a class="headerlink" href="#population-estimate" title="Permalink to this headline">¶</a></h4>
+<p>| {{pretty_table(‘Population Estimate’)}} |
+{{plot_dist(df_with_pop[‘Population Estimate’])}} | |
+|————————————————————–|———————————————————————|—|</p>
+</div>
+<div class="section" id="tourism-net">
+<h4>4.6.1.4. Tourism Net<a class="headerlink" href="#tourism-net" title="Permalink to this headline">¶</a></h4>
+<p>| {{pretty_table(‘Tourism Net’)}} |
+{{plot_dist(df_with_pop[‘Tourism Net’])}} | |
+|————————————————————–|———————————————————————|—|</p>
+</div>
+<div class="section" id="tourist-defecit">
+<h4>4.6.1.5. Tourist Defecit<a class="headerlink" href="#tourist-defecit" title="Permalink to this headline">¶</a></h4>
+<p>| {{pretty_table(‘Tourist Defecit’)}} |
+{{plot_dist(df_with_pop[‘Tourist Defecit’])}} | |
+|————————————————————–|———————————————————————|—|</p>
+</div>
+</div>
+</div>
+<div class="section" id="save-the-data">
+<h2>4.7. Save the data<a class="headerlink" href="#save-the-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_with_pop</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;../data/processed/Tourism.pickle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. Tourism Exploratory Data Analysis and Feature Engineering</a><ul>
+<li><a class="reference internal" href="#descriptive-statistics">4.1. Descriptive Statistics</a><ul>
+<li><a class="reference internal" href="#central-tendency">4.1.1. Central Tendency</a></li>
+<li><a class="reference internal" href="#variance-and-ranges">4.1.2. Variance and Ranges</a></li>
+<li><a class="reference internal" href="#skewness">4.1.3. Skewness</a></li>
+<li><a class="reference internal" href="#kurtosis">4.1.4. Kurtosis</a></li>
+<li><a class="reference internal" href="#quartiles">4.1.5. Quartiles</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#eda-reduction">4.2. EDA &amp; Reduction</a><ul>
+<li><a class="reference internal" href="#correlation-matrix-heatmap">4.2.1. Correlation Matrix Heatmap</a></li>
+<li><a class="reference internal" href="#data-profile-report">4.2.2. Data Profile Report</a></li>
+<li><a class="reference internal" href="#highly-correlated-variables">4.2.3. Highly correlated variables</a></li>
+<li><a class="reference internal" href="#remaining-variables">4.2.4. Remaining Variables</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pair-plot-analysis">4.3. Pair-plot analysis</a></li>
+<li><a class="reference internal" href="#feature-construction">4.4. Feature Construction</a></li>
+<li><a class="reference internal" href="#population-based-feature-construction">4.5. Population-based feature construction</a><ul>
+<li><a class="reference internal" href="#arrivals-and-departures-per-capita">4.5.1. Arrivals and Departures per capita</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#eda-part-two">4.6. EDA Part Two</a><ul>
+<li><a class="reference internal" href="#id1">4.6.1. Descriptive Statistics</a><ul>
+<li><a class="reference internal" href="#international-arrivals-per-capita">4.6.1.1. International Arrivals Per Capita</a></li>
+<li><a class="reference internal" href="#international-departures-per-capita">4.6.1.2. International Departures Per Capita</a></li>
+<li><a class="reference internal" href="#population-estimate">4.6.1.3. Population Estimate</a></li>
+<li><a class="reference internal" href="#tourism-net">4.6.1.4. Tourism Net</a></li>
+<li><a class="reference internal" href="#tourist-defecit">4.6.1.5. Tourist Defecit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#save-the-data">4.7. Save the data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="2.html"
+                        title="previous chapter">3. Tourism Missing Data</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="4.html"
+                        title="next chapter">5. Economic Data Processing (MADDISON)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/notebooks/3.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="4.html" title="5. Economic Data Processing (MADDISON)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="2.html" title="3. Tourism Missing Data"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Senior-Project 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>
