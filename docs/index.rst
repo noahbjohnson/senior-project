@@ -22,6 +22,16 @@ Syncing data to S3
 
 .. toctree::
    :maxdepth: 2
+   
+
+Notebooks
+----------
+
+.. toctree::
+   :numbered:
+   :glob:
+   
+   notebooks/*
 
    
 
