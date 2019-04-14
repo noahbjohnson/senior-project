@@ -771,7 +771,7 @@ Cleaning data
       </thead>
       <tbody>
         <tr>
-          <th>8803</th>
+          <th>14074</th>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -782,11 +782,11 @@ Cleaning data
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>1972</td>
-          <td>PAK</td>
+          <td>1992</td>
+          <td>LCN</td>
         </tr>
         <tr>
-          <th>4391</th>
+          <th>266</th>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -797,11 +797,11 @@ Cleaning data
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>1985</td>
-          <td>GHA</td>
+          <td>1990</td>
+          <td>AND</td>
         </tr>
         <tr>
-          <th>9462</th>
+          <th>2314</th>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -812,8 +812,8 @@ Cleaning data
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>1982</td>
-          <td>ROU</td>
+          <td>1973</td>
+          <td>CHI</td>
         </tr>
       </tbody>
     </table>

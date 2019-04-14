@@ -153,7 +153,7 @@ Correlation Matrix Heatmap
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2ae64190ce80>
+    <matplotlib.axes._subplots.AxesSubplot at 0x2b9adbf4af60>
 
 
 
@@ -378,7 +378,7 @@ rest are in the pair plot below.
 
 .. parsed-literal::
 
-    <seaborn.axisgrid.PairGrid at 0x2ae641d33a20>
+    <seaborn.axisgrid.PairGrid at 0x2b9adc2c8748>
 
 
 
@@ -513,7 +513,7 @@ EDA Part Two
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2ae643257908>
+    <matplotlib.axes._subplots.AxesSubplot at 0x2b9adc7c3e10>
 
 
 
