@@ -29,22 +29,17 @@ Milestones
 Midterm
 ____________
 
- ☑︎ Tourism data prep
+ [x] Tourism data prep
    
- ☐ Tourism exploratory analysis
+ [x] Tourism exploratory analysis
  
-    ☐ Dimension reduction
+    [x] Dimension reduction
  
-    ☐ Descriptive statistics
+    [x] Descriptive statistics
    
-    ☐ Colinearity/Correlation matrix
+    [x] Colinearity/Correlation matrix
    
-    ☐ Clustering
-   
- ☐ Tourism data report
- 
- 
- ☐ Economic data prep
+ [x] Economic data prep
    
  ☐ Tourism & Economic data analysis
  
