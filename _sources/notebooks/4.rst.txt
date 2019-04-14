@@ -88,58 +88,58 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>13309</th>
-          <td>PAN</td>
-          <td>Panama</td>
-          <td>1949</td>
-          <td>2198.000</td>
-          <td>2895.000</td>
-          <td>838.000</td>
+          <th>17826</th>
+          <td>TJK</td>
+          <td>Tajikistan</td>
+          <td>1953</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1684.000</td>
+          <td>NaN</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>5503</th>
+          <td>FIN</td>
+          <td>Finland</td>
+          <td>1916</td>
+          <td>2057.000</td>
+          <td>3065.000</td>
+          <td>3105.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>1922</th>
-          <td>BRA</td>
-          <td>Brazil</td>
-          <td>1820</td>
-          <td>600.000</td>
-          <td>1123.000</td>
-          <td>4507.000</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>19718</th>
-          <td>ZAF</td>
-          <td>South Africa</td>
-          <td>1996</td>
-          <td>8004.000</td>
-          <td>8937.000</td>
-          <td>42643.000</td>
+          <th>18419</th>
+          <td>TZA</td>
+          <td>U.R. of Tanzania: Mainland</td>
+          <td>1986</td>
+          <td>1483.000</td>
+          <td>1467.000</td>
+          <td>22284.000</td>
           <td>Interpolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>3502</th>
-          <td>COM</td>
-          <td>Comoros</td>
-          <td>1970</td>
-          <td>1875.000</td>
-          <td>1294.000</td>
-          <td>237.000</td>
-          <td>Extrapolated</td>
+          <th>13056</th>
+          <td>NZL</td>
+          <td>New Zealand</td>
+          <td>1953</td>
+          <td>10854.000</td>
+          <td>12936.000</td>
+          <td>2047.000</td>
+          <td>Interpolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>16851</th>
-          <td>SWE</td>
-          <td>Sweden</td>
-          <td>1504</td>
-          <td>1806.000</td>
-          <td>2272.000</td>
-          <td>nan</td>
-          <td>Extrapolated</td>
+          <th>8077</th>
+          <td>IDN</td>
+          <td>Indonesia</td>
+          <td>1931</td>
+          <td>1451.000</td>
+          <td>1728.000</td>
+          <td>62878.000</td>
+          <td>Interpolated</td>
           <td>NaN</td>
         </tr>
       </tbody>
