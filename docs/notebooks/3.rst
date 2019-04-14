@@ -1,0 +1,1801 @@
+
+Tourism Exploratory Data Analysis and Feature Engineering
+=========================================================
+
+.. code:: ipython3
+
+    import IPython.display as disp
+    import matplotlib.pyplot as plt
+    import numpy as np
+    import pandas as pd
+    import pandas_profiling
+    import pycountry
+    import seaborn as sns
+    from scipy.stats import boxcox, kurtosis, kurtosistest, skew, skewtest
+    from sklearn import preprocessing
+    from sklearn.decomposition import PCA, FactorAnalysis
+    
+    %matplotlib inline
+    pd.set_option('display.float_format', lambda x: '%.3f' % x)
+    df = pd.read_pickle("../data/interim/Tourism2.pickle").set_index(
+        ['Country Code', 'Year'])
+    
+    m = df.mean()
+    m.name = "Mean"
+    md = df.median()
+    md.name = "Median"
+
+Descriptive Statistics
+----------------------
+
++---------------+------------------------------------------------------------+
+| Variable      | Name                                                       |
++===============+============================================================+
+| ST.INT.ARVL   | International tourism, number of arrivals                  |
++---------------+------------------------------------------------------------+
+| ST.INT.RCPT.C | International tourism, receipts (current US$)              |
+| D             |                                                            |
++---------------+------------------------------------------------------------+
+| ST.INT.TVLR.C | International tourism, receipts for passenger transport    |
+| D             | items (current US$)                                        |
++---------------+------------------------------------------------------------+
+| ST.INT.TRNR.C | International tourism, receipts for travel items (current  |
+| D             | US$)                                                       |
++---------------+------------------------------------------------------------+
+| ST.INT.DPRT   | International tourism, expenditures (current US$)          |
++---------------+------------------------------------------------------------+
+| ST.INT.XPND.C | International tourism, expenditures for passenger          |
+| D             | transport items (current US$)                              |
++---------------+------------------------------------------------------------+
+| ST.INT.TVLX.C | International tourism, expenditures for travel items       |
+| D             | (current US$)                                              |
++---------------+------------------------------------------------------------+
+| ST.INT.TRNX.C | International tourism, number of departures                |
+| D             |                                                            |
++---------------+------------------------------------------------------------+
+| ST.INT.RCPT.X | International tourism, receipts (% of total exports)       |
+| P.ZS          |                                                            |
++---------------+------------------------------------------------------------+
+| ST.INT.XPND.M | International tourism, expenditures (% of total imports)   |
+| P.ZS          |                                                            |
++---------------+------------------------------------------------------------+
+
+Central Tendency
+~~~~~~~~~~~~~~~~
+
+\|
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   <style scoped>
+       .dataframe tbody tr th:only-of-type {
+           vertical-align: middle;
+       }
+
+       .dataframe tbody tr th {
+           vertical-align: top;
+       }
+
+       .dataframe thead th {
+           text-align: right;
+       }
+   </style>
+
+.. raw:: html
+
+   <table border="1" class="dataframe">
+
+.. raw:: html
+
+   <thead>
+
+::
+
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mean</th>
+    </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+::
+
+    <tr>
+      <th>ST.INT.ARVL</th>
+      <td>4372270.355</td>
+    </tr>
+    <tr>
+      <th>ST.INT.XPND.MP.ZS</th>
+      <td>6.605</td>
+    </tr>
+    <tr>
+      <th>ST.INT.XPND.CD</th>
+      <td>4845482332.972</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TRNX.CD</th>
+      <td>797889976.435</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TVLX.CD</th>
+      <td>4236352164.383</td>
+    </tr>
+    <tr>
+      <th>ST.INT.DPRT</th>
+      <td>8064689.662</td>
+    </tr>
+    <tr>
+      <th>ST.INT.RCPT.XP.ZS</th>
+      <td>16.952</td>
+    </tr>
+    <tr>
+      <th>ST.INT.RCPT.CD</th>
+      <td>4928297940.752</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TRNR.CD</th>
+      <td>922708154.258</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TVLR.CD</th>
+      <td>4476780046.173</td>
+    </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
+
+.. raw:: html
+
+   </div>
+
+\|
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   <style scoped>
+       .dataframe tbody tr th:only-of-type {
+           vertical-align: middle;
+       }
+
+       .dataframe tbody tr th {
+           vertical-align: top;
+       }
+
+       .dataframe thead th {
+           text-align: right;
+       }
+   </style>
+
+.. raw:: html
+
+   <table border="1" class="dataframe">
+
+.. raw:: html
+
+   <thead>
+
+::
+
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Median</th>
+    </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+::
+
+    <tr>
+      <th>ST.INT.ARVL</th>
+      <td>790500.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.XPND.MP.ZS</th>
+      <td>5.579</td>
+    </tr>
+    <tr>
+      <th>ST.INT.XPND.CD</th>
+      <td>423000000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TRNX.CD</th>
+      <td>88000000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TVLX.CD</th>
+      <td>328500000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.DPRT</th>
+      <td>1965000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.RCPT.XP.ZS</th>
+      <td>9.356</td>
+    </tr>
+    <tr>
+      <th>ST.INT.RCPT.CD</th>
+      <td>660000000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TRNR.CD</th>
+      <td>128000000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TVLR.CD</th>
+      <td>578000000.000</td>
+    </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
+
+.. raw:: html
+
+   </div>
+
++----+----+
++----+----+
+
+Variance and Ranges
+~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   <style scoped>
+       .dataframe tbody tr th:only-of-type {
+           vertical-align: middle;
+       }
+
+       .dataframe tbody tr th {
+           vertical-align: top;
+       }
+
+       .dataframe thead th {
+           text-align: right;
+       }
+   </style>
+
+.. raw:: html
+
+   <table border="1" class="dataframe">
+
+.. raw:: html
+
+   <thead>
+
+::
+
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Standard Deviation</th>
+      <th>Minimum Value</th>
+      <th>Maximum Value</th>
+    </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+::
+
+    <tr>
+      <th>ST.INT.ARVL</th>
+      <td>10217334.543</td>
+      <td>700.000</td>
+      <td>86861000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.XPND.MP.ZS</th>
+      <td>4.332</td>
+      <td>0.183</td>
+      <td>42.441</td>
+    </tr>
+    <tr>
+      <th>ST.INT.XPND.CD</th>
+      <td>15394652664.937</td>
+      <td>100000.000</td>
+      <td>257733000000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TRNX.CD</th>
+      <td>2712643164.035</td>
+      <td>100000.000</td>
+      <td>38896000000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TVLX.CD</th>
+      <td>13717419871.524</td>
+      <td>10000.000</td>
+      <td>257733000000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.DPRT</th>
+      <td>16214723.243</td>
+      <td>1900.000</td>
+      <td>143035000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.RCPT.XP.ZS</th>
+      <td>18.848</td>
+      <td>0.001</td>
+      <td>170.479</td>
+    </tr>
+    <tr>
+      <th>ST.INT.RCPT.CD</th>
+      <td>14801029019.088</td>
+      <td>100000.000</td>
+      <td>251361000000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TRNR.CD</th>
+      <td>2995992210.148</td>
+      <td>11000.000</td>
+      <td>44071000000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TVLR.CD</th>
+      <td>12946159292.781</td>
+      <td>100000.000</td>
+      <td>210748000000.000</td>
+    </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
+
+.. raw:: html
+
+   </div>
+
+Skewness
+~~~~~~~~
+
+.. code:: ipython3
+
+    # calculate skews of variables
+    skews = []
+    for var_name in df.columns:
+        variable = df[var_name][(df[var_name].notna())].tolist()
+        s = skew(variable)
+        zscore, pvalue = skewtest(variable)
+        skews.append({
+            'variable': var_name,
+            'skewness': s,
+            'z-score': zscore,
+            'p-value': pvalue,
+            'normal': (pvalue >= .05)
+        })
+    skew_df = pd.DataFrame(
+        skews, columns=['variable', 'normal', 'skewness', 'z-score', 'p-value'])
+
+H0: Variable sample has skew of the normal distribution (p ≥ .05)
+
+Ha: Variable does not have the skew of the normal distribution
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   <style scoped>
+       .dataframe tbody tr th:only-of-type {
+           vertical-align: middle;
+       }
+
+       .dataframe tbody tr th {
+           vertical-align: top;
+       }
+
+       .dataframe thead th {
+           text-align: right;
+       }
+   </style>
+
+.. raw:: html
+
+   <table border="1" class="dataframe">
+
+.. raw:: html
+
+   <thead>
+
+::
+
+    <tr style="text-align: right;">
+      <th></th>
+      <th>variable</th>
+      <th>normal</th>
+      <th>skewness</th>
+      <th>z-score</th>
+      <th>p-value</th>
+    </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+::
+
+    <tr>
+      <th>0</th>
+      <td>ST.INT.ARVL</td>
+      <td>False</td>
+      <td>4.421</td>
+      <td>53.302</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ST.INT.XPND.MP.ZS</td>
+      <td>False</td>
+      <td>1.886</td>
+      <td>32.226</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ST.INT.XPND.CD</td>
+      <td>False</td>
+      <td>7.634</td>
+      <td>62.497</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ST.INT.TRNX.CD</td>
+      <td>False</td>
+      <td>7.264</td>
+      <td>55.490</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ST.INT.TVLX.CD</td>
+      <td>False</td>
+      <td>8.662</td>
+      <td>64.449</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ST.INT.DPRT</td>
+      <td>False</td>
+      <td>3.600</td>
+      <td>34.806</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ST.INT.RCPT.XP.ZS</td>
+      <td>False</td>
+      <td>1.871</td>
+      <td>32.097</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ST.INT.RCPT.CD</td>
+      <td>False</td>
+      <td>8.628</td>
+      <td>66.705</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>ST.INT.TRNR.CD</td>
+      <td>False</td>
+      <td>8.116</td>
+      <td>55.201</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>ST.INT.TVLR.CD</td>
+      <td>False</td>
+      <td>7.881</td>
+      <td>62.582</td>
+      <td>0.000</td>
+    </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
+
+.. raw:: html
+
+   </div>
+
+Kurtosis
+~~~~~~~~
+
+.. code:: ipython3
+
+    # calculate kurtosis of variables
+    kurt = []
+    for var_name in df.columns:
+        variable = df[var_name][(df[var_name].notna())].tolist()
+        k = kurtosis(variable)
+        zscore, pvalue = kurtosistest(variable)
+        kurt.append({
+            'variable': var_name,
+            'kurtosis': k,
+            'z-score': zscore,
+            'p-value': pvalue,
+            'normal': (pvalue >= .05)
+        })
+    kurt_df = pd.DataFrame(
+        kurt, columns=['variable', 'normal', 'kurtosis', 'z-score', 'p-value'])
+
+H0: Variable sample has kurtosis of the normal distribution (p ≥ .05)
+
+Ha: Variable does not have the kurtosis of the normal distribution
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   <style scoped>
+       .dataframe tbody tr th:only-of-type {
+           vertical-align: middle;
+       }
+
+       .dataframe tbody tr th {
+           vertical-align: top;
+       }
+
+       .dataframe thead th {
+           text-align: right;
+       }
+   </style>
+
+.. raw:: html
+
+   <table border="1" class="dataframe">
+
+.. raw:: html
+
+   <thead>
+
+::
+
+    <tr style="text-align: right;">
+      <th></th>
+      <th>variable</th>
+      <th>normal</th>
+      <th>kurtosis</th>
+      <th>z-score</th>
+      <th>p-value</th>
+    </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+::
+
+    <tr>
+      <th>0</th>
+      <td>ST.INT.ARVL</td>
+      <td>False</td>
+      <td>23.135</td>
+      <td>34.089</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ST.INT.XPND.MP.ZS</td>
+      <td>False</td>
+      <td>6.047</td>
+      <td>21.941</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ST.INT.XPND.CD</td>
+      <td>False</td>
+      <td>83.336</td>
+      <td>39.360</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ST.INT.TRNX.CD</td>
+      <td>False</td>
+      <td>68.090</td>
+      <td>34.779</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ST.INT.TVLX.CD</td>
+      <td>False</td>
+      <td>114.806</td>
+      <td>40.229</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ST.INT.DPRT</td>
+      <td>False</td>
+      <td>14.883</td>
+      <td>22.236</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ST.INT.RCPT.XP.ZS</td>
+      <td>False</td>
+      <td>4.049</td>
+      <td>18.786</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ST.INT.RCPT.CD</td>
+      <td>False</td>
+      <td>106.402</td>
+      <td>41.366</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>ST.INT.TRNR.CD</td>
+      <td>False</td>
+      <td>86.733</td>
+      <td>34.272</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>ST.INT.TVLR.CD</td>
+      <td>False</td>
+      <td>89.849</td>
+      <td>39.316</td>
+      <td>0.000</td>
+    </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
+
+.. raw:: html
+
+   </div>
+
+Quartiles
+~~~~~~~~~
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   <style scoped>
+       .dataframe tbody tr th:only-of-type {
+           vertical-align: middle;
+       }
+
+       .dataframe tbody tr th {
+           vertical-align: top;
+       }
+
+       .dataframe thead th {
+           text-align: right;
+       }
+   </style>
+
+.. raw:: html
+
+   <table border="1" class="dataframe">
+
+.. raw:: html
+
+   <thead>
+
+::
+
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+::
+
+    <tr>
+      <th>ST.INT.ARVL</th>
+      <td>700.000</td>
+      <td>195250.000</td>
+      <td>790500.000</td>
+      <td>3449000.000</td>
+      <td>86861000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.XPND.MP.ZS</th>
+      <td>0.183</td>
+      <td>3.696</td>
+      <td>5.579</td>
+      <td>8.303</td>
+      <td>42.441</td>
+    </tr>
+    <tr>
+      <th>ST.INT.XPND.CD</th>
+      <td>100000.000</td>
+      <td>97000000.000</td>
+      <td>423000000.000</td>
+      <td>2650000000.000</td>
+      <td>257733000000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TRNX.CD</th>
+      <td>100000.000</td>
+      <td>21000000.000</td>
+      <td>88000000.000</td>
+      <td>386000000.000</td>
+      <td>38896000000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TVLX.CD</th>
+      <td>10000.000</td>
+      <td>71000000.000</td>
+      <td>328500000.000</td>
+      <td>2251000000.000</td>
+      <td>257733000000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.DPRT</th>
+      <td>1900.000</td>
+      <td>485500.000</td>
+      <td>1965000.000</td>
+      <td>7538000.000</td>
+      <td>143035000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.RCPT.XP.ZS</th>
+      <td>0.001</td>
+      <td>4.269</td>
+      <td>9.356</td>
+      <td>22.104</td>
+      <td>170.479</td>
+    </tr>
+    <tr>
+      <th>ST.INT.RCPT.CD</th>
+      <td>100000.000</td>
+      <td>119250000.000</td>
+      <td>660000000.000</td>
+      <td>3372000000.000</td>
+      <td>251361000000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TRNR.CD</th>
+      <td>11000.000</td>
+      <td>17000000.000</td>
+      <td>128000000.000</td>
+      <td>593000000.000</td>
+      <td>44071000000.000</td>
+    </tr>
+    <tr>
+      <th>ST.INT.TVLR.CD</th>
+      <td>100000.000</td>
+      <td>107000000.000</td>
+      <td>578000000.000</td>
+      <td>3204000000.000</td>
+      <td>210748000000.000</td>
+    </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
+
+.. raw:: html
+
+   </div>
+
+EDA & Reduction
+---------------
+
+Correlation Matrix Heatmap
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    """ Plot a (non-square) correlation heatmap
+    """
+    corr = df.corr()
+    mask = np.zeros_like(corr, dtype=np.bool)
+    mask[np.triu_indices_from(mask)] = True
+    f, ax = plt.subplots(figsize=(8, 7))
+    cmap = sns.diverging_palette(220, 10, as_cmap=True)
+    sns.heatmap(corr,
+                mask=mask,
+                cmap=cmap,
+                vmax=1,
+                center=0,
+                square=True,
+                linewidths=.5,
+                cbar_kws={"shrink": .5})
+
+
+
+
+.. parsed-literal::
+
+    <matplotlib.axes._subplots.AxesSubplot at 0x123d3d828>
+
+
+
+
+.. image:: ../docs/notebooks/3_files/../docs/notebooks/3_14_1.png
+
+
+Data Profile Report
+~~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    profile = pandas_profiling.ProfileReport(df)
+    profile.to_file("../docs/profile.html")
+
+Highly correlated variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Anything with ``ρ ≥ .9`` could end up skewing the calculations.
+
+.. code:: ipython3
+
+    profile.description_set['correlations']['pearson'][
+        profile.get_rejected_variables(.9)]
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>ST.INT.RCPT.CD</th>
+          <th>ST.INT.TRNR.CD</th>
+          <th>ST.INT.TRNX.CD</th>
+          <th>ST.INT.TVLR.CD</th>
+          <th>ST.INT.TVLX.CD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Year</th>
+          <td>0.125</td>
+          <td>0.083</td>
+          <td>0.061</td>
+          <td>0.120</td>
+          <td>0.111</td>
+        </tr>
+        <tr>
+          <th>ST.INT.ARVL</th>
+          <td>0.805</td>
+          <td>0.722</td>
+          <td>0.678</td>
+          <td>0.824</td>
+          <td>0.660</td>
+        </tr>
+        <tr>
+          <th>ST.INT.XPND.MP.ZS</th>
+          <td>-0.031</td>
+          <td>-0.008</td>
+          <td>0.028</td>
+          <td>-0.035</td>
+          <td>0.062</td>
+        </tr>
+        <tr>
+          <th>ST.INT.XPND.CD</th>
+          <td>0.777</td>
+          <td>0.893</td>
+          <td>0.944</td>
+          <td>0.765</td>
+          <td>0.993</td>
+        </tr>
+        <tr>
+          <th>ST.INT.TRNX.CD</th>
+          <td>0.909</td>
+          <td>0.913</td>
+          <td>1.000</td>
+          <td>0.897</td>
+          <td>0.916</td>
+        </tr>
+        <tr>
+          <th>ST.INT.TVLX.CD</th>
+          <td>0.726</td>
+          <td>0.875</td>
+          <td>0.916</td>
+          <td>0.719</td>
+          <td>1.000</td>
+        </tr>
+        <tr>
+          <th>ST.INT.DPRT</th>
+          <td>0.623</td>
+          <td>0.684</td>
+          <td>0.738</td>
+          <td>0.608</td>
+          <td>0.821</td>
+        </tr>
+        <tr>
+          <th>ST.INT.RCPT.XP.ZS</th>
+          <td>-0.090</td>
+          <td>-0.109</td>
+          <td>-0.138</td>
+          <td>-0.084</td>
+          <td>-0.167</td>
+        </tr>
+        <tr>
+          <th>ST.INT.RCPT.CD</th>
+          <td>1.000</td>
+          <td>0.952</td>
+          <td>0.909</td>
+          <td>0.996</td>
+          <td>0.726</td>
+        </tr>
+        <tr>
+          <th>ST.INT.TRNR.CD</th>
+          <td>0.952</td>
+          <td>1.000</td>
+          <td>0.913</td>
+          <td>0.929</td>
+          <td>0.875</td>
+        </tr>
+        <tr>
+          <th>ST.INT.TVLR.CD</th>
+          <td>0.996</td>
+          <td>0.929</td>
+          <td>0.897</td>
+          <td>1.000</td>
+          <td>0.719</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+-  ST.INT.TVLR.CD with ST.INT.TRNR.CD (ρ = 0.9294)
+-  Receipts for travel items in country
+
+-  Receipts for passenger transport items in country
+
+    93% of tourism travel receipts are from passenger transport
+
+-  ST.INT.TRNR.CD with ST.INT.RCPT.CD (ρ = 0.952)
+-  Receipts for passenger transport items in country
+
+-  Receipts for tourism in country
+
+    Passenger transport makes up 95.2% of export tourism
+
+-  ST.INT.RCPT.CD with ST.INT.TRNX.CD (ρ = 0.90905)
+-  Receipts for tourism in country
+
+-  Expenditures for passenger transport items abroad
+
+    Total tourism income and passenger transport abroad are highly
+    correlated.
+
+-  ST.INT.TVLX.CD with ST.INT.TRNX.CD (ρ = 0.91601)
+-  Expenditures for travel items abroad
+
+-  Expenditures for passenger transport items abroad
+
+    92% of tourism travel expenditures are from passenger transport
+
+-  ST.INT.TRNX.CD with ST.INT.XPND.CD (ρ = 0.94419)
+-  Expenditures for passenger transport items abroad
+
+-  Expenditures for tourism abroad
+
+    Passenger transport makes up 94.42% of import tourism
+
+#### Summary:
+
+-  About 95% of tourism spending is on transportation. This is
+   interesting, but for comparison analysis, these variables will skew
+   the models and not provide much more insight.
+
+.. code:: ipython3
+
+    df_small = df.drop([
+        'ST.INT.TRNX.CD', 'ST.INT.TVLX.CD', 'ST.INT.TRNX.CD', 'ST.INT.TRNR.CD',
+        'ST.INT.TVLR.CD'
+    ],
+        axis="columns")
+
+Remaining Variables
+~~~~~~~~~~~~~~~~~~~
+
+5 of the 11 original variables were dropped due to high correlation. The
+rest are in the pair plot below.
+
+.. code:: ipython3
+
+    sns.set(style="ticks")
+    sns.pairplot(df_small)  # ¯\_(ツ)_/¯
+
+
+.. parsed-literal::
+
+    /anaconda3/lib/python3.7/site-packages/numpy/lib/histograms.py:824: RuntimeWarning: invalid value encountered in greater_equal
+      keep = (tmp_a >= first_edge)
+    /anaconda3/lib/python3.7/site-packages/numpy/lib/histograms.py:825: RuntimeWarning: invalid value encountered in less_equal
+      keep &= (tmp_a <= last_edge)
+
+
+
+
+.. parsed-literal::
+
+    <seaborn.axisgrid.PairGrid at 0x123d3d780>
+
+
+
+
+.. image:: ../docs/notebooks/3_files/../docs/notebooks/3_22_2.png
+
+
+Pair-plot analysis
+------------------
+
+There are some interesting visual relationships in the pair plot above.
+
+Relationships with International Arrivals (ST.INT.ARVL)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+-  International tourism receipts (ST.INT.RCPT.XP.ZS & ST.INT.RCPT.CD)
+-  Two disparate coefficients
+-  International departures (ST.INT.DPRT)
+-  3-5 disparate coefficients
+
+Feature Construction
+--------------------
+
+.. code:: ipython3
+
+    """ Tourist defecit (# More arrivals than departures)  
+    """
+    df_small["Tourist Defecit"] = df_small["ST.INT.ARVL"] - df_small["ST.INT.DPRT"]
+
+.. code:: ipython3
+
+    """ Tourist net ($ More exports than imports)  
+    """
+    df_small["Tourism Net"] = df_small["ST.INT.RCPT.CD"] - \
+        df_small["ST.INT.XPND.CD"]
+
+.. code:: ipython3
+
+    """ Tourist avg net ($ receipt per arrival)  
+    """
+    df_small["Tourist Avg Net"] = df_small["ST.INT.RCPT.CD"] / \
+        df_small["ST.INT.ARVL"]
+
+Population-based feature construction
+-------------------------------------
+
+.. code:: ipython3
+
+    # Drop nan rows to avoid div/0 errors and load population data
+    # 4945 rows to start
+    # 4609 rows if drop where all = nan
+    # 2057 rows if drop where any = nan
+    df_small.dropna(how='all', inplace=True)
+    
+    pop_df = pd.read_csv("../data/external/Population/population.csv")
+
+.. code:: ipython3
+
+    # Clean and join population data
+    """ 
+    Create a mask without regions and custom groupings, 
+    selecting only valid country entries
+    """
+    country_bool = []
+    for country in pop_df['Country or Area'].tolist():
+        try:
+            pycountry.countries.lookup(country)
+            country_bool.append(True)
+        except LookupError:
+            country_bool.append(False)
+    pop_df = pop_df[country_bool]
+    """ Standardize the country codes
+    """
+    country_codes = []
+    for country in pop_df['Country or Area'].tolist():
+        country_codes.append(pycountry.countries.lookup(country).alpha_3)
+    
+    pop_df.loc[:, 'Country Code'] = country_codes
+    """Drop unneeded columns
+    """
+    pop_df.drop(['Country or Area', 'Variant'], axis='columns', inplace=True)
+    """ Change values from thousands to plain integers and rename columns
+    """
+    pop_df['Value'] = pop_df['Value'].apply(lambda x: x * 1000)
+    pop_df.rename({
+        'Year(s)': 'Year',
+        'Value': 'Population Estimate'
+    },
+        axis='columns',
+        inplace=True)
+    """ Standardize index for join
+    """
+    pop_df.set_index(['Country Code', 'Year'], inplace=True)
+    """ Join the population data
+    """
+    df_with_pop = df_small.join(pop_df, how='left')
+
+Arrivals and Departures per capita
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    df_with_pop['ST.INT.ARVL.PER.CAPITA'] = df_with_pop[
+        'ST.INT.ARVL'] / df_with_pop['Population Estimate']
+    
+    df_with_pop['ST.INT.DPRT.PER.CAPITA'] = df_with_pop[
+        'ST.INT.DPRT'] / df_with_pop['Population Estimate']
+
+EDA Part Two
+------------
+
+.. code:: ipython3
+
+    """ Plot a (non-square) correlation heatmap
+    """
+    corr = df_with_pop.corr()
+    mask = np.zeros_like(corr, dtype=np.bool)
+    mask[np.triu_indices_from(mask)] = True
+    f, ax = plt.subplots(figsize=(8, 7))
+    cmap = sns.diverging_palette(220, 10, as_cmap=True)
+    sns.heatmap(corr,
+                mask=mask,
+                cmap=cmap,
+                vmax=1,
+                center=0,
+                square=True,
+                linewidths=.5,
+                cbar_kws={"shrink": .5})
+
+
+
+
+.. parsed-literal::
+
+    <matplotlib.axes._subplots.AxesSubplot at 0x127b9c400>
+
+
+
+
+.. image:: ../docs/notebooks/3_files/../docs/notebooks/3_35_1.png
+
+
+.. code:: ipython3
+
+    """
+    New profile report suggests that none of the variables 
+    are highly correlated enough to remove or ignore
+    """
+    profile_two = pandas_profiling.ProfileReport(df_with_pop)
+    profile_two.to_file("../docs/profile_two.html")
+
+Descriptive Statistics
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    desc = df_with_pop.describe()
+    
+    
+    def pretty_table(var):
+        d = desc[var]
+        d.index = d.index.str.replace("mean", "x̄").str.replace(
+            "count", "𝑛").str.replace("std",
+                                      "𝑠").str.replace("25%", "𝑸₁").str.replace(
+                                          "50%", "𝑸₂").str.replace("75%", "𝑸₃")
+        return d.to_frame()
+    
+    
+    def plot_dist(x):
+        sns.distplot(x[x.notna()])
+
+International Arrivals Per Capita
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    The mean is slightly higher than 1, but this must be highly skewed
+    because the max value is ~52 and the mean is outside the quartile
+    ranges
+
+\|
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   <style scoped>
+       .dataframe tbody tr th:only-of-type {
+           vertical-align: middle;
+       }
+
+       .dataframe tbody tr th {
+           vertical-align: top;
+       }
+
+       .dataframe thead th {
+           text-align: right;
+       }
+   </style>
+
+.. raw:: html
+
+   <table border="1" class="dataframe">
+
+.. raw:: html
+
+   <thead>
+
+::
+
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ST.INT.ARVL.PER.CAPITA</th>
+    </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+::
+
+    <tr>
+      <th>𝑛</th>
+      <td>4186.000</td>
+    </tr>
+    <tr>
+      <th>x̄</th>
+      <td>1.131</td>
+    </tr>
+    <tr>
+      <th>𝑠</th>
+      <td>3.097</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>𝑸₁</th>
+      <td>0.042</td>
+    </tr>
+    <tr>
+      <th>𝑸₂</th>
+      <td>0.263</td>
+    </tr>
+    <tr>
+      <th>𝑸₃</th>
+      <td>0.806</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>52.212</td>
+    </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
+
+.. raw:: html
+
+   </div>
+
++----+----+----+
++====+====+====+
++----+----+----+
+
+International Departures Per Capita
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\|
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   <style scoped>
+       .dataframe tbody tr th:only-of-type {
+           vertical-align: middle;
+       }
+
+       .dataframe tbody tr th {
+           vertical-align: top;
+       }
+
+       .dataframe thead th {
+           text-align: right;
+       }
+   </style>
+
+.. raw:: html
+
+   <table border="1" class="dataframe">
+
+.. raw:: html
+
+   <thead>
+
+::
+
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ST.INT.DPRT.PER.CAPITA</th>
+    </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+::
+
+    <tr>
+      <th>𝑛</th>
+      <td>2129.000</td>
+    </tr>
+    <tr>
+      <th>x̄</th>
+      <td>0.472</td>
+    </tr>
+    <tr>
+      <th>𝑠</th>
+      <td>0.650</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>𝑸₁</th>
+      <td>0.062</td>
+    </tr>
+    <tr>
+      <th>𝑸₂</th>
+      <td>0.218</td>
+    </tr>
+    <tr>
+      <th>𝑸₃</th>
+      <td>0.698</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>9.855</td>
+    </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
+
+.. raw:: html
+
+   </div>
+
++----+----+----+
++====+====+====+
++----+----+----+
+
+Population Estimate
+^^^^^^^^^^^^^^^^^^^
+
+\|
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   <style scoped>
+       .dataframe tbody tr th:only-of-type {
+           vertical-align: middle;
+       }
+
+       .dataframe tbody tr th {
+           vertical-align: top;
+       }
+
+       .dataframe thead th {
+           text-align: right;
+       }
+   </style>
+
+.. raw:: html
+
+   <table border="1" class="dataframe">
+
+.. raw:: html
+
+   <thead>
+
+::
+
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Population Estimate</th>
+    </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+::
+
+    <tr>
+      <th>𝑛</th>
+      <td>4336.000</td>
+    </tr>
+    <tr>
+      <th>x̄</th>
+      <td>33338386.864</td>
+    </tr>
+    <tr>
+      <th>𝑠</th>
+      <td>132269659.413</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>9230.000</td>
+    </tr>
+    <tr>
+      <th>𝑸₁</th>
+      <td>804949.250</td>
+    </tr>
+    <tr>
+      <th>𝑸₂</th>
+      <td>5626999.500</td>
+    </tr>
+    <tr>
+      <th>𝑸₃</th>
+      <td>19384804.750</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1409517397.000</td>
+    </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
+
+.. raw:: html
+
+   </div>
+
++----+----+----+
++====+====+====+
++----+----+----+
+
+Tourism Net
+^^^^^^^^^^^
+
+\|
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   <style scoped>
+       .dataframe tbody tr th:only-of-type {
+           vertical-align: middle;
+       }
+
+       .dataframe tbody tr th {
+           vertical-align: top;
+       }
+
+       .dataframe thead th {
+           text-align: right;
+       }
+   </style>
+
+.. raw:: html
+
+   <table border="1" class="dataframe">
+
+.. raw:: html
+
+   <thead>
+
+::
+
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Tourism Net</th>
+    </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+::
+
+    <tr>
+      <th>𝑛</th>
+      <td>4041.000</td>
+    </tr>
+    <tr>
+      <th>x̄</th>
+      <td>326324711.964</td>
+    </tr>
+    <tr>
+      <th>𝑠</th>
+      <td>10223868153.302</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-225116000000.000</td>
+    </tr>
+    <tr>
+      <th>𝑸₁</th>
+      <td>-64000000.000</td>
+    </tr>
+    <tr>
+      <th>𝑸₂</th>
+      <td>71000000.000</td>
+    </tr>
+    <tr>
+      <th>𝑸₃</th>
+      <td>795000000.000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>99139000000.000</td>
+    </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
+
+.. raw:: html
+
+   </div>
+
++----+----+----+
++====+====+====+
++----+----+----+
+
+Tourist Defecit
+^^^^^^^^^^^^^^^
+
+\|
+
+.. raw:: html
+
+   <div>
+
+.. raw:: html
+
+   <style scoped>
+       .dataframe tbody tr th:only-of-type {
+           vertical-align: middle;
+       }
+
+       .dataframe tbody tr th {
+           vertical-align: top;
+       }
+
+       .dataframe thead th {
+           text-align: right;
+       }
+   </style>
+
+.. raw:: html
+
+   <table border="1" class="dataframe">
+
+.. raw:: html
+
+   <thead>
+
+::
+
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Tourist Defecit</th>
+    </tr>
+
+.. raw:: html
+
+   </thead>
+
+.. raw:: html
+
+   <tbody>
+
+::
+
+    <tr>
+      <th>𝑛</th>
+      <td>2241.000</td>
+    </tr>
+    <tr>
+      <th>x̄</th>
+      <td>-488964.244</td>
+    </tr>
+    <tr>
+      <th>𝑠</th>
+      <td>13218191.713</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-90453000.000</td>
+    </tr>
+    <tr>
+      <th>𝑸₁</th>
+      <td>-1105000.000</td>
+    </tr>
+    <tr>
+      <th>𝑸₂</th>
+      <td>63400.000</td>
+    </tr>
+    <tr>
+      <th>𝑸₃</th>
+      <td>1229000.000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>64755000.000</td>
+    </tr>
+
+.. raw:: html
+
+   </tbody>
+
+.. raw:: html
+
+   </table>
+
+.. raw:: html
+
+   </div>
+
++----+----+----+
++====+====+====+
++----+----+----+
+
+Save the data
+-------------
+
+.. code:: ipython3
+
+    df_with_pop.to_pickle("../data/processed/Tourism.pickle")

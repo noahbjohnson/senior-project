@@ -1,0 +1,279 @@
+
+Economic Data Processing (WDI)
+==============================
+
+Data Dictionary
+---------------
+
++--------------+-------------------------------------------------------------+
+| Code         | Indicator Name                                              |
++==============+=============================================================+
+| DT.DOD.DIMF. | Use of IMF credit (DOD, current US$)                        |
+| CD           |                                                             |
++--------------+-------------------------------------------------------------+
+| DT.DOD.PVLX. | Present value of external debt (current US$)                |
+| CD           |                                                             |
++--------------+-------------------------------------------------------------+
+| NY.GNP.PCAP. | GNI per capita, Atlas method (current US$)                  |
+| CD           |                                                             |
++--------------+-------------------------------------------------------------+
+| NY.GNP.ATLS. | GNI, Atlas method (current US$)                             |
+| CD           |                                                             |
++--------------+-------------------------------------------------------------+
+| DT.DIS.IDAG. | IDA grants (current US$)                                    |
+| CD           |                                                             |
++--------------+-------------------------------------------------------------+
+| DT.ODA.ODAT. | Net official development assistance received (current US$)  |
+| CD           |                                                             |
++--------------+-------------------------------------------------------------+
+| SI.POV.NAHC  | Poverty headcount ratio at national poverty lines (% of     |
+|              | population)                                                 |
++--------------+-------------------------------------------------------------+
+| SI.POV.URHC  | Urban poverty headcount ratio at national poverty lines (%  |
+|              | of urban population)                                        |
++--------------+-------------------------------------------------------------+
+| SI.POV.RUHC  | Rural poverty headcount ratio at national poverty lines (%  |
+|              | of rural population)                                        |
++--------------+-------------------------------------------------------------+
+| SI.POV.NAGP  | Poverty gap at national poverty lines (%)                   |
++--------------+-------------------------------------------------------------+
+| SI.POV.GINI  | GINI index (World Bank estimate)                            |
++--------------+-------------------------------------------------------------+
+
+.. code:: ipython3
+
+    import re
+    
+    import numpy as np
+    import pandas as pd
+    import pycountry
+    
+    %matplotlib inline
+    
+    pd.set_option('display.float_format', lambda x: '%.3f' % x)
+
+Load The File
+-------------
+
+.. code:: ipython3
+
+    df = pd.read_excel("../data/external/Economy/WDI/Data_Extract_From_World_Development_Indicators.xlsx")
+
+.. code:: ipython3
+
+    df.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Time</th>
+          <th>Time Code</th>
+          <th>Country Name</th>
+          <th>Country Code</th>
+          <th>Use of IMF credit (DOD, current US$) [DT.DOD.DIMF.CD]</th>
+          <th>Present value of external debt (current US$) [DT.DOD.PVLX.CD]</th>
+          <th>GNI per capita, Atlas method (current US$) [NY.GNP.PCAP.CD]</th>
+          <th>GNI, Atlas method (current US$) [NY.GNP.ATLS.CD]</th>
+          <th>IDA grants (current US$) [DT.DIS.IDAG.CD]</th>
+          <th>Net official development assistance received (current US$) [DT.ODA.ODAT.CD]</th>
+          <th>Poverty headcount ratio at national poverty lines (% of population) [SI.POV.NAHC]</th>
+          <th>Urban poverty headcount ratio at national poverty lines (% of urban population) [SI.POV.URHC]</th>
+          <th>Rural poverty headcount ratio at national poverty lines (% of rural population) [SI.POV.RUHC]</th>
+          <th>Poverty gap at national poverty lines (%) [SI.POV.NAGP]</th>
+          <th>GINI index (World Bank estimate) [SI.POV.GINI]</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>1370</th>
+          <td>2000</td>
+          <td>YR2000</td>
+          <td>Curacao</td>
+          <td>CUW</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>4351</th>
+          <td>2011</td>
+          <td>YR2011</td>
+          <td>Mexico</td>
+          <td>MEX</td>
+          <td>4377354546.800</td>
+          <td>..</td>
+          <td>9040</td>
+          <td>1076966651482.744</td>
+          <td>0</td>
+          <td>973170000</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>3745</th>
+          <td>2009</td>
+          <td>YR2009</td>
+          <td>Cuba</td>
+          <td>CUB</td>
+          <td>..</td>
+          <td>..</td>
+          <td>5480</td>
+          <td>61972344609.070</td>
+          <td>..</td>
+          <td>112560000</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>1896</th>
+          <td>2002</td>
+          <td>YR2002</td>
+          <td>Croatia</td>
+          <td>HRV</td>
+          <td>..</td>
+          <td>..</td>
+          <td>5470</td>
+          <td>24280350480.275</td>
+          <td>..</td>
+          <td>130600000</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>3864</th>
+          <td>2009</td>
+          <td>YR2009</td>
+          <td>Serbia</td>
+          <td>SRB</td>
+          <td>2298516898.400</td>
+          <td>..</td>
+          <td>6040</td>
+          <td>44193144171.561</td>
+          <td>0</td>
+          <td>623140000</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>28</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Standardize Country Codes
+-------------------------
+
+.. code:: ipython3
+
+    """ Only Select rows with valid country codes
+    """
+    country_locations = []
+    for country in df['Country Code']:
+        try:
+            pycountry.countries.lookup(country)
+            country_locations.append(True)
+        except LookupError:
+            country_locations.append(False)
+    df = df[country_locations]
+
+Standardize Indexes
+-------------------
+
+.. code:: ipython3
+
+    df.rename(
+        {
+            "Time": "Year"
+        },
+        axis='columns',
+        inplace=True)
+
+.. code:: ipython3
+
+    df.set_index(["Country Code", "Year"], inplace=True)
+
+Clean Data
+----------
+
+Header
+~~~~~~
+
+.. code:: ipython3
+
+    df.drop(["Time Code", "Country Name"],
+            axis='columns',
+            inplace=True)
+
+.. code:: ipython3
+
+    c = [ re.search(r"\[(\w+\.)+\w+\]",d)[0].replace("[","").replace("]","") for d in df.columns ]
+
+.. code:: ipython3
+
+    c_names = {}
+    for x in range(len(c)):
+        c_names[df.columns[x]] = c[x]
+
+.. code:: ipython3
+
+    df.rename(c_names,axis='columns',inplace=True)
+
+Data Types
+~~~~~~~~~~
+
+.. code:: ipython3
+
+    """ Replace '..' with np.nan for better parsing
+    """
+    df = df.replace('..', np.NaN)
+
+.. code:: ipython3
+
+    df = df.astype(float)
+
+Save Data
+---------
+
+.. code:: ipython3
+
+    df.to_pickle("../data/processed/Economic_WDI.pickle")
