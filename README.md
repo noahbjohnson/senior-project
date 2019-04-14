@@ -29,27 +29,27 @@ Milestones
 Midterm
 ____________
 
- [x] Tourism data prep
-   
- [x] Tourism exploratory analysis
+- [x] Tourism data prep
+
+- [x] Tourism exploratory analysis
  
-    [x] Dimension reduction
+  - [x] Dimension reduction
  
-    [x] Descriptive statistics
+  - [x] Descriptive statistics
    
-    [x] Colinearity/Correlation matrix
+  - [x] Colinearity/Correlation matrix
    
- [x] Economic data prep
+- [x] Economic data prep
    
- ☐ Tourism & Economic data analysis
+- [] Tourism & Economic data analysis
  
-    ☐ Dimension reduction
+ - [] Dimension reduction
  
-    ☐ Colinearity/Correlation matrix
+ - [] Colinearity/Correlation matrix
    
-    ☐ Clustering
+ - [] Clustering
    
-    ☐ Modeling (Economic data features as response)
+ - [] Modeling (Economic data features as response)
    
  
 Final
@@ -57,47 +57,47 @@ _____________
 
 > Repeated for each subject area
 
- ☐ $Subject data prep
+- [] $Subject data prep
    
- ☐ Tourism & $Subject data analysis
+- [] Tourism & $Subject data analysis
  
-    ☐ Dimension reduction
+ - [] Dimension reduction
  
-    ☐ Colinearity/Correlation matrix
+ - [] Colinearity/Correlation matrix
    
-    ☐ Clustering
+ - [] Clustering
    
-    ☐ Modeling ($Subject data features as response)
+ - [] Modeling ($Subject data features as response)
    
- ☐ Tourism and $Subject data report
+- [] Tourism and $Subject data report
  
  
 > Final Report
 
- ☐ Complete dataset creation (all subject areas)
+- [] Complete dataset creation (all subject areas)
  
- ☐ Anomaly detection
+- [] Anomaly detection
  
- ☐ Full cluster analysis (ANN/K-NN/AP/LCA)
+- [] Full cluster analysis (ANN/K-NN/AP/LCA)
  
- ☐ Subject matter interaction analysis & dimension reduction
+- [] Subject matter interaction analysis & dimension reduction
  
-    ☐ (colinearity/correlation/multivariate/MDS/PCA)
+  - [] (colinearity/correlation/multivariate/MDS/PCA)
    
- ☐ Dependency Modeling
+- [] Dependency Modeling
  
-    ☐ Association rule learning (Apriori/Eclat/FP-Growth)
+  - [] Association rule learning (Apriori/Eclat/FP-Growth)
    
  
- ☐ Findings
+- [] Findings
  
-    ☐ Model summaries
+  - [] Model summaries
    
-    ☐ Instrumental Explanations
+  - [] Instrumental Explanations
    
-    ☐ Visualizations
+  - [] Visualizations
    
-    ☐ Written report with methodology
+  - [] Written report with methodology
    
  
 
