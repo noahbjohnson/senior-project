@@ -96,17 +96,17 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>5251</th>
-          <td>2014</td>
-          <td>YR2014</td>
-          <td>IDA only</td>
-          <td>IDX</td>
-          <td>16789898040.100</td>
+          <th>5653</th>
+          <td>2016</td>
+          <td>YR2016</td>
+          <td>Latvia</td>
+          <td>LVA</td>
           <td>..</td>
-          <td>1008.433</td>
-          <td>1015720345931.050</td>
-          <td>2167948517.990</td>
-          <td>52817170000</td>
+          <td>..</td>
+          <td>14570</td>
+          <td>28557598019.651</td>
+          <td>..</td>
+          <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -114,76 +114,76 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>4170</th>
-          <td>2010</td>
-          <td>YR2010</td>
-          <td>Venezuela, RB</td>
-          <td>VEN</td>
-          <td>3916690337.500</td>
+          <th>295</th>
+          <td>1996</td>
+          <td>YR1996</td>
+          <td>Burundi</td>
+          <td>BDI</td>
+          <td>37641479.700</td>
           <td>..</td>
-          <td>11570</td>
-          <td>335817312573.057</td>
+          <td>140</td>
+          <td>868857678.239</td>
           <td>0</td>
-          <td>53340000</td>
-          <td>26.800</td>
+          <td>110520000</td>
+          <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
         </tr>
         <tr>
-          <th>793</th>
-          <td>1998</td>
-          <td>YR1998</td>
-          <td>Albania</td>
-          <td>ALB</td>
-          <td>64445534.600</td>
+          <th>4927</th>
+          <td>2013</td>
+          <td>YR2013</td>
+          <td>Solomon Islands</td>
+          <td>SLB</td>
+          <td>34935371.200</td>
           <td>..</td>
-          <td>860</td>
-          <td>2700983895.660</td>
+          <td>1790</td>
+          <td>1010555562.080</td>
+          <td>5671708.850</td>
+          <td>289830000</td>
+          <td>12.700</td>
+          <td>..</td>
+          <td>..</td>
+          <td>3.200</td>
+          <td>37.100</td>
+        </tr>
+        <tr>
+          <th>3315</th>
+          <td>2007</td>
+          <td>YR2007</td>
+          <td>Norway</td>
+          <td>NOR</td>
+          <td>..</td>
+          <td>..</td>
+          <td>78410</td>
+          <td>369221983311.665</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>27.100</td>
+        </tr>
+        <tr>
+          <th>1929</th>
+          <td>2002</td>
+          <td>YR2002</td>
+          <td>Guinea</td>
+          <td>GIN</td>
+          <td>162915360.200</td>
+          <td>..</td>
+          <td>330</td>
+          <td>2990772246.185</td>
           <td>0</td>
-          <td>268740000</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>4230</th>
-          <td>2011</td>
-          <td>YR2011</td>
-          <td>Antigua and Barbuda</td>
-          <td>ATG</td>
-          <td>..</td>
-          <td>..</td>
-          <td>11520</td>
-          <td>1102751774.725</td>
-          <td>..</td>
-          <td>15420000</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>4085</th>
-          <td>2010</td>
-          <td>YR2010</td>
-          <td>Mauritania</td>
-          <td>MRT</td>
-          <td>144848062.200</td>
-          <td>..</td>
-          <td>1130</td>
-          <td>4090800968.624</td>
-          <td>-344887.990</td>
-          <td>373610000</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
+          <td>254190000</td>
+          <td>55.400</td>
+          <td>23.500</td>
+          <td>59.900</td>
+          <td>17.200</td>
+          <td>43</td>
         </tr>
       </tbody>
     </table>

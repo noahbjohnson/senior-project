@@ -771,7 +771,7 @@ Cleaning data
       </thead>
       <tbody>
         <tr>
-          <th>1713</th>
+          <th>7388</th>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -782,38 +782,38 @@ Cleaning data
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>1962</td>
-          <td>BGR</td>
+          <td>1973</td>
+          <td>MHL</td>
         </tr>
         <tr>
-          <th>9795</th>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>1961</td>
-          <td>SAU</td>
+          <th>3934</th>
+          <td>294000.000</td>
+          <td>8.717</td>
+          <td>96000000.000</td>
+          <td>13000000.000</td>
+          <td>83000000.000</td>
+          <td>83000.000</td>
+          <td>30.053</td>
+          <td>291000000.000</td>
+          <td>102000000.000</td>
+          <td>189000000.000</td>
+          <td>2000</td>
+          <td>FJI</td>
         </tr>
         <tr>
-          <th>8259</th>
+          <th>12366</th>
+          <td>44000.000</td>
+          <td>8.718</td>
+          <td>10000000.000</td>
+          <td>5000000.000</td>
+          <td>5000000.000</td>
+          <td>11000.000</td>
+          <td>40.936</td>
+          <td>45000000.000</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>2018</td>
-          <td>NPL</td>
+          <td>45000000.000</td>
+          <td>1995</td>
+          <td>VUT</td>
         </tr>
       </tbody>
     </table>
