@@ -771,22 +771,22 @@ Cleaning data
       </thead>
       <tbody>
         <tr>
-          <th>4649</th>
-          <td>130000.000</td>
-          <td>3.666</td>
-          <td>16000000.000</td>
+          <th>5525</th>
+          <td>6064000.000</td>
           <td>nan</td>
-          <td>16000000.000</td>
+          <td>3015000000.000</td>
           <td>nan</td>
-          <td>61.562</td>
-          <td>129000000.000</td>
+          <td>3015000000.000</td>
+          <td>3330000.000</td>
           <td>nan</td>
-          <td>129000000.000</td>
-          <td>2007</td>
-          <td>GRD</td>
+          <td>3297000000.000</td>
+          <td>nan</td>
+          <td>3297000000.000</td>
+          <td>1998</td>
+          <td>IRL</td>
         </tr>
         <tr>
-          <th>2959</th>
+          <th>4779</th>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -797,11 +797,11 @@ Cleaning data
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>1969</td>
-          <td>CUW</td>
+          <td>1960</td>
+          <td>GIN</td>
         </tr>
         <tr>
-          <th>7166</th>
+          <th>7095</th>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -812,8 +812,8 @@ Cleaning data
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>1987</td>
-          <td>MYS</td>
+          <td>1975</td>
+          <td>MWI</td>
         </tr>
       </tbody>
     </table>
