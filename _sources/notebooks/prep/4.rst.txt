@@ -88,58 +88,58 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>1212</th>
-          <td>BEL</td>
-          <td>Belgium</td>
-          <td>1958</td>
-          <td>8844.000</td>
-          <td>10567.000</td>
-          <td>9053.000</td>
-          <td>Interpolated</td>
+          <th>4700</th>
+          <td>DNK</td>
+          <td>Denmark</td>
+          <td>2011</td>
+          <td>43575.000</td>
+          <td>43575.000</td>
+          <td>5571.000</td>
+          <td>Benchmark</td>
+          <td>ICP PPP estimates</td>
+        </tr>
+        <tr>
+          <th>16551</th>
+          <td>SVK</td>
+          <td>Slovakia</td>
+          <td>1990</td>
+          <td>15041.000</td>
+          <td>11828.000</td>
+          <td>5263.000</td>
+          <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>19614</th>
-          <td>ZAF</td>
-          <td>South Africa</td>
-          <td>1881</td>
-          <td>2831.000</td>
-          <td>3226.000</td>
+          <th>5934</th>
+          <td>FRA</td>
+          <td>France</td>
+          <td>1608</td>
+          <td>1296.000</td>
+          <td>1678.000</td>
           <td>nan</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>13885</th>
-          <td>PHL</td>
-          <td>Philippines</td>
-          <td>1980</td>
-          <td>3043.000</td>
-          <td>4450.000</td>
-          <td>50940.000</td>
-          <td>Benchmark</td>
-          <td>ICP PPP estimates</td>
-        </tr>
-        <tr>
-          <th>17609</th>
-          <td>TCD</td>
-          <td>Chad</td>
-          <td>1991</td>
-          <td>1059.000</td>
-          <td>852.000</td>
-          <td>6028.000</td>
+          <th>11760</th>
+          <td>MOZ</td>
+          <td>Mozambique</td>
+          <td>1957</td>
+          <td>512.000</td>
+          <td>379.000</td>
+          <td>7038.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>8597</th>
-          <td>IRN</td>
-          <td>Iran (Islamic Republic of)</td>
-          <td>1970</td>
-          <td>6173.000</td>
-          <td>11661.000</td>
-          <td>28854.000</td>
-          <td>Interpolated</td>
+          <th>14613</th>
+          <td>PRI</td>
+          <td>Puerto Rico</td>
+          <td>2009</td>
+          <td>33684.000</td>
+          <td>33684.000</td>
+          <td>3741.000</td>
+          <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
       </tbody>

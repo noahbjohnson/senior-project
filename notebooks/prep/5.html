@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>6. Economic Data Processing (WDI) &#8212; Senior-Project 0.1 documentation</title>
+    <title>1.6. Economic Data Processing (WDI) &#8212; Senior-Project 0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
@@ -16,8 +16,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7. Inequality Data Processing (WDI)" href="6.html" />
-    <link rel="prev" title="5. Economic Data Processing (MADDISON)" href="4.html" /> 
+    <link rel="next" title="1.7. Inequality Data Processing (WDI)" href="6.html" />
+    <link rel="prev" title="1.5. Economic Data Processing (MADDISON)" href="4.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -26,13 +26,13 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="6.html" title="7. Inequality Data Processing (WDI)"
+          <a href="6.html" title="1.7. Inequality Data Processing (WDI)"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="4.html" title="5. Economic Data Processing (MADDISON)"
+          <a href="4.html" title="1.5. Economic Data Processing (MADDISON)"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">Data Preperation Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">1. Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -42,9 +42,9 @@
           <div class="body" role="main">
             
   <div class="section" id="economic-data-processing-wdi">
-<h1>6. Economic Data Processing (WDI)<a class="headerlink" href="#economic-data-processing-wdi" title="Permalink to this headline">¶</a></h1>
+<h1>1.6. Economic Data Processing (WDI)<a class="headerlink" href="#economic-data-processing-wdi" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="data-dictionary">
-<h2>6.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
+<h2>1.6.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-center">
 <colgroup>
 <col style="width: 18%" />
@@ -104,7 +104,7 @@
 </div>
 </div>
 <div class="section" id="load-the-file">
-<h2>6.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
+<h2>1.6.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/external/Economy/WDI/Data_Extract_From_World_Development_Indicators.xlsx&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -148,35 +148,35 @@
   </thead>
   <tbody>
     <tr>
-      <th>3055</th>
-      <td>2006</td>
-      <td>YR2006</td>
-      <td>Panama</td>
-      <td>PAN</td>
+      <th>2381</th>
+      <td>2004</td>
+      <td>YR2004</td>
+      <td>Angola</td>
+      <td>AGO</td>
+      <td>423985126.300</td>
+      <td>..</td>
+      <td>1010</td>
+      <td>19001401454.412</td>
+      <td>3108297.910</td>
+      <td>1144570000</td>
       <td>..</td>
       <td>..</td>
-      <td>5160</td>
-      <td>17509773451.169</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>4426</th>
+      <td>2011</td>
+      <td>YR2011</td>
+      <td>Uganda</td>
+      <td>UGA</td>
+      <td>273063521.400</td>
+      <td>..</td>
+      <td>600</td>
+      <td>20993874686.250</td>
       <td>0</td>
-      <td>32680000</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>54.600</td>
-    </tr>
-    <tr>
-      <th>3797</th>
-      <td>2009</td>
-      <td>YR2009</td>
-      <td>Kenya</td>
-      <td>KEN</td>
-      <td>857631720.800</td>
-      <td>..</td>
-      <td>910</td>
-      <td>36649690185.155</td>
-      <td>281976.010</td>
-      <td>1782480000</td>
+      <td>1572920000</td>
       <td>..</td>
       <td>..</td>
       <td>..</td>
@@ -184,17 +184,17 @@
       <td>..</td>
     </tr>
     <tr>
-      <th>143</th>
-      <td>1995</td>
-      <td>YR1995</td>
-      <td>Niger</td>
-      <td>NER</td>
-      <td>52080664</td>
-      <td>..</td>
-      <td>180</td>
-      <td>1751754976.272</td>
+      <th>638</th>
+      <td>1997</td>
+      <td>YR1997</td>
+      <td>Lebanon</td>
+      <td>LBN</td>
       <td>0</td>
-      <td>272390000</td>
+      <td>..</td>
+      <td>4730</td>
+      <td>14618370926.673</td>
+      <td>0</td>
+      <td>261240000</td>
       <td>..</td>
       <td>..</td>
       <td>..</td>
@@ -202,11 +202,11 @@
       <td>..</td>
     </tr>
     <tr>
-      <th>5571</th>
-      <td>2016</td>
-      <td>YR2016</td>
-      <td>British Virgin Islands</td>
-      <td>VGB</td>
+      <th>6127</th>
+      <td>2018</td>
+      <td>YR2018</td>
+      <td>Dominica</td>
+      <td>DMA</td>
       <td>..</td>
       <td>..</td>
       <td>..</td>
@@ -220,17 +220,17 @@
       <td>..</td>
     </tr>
     <tr>
-      <th>3991</th>
-      <td>2010</td>
-      <td>YR2010</td>
-      <td>Burundi</td>
-      <td>BDI</td>
-      <td>223366699.600</td>
+      <th>5911</th>
+      <td>2017</td>
+      <td>YR2017</td>
+      <td>Korea, Dem. People’s Rep.</td>
+      <td>PRK</td>
       <td>..</td>
-      <td>220</td>
-      <td>1895318490.822</td>
-      <td>89547193.200</td>
-      <td>627610000</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>133070000</td>
       <td>..</td>
       <td>..</td>
       <td>..</td>
@@ -241,7 +241,7 @@
 </table>
 </div></div>
 <div class="section" id="standardize-country-codes">
-<h2>6.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
+<h2>1.6.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Only Select rows with valid country codes</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">country_locations</span> <span class="o">=</span> <span class="p">[]</span>
@@ -256,7 +256,7 @@
 </div>
 </div>
 <div class="section" id="standardize-indexes">
-<h2>6.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
+<h2>1.6.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="s2">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;Year&quot;</span>
@@ -270,9 +270,9 @@
 </div>
 </div>
 <div class="section" id="clean-data">
-<h2>6.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
+<h2>1.6.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="header">
-<h3>6.5.1. Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.5.1. Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Time Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Country Name&quot;</span><span class="p">],</span>
         <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span>
         <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -291,7 +291,7 @@
 </div>
 </div>
 <div class="section" id="data-types">
-<h3>6.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Replace &#39;..&#39; with np.nan for better parsing</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">)</span>
@@ -303,7 +303,7 @@
 </div>
 </div>
 <div class="section" id="save-data">
-<h2>6.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
+<h2>1.6.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;../data/processed/Economic_WDI.pickle&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -318,27 +318,27 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">6. Economic Data Processing (WDI)</a><ul>
-<li><a class="reference internal" href="#data-dictionary">6.1. Data Dictionary</a></li>
-<li><a class="reference internal" href="#load-the-file">6.2. Load The File</a></li>
-<li><a class="reference internal" href="#standardize-country-codes">6.3. Standardize Country Codes</a></li>
-<li><a class="reference internal" href="#standardize-indexes">6.4. Standardize Indexes</a></li>
-<li><a class="reference internal" href="#clean-data">6.5. Clean Data</a><ul>
-<li><a class="reference internal" href="#header">6.5.1. Header</a></li>
-<li><a class="reference internal" href="#data-types">6.5.2. Data Types</a></li>
+<li><a class="reference internal" href="#">1.6. Economic Data Processing (WDI)</a><ul>
+<li><a class="reference internal" href="#data-dictionary">1.6.1. Data Dictionary</a></li>
+<li><a class="reference internal" href="#load-the-file">1.6.2. Load The File</a></li>
+<li><a class="reference internal" href="#standardize-country-codes">1.6.3. Standardize Country Codes</a></li>
+<li><a class="reference internal" href="#standardize-indexes">1.6.4. Standardize Indexes</a></li>
+<li><a class="reference internal" href="#clean-data">1.6.5. Clean Data</a><ul>
+<li><a class="reference internal" href="#header">1.6.5.1. Header</a></li>
+<li><a class="reference internal" href="#data-types">1.6.5.2. Data Types</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#save-data">6.6. Save Data</a></li>
+<li><a class="reference internal" href="#save-data">1.6.6. Save Data</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="4.html"
-                        title="previous chapter">5. Economic Data Processing (MADDISON)</a></p>
+                        title="previous chapter">1.5. Economic Data Processing (MADDISON)</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="6.html"
-                        title="next chapter">7. Inequality Data Processing (WDI)</a></p>
+                        title="next chapter">1.7. Inequality Data Processing (WDI)</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -367,13 +367,13 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="6.html" title="7. Inequality Data Processing (WDI)"
+          <a href="6.html" title="1.7. Inequality Data Processing (WDI)"
              >next</a> |</li>
         <li class="right" >
-          <a href="4.html" title="5. Economic Data Processing (MADDISON)"
+          <a href="4.html" title="1.5. Economic Data Processing (MADDISON)"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >Data Preperation Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >1. Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

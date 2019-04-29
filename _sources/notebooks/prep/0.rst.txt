@@ -771,22 +771,22 @@ Cleaning data
       </thead>
       <tbody>
         <tr>
-          <th>10704</th>
+          <th>2694</th>
+          <td>14000.000</td>
+          <td>5.103</td>
+          <td>71000000.000</td>
+          <td>8000000.000</td>
+          <td>63000000.000</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>1985</td>
-          <td>KNA</td>
+          <td>0.791</td>
+          <td>13500000.000</td>
+          <td>500000.000</td>
+          <td>13000000.000</td>
+          <td>1999</td>
+          <td>COG</td>
         </tr>
         <tr>
-          <th>9226</th>
+          <th>13659</th>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -797,23 +797,23 @@ Cleaning data
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>1982</td>
-          <td>POL</td>
+          <td>1990</td>
+          <td>HIC</td>
         </tr>
         <tr>
-          <th>3286</th>
-          <td>66000.000</td>
-          <td>5.430</td>
-          <td>9000000.000</td>
+          <th>9306</th>
+          <td>5383000.000</td>
+          <td>5.345</td>
+          <td>2981000000.000</td>
+          <td>573000000.000</td>
+          <td>2408000000.000</td>
           <td>nan</td>
-          <td>9000000.000</td>
-          <td>nan</td>
-          <td>37.939</td>
-          <td>46000000.000</td>
-          <td>nan</td>
-          <td>46000000.000</td>
-          <td>2001</td>
-          <td>DMA</td>
+          <td>17.287</td>
+          <td>7677000000.000</td>
+          <td>1055000000.000</td>
+          <td>6622000000.000</td>
+          <td>2003</td>
+          <td>PRT</td>
         </tr>
       </tbody>
     </table>
