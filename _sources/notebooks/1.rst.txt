@@ -617,7 +617,7 @@ Missing Data
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2b6b32f79b70>
+    <matplotlib.axes._subplots.AxesSubplot at 0x2b791212ab70>
 
 
 
@@ -663,7 +663,7 @@ take the WDI data and fill mising values with UWTO data when possible.
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2b6b32cee860>
+    <matplotlib.axes._subplots.AxesSubplot at 0x2b7912848828>
 
 
 

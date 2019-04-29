@@ -88,57 +88,57 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>3284</th>
-          <td>COG</td>
-          <td>Congo</td>
-          <td>1970</td>
-          <td>1647.000</td>
-          <td>3888.000</td>
-          <td>1272.000</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>18354</th>
-          <td>TWN</td>
-          <td>Taiwan, Province of China</td>
-          <td>1988</td>
-          <td>16079.000</td>
-          <td>13164.000</td>
-          <td>19752.000</td>
+          <th>6868</th>
+          <td>GIN</td>
+          <td>Guinea</td>
+          <td>1973</td>
+          <td>1482.000</td>
+          <td>1086.000</td>
+          <td>3863.000</td>
           <td>Interpolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>19267</th>
-          <td>VNM</td>
-          <td>Viet Nam</td>
-          <td>1998</td>
-          <td>2111.000</td>
-          <td>2444.000</td>
-          <td>77136.000</td>
+          <th>9174</th>
+          <td>JAM</td>
+          <td>Jamaica</td>
+          <td>1984</td>
+          <td>3987.000</td>
+          <td>6178.000</td>
+          <td>2313.000</td>
           <td>Interpolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>17216</th>
-          <td>SWE</td>
-          <td>Sweden</td>
-          <td>1869</td>
-          <td>1602.000</td>
-          <td>2015.000</td>
-          <td>4166.000</td>
+          <th>948</th>
+          <td>AZE</td>
+          <td>Azerbaijan</td>
+          <td>1967</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>4827.000</td>
+          <td>NaN</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>10451</th>
+          <td>LSO</td>
+          <td>Lesotho</td>
+          <td>1968</td>
+          <td>785.000</td>
+          <td>667.000</td>
+          <td>1019.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>4904</th>
-          <td>ECU</td>
-          <td>Ecuador</td>
-          <td>1951</td>
-          <td>2397.000</td>
-          <td>3383.000</td>
-          <td>3458.000</td>
+          <th>6032</th>
+          <td>FRA</td>
+          <td>France</td>
+          <td>1706</td>
+          <td>1283.000</td>
+          <td>1661.000</td>
+          <td>nan</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>

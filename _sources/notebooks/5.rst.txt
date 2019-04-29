@@ -96,35 +96,17 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>1986</th>
-          <td>2002</td>
-          <td>YR2002</td>
-          <td>Nepal</td>
-          <td>NPL</td>
-          <td>14822574.700</td>
-          <td>..</td>
-          <td>240</td>
-          <td>5863501889.460</td>
+          <th>5693</th>
+          <td>2016</td>
+          <td>YR2016</td>
+          <td>Pakistan</td>
+          <td>PAK</td>
+          <td>7234597932.100</td>
           <td>0</td>
-          <td>342910000</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>4697</th>
-          <td>2012</td>
-          <td>YR2012</td>
-          <td>Vanuatu</td>
-          <td>VUT</td>
-          <td>25000679.600</td>
-          <td>..</td>
-          <td>2950</td>
-          <td>731034629.300</td>
+          <td>1500</td>
+          <td>289118860826.403</td>
           <td>0</td>
-          <td>101940000</td>
+          <td>2949860000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -132,35 +114,17 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>4966</th>
-          <td>2013</td>
-          <td>YR2013</td>
-          <td>Yemen, Rep.</td>
-          <td>YEM</td>
-          <td>504991106.600</td>
+          <th>3211</th>
+          <td>2007</td>
+          <td>YR2007</td>
+          <td>Comoros</td>
+          <td>COM</td>
+          <td>1135251.700</td>
           <td>..</td>
-          <td>1410</td>
-          <td>36138866394.883</td>
-          <td>187749341.290</td>
-          <td>1039630000.000</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>5031</th>
-          <td>2014</td>
-          <td>YR2014</td>
-          <td>Bangladesh</td>
-          <td>BGD</td>
-          <td>1470003192.600</td>
-          <td>..</td>
-          <td>1070</td>
-          <td>171249753198.435</td>
-          <td>-186879.980</td>
-          <td>2422640000</td>
+          <td>1160</td>
+          <td>747340831.691</td>
+          <td>0</td>
+          <td>45050000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -168,22 +132,58 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>2631</th>
-          <td>2004</td>
-          <td>YR2004</td>
-          <td>Pre-demographic dividend</td>
-          <td>PRE</td>
+          <th>3182</th>
+          <td>2007</td>
+          <td>YR2007</td>
+          <td>Bahrain</td>
+          <td>BHR</td>
           <td>..</td>
           <td>..</td>
-          <td>558.387</td>
-          <td>347099718448.321</td>
-          <td>..</td>
-          <td>26425700000</td>
-          <td>..</td>
+          <td>19660</td>
+          <td>20366264292.826</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>1057</th>
+          <td>1999</td>
+          <td>YR1999</td>
+          <td>Albania</td>
+          <td>ALB</td>
+          <td>144308798.700</td>
+          <td>..</td>
+          <td>950</td>
+          <td>2957039638.800</td>
+          <td>0</td>
+          <td>488180000</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>1669</th>
+          <td>2001</td>
+          <td>YR2001</td>
+          <td>Honduras</td>
+          <td>HND</td>
+          <td>244031831.400</td>
+          <td>..</td>
+          <td>1050</td>
+          <td>7026188419.801</td>
+          <td>0</td>
+          <td>658400000</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>55.600</td>
         </tr>
       </tbody>
     </table>
