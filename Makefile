@@ -46,14 +46,11 @@ notebooks:
     jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/5.ipynb --output ../docs/notebooks/8.rst
 
 
-
-
-
-
 ## Make Docs
 docs:
 	cd docs && make html && cd ..
 	echo "file://$(PWD)/docs/_build/html/index.html"
+    touch docs/_build/html/.nojekyll
 
 ## Delete all compiled Python files, Virtual Environments, and downloaded data
 clean:
