@@ -617,16 +617,16 @@ Missing Data
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2aca52bb0a58>
+    <matplotlib.axes._subplots.AxesSubplot at 0x2b5f815c9908>
 
 
 
 
-.. image:: ../docs/notebooks/1_files/../docs/notebooks/1_15_1.png
+.. image:: ../docs/notebooks/prep/1_files/../docs/notebooks/prep/1_15_1.png
 
 
 
-.. image:: ../docs/notebooks/1_files/../docs/notebooks/1_15_2.png
+.. image:: ../docs/notebooks/prep/1_files/../docs/notebooks/prep/1_15_2.png
 
 
 Data Combining
@@ -663,16 +663,16 @@ take the WDI data and fill mising values with UWTO data when possible.
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2aca532d0860>
+    <matplotlib.axes._subplots.AxesSubplot at 0x2b5f81cdc5c0>
 
 
 
 
-.. image:: ../docs/notebooks/1_files/../docs/notebooks/1_20_1.png
+.. image:: ../docs/notebooks/prep/1_files/../docs/notebooks/prep/1_20_1.png
 
 
 
-.. image:: ../docs/notebooks/1_files/../docs/notebooks/1_20_2.png
+.. image:: ../docs/notebooks/prep/1_files/../docs/notebooks/prep/1_20_2.png
 
 
 Saving Final Data

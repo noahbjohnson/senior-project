@@ -88,58 +88,58 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>4193</th>
-          <td>DEU</td>
-          <td>Germany</td>
-          <td>1893</td>
-          <td>3827.000</td>
-          <td>5182.000</td>
-          <td>49123.000</td>
+          <th>1212</th>
+          <td>BEL</td>
+          <td>Belgium</td>
+          <td>1958</td>
+          <td>8844.000</td>
+          <td>10567.000</td>
+          <td>9053.000</td>
           <td>Interpolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>11419</th>
-          <td>MLI</td>
-          <td>Mali</td>
-          <td>2014</td>
-          <td>1514.000</td>
-          <td>1505.000</td>
-          <td>15162.000</td>
+          <th>19614</th>
+          <td>ZAF</td>
+          <td>South Africa</td>
+          <td>1881</td>
+          <td>2831.000</td>
+          <td>3226.000</td>
+          <td>nan</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>3962</th>
-          <td>CUB</td>
-          <td>Cuba</td>
-          <td>2001</td>
-          <td>5061.000</td>
-          <td>5061.000</td>
-          <td>11179.000</td>
+          <th>13885</th>
+          <td>PHL</td>
+          <td>Philippines</td>
+          <td>1980</td>
+          <td>3043.000</td>
+          <td>4450.000</td>
+          <td>50940.000</td>
+          <td>Benchmark</td>
+          <td>ICP PPP estimates</td>
+        </tr>
+        <tr>
+          <th>17609</th>
+          <td>TCD</td>
+          <td>Chad</td>
+          <td>1991</td>
+          <td>1059.000</td>
+          <td>852.000</td>
+          <td>6028.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>12371</th>
-          <td>NIC</td>
-          <td>Nicaragua</td>
-          <td>1925</td>
-          <td>1570.000</td>
-          <td>3360.000</td>
-          <td>660.000</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>11711</th>
-          <td>MNG</td>
-          <td>Mongolia</td>
-          <td>1981</td>
-          <td>1557.000</td>
-          <td>4660.000</td>
-          <td>1694.000</td>
-          <td>Extrapolated</td>
+          <th>8597</th>
+          <td>IRN</td>
+          <td>Iran (Islamic Republic of)</td>
+          <td>1970</td>
+          <td>6173.000</td>
+          <td>11661.000</td>
+          <td>28854.000</td>
+          <td>Interpolated</td>
           <td>NaN</td>
         </tr>
       </tbody>

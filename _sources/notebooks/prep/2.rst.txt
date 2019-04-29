@@ -58,12 +58,12 @@ There appears to be a large amount of missing data.
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2b6223d00470>
+    <matplotlib.axes._subplots.AxesSubplot at 0x2af4440b04e0>
 
 
 
 
-.. image:: ../docs/notebooks/2_files/../docs/notebooks/2_5_1.png
+.. image:: ../docs/notebooks/prep/2_files/../docs/notebooks/prep/2_5_1.png
 
 
 .. code:: ipython3
@@ -186,12 +186,12 @@ There appears to be a large amount of missing data.
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2b6223b6c860>
+    <matplotlib.axes._subplots.AxesSubplot at 0x2af443f1c898>
 
 
 
 
-.. image:: ../docs/notebooks/2_files/../docs/notebooks/2_10_1.png
+.. image:: ../docs/notebooks/prep/2_files/../docs/notebooks/prep/2_10_1.png
 
 
 .. code:: ipython3

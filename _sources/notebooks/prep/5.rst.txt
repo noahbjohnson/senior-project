@@ -96,53 +96,35 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>3620</th>
-          <td>2008</td>
-          <td>YR2008</td>
-          <td>Switzerland</td>
-          <td>CHE</td>
+          <th>3055</th>
+          <td>2006</td>
+          <td>YR2006</td>
+          <td>Panama</td>
+          <td>PAN</td>
           <td>..</td>
           <td>..</td>
-          <td>62940</td>
-          <td>481339635645.908</td>
+          <td>5160</td>
+          <td>17509773451.169</td>
+          <td>0</td>
+          <td>32680000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>33.800</td>
+          <td>54.600</td>
         </tr>
         <tr>
-          <th>810</th>
-          <td>1998</td>
-          <td>YR1998</td>
-          <td>Belgium</td>
-          <td>BEL</td>
+          <th>3797</th>
+          <td>2009</td>
+          <td>YR2009</td>
+          <td>Kenya</td>
+          <td>KEN</td>
+          <td>857631720.800</td>
           <td>..</td>
-          <td>..</td>
-          <td>26720</td>
-          <td>272600509365.862</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>997</th>
-          <td>1998</td>
-          <td>YR1998</td>
-          <td>United Kingdom</td>
-          <td>GBR</td>
-          <td>..</td>
-          <td>..</td>
-          <td>26400</td>
-          <td>1544026171086.486</td>
-          <td>..</td>
-          <td>..</td>
+          <td>910</td>
+          <td>36649690185.155</td>
+          <td>281976.010</td>
+          <td>1782480000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -150,17 +132,17 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>6029</th>
-          <td>2017</td>
-          <td>YR2017</td>
-          <td>East Asia &amp; Pacific</td>
-          <td>EAS</td>
+          <th>143</th>
+          <td>1995</td>
+          <td>YR1995</td>
+          <td>Niger</td>
+          <td>NER</td>
+          <td>52080664</td>
           <td>..</td>
-          <td>..</td>
-          <td>10171.693</td>
-          <td>23541010182031.551</td>
-          <td>..</td>
-          <td>8233410000</td>
+          <td>180</td>
+          <td>1751754976.272</td>
+          <td>0</td>
+          <td>272390000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -168,17 +150,35 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>2318</th>
-          <td>2003</td>
-          <td>YR2003</td>
-          <td>United States</td>
-          <td>USA</td>
+          <th>5571</th>
+          <td>2016</td>
+          <td>YR2016</td>
+          <td>British Virgin Islands</td>
+          <td>VGB</td>
           <td>..</td>
           <td>..</td>
-          <td>39950</td>
-          <td>11589035965657.336</td>
           <td>..</td>
           <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>3991</th>
+          <td>2010</td>
+          <td>YR2010</td>
+          <td>Burundi</td>
+          <td>BDI</td>
+          <td>223366699.600</td>
+          <td>..</td>
+          <td>220</td>
+          <td>1895318490.822</td>
+          <td>89547193.200</td>
+          <td>627610000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>

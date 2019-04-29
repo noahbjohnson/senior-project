@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Project Setup &#8212; Senior-Project 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Preperation Notebooks" href="prep_notebooks.html" />
+    <link rel="prev" title="Senior-Project documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="prep_notebooks.html" title="Data Preperation Notebooks"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Senior-Project documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Senior-Project 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="project-setup">
+<h1>Project Setup<a class="headerlink" href="#project-setup" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<p>This code will create a virtual environment, and use it to create the notebooks and docs.</p>
+<p>Output will be at docs/_build/html/index.html</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make create_environment
+<span class="nb">source</span> activate senior-project
+
+make requirements
+make sync_data_from_s3
+
+make notebooks
+make docs
+</pre></div>
+</div>
+</div>
+<div class="section" id="makefile">
+<h2>Makefile<a class="headerlink" href="#makefile" title="Permalink to this headline">¶</a></h2>
+<p>The Makefile contains the central entry points for common tasks related to this project.</p>
+<div class="section" id="creating-a-project-environment">
+<h3>Creating a project environment<a class="headerlink" href="#creating-a-project-environment" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><cite>make create_environment</cite> will create a conda or venv virtual environment for project usage.</p></li>
+<li><p><cite>source activate senior-project</cite> will activate a conda virtual environment after creation</p></li>
+</ul>
+</div>
+<div class="section" id="installing-project-requirements">
+<h3>Installing Project Requirements<a class="headerlink" href="#installing-project-requirements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><cite>make requirements</cite> will install the required packages for the project to run.</p></li>
+</ul>
+</div>
+<div class="section" id="syncing-data-to-s3">
+<h3>Syncing data to S3<a class="headerlink" href="#syncing-data-to-s3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><cite>make sync_data_to_s3</cite> will use <cite>aws s3 sync</cite> to recursively sync files in <cite>data/</cite> up to <cite>s3://nbj-senior-project/data/</cite>.</p></li>
+<li><p><cite>make sync_data_from_s3</cite> will use <cite>aws s3 sync</cite> to recursively sync files from <cite>s3://nbj-senior-project/data/</cite> to <cite>data/</cite>.</p></li>
+</ul>
+</div>
+<div class="section" id="run-the-notebooks">
+<h3>Run the notebooks<a class="headerlink" href="#run-the-notebooks" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><cite>make notebooks</cite> will run the notebooks and save rst output to docs/notebooks</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>Run the notebooks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><cite>make docs</cite> will generate html documentation using sphinx. Output is in docs/_build/html</p></li>
+</ul>
+</div>
+<div class="section" id="clean-up">
+<h3>Clean Up<a class="headerlink" href="#clean-up" title="Permalink to this headline">¶</a></h3>
+<p>## Delete all compiled Python files, Virtual Environments, and downloaded data
+clean:</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Project Setup</a><ul>
+<li><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li><a class="reference internal" href="#makefile">Makefile</a><ul>
+<li><a class="reference internal" href="#creating-a-project-environment">Creating a project environment</a></li>
+<li><a class="reference internal" href="#installing-project-requirements">Installing Project Requirements</a></li>
+<li><a class="reference internal" href="#syncing-data-to-s3">Syncing data to S3</a></li>
+<li><a class="reference internal" href="#run-the-notebooks">Run the notebooks</a></li>
+<li><a class="reference internal" href="#id1">Run the notebooks</a></li>
+<li><a class="reference internal" href="#clean-up">Clean Up</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Senior-Project documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="prep_notebooks.html"
+                        title="next chapter">Data Preperation Notebooks</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/setup.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="prep_notebooks.html" title="Data Preperation Notebooks"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Senior-Project documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Senior-Project 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

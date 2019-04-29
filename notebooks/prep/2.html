@@ -5,17 +5,17 @@
   <head>
     <meta charset="utf-8" />
     <title>3. Tourism Missing Data &#8212; Senior-Project 0.1 documentation</title>
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
     
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="4. Tourism Exploratory Data Analysis and Feature Engineering" href="3.html" />
     <link rel="prev" title="2. Tourism Master Dataset Merge" href="1.html" /> 
   </head><body>
@@ -23,7 +23,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
           <a href="3.html" title="4. Tourism Exploratory Data Analysis and Feature Engineering"
@@ -31,7 +31,8 @@
         <li class="right" >
           <a href="1.html" title="2. Tourism Master Dataset Merge"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Senior-Project 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -107,10 +108,10 @@
 <span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x2b6223d00470</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x2af4440b04e0</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<img alt="notebooks/../docs/notebooks/2_files/../docs/notebooks/2_5_1.png" src="notebooks/../docs/notebooks/2_files/../docs/notebooks/2_5_1.png" />
+<img alt="notebooks/prep/../docs/notebooks/prep/2_files/../docs/notebooks/prep/2_5_1.png" src="notebooks/prep/../docs/notebooks/prep/2_files/../docs/notebooks/prep/2_5_1.png" />
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Describe missing by variable</span>
 <span class="n">counts</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="p">:]</span>
 <span class="n">ratios</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span>
@@ -212,10 +213,10 @@
 <span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">dy</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x2b6223b6c860</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x2af443f1c898</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<img alt="notebooks/../docs/notebooks/2_files/../docs/notebooks/2_10_1.png" src="notebooks/../docs/notebooks/2_files/../docs/notebooks/2_10_1.png" />
+<img alt="notebooks/prep/../docs/notebooks/prep/2_files/../docs/notebooks/prep/2_10_1.png" src="notebooks/prep/../docs/notebooks/prep/2_files/../docs/notebooks/prep/2_10_1.png" />
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Describe missing by variable</span>
 <span class="n">counts</span> <span class="o">=</span> <span class="n">dy</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="p">:]</span>
 <span class="n">ratios</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span>
@@ -275,7 +276,7 @@ years: {{ all_data.index.tolist() }}</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
+  <h3><a href="../../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">3. Tourism Missing Data</a><ul>
 <li><a class="reference internal" href="#initial-dimensions">3.1. Initial Dimensions</a></li>
@@ -299,14 +300,14 @@ years: {{ all_data.index.tolist() }}</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/notebooks/2.rst.txt"
+      <li><a href="../../_sources/notebooks/prep/2.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
+    <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
     </form>
@@ -321,7 +322,7 @@ years: {{ all_data.index.tolist() }}</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
           <a href="3.html" title="4. Tourism Exploratory Data Analysis and Feature Engineering"
@@ -329,7 +330,8 @@ years: {{ all_data.index.tolist() }}</p>
         <li class="right" >
           <a href="1.html" title="2. Tourism Master Dataset Merge"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Senior-Project 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

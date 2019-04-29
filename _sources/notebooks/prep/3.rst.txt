@@ -153,12 +153,12 @@ Correlation Matrix Heatmap
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2aecded80208>
+    <matplotlib.axes._subplots.AxesSubplot at 0x2b814befe278>
 
 
 
 
-.. image:: ../docs/notebooks/3_files/../docs/notebooks/3_14_1.png
+.. image:: ../docs/notebooks/prep/3_files/../docs/notebooks/prep/3_14_1.png
 
 
 Data Profile Report
@@ -378,12 +378,12 @@ rest are in the pair plot below.
 
 .. parsed-literal::
 
-    <seaborn.axisgrid.PairGrid at 0x2aecdee699b0>
+    <seaborn.axisgrid.PairGrid at 0x2b814c0d3978>
 
 
 
 
-.. image:: ../docs/notebooks/3_files/../docs/notebooks/3_22_2.png
+.. image:: ../docs/notebooks/prep/3_files/../docs/notebooks/prep/3_22_2.png
 
 
 Pair-plot analysis
@@ -513,12 +513,12 @@ EDA Part Two
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2aecdf46f6a0>
+    <matplotlib.axes._subplots.AxesSubplot at 0x2b814d8a1fd0>
 
 
 
 
-.. image:: ../docs/notebooks/3_files/../docs/notebooks/3_35_1.png
+.. image:: ../docs/notebooks/prep/3_files/../docs/notebooks/prep/3_35_1.png
 
 
 .. code:: ipython3

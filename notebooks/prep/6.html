@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>7. Inequality Data Processing (WDI) &#8212; Senior-Project 0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8. Inequality Data Processing (WIID)" href="7.html" />
+    <link rel="prev" title="6. Economic Data Processing (WDI)" href="5.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="7.html" title="8. Inequality Data Processing (WIID)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="5.html" title="6. Economic Data Processing (WDI)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">Data Preperation Notebooks</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="inequality-data-processing-wdi">
+<h1>7. Inequality Data Processing (WDI)<a class="headerlink" href="#inequality-data-processing-wdi" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data-dictionary">
+<h2>7.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 74%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Indicator Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SI.POV.GINI</p></td>
+<td><p>GINI index (World Bank estimate)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SI.POV.RUGP</p></td>
+<td><p>Rural poverty gap at national poverty lines (%)</p></td>
+</tr>
+<tr class="row-even"><td><p>SI.POV.URGP</p></td>
+<td><p>Urban poverty gap at national poverty lines (%)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SI.POV.NAGP</p></td>
+<td><p>Poverty gap at national poverty lines (%)</p></td>
+</tr>
+<tr class="row-even"><td><p>SI.DST.10TH.10</p></td>
+<td><p>Income share held by highest 10%</p></td>
+</tr>
+<tr class="row-odd"><td><p>SI.DST.FRST.10</p></td>
+<td><p>Income share held by lowest 10%</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pycountry</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.float_format&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="load-the-file">
+<h2>7.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;../data/external/Inequality/WDI/Data_Extract_From_Poverty_and_Equity.xlsx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="standardize-country-codes">
+<h2>7.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Only Select rows with valid country codes</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">country_locations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Country Code&#39;</span><span class="p">]:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">pycountry</span><span class="o">.</span><span class="n">countries</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
+        <span class="n">country_locations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+        <span class="n">country_locations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">country_locations</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="standardize-indexes">
+<h2>7.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;Country Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="clean-data">
+<h2>7.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="header">
+<h3>7.5.1. Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Year Code</th>
+      <th>Country</th>
+      <th>GINI index (World Bank estimate) [SI.POV.GINI]</th>
+      <th>Rural poverty gap at national poverty lines (%) [SI.POV.RUGP]</th>
+      <th>Urban poverty gap at national poverty lines (%) [SI.POV.URGP]</th>
+      <th>Poverty gap at national poverty lines (%) [SI.POV.NAGP]</th>
+      <th>Income share held by highest 10% [SI.DST.10TH.10]</th>
+      <th>Income share held by lowest 10% [SI.DST.FRST.10]</th>
+    </tr>
+    <tr>
+      <th>Country Code</th>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AFG</th>
+      <th>1994</th>
+      <td>YR1994</td>
+      <td>Afghanistan</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>ALB</th>
+      <th>1994</th>
+      <td>YR1994</td>
+      <td>Albania</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>DZA</th>
+      <th>1994</th>
+      <td>YR1994</td>
+      <td>Algeria</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>AGO</th>
+      <th>1994</th>
+      <td>YR1994</td>
+      <td>Angola</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>ARG</th>
+      <th>1994</th>
+      <td>YR1994</td>
+      <td>Argentina</td>
+      <td>45.900</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>34.400</td>
+      <td>1.500</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Year Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Country&quot;</span><span class="p">],</span>
+        <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span>
+        <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\[(\w+\.)+\w+\]&quot;</span><span class="p">,</span><span class="n">d</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;]&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="p">]</span>
+<span class="n">c_names</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)):</span>
+    <span class="n">c_names</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">x</span><span class="p">]]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">c_names</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-types">
+<h3>7.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Replace &#39;..&#39; with np.nan for better parsing</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="save-data">
+<h2>7.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;../data/processed/Inequality_WDI.pickle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">7. Inequality Data Processing (WDI)</a><ul>
+<li><a class="reference internal" href="#data-dictionary">7.1. Data Dictionary</a></li>
+<li><a class="reference internal" href="#load-the-file">7.2. Load The File</a></li>
+<li><a class="reference internal" href="#standardize-country-codes">7.3. Standardize Country Codes</a></li>
+<li><a class="reference internal" href="#standardize-indexes">7.4. Standardize Indexes</a></li>
+<li><a class="reference internal" href="#clean-data">7.5. Clean Data</a><ul>
+<li><a class="reference internal" href="#header">7.5.1. Header</a></li>
+<li><a class="reference internal" href="#data-types">7.5.2. Data Types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#save-data">7.6. Save Data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="5.html"
+                        title="previous chapter">6. Economic Data Processing (WDI)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="7.html"
+                        title="next chapter">8. Inequality Data Processing (WIID)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/notebooks/prep/6.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="7.html" title="8. Inequality Data Processing (WIID)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="5.html" title="6. Economic Data Processing (WDI)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >Data Preperation Notebooks</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

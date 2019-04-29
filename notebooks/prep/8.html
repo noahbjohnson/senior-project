@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>9. Education Data Processing (WDI) &#8212; Senior-Project 0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="8. Inequality Data Processing (WIID)" href="7.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="7.html" title="8. Inequality Data Processing (WIID)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">Data Preperation Notebooks</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="education-data-processing-wdi">
+<h1>9. Education Data Processing (WDI)<a class="headerlink" href="#education-data-processing-wdi" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data-dictionary">
+<h2>9.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Indicator Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SE.ENR.PRSC.FM.ZS</p></td>
+<td><p>School enrollment, primary and secondary (gross), gender parity index (GPI)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SE.ADT.LITR.ZS</p></td>
+<td><p>Literacy rate, adult total (% of people ages 15 and above)</p></td>
+</tr>
+<tr class="row-even"><td><p>SE.COM.DURS</p></td>
+<td><p>Compulsory education, duration (years)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SE.PRM.UNER.ZS</p></td>
+<td><p>Children out of school (% of primary school age)</p></td>
+</tr>
+<tr class="row-even"><td><p>SE.PRM.ENRL.TC.ZS</p></td>
+<td><p>Pupil-teacher ratio, primary</p></td>
+</tr>
+<tr class="row-odd"><td><p>SE.SEC.ENRL.TC.ZS</p></td>
+<td><p>Pupil-teacher ratio, secondary</p></td>
+</tr>
+<tr class="row-even"><td><p>SE.SEC.NENR</p></td>
+<td><p>School enrollment, secondary (% net)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pycountry</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.float_format&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="load-the-file">
+<h2>9.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/external/Education/WDI/Data_Extract_From_World_Development_Indicators.xlsx&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>Time Code</th>
+      <th>Country Name</th>
+      <th>Country Code</th>
+      <th>School enrollment, primary and secondary (gross), gender parity index (GPI) [SE.ENR.PRSC.FM.ZS]</th>
+      <th>Literacy rate, adult total (% of people ages 15 and above) [SE.ADT.LITR.ZS]</th>
+      <th>Compulsory education, duration (years) [SE.COM.DURS]</th>
+      <th>Children out of school (% of primary school age) [SE.PRM.UNER.ZS]</th>
+      <th>Pupil-teacher ratio, primary [SE.PRM.ENRL.TC.ZS]</th>
+      <th>Pupil-teacher ratio, secondary [SE.SEC.ENRL.TC.ZS]</th>
+      <th>School enrollment, secondary (% net) [SE.SEC.NENR]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1041</th>
+      <td>1998</td>
+      <td>YR1998</td>
+      <td>North America</td>
+      <td>NAC</td>
+      <td>1.028</td>
+      <td>..</td>
+      <td>11</td>
+      <td>3.807</td>
+      <td>15.853</td>
+      <td>15.493</td>
+      <td>88.441</td>
+    </tr>
+    <tr>
+      <th>4773</th>
+      <td>2013</td>
+      <td>YR2013</td>
+      <td>Albania</td>
+      <td>ALB</td>
+      <td>0.957</td>
+      <td>..</td>
+      <td>9</td>
+      <td>5.634</td>
+      <td>19.121</td>
+      <td>14.757</td>
+      <td>83.978</td>
+    </tr>
+    <tr>
+      <th>5550</th>
+      <td>2016</td>
+      <td>YR2016</td>
+      <td>India</td>
+      <td>IND</td>
+      <td>1.093</td>
+      <td>..</td>
+      <td>8</td>
+      <td>..</td>
+      <td>35.216</td>
+      <td>28.491</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>2524</th>
+      <td>2004</td>
+      <td>YR2004</td>
+      <td>New Zealand</td>
+      <td>NZL</td>
+      <td>1.030</td>
+      <td>..</td>
+      <td>10</td>
+      <td>..</td>
+      <td>16.374</td>
+      <td>13.178</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>6023</th>
+      <td>2017</td>
+      <td>YR2017</td>
+      <td>Zambia</td>
+      <td>ZMB</td>
+      <td>..</td>
+      <td>..</td>
+      <td>7</td>
+      <td>13.978</td>
+      <td>42.060</td>
+      <td>..</td>
+      <td>..</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+<div class="section" id="standardize-country-codes">
+<h2>9.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Only Select rows with valid country codes</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">country_locations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Country Code&#39;</span><span class="p">]:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">pycountry</span><span class="o">.</span><span class="n">countries</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
+        <span class="n">country_locations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+        <span class="n">country_locations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">country_locations</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="standardize-indexes">
+<h2>9.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;Year&quot;</span>
+    <span class="p">},</span>
+    <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span>
+    <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;Country Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="clean-data">
+<h2>9.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="header">
+<h3>9.5.1. Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Time Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Country Name&quot;</span><span class="p">],</span>
+        <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span>
+        <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\[(\w+\.)+\w+\]&quot;</span><span class="p">,</span><span class="n">d</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;]&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c_names</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)):</span>
+    <span class="n">c_names</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">x</span><span class="p">]]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">c_names</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-types">
+<h3>9.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Replace &#39;..&#39; with np.nan for better parsing</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>SE.ENR.PRSC.FM.ZS</th>
+      <th>SE.ADT.LITR.ZS</th>
+      <th>SE.COM.DURS</th>
+      <th>SE.PRM.UNER.ZS</th>
+      <th>SE.PRM.ENRL.TC.ZS</th>
+      <th>SE.SEC.ENRL.TC.ZS</th>
+      <th>SE.SEC.NENR</th>
+    </tr>
+    <tr>
+      <th>Country Code</th>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>YEM</th>
+      <th>2013</th>
+      <td>0.789</td>
+      <td>nan</td>
+      <td>9.000</td>
+      <td>15.023</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>43.173</td>
+    </tr>
+    <tr>
+      <th>KIR</th>
+      <th>1999</th>
+      <td>1.072</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>24.661</td>
+      <td>nan</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>SWZ</th>
+      <th>2002</th>
+      <td>0.952</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>31.074</td>
+      <td>16.301</td>
+      <td>30.441</td>
+    </tr>
+    <tr>
+      <th>MOZ</th>
+      <th>2005</th>
+      <td>0.829</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>26.928</td>
+      <td>66.340</td>
+      <td>32.167</td>
+      <td>6.943</td>
+    </tr>
+    <tr>
+      <th>ARG</th>
+      <th>2005</th>
+      <td>1.036</td>
+      <td>nan</td>
+      <td>10.000</td>
+      <td>0.654</td>
+      <td>17.444</td>
+      <td>15.121</td>
+      <td>78.981</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="section" id="save-data">
+<h2>9.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;../data/processed/Education_WDI.pickle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">9. Education Data Processing (WDI)</a><ul>
+<li><a class="reference internal" href="#data-dictionary">9.1. Data Dictionary</a></li>
+<li><a class="reference internal" href="#load-the-file">9.2. Load The File</a></li>
+<li><a class="reference internal" href="#standardize-country-codes">9.3. Standardize Country Codes</a></li>
+<li><a class="reference internal" href="#standardize-indexes">9.4. Standardize Indexes</a></li>
+<li><a class="reference internal" href="#clean-data">9.5. Clean Data</a><ul>
+<li><a class="reference internal" href="#header">9.5.1. Header</a></li>
+<li><a class="reference internal" href="#data-types">9.5.2. Data Types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#save-data">9.6. Save Data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="7.html"
+                        title="previous chapter">8. Inequality Data Processing (WIID)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/notebooks/prep/8.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="7.html" title="8. Inequality Data Processing (WIID)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >Data Preperation Notebooks</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>
