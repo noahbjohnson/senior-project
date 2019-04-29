@@ -50,7 +50,7 @@ notebooks:
 docs:
 	cd docs && make html && cd ..
 	echo "file://$(PWD)/docs/_build/html/index.html"
-    touch docs/_build/html/.nojekyll
+	touch docs/_build/html/.nojekyll
 
 ## Delete all compiled Python files, Virtual Environments, and downloaded data
 clean:
