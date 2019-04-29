@@ -34,15 +34,15 @@ data: requirements
 
 ## Make Notebooks
 notebooks:
-	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/0.ipynb --output ../docs/notebooks/0.rst
-	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/1.ipynb --output ../docs/notebooks/1.rst
-	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/2.ipynb --output ../docs/notebooks/2.rst
-	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/3.ipynb --output ../docs/notebooks/3.rst
-	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/4.ipynb --output ../docs/notebooks/4.rst
-	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/5.ipynb --output ../docs/notebooks/5.rst
-	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/5.ipynb --output ../docs/notebooks/6.rst
-	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/5.ipynb --output ../docs/notebooks/7.rst
-	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/5.ipynb --output ../docs/notebooks/8.rst
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/0.ipynb --output ../docs/notebooks/prep/0.rst
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/1.ipynb --output ../docs/notebooks/prep/1.rst
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/2.ipynb --output ../docs/notebooks/prep/2.rst
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/3.ipynb --output ../docs/notebooks/prep/3.rst
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/4.ipynb --output ../docs/notebooks/prep/4.rst
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/5.ipynb --output ../docs/notebooks/prep/5.rst
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/6.ipynb --output ../docs/notebooks/prep/6.rst
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/7.ipynb --output ../docs/notebooks/prep/7.rst
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/8.ipynb --output ../docs/notebooks/prep/8.rst
 
 ## Make Docs
 docs:
