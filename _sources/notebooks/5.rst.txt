@@ -96,17 +96,35 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>987</th>
+          <th>3620</th>
+          <td>2008</td>
+          <td>YR2008</td>
+          <td>Switzerland</td>
+          <td>CHE</td>
+          <td>..</td>
+          <td>..</td>
+          <td>62940</td>
+          <td>481339635645.908</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>33.800</td>
+        </tr>
+        <tr>
+          <th>810</th>
           <td>1998</td>
           <td>YR1998</td>
-          <td>Tonga</td>
-          <td>TON</td>
-          <td>0</td>
+          <td>Belgium</td>
+          <td>BEL</td>
           <td>..</td>
-          <td>2200</td>
-          <td>214034776.526</td>
-          <td>0</td>
-          <td>24680000</td>
+          <td>..</td>
+          <td>26720</td>
+          <td>272600509365.862</td>
+          <td>..</td>
+          <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -114,35 +132,35 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>5862</th>
+          <th>997</th>
+          <td>1998</td>
+          <td>YR1998</td>
+          <td>United Kingdom</td>
+          <td>GBR</td>
+          <td>..</td>
+          <td>..</td>
+          <td>26400</td>
+          <td>1544026171086.486</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>6029</th>
           <td>2017</td>
           <td>YR2017</td>
-          <td>Djibouti</td>
-          <td>DJI</td>
-          <td>43954479</td>
-          <td>1403888467.737</td>
-          <td>1880</td>
-          <td>1798731219.258</td>
-          <td>2535547.500</td>
-          <td>134090000</td>
-          <td>21.100</td>
+          <td>East Asia &amp; Pacific</td>
+          <td>EAS</td>
           <td>..</td>
           <td>..</td>
+          <td>10171.693</td>
+          <td>23541010182031.551</td>
           <td>..</td>
-          <td>41.600</td>
-        </tr>
-        <tr>
-          <th>2474</th>
-          <td>2004</td>
-          <td>YR2004</td>
-          <td>Japan</td>
-          <td>JPN</td>
-          <td>..</td>
-          <td>..</td>
-          <td>38350</td>
-          <td>4899554578633.487</td>
-          <td>..</td>
-          <td>..</td>
+          <td>8233410000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -150,35 +168,17 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>3960</th>
-          <td>2010</td>
-          <td>YR2010</td>
-          <td>Afghanistan</td>
-          <td>AFG</td>
-          <td>355229891.100</td>
-          <td>..</td>
-          <td>520</td>
-          <td>14872476818.459</td>
-          <td>121953081.280</td>
-          <td>6470360000</td>
+          <th>2318</th>
+          <td>2003</td>
+          <td>YR2003</td>
+          <td>United States</td>
+          <td>USA</td>
           <td>..</td>
           <td>..</td>
+          <td>39950</td>
+          <td>11589035965657.336</td>
           <td>..</td>
           <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>589</th>
-          <td>1997</td>
-          <td>YR1997</td>
-          <td>Eritrea</td>
-          <td>ERI</td>
-          <td>0</td>
-          <td>..</td>
-          <td>220</td>
-          <td>708238131.920</td>
-          <td>0</td>
-          <td>123510000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
