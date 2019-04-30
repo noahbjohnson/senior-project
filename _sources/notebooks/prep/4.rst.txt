@@ -88,57 +88,57 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>4700</th>
-          <td>DNK</td>
-          <td>Denmark</td>
-          <td>2011</td>
-          <td>43575.000</td>
-          <td>43575.000</td>
-          <td>5571.000</td>
-          <td>Benchmark</td>
-          <td>ICP PPP estimates</td>
-        </tr>
-        <tr>
-          <th>16551</th>
-          <td>SVK</td>
-          <td>Slovakia</td>
-          <td>1990</td>
-          <td>15041.000</td>
-          <td>11828.000</td>
-          <td>5263.000</td>
+          <th>8720</th>
+          <td>IRQ</td>
+          <td>Iraq</td>
+          <td>2016</td>
+          <td>13976.000</td>
+          <td>13898.000</td>
+          <td>38957.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>5934</th>
-          <td>FRA</td>
-          <td>France</td>
-          <td>1608</td>
-          <td>1296.000</td>
-          <td>1678.000</td>
+          <th>1480</th>
+          <td>BGR</td>
+          <td>Bulgaria</td>
+          <td>1890</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>3445.000</td>
+          <td>NaN</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>19486</th>
+          <td>ZAF</td>
+          <td>South Africa</td>
+          <td>1723</td>
+          <td>3696.000</td>
+          <td>4212.000</td>
           <td>nan</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>11760</th>
-          <td>MOZ</td>
-          <td>Mozambique</td>
-          <td>1957</td>
-          <td>512.000</td>
-          <td>379.000</td>
-          <td>7038.000</td>
+          <th>5479</th>
+          <td>FIN</td>
+          <td>Finland</td>
+          <td>1892</td>
+          <td>1391.000</td>
+          <td>2072.000</td>
+          <td>2451.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>14613</th>
-          <td>PRI</td>
-          <td>Puerto Rico</td>
-          <td>2009</td>
-          <td>33684.000</td>
-          <td>33684.000</td>
-          <td>3741.000</td>
+          <th>17107</th>
+          <td>SWE</td>
+          <td>Sweden</td>
+          <td>1760</td>
+          <td>1406.000</td>
+          <td>1768.000</td>
+          <td>nan</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>

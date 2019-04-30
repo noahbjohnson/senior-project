@@ -96,53 +96,17 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>2381</th>
-          <td>2004</td>
-          <td>YR2004</td>
-          <td>Angola</td>
-          <td>AGO</td>
-          <td>423985126.300</td>
-          <td>..</td>
-          <td>1010</td>
-          <td>19001401454.412</td>
-          <td>3108297.910</td>
-          <td>1144570000</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>4426</th>
-          <td>2011</td>
-          <td>YR2011</td>
-          <td>Uganda</td>
-          <td>UGA</td>
-          <td>273063521.400</td>
-          <td>..</td>
-          <td>600</td>
-          <td>20993874686.250</td>
-          <td>0</td>
-          <td>1572920000</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>638</th>
+          <th>663</th>
           <td>1997</td>
           <td>YR1997</td>
-          <td>Lebanon</td>
-          <td>LBN</td>
+          <td>Myanmar</td>
+          <td>MMR</td>
           <td>0</td>
           <td>..</td>
-          <td>4730</td>
-          <td>14618370926.673</td>
+          <td>..</td>
+          <td>..</td>
           <td>0</td>
-          <td>261240000</td>
+          <td>49380000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -150,11 +114,29 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>6127</th>
+          <th>5687</th>
+          <td>2016</td>
+          <td>YR2016</td>
+          <td>Niger</td>
+          <td>NER</td>
+          <td>239406352.300</td>
+          <td>0</td>
+          <td>370</td>
+          <td>7664346448.279</td>
+          <td>30914901.730</td>
+          <td>951380000</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>6162</th>
           <td>2018</td>
           <td>YR2018</td>
-          <td>Dominica</td>
-          <td>DMA</td>
+          <td>Indonesia</td>
+          <td>IDN</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -168,17 +150,35 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>5911</th>
-          <td>2017</td>
-          <td>YR2017</td>
-          <td>Korea, Dem. People’s Rep.</td>
-          <td>PRK</td>
+          <th>3677</th>
+          <td>2008</td>
+          <td>YR2008</td>
+          <td>Middle East &amp; North Africa</td>
+          <td>MEA</td>
+          <td>..</td>
+          <td>..</td>
+          <td>6301.803</td>
+          <td>2344268742544.976</td>
+          <td>..</td>
+          <td>24222650000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
-          <td>133070000</td>
+        </tr>
+        <tr>
+          <th>5733</th>
+          <td>2016</td>
+          <td>YR2016</td>
+          <td>Syrian Arab Republic</td>
+          <td>SYR</td>
+          <td>375312738.100</td>
+          <td>0</td>
+          <td>..</td>
+          <td>..</td>
+          <td>0</td>
+          <td>8899750000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
