@@ -1,0 +1,1688 @@
+
+Dataset Joining
+===============
+
+.. code:: ipython3
+
+    import pandas as pd
+    %matplotlib inline
+    pd.set_option('display.float_format', lambda x: '%.3f' % x)
+    pd.set_option('display.max_columns', None)
+
+Load The Files
+--------------
+
+.. code:: ipython3
+
+    Tourism = pd.read_pickle('../data/processed/Tourism.pickle')
+    Inequality_WIID = pd.read_pickle('../data/processed/Inequality_WIID.pickle')
+    Inequality_WDI = pd.read_pickle('../data/processed/Inequality_WDI.pickle')
+    General_WDI = pd.read_pickle('../data/processed/General_WDI.pickle')
+    Economic_WDI = pd.read_pickle('../data/processed/Economic_WDI.pickle')
+    Economic_MADDISON = pd.read_pickle('../data/processed/Economic_MADDISON.pickle')
+    Education_WDI = pd.read_pickle('../data/processed/Education_WDI.pickle')
+    Labor_WDI = pd.read_pickle('../data/processed/Labor_WDI.pickle')
+    Urbanization_UNPD = pd.read_pickle('../data/processed/Urbanization_UNPD.pickle')
+
+Join By Subject
+---------------
+
+Inequality
+~~~~~~~~~~
+
+.. code:: ipython3
+
+    Inequality = Tourism.join(Inequality_WDI).join(Inequality_WIID)
+
+.. code:: ipython3
+
+    Inequality.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th></th>
+          <th>ST.INT.ARVL</th>
+          <th>ST.INT.XPND.MP.ZS</th>
+          <th>ST.INT.XPND.CD</th>
+          <th>ST.INT.DPRT</th>
+          <th>ST.INT.RCPT.XP.ZS</th>
+          <th>ST.INT.RCPT.CD</th>
+          <th>Tourist Defecit</th>
+          <th>Tourism Net</th>
+          <th>Tourist Avg Net</th>
+          <th>Population Estimate</th>
+          <th>ST.INT.ARVL.PER.CAPITA</th>
+          <th>ST.INT.DPRT.PER.CAPITA</th>
+          <th>SI.POV.GINI</th>
+          <th>SI.POV.RUGP</th>
+          <th>SI.POV.URGP</th>
+          <th>SI.POV.NAGP</th>
+          <th>SI.DST.10TH.10</th>
+          <th>SI.DST.FRST.10</th>
+          <th>id</th>
+          <th>gini_reported</th>
+          <th>q1</th>
+          <th>q2</th>
+          <th>q3</th>
+          <th>q4</th>
+          <th>q5</th>
+          <th>d1</th>
+          <th>d2</th>
+          <th>d3</th>
+          <th>d4</th>
+          <th>d5</th>
+          <th>d6</th>
+          <th>d7</th>
+          <th>d8</th>
+          <th>d9</th>
+          <th>d10</th>
+          <th>bottom5</th>
+          <th>top5</th>
+          <th>mean</th>
+          <th>median</th>
+          <th>exchangerate</th>
+          <th>mean_usd</th>
+          <th>median_usd</th>
+          <th>gdp_ppp_pc_usd2011</th>
+          <th>population</th>
+          <th>quality_score</th>
+        </tr>
+        <tr>
+          <th>Country Code</th>
+          <th>Year</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>QAT</th>
+          <th>1998</th>
+          <td>320000.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>550430.000</td>
+          <td>0.581</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>NPL</th>
+          <th>2002</th>
+          <td>275000.000</td>
+          <td>6.498</td>
+          <td>108000000.000</td>
+          <td>238000.000</td>
+          <td>14.297</td>
+          <td>134000000.000</td>
+          <td>37000.000</td>
+          <td>26000000.000</td>
+          <td>487.273</td>
+          <td>24566342.000</td>
+          <td>0.011</td>
+          <td>0.010</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>FSM</th>
+          <th>2012</th>
+          <td>38300.000</td>
+          <td>11.360</td>
+          <td>30000000.000</td>
+          <td>nan</td>
+          <td>18.651</td>
+          <td>22000000.000</td>
+          <td>nan</td>
+          <td>-8000000.000</td>
+          <td>574.413</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>IRL</th>
+          <th>2000</th>
+          <td>6646000.000</td>
+          <td>nan</td>
+          <td>2626000000.000</td>
+          <td>3783000.000</td>
+          <td>nan</td>
+          <td>3517000000.000</td>
+          <td>2863000.000</td>
+          <td>891000000.000</td>
+          <td>529.190</td>
+          <td>3848776.000</td>
+          <td>1.727</td>
+          <td>0.983</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>5355.000</td>
+          <td>31.533</td>
+          <td>7.623</td>
+          <td>12.753</td>
+          <td>17.403</td>
+          <td>22.863</td>
+          <td>39.360</td>
+          <td>2.993</td>
+          <td>4.630</td>
+          <td>5.857</td>
+          <td>6.897</td>
+          <td>7.983</td>
+          <td>9.420</td>
+          <td>10.747</td>
+          <td>12.117</td>
+          <td>14.970</td>
+          <td>24.390</td>
+          <td>1.215</td>
+          <td>15.870</td>
+          <td>12049.333</td>
+          <td>10549.333</td>
+          <td>1.085</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>38410.000</td>
+          <td>3848776.000</td>
+          <td>13.000</td>
+        </tr>
+        <tr>
+          <th>NCL</th>
+          <th>2004</th>
+          <td>100000.000</td>
+          <td>8.092</td>
+          <td>167000000.000</td>
+          <td>89000.000</td>
+          <td>16.201</td>
+          <td>241000000.000</td>
+          <td>11000.000</td>
+          <td>74000000.000</td>
+          <td>2410.000</td>
+          <td>228883.000</td>
+          <td>0.437</td>
+          <td>0.389</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+General
+~~~~~~~
+
+.. code:: ipython3
+
+    General = Tourism.join(General_WDI)
+
+.. code:: ipython3
+
+    General.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th></th>
+          <th>ST.INT.ARVL</th>
+          <th>ST.INT.XPND.MP.ZS</th>
+          <th>ST.INT.XPND.CD</th>
+          <th>ST.INT.DPRT</th>
+          <th>ST.INT.RCPT.XP.ZS</th>
+          <th>ST.INT.RCPT.CD</th>
+          <th>Tourist Defecit</th>
+          <th>Tourism Net</th>
+          <th>Tourist Avg Net</th>
+          <th>Population Estimate</th>
+          <th>ST.INT.ARVL.PER.CAPITA</th>
+          <th>ST.INT.DPRT.PER.CAPITA</th>
+          <th>SP.DYN.LE00.IN</th>
+          <th>EG.ELC.ACCS.ZS</th>
+          <th>SH.STA.HYGN.ZS</th>
+          <th>SH.H2O.SMDW.ZS</th>
+          <th>SH.H2O.BASW.ZS</th>
+          <th>EN.ATM.CO2E.PC</th>
+          <th>EN.CO2.TRAN.ZS</th>
+          <th>ER.LND.PTLD.ZS</th>
+          <th>DT.DOD.PVLX.GN.ZS</th>
+          <th>FB.ATM.TOTL.P5</th>
+          <th>FB.CBK.BRCH.P5</th>
+          <th>FB.CBK.DPTR.P3</th>
+          <th>FB.CBK.BRWR.P3</th>
+          <th>SG.VAW.1549.ZS</th>
+          <th>SG.DMK.ALLD.FN.ZS</th>
+          <th>SG.DMK.SRCR.FN.ZS</th>
+          <th>SH.STA.SUIC.P5</th>
+          <th>SH.STA.WASH.P5</th>
+          <th>SP.DYN.IMRT.IN</th>
+          <th>SH.STA.BRTW.ZS</th>
+          <th>SH.ANM.CHLD.ZS</th>
+          <th>SH.STA.ANVC.ZS</th>
+          <th>SH.STA.FGMS.ZS</th>
+          <th>SH.PRV.SMOK</th>
+          <th>SH.ALC.PCAP.LI</th>
+          <th>IT.NET.BBND.P2</th>
+          <th>IT.NET.USER.ZS</th>
+          <th>IT.CEL.SETS.P2</th>
+          <th>SM.POP.REFG.OR</th>
+          <th>per_si_allsi.cov_pop_tot</th>
+          <th>VC.IHR.PSRC.P5</th>
+          <th>MS.MIL.TOTL.TF.ZS</th>
+          <th>HD.HCI.OVRL</th>
+        </tr>
+        <tr>
+          <th>Country Code</th>
+          <th>Year</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>MCO</th>
+          <th>1999</th>
+          <td>278000.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>31800.000</td>
+          <td>8.742</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>100.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>4.300</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>41.132</td>
+          <td>1.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>CMR</th>
+          <th>2003</th>
+          <td>nan</td>
+          <td>7.915</td>
+          <td>272000000.000</td>
+          <td>nan</td>
+          <td>8.504</td>
+          <td>266000000.000</td>
+          <td>nan</td>
+          <td>-6000000.000</td>
+          <td>nan</td>
+          <td>16513822.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>51.671</td>
+          <td>45.118</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>57.374</td>
+          <td>0.230</td>
+          <td>70.470</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>85.500</td>
+          <td>nan</td>
+          <td>68.700</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>0.588</td>
+          <td>6.522</td>
+          <td>6206.000</td>
+          <td>nan</td>
+          <td>6.068</td>
+          <td>0.427</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>CZE</th>
+          <th>2002</th>
+          <td>4743000.000</td>
+          <td>4.634</td>
+          <td>1797000000.000</td>
+          <td>nan</td>
+          <td>9.079</td>
+          <td>3376000000.000</td>
+          <td>nan</td>
+          <td>1579000000.000</td>
+          <td>711.786</td>
+          <td>10252439.000</td>
+          <td>0.463</td>
+          <td>nan</td>
+          <td>75.222</td>
+          <td>100.000</td>
+          <td>nan</td>
+          <td>96.436</td>
+          <td>99.811</td>
+          <td>11.744</td>
+          <td>11.338</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>4.100</td>
+          <td>nan</td>
+          <td>26.100</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>0.149</td>
+          <td>23.930</td>
+          <td>83.982</td>
+          <td>6984.000</td>
+          <td>nan</td>
+          <td>1.453</td>
+          <td>1.071</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>TUV</th>
+          <th>1998</th>
+          <td>1000.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1900.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>-900.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>9306.000</td>
+          <td>0.107</td>
+          <td>0.204</td>
+          <td>nan</td>
+          <td>93.703</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>0.788</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>36.200</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>0.000</td>
+          <td>3.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>GBR</th>
+          <th>2003</th>
+          <td>22787000.000</td>
+          <td>11.077</td>
+          <td>58627000000.000</td>
+          <td>61424000.000</td>
+          <td>6.399</td>
+          <td>30736000000.000</td>
+          <td>-38637000.000</td>
+          <td>-27891000000.000</td>
+          <td>1348.839</td>
+          <td>59580222.000</td>
+          <td>0.382</td>
+          <td>1.031</td>
+          <td>78.446</td>
+          <td>100.000</td>
+          <td>nan</td>
+          <td>95.650</td>
+          <td>100.000</td>
+          <td>9.053</td>
+          <td>23.400</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>5.300</td>
+          <td>nan</td>
+          <td>9.600</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>5.226</td>
+          <td>64.820</td>
+          <td>91.064</td>
+          <td>149.000</td>
+          <td>nan</td>
+          <td>1.554</td>
+          <td>0.712</td>
+          <td>nan</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Economic
+~~~~~~~~
+
+.. code:: ipython3
+
+    Economic = Tourism.join(Economic_MADDISON).join(Economic_WDI)
+
+.. code:: ipython3
+
+    Economic.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th></th>
+          <th>ST.INT.ARVL</th>
+          <th>ST.INT.XPND.MP.ZS</th>
+          <th>ST.INT.XPND.CD</th>
+          <th>ST.INT.DPRT</th>
+          <th>ST.INT.RCPT.XP.ZS</th>
+          <th>ST.INT.RCPT.CD</th>
+          <th>Tourist Defecit</th>
+          <th>Tourism Net</th>
+          <th>Tourist Avg Net</th>
+          <th>Population Estimate</th>
+          <th>ST.INT.ARVL.PER.CAPITA</th>
+          <th>ST.INT.DPRT.PER.CAPITA</th>
+          <th>Maddison GDPPC</th>
+          <th>DT.DOD.DIMF.CD</th>
+          <th>DT.DOD.PVLX.CD</th>
+          <th>NY.GNP.PCAP.CD</th>
+          <th>NY.GNP.ATLS.CD</th>
+          <th>DT.DIS.IDAG.CD</th>
+          <th>DT.ODA.ODAT.CD</th>
+          <th>SI.POV.NAHC</th>
+          <th>SI.POV.URHC</th>
+          <th>SI.POV.RUHC</th>
+          <th>SI.POV.NAGP</th>
+          <th>SI.POV.GINI</th>
+        </tr>
+        <tr>
+          <th>Country Code</th>
+          <th>Year</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>CZE</th>
+          <th>2001</th>
+          <td>5405000.000</td>
+          <td>4.024</td>
+          <td>1386000000.000</td>
+          <td>nan</td>
+          <td>9.437</td>
+          <td>3104000000.000</td>
+          <td>nan</td>
+          <td>1718000000.000</td>
+          <td>574.283</td>
+          <td>10271204.000</td>
+          <td>0.526</td>
+          <td>nan</td>
+          <td>20890.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>6310.000</td>
+          <td>64500194752.230</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>BEL</th>
+          <th>2016</th>
+          <td>7481000.000</td>
+          <td>5.612</td>
+          <td>21519000000.000</td>
+          <td>13372000.000</td>
+          <td>3.268</td>
+          <td>12697000000.000</td>
+          <td>-5891000.000</td>
+          <td>-8822000000.000</td>
+          <td>1697.233</td>
+          <td>11358379.000</td>
+          <td>0.659</td>
+          <td>1.177</td>
+          <td>39733.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>42640.000</td>
+          <td>483166155183.222</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>SWE</th>
+          <th>2009</th>
+          <td>4899000.000</td>
+          <td>7.246</td>
+          <td>12075000000.000</td>
+          <td>11699000.000</td>
+          <td>5.187</td>
+          <td>9769000000.000</td>
+          <td>-6800000.000</td>
+          <td>-2306000000.000</td>
+          <td>1994.080</td>
+          <td>9313478.000</td>
+          <td>0.526</td>
+          <td>1.256</td>
+          <td>40320.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>51920.000</td>
+          <td>482738630333.406</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>27.300</td>
+        </tr>
+        <tr>
+          <th>MDV</th>
+          <th>1999</th>
+          <td>430000.000</td>
+          <td>12.553</td>
+          <td>58000000.000</td>
+          <td>42000.000</td>
+          <td>72.306</td>
+          <td>314000000.000</td>
+          <td>388000.000</td>
+          <td>256000000.000</td>
+          <td>730.233</td>
+          <td>274484.000</td>
+          <td>1.567</td>
+          <td>0.153</td>
+          <td>nan</td>
+          <td>387596.800</td>
+          <td>nan</td>
+          <td>1970.000</td>
+          <td>540744320.698</td>
+          <td>0.000</td>
+          <td>30730000.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>SYR</th>
+          <th>2009</th>
+          <td>6092000.000</td>
+          <td>5.880</td>
+          <td>980000000.000</td>
+          <td>5215000.000</td>
+          <td>24.111</td>
+          <td>3781000000.000</td>
+          <td>877000.000</td>
+          <td>2801000000.000</td>
+          <td>620.650</td>
+          <td>20824893.000</td>
+          <td>0.293</td>
+          <td>0.250</td>
+          <td>5166.000</td>
+          <td>437671453.500</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>0.000</td>
+          <td>203620000.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Education
+~~~~~~~~~
+
+.. code:: ipython3
+
+    Education = Tourism.join(Education_WDI)
+
+.. code:: ipython3
+
+    Education.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th></th>
+          <th>ST.INT.ARVL</th>
+          <th>ST.INT.XPND.MP.ZS</th>
+          <th>ST.INT.XPND.CD</th>
+          <th>ST.INT.DPRT</th>
+          <th>ST.INT.RCPT.XP.ZS</th>
+          <th>ST.INT.RCPT.CD</th>
+          <th>Tourist Defecit</th>
+          <th>Tourism Net</th>
+          <th>Tourist Avg Net</th>
+          <th>Population Estimate</th>
+          <th>ST.INT.ARVL.PER.CAPITA</th>
+          <th>ST.INT.DPRT.PER.CAPITA</th>
+          <th>SE.ENR.PRSC.FM.ZS</th>
+          <th>SE.ADT.LITR.ZS</th>
+          <th>SE.COM.DURS</th>
+          <th>SE.PRM.UNER.ZS</th>
+          <th>SE.PRM.ENRL.TC.ZS</th>
+          <th>SE.SEC.ENRL.TC.ZS</th>
+          <th>SE.SEC.NENR</th>
+        </tr>
+        <tr>
+          <th>Country Code</th>
+          <th>Year</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>VNM</th>
+          <th>2009</th>
+          <td>3747000.000</td>
+          <td>1.509</td>
+          <td>1100000000.000</td>
+          <td>nan</td>
+          <td>4.852</td>
+          <td>3050000000.000</td>
+          <td>nan</td>
+          <td>1950000000.000</td>
+          <td>813.985</td>
+          <td>87565407.000</td>
+          <td>0.043</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>93.520</td>
+          <td>9.000</td>
+          <td>1.615</td>
+          <td>19.522</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>HUN</th>
+          <th>2012</th>
+          <td>4164000.000</td>
+          <td>2.411</td>
+          <td>2457000000.000</td>
+          <td>16143000.000</td>
+          <td>5.565</td>
+          <td>6149000000.000</td>
+          <td>-11979000.000</td>
+          <td>3692000000.000</td>
+          <td>1476.705</td>
+          <td>9869684.000</td>
+          <td>0.422</td>
+          <td>1.636</td>
+          <td>0.986</td>
+          <td>nan</td>
+          <td>13.000</td>
+          <td>3.877</td>
+          <td>10.481</td>
+          <td>10.040</td>
+          <td>88.928</td>
+        </tr>
+        <tr>
+          <th>HKG</th>
+          <th>2002</th>
+          <td>10689000.000</td>
+          <td>6.024</td>
+          <td>12418000000.000</td>
+          <td>64540000.000</td>
+          <td>4.483</td>
+          <td>9849000000.000</td>
+          <td>-53851000.000</td>
+          <td>-2569000000.000</td>
+          <td>921.415</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>9.000</td>
+          <td>nan</td>
+          <td>20.167</td>
+          <td>18.469</td>
+          <td>72.088</td>
+        </tr>
+        <tr>
+          <th>BLZ</th>
+          <th>2015</th>
+          <td>341000.000</td>
+          <td>4.228</td>
+          <td>50000000.000</td>
+          <td>nan</td>
+          <td>35.989</td>
+          <td>372000000.000</td>
+          <td>nan</td>
+          <td>322000000.000</td>
+          <td>1090.909</td>
+          <td>359288.000</td>
+          <td>0.949</td>
+          <td>nan</td>
+          <td>0.980</td>
+          <td>nan</td>
+          <td>8.000</td>
+          <td>0.781</td>
+          <td>20.436</td>
+          <td>16.303</td>
+          <td>69.517</td>
+        </tr>
+        <tr>
+          <th>DMA</th>
+          <th>1995</th>
+          <td>60000.000</td>
+          <td>4.217</td>
+          <td>6000000.000</td>
+          <td>nan</td>
+          <td>39.085</td>
+          <td>42000000.000</td>
+          <td>nan</td>
+          <td>36000000.000</td>
+          <td>700.000</td>
+          <td>71368.000</td>
+          <td>0.841</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Labor
+~~~~~
+
+.. code:: ipython3
+
+    Labor = Tourism.join(Labor_WDI)
+
+.. code:: ipython3
+
+    Labor.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th></th>
+          <th>ST.INT.ARVL</th>
+          <th>ST.INT.XPND.MP.ZS</th>
+          <th>ST.INT.XPND.CD</th>
+          <th>ST.INT.DPRT</th>
+          <th>ST.INT.RCPT.XP.ZS</th>
+          <th>ST.INT.RCPT.CD</th>
+          <th>Tourist Defecit</th>
+          <th>Tourism Net</th>
+          <th>Tourist Avg Net</th>
+          <th>Population Estimate</th>
+          <th>ST.INT.ARVL.PER.CAPITA</th>
+          <th>ST.INT.DPRT.PER.CAPITA</th>
+          <th>SL.TLF.ACTI.1524.FE.ZS</th>
+          <th>SL.TLF.CACT.ZS</th>
+          <th>SL.TLF.CACT.FM.ZS</th>
+          <th>SL.TLF.0714.SW.TM</th>
+          <th>SL.TLF.0714.WK.TM</th>
+          <th>SL.EMP.MPYR.ZS</th>
+          <th>SL.AGR.EMPL.ZS</th>
+          <th>SL.IND.EMPL.ZS</th>
+          <th>SL.SRV.EMPL.ZS</th>
+          <th>SL.ISV.IFRM.ZS</th>
+          <th>SL.UEM.TOTL.ZS</th>
+          <th>SL.EMP.SELF.ZS</th>
+          <th>per_lm_alllm.cov_pop_tot</th>
+        </tr>
+        <tr>
+          <th>Country Code</th>
+          <th>Year</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>SUR</th>
+          <th>2016</th>
+          <td>256000.000</td>
+          <td>6.579</td>
+          <td>112000000.000</td>
+          <td>nan</td>
+          <td>4.607</td>
+          <td>74000000.000</td>
+          <td>nan</td>
+          <td>-38000000.000</td>
+          <td>289.062</td>
+          <td>558368.000</td>
+          <td>0.458</td>
+          <td>nan</td>
+          <td>18.919</td>
+          <td>51.774</td>
+          <td>60.795</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1.904</td>
+          <td>7.217</td>
+          <td>24.609</td>
+          <td>68.174</td>
+          <td>nan</td>
+          <td>7.289</td>
+          <td>14.039</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>GBR</th>
+          <th>2000</th>
+          <td>23212000.000</td>
+          <td>10.641</td>
+          <td>47009000000.000</td>
+          <td>56837000.000</td>
+          <td>7.302</td>
+          <td>29978000000.000</td>
+          <td>-33625000.000</td>
+          <td>-17031000000.000</td>
+          <td>1291.487</td>
+          <td>58950848.000</td>
+          <td>0.394</td>
+          <td>0.964</td>
+          <td>59.797</td>
+          <td>61.440</td>
+          <td>76.572</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>3.195</td>
+          <td>1.535</td>
+          <td>25.167</td>
+          <td>73.298</td>
+          <td>nan</td>
+          <td>5.562</td>
+          <td>12.271</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>DZA</th>
+          <th>2012</th>
+          <td>2634000.000</td>
+          <td>0.959</td>
+          <td>598000000.000</td>
+          <td>1911000.000</td>
+          <td>0.392</td>
+          <td>295000000.000</td>
+          <td>723000.000</td>
+          <td>-303000000.000</td>
+          <td>111.997</td>
+          <td>37565847.000</td>
+          <td>0.070</td>
+          <td>0.051</td>
+          <td>10.347</td>
+          <td>42.682</td>
+          <td>23.440</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>3.756</td>
+          <td>10.202</td>
+          <td>30.968</td>
+          <td>58.830</td>
+          <td>nan</td>
+          <td>10.970</td>
+          <td>31.953</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>LBN</th>
+          <th>2007</th>
+          <td>1017000.000</td>
+          <td>18.250</td>
+          <td>3914000000.000</td>
+          <td>nan</td>
+          <td>35.487</td>
+          <td>5796000000.000</td>
+          <td>nan</td>
+          <td>1882000000.000</td>
+          <td>5699.115</td>
+          <td>4086466.000</td>
+          <td>0.249</td>
+          <td>nan</td>
+          <td>17.466</td>
+          <td>46.574</td>
+          <td>30.206</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>9.568</td>
+          <td>13.713</td>
+          <td>23.124</td>
+          <td>63.163</td>
+          <td>nan</td>
+          <td>8.980</td>
+          <td>37.385</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>NGA</th>
+          <th>2010</th>
+          <td>1555000.000</td>
+          <td>11.782</td>
+          <td>8348000000.000</td>
+          <td>nan</td>
+          <td>0.890</td>
+          <td>736000000.000</td>
+          <td>nan</td>
+          <td>-7612000000.000</td>
+          <td>473.312</td>
+          <td>158578261.000</td>
+          <td>0.010</td>
+          <td>nan</td>
+          <td>24.942</td>
+          <td>54.961</td>
+          <td>81.102</td>
+          <td>29.900</td>
+          <td>32.400</td>
+          <td>2.925</td>
+          <td>40.778</td>
+          <td>11.654</td>
+          <td>47.568</td>
+          <td>nan</td>
+          <td>3.770</td>
+          <td>81.151</td>
+          <td>nan</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Urbanization
+~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    Urbanization = Tourism.join(Urbanization_UNPD)
+
+.. code:: ipython3
+
+    Urbanization.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th></th>
+          <th>ST.INT.ARVL</th>
+          <th>ST.INT.XPND.MP.ZS</th>
+          <th>ST.INT.XPND.CD</th>
+          <th>ST.INT.DPRT</th>
+          <th>ST.INT.RCPT.XP.ZS</th>
+          <th>ST.INT.RCPT.CD</th>
+          <th>Tourist Defecit</th>
+          <th>Tourism Net</th>
+          <th>Tourist Avg Net</th>
+          <th>Population Estimate</th>
+          <th>ST.INT.ARVL.PER.CAPITA</th>
+          <th>ST.INT.DPRT.PER.CAPITA</th>
+          <th>SP.URB.TOTL.IN.ZS</th>
+          <th>SP.URB.GROW</th>
+          <th>EN.POP.SLUM.UR.ZS</th>
+          <th>EN.URB.MCTY.TL.ZS</th>
+          <th>EN.URB.LCTY.UR.ZS</th>
+        </tr>
+        <tr>
+          <th>Country Code</th>
+          <th>Year</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>SRB</th>
+          <th>2017</th>
+          <td>1497000.000</td>
+          <td>6.118</td>
+          <td>1548000000.000</td>
+          <td>nan</td>
+          <td>7.798</td>
+          <td>1705000000.000</td>
+          <td>nan</td>
+          <td>157000000.000</td>
+          <td>1138.945</td>
+          <td>8790574.000</td>
+          <td>0.170</td>
+          <td>nan</td>
+          <td>55.942</td>
+          <td>-0.296</td>
+          <td>nan</td>
+          <td>19.694</td>
+          <td>35.204</td>
+        </tr>
+        <tr>
+          <th>MDA</th>
+          <th>1996</th>
+          <td>nan</td>
+          <td>6.165</td>
+          <td>77000000.000</td>
+          <td>nan</td>
+          <td>5.383</td>
+          <td>50000000.000</td>
+          <td>nan</td>
+          <td>-27000000.000</td>
+          <td>nan</td>
+          <td>4314700.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>46.200</td>
+          <td>-0.403</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>36.956</td>
+        </tr>
+        <tr>
+          <th>HKG</th>
+          <th>1997</th>
+          <td>nan</td>
+          <td>nan</td>
+          <td>12678000000.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>9979000000.000</td>
+          <td>nan</td>
+          <td>-2699000000.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>100.000</td>
+          <td>0.833</td>
+          <td>nan</td>
+          <td>97.953</td>
+          <td>97.953</td>
+        </tr>
+        <tr>
+          <th>FJI</th>
+          <th>2014</th>
+          <td>693000.000</td>
+          <td>3.485</td>
+          <td>99000000.000</td>
+          <td>nan</td>
+          <td>41.601</td>
+          <td>1034000000.000</td>
+          <td>nan</td>
+          <td>935000000.000</td>
+          <td>1492.063</td>
+          <td>885806.000</td>
+          <td>0.782</td>
+          <td>nan</td>
+          <td>54.216</td>
+          <td>1.635</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>POL</th>
+          <th>1995</th>
+          <td>19215000.000</td>
+          <td>17.339</td>
+          <td>5865000000.000</td>
+          <td>36387000.000</td>
+          <td>19.395</td>
+          <td>6927000000.000</td>
+          <td>-17172000.000</td>
+          <td>1062000000.000</td>
+          <td>360.500</td>
+          <td>38452632.000</td>
+          <td>0.500</td>
+          <td>0.946</td>
+          <td>61.493</td>
+          <td>0.207</td>
+          <td>nan</td>
+          <td>4.280</td>
+          <td>6.959</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Full Dataset Join
+-----------------
+
+.. code:: ipython3
+
+    Full = Tourism.join([
+        Inequality_WIID,
+        Inequality_WDI,
+        General_WDI,
+        Economic_MADDISON,
+        Education_WDI,
+        Labor_WDI,
+        Urbanization_UNPD],how="left").join(Economic_WDI.drop(['SI.POV.GINI', 'SI.POV.NAGP'],axis='columns'))
+
+Save Files
+----------
+
+.. code:: ipython3
+
+    General.to_csv("../data/processed/General.csv")
+    Labor.to_csv("../data/processed/Labor.csv")
+    Urbanization.to_csv("../data/processed/Urbanization.csv")
+    Education.to_csv("../data/processed/Education.csv")
+    Inequality.to_csv("../data/processed/Inequality.csv")
+    Economic.to_csv("../data/processed/Economic.csv")
+    Full.to_csv("../data/processed/Full.csv")

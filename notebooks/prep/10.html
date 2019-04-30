@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.9. Economic Data Processing (WDI) &#8212; Senior-Project 0.1 documentation</title>
+    <title>1.3. Labor Data Processing (WDI/ILO) &#8212; Senior-Project 0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
@@ -16,8 +16,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.10. Inequality Data Processing (WDI)" href="6.html" />
-    <link rel="prev" title="1.8. Economic Data Processing (MADDISON)" href="4.html" /> 
+    <link rel="next" title="1.4. General Indicators Data Processing (WDI)" href="11.html" />
+    <link rel="prev" title="1.2. Tourism Master Dataset Merge" href="1.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -26,10 +26,10 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="6.html" title="1.10. Inequality Data Processing (WDI)"
+          <a href="11.html" title="1.4. General Indicators Data Processing (WDI)"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="4.html" title="1.8. Economic Data Processing (MADDISON)"
+          <a href="1.html" title="1.2. Tourism Master Dataset Merge"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">1. Data Preperation Notebooks</a> &#187;</li> 
@@ -41,53 +41,59 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="economic-data-processing-wdi">
-<h1>1.9. Economic Data Processing (WDI)<a class="headerlink" href="#economic-data-processing-wdi" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="labor-data-processing-wdi-ilo">
+<h1>1.3. Labor Data Processing (WDI/ILO)<a class="headerlink" href="#labor-data-processing-wdi-ilo" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="data-dictionary">
-<h2>1.9.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
+<h2>1.3.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-center">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 82%" />
+<col style="width: 25%" />
+<col style="width: 75%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Code</p></th>
-<th class="head"><p>Indicator Name</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Code</strong></p></th>
+<th class="head"><p><strong>Indicator Name</strong></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>DT.DOD.DIMF.CD</p></td>
-<td><p>Use of IMF credit (DOD, current US$)</p></td>
+<tr class="row-even"><td><p>SL.TLF.ACTI.1524.FE.ZS</p></td>
+<td><p>Labor force participation rate for ages 15-24, female (%) (modeled ILO estimate)</p></td>
 </tr>
-<tr class="row-odd"><td><p>DT.DOD.PVLX.CD</p></td>
-<td><p>Present value of external debt (current US$)</p></td>
+<tr class="row-odd"><td><p>SL.TLF.CACT.ZS</p></td>
+<td><p>Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)</p></td>
 </tr>
-<tr class="row-even"><td><p>NY.GNP.PCAP.CD</p></td>
-<td><p>GNI per capita, Atlas method (current US$)</p></td>
+<tr class="row-even"><td><p>SL.TLF.CACT.FM.ZS</p></td>
+<td><p>Ratio of female to male labor force participation rate (%) (modeled ILO estimate)</p></td>
 </tr>
-<tr class="row-odd"><td><p>NY.GNP.ATLS.CD</p></td>
-<td><p>GNI, Atlas method (current US$)</p></td>
+<tr class="row-odd"><td><p>SL.TLF.0714.SW.TM</p></td>
+<td><p>Average working hours of children, study and work, ages 7-14 (hours per week)</p></td>
 </tr>
-<tr class="row-even"><td><p>DT.DIS.IDAG.CD</p></td>
-<td><p>IDA grants (current US$)</p></td>
+<tr class="row-even"><td><p>SL.TLF.0714.WK.TM</p></td>
+<td><p>Average working hours of children, working only, ages 7-14 (hours per week)</p></td>
 </tr>
-<tr class="row-odd"><td><p>DT.ODA.ODAT.CD</p></td>
-<td><p>Net official development assistance received (current US$)</p></td>
+<tr class="row-odd"><td><p>SL.EMP.MPYR.ZS</p></td>
+<td><p>Employers, total (% of total employment) (modeled ILO estimate)</p></td>
 </tr>
-<tr class="row-even"><td><p>SI.POV.NAHC</p></td>
-<td><p>Poverty headcount ratio at national poverty lines (% of population)</p></td>
+<tr class="row-even"><td><p>SL.AGR.EMPL.ZS</p></td>
+<td><p>Employment in agriculture (% of total employment) (modeled ILO estimate)</p></td>
 </tr>
-<tr class="row-odd"><td><p>SI.POV.URHC</p></td>
-<td><p>Urban poverty headcount ratio at national poverty lines (% of urban population)</p></td>
+<tr class="row-odd"><td><p>SL.IND.EMPL.ZS</p></td>
+<td><p>Employment in industry (% of total employment) (modeled ILO estimate)</p></td>
 </tr>
-<tr class="row-even"><td><p>SI.POV.RUHC</p></td>
-<td><p>Rural poverty headcount ratio at national poverty lines (% of rural population)</p></td>
+<tr class="row-even"><td><p>SL.SRV.EMPL.ZS</p></td>
+<td><p>Employment in services (% of total employment) (modeled ILO estimate)</p></td>
 </tr>
-<tr class="row-odd"><td><p>SI.POV.NAGP</p></td>
-<td><p>Poverty gap at national poverty lines (%)</p></td>
+<tr class="row-odd"><td><p>SL.ISV.IFRM.ZS</p></td>
+<td><p>Informal employment (% of total non-agricultural employment)</p></td>
 </tr>
-<tr class="row-even"><td><p>SI.POV.GINI</p></td>
-<td><p>GINI index (World Bank estimate)</p></td>
+<tr class="row-even"><td><p>SL.UEM.TOTL.ZS</p></td>
+<td><p>Unemployment, total (% of total labor force) (modeled ILO estimate)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SL.EMP.SELF.ZS</p></td>
+<td><p>Self-employed, total (% of total employment) (modeled ILO estimate)</p></td>
+</tr>
+<tr class="row-even"><td><p>per_lm_alllm.cov_pop_tot</p></td>
+<td><p>Coverage of unemployment benefits and ALMP (% of population)</p></td>
 </tr>
 </tbody>
 </table>
@@ -104,8 +110,8 @@
 </div>
 </div>
 <div class="section" id="load-the-file">
-<h2>1.9.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/external/Economy/WDI/Data_Extract_From_World_Development_Indicators.xlsx&quot;</span><span class="p">)</span>
+<h2>1.3.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/external/Labor/WDI/Data_Extract_From_World_Development_Indicators.xlsx&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -133,26 +139,50 @@
       <th>Time Code</th>
       <th>Country Name</th>
       <th>Country Code</th>
-      <th>Use of IMF credit (DOD, current US$) [DT.DOD.DIMF.CD]</th>
-      <th>Present value of external debt (current US$) [DT.DOD.PVLX.CD]</th>
-      <th>GNI per capita, Atlas method (current US$) [NY.GNP.PCAP.CD]</th>
-      <th>GNI, Atlas method (current US$) [NY.GNP.ATLS.CD]</th>
-      <th>IDA grants (current US$) [DT.DIS.IDAG.CD]</th>
-      <th>Net official development assistance received (current US$) [DT.ODA.ODAT.CD]</th>
-      <th>Poverty headcount ratio at national poverty lines (% of population) [SI.POV.NAHC]</th>
-      <th>Urban poverty headcount ratio at national poverty lines (% of urban population) [SI.POV.URHC]</th>
-      <th>Rural poverty headcount ratio at national poverty lines (% of rural population) [SI.POV.RUHC]</th>
-      <th>Poverty gap at national poverty lines (%) [SI.POV.NAGP]</th>
-      <th>GINI index (World Bank estimate) [SI.POV.GINI]</th>
+      <th>Labor force participation rate for ages 15-24, female (%) (modeled ILO estimate) [SL.TLF.ACTI.1524.FE.ZS]</th>
+      <th>Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate) [SL.TLF.CACT.ZS]</th>
+      <th>Ratio of female to male labor force participation rate (%) (modeled ILO estimate) [SL.TLF.CACT.FM.ZS]</th>
+      <th>Average working hours of children, study and work, ages 7-14 (hours per week) [SL.TLF.0714.SW.TM]</th>
+      <th>Average working hours of children, working only, ages 7-14 (hours per week) [SL.TLF.0714.WK.TM]</th>
+      <th>Employers, total (% of total employment) (modeled ILO estimate) [SL.EMP.MPYR.ZS]</th>
+      <th>Employment in agriculture (% of total employment) (modeled ILO estimate) [SL.AGR.EMPL.ZS]</th>
+      <th>Employment in industry (% of total employment) (modeled ILO estimate) [SL.IND.EMPL.ZS]</th>
+      <th>Employment in services (% of total employment) (modeled ILO estimate) [SL.SRV.EMPL.ZS]</th>
+      <th>Informal employment (% of total non-agricultural employment) [SL.ISV.IFRM.ZS]</th>
+      <th>Unemployment, total (% of total labor force) (modeled ILO estimate) [SL.UEM.TOTL.ZS]</th>
+      <th>Self-employed, total (% of total employment) (modeled ILO estimate) [SL.EMP.SELF.ZS]</th>
+      <th>Coverage of unemployment benefits and ALMP (% of population) [per_lm_alllm.cov_pop_tot]</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>514</th>
-      <td>1996</td>
-      <td>YR1996</td>
-      <td>Not classified</td>
-      <td>INX</td>
+      <th>6343</th>
+      <td>2018</td>
+      <td>YR2018</td>
+      <td>Indonesia</td>
+      <td>IDN</td>
+      <td>38.350</td>
+      <td>67.124</td>
+      <td>63.727</td>
+      <td>..</td>
+      <td>..</td>
+      <td>3.448</td>
+      <td>30.526</td>
+      <td>21.999</td>
+      <td>47.475</td>
+      <td>..</td>
+      <td>4.300</td>
+      <td>50.670</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>1412</th>
+      <td>1999</td>
+      <td>YR1999</td>
+      <td>Grenada</td>
+      <td>GRD</td>
+      <td>..</td>
+      <td>..</td>
       <td>..</td>
       <td>..</td>
       <td>..</td>
@@ -166,17 +196,39 @@
       <td>..</td>
     </tr>
     <tr>
-      <th>1817</th>
-      <td>2001</td>
-      <td>YR2001</td>
-      <td>IDA &amp; IBRD total</td>
-      <td>IBT</td>
+      <th>1186</th>
+      <td>1998</td>
+      <td>YR1998</td>
+      <td>Maldives</td>
+      <td>MDV</td>
+      <td>26.676</td>
+      <td>52.757</td>
+      <td>46.704</td>
       <td>..</td>
       <td>..</td>
-      <td>1198.181</td>
-      <td>6164466664024.563</td>
+      <td>3.342</td>
+      <td>18.717</td>
+      <td>24.343</td>
+      <td>56.940</td>
       <td>..</td>
-      <td>39503820000</td>
+      <td>1.368</td>
+      <td>36.711</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>1226</th>
+      <td>1998</td>
+      <td>YR1998</td>
+      <td>San Marino</td>
+      <td>SMR</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
       <td>..</td>
       <td>..</td>
       <td>..</td>
@@ -184,64 +236,30 @@
       <td>..</td>
     </tr>
     <tr>
-      <th>4165</th>
-      <td>2010</td>
-      <td>YR2010</td>
-      <td>United Kingdom</td>
-      <td>GBR</td>
-      <td>..</td>
-      <td>..</td>
-      <td>41380</td>
-      <td>2597497094264.294</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>34.400</td>
-    </tr>
-    <tr>
-      <th>2539</th>
+      <th>2761</th>
       <td>2004</td>
       <td>YR2004</td>
-      <td>Samoa</td>
-      <td>WSM</td>
-      <td>1773537.400</td>
-      <td>..</td>
-      <td>1990</td>
-      <td>355587125.391</td>
-      <td>0</td>
-      <td>31050000</td>
+      <td>Liberia</td>
+      <td>LBR</td>
+      <td>31.114</td>
+      <td>56.030</td>
+      <td>89.739</td>
       <td>..</td>
       <td>..</td>
+      <td>1.981</td>
+      <td>49.547</td>
+      <td>9.596</td>
+      <td>40.857</td>
       <td>..</td>
-      <td>..</td>
-      <td>..</td>
-    </tr>
-    <tr>
-      <th>3960</th>
-      <td>2010</td>
-      <td>YR2010</td>
-      <td>Afghanistan</td>
-      <td>AFG</td>
-      <td>355229891.100</td>
-      <td>..</td>
-      <td>520</td>
-      <td>14872476818.459</td>
-      <td>121953081.280</td>
-      <td>6470360000</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
+      <td>2.526</td>
+      <td>81.893</td>
       <td>..</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 <div class="section" id="standardize-country-codes">
-<h2>1.9.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
+<h2>1.3.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Only Select rows with valid country codes</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">country_locations</span> <span class="o">=</span> <span class="p">[]</span>
@@ -256,7 +274,7 @@
 </div>
 </div>
 <div class="section" id="standardize-indexes">
-<h2>1.9.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
+<h2>1.3.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="s2">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;Year&quot;</span>
@@ -270,9 +288,9 @@
 </div>
 </div>
 <div class="section" id="clean-data">
-<h2>1.9.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
+<h2>1.3.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="header">
-<h3>1.9.5.1. Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
+<h3>1.3.5.1. Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Time Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Country Name&quot;</span><span class="p">],</span>
         <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span>
         <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -291,7 +309,7 @@
 </div>
 </div>
 <div class="section" id="data-types">
-<h3>1.9.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<h3>1.3.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Replace &#39;..&#39; with np.nan for better parsing</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">)</span>
@@ -300,11 +318,153 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
 </div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>SL.TLF.ACTI.1524.FE.ZS</th>
+      <th>SL.TLF.CACT.ZS</th>
+      <th>SL.TLF.CACT.FM.ZS</th>
+      <th>SL.TLF.0714.SW.TM</th>
+      <th>SL.TLF.0714.WK.TM</th>
+      <th>SL.EMP.MPYR.ZS</th>
+      <th>SL.AGR.EMPL.ZS</th>
+      <th>SL.IND.EMPL.ZS</th>
+      <th>SL.SRV.EMPL.ZS</th>
+      <th>SL.ISV.IFRM.ZS</th>
+      <th>SL.UEM.TOTL.ZS</th>
+      <th>SL.EMP.SELF.ZS</th>
+      <th>per_lm_alllm.cov_pop_tot</th>
+    </tr>
+    <tr>
+      <th>Country Code</th>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>MDG</th>
+      <th>2008</th>
+      <td>77.087</td>
+      <td>88.271</td>
+      <td>95.351</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>2.156</td>
+      <td>76.329</td>
+      <td>4.997</td>
+      <td>18.674</td>
+      <td>nan</td>
+      <td>2.673</td>
+      <td>89.111</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>KEN</th>
+      <th>2011</th>
+      <td>35.841</td>
+      <td>66.249</td>
+      <td>87.708</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>7.748</td>
+      <td>59.507</td>
+      <td>7.059</td>
+      <td>33.434</td>
+      <td>nan</td>
+      <td>9.678</td>
+      <td>63.786</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>IRN</th>
+      <th>2011</th>
+      <td>11.773</td>
+      <td>42.746</td>
+      <td>21.938</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>4.007</td>
+      <td>18.702</td>
+      <td>32.714</td>
+      <td>48.584</td>
+      <td>nan</td>
+      <td>12.450</td>
+      <td>44.019</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>AUS</th>
+      <th>1998</th>
+      <td>67.681</td>
+      <td>63.203</td>
+      <td>73.723</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>7.564</td>
+      <td>4.875</td>
+      <td>21.798</td>
+      <td>73.327</td>
+      <td>nan</td>
+      <td>7.676</td>
+      <td>19.912</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>CYM</th>
+      <th>2016</th>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 <div class="section" id="save-data">
-<h2>1.9.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;../data/processed/Economic_WDI.pickle&quot;</span><span class="p">)</span>
+<h2>1.3.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;../data/processed/Labor_WDI.pickle&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -318,31 +478,31 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">1.9. Economic Data Processing (WDI)</a><ul>
-<li><a class="reference internal" href="#data-dictionary">1.9.1. Data Dictionary</a></li>
-<li><a class="reference internal" href="#load-the-file">1.9.2. Load The File</a></li>
-<li><a class="reference internal" href="#standardize-country-codes">1.9.3. Standardize Country Codes</a></li>
-<li><a class="reference internal" href="#standardize-indexes">1.9.4. Standardize Indexes</a></li>
-<li><a class="reference internal" href="#clean-data">1.9.5. Clean Data</a><ul>
-<li><a class="reference internal" href="#header">1.9.5.1. Header</a></li>
-<li><a class="reference internal" href="#data-types">1.9.5.2. Data Types</a></li>
+<li><a class="reference internal" href="#">1.3. Labor Data Processing (WDI/ILO)</a><ul>
+<li><a class="reference internal" href="#data-dictionary">1.3.1. Data Dictionary</a></li>
+<li><a class="reference internal" href="#load-the-file">1.3.2. Load The File</a></li>
+<li><a class="reference internal" href="#standardize-country-codes">1.3.3. Standardize Country Codes</a></li>
+<li><a class="reference internal" href="#standardize-indexes">1.3.4. Standardize Indexes</a></li>
+<li><a class="reference internal" href="#clean-data">1.3.5. Clean Data</a><ul>
+<li><a class="reference internal" href="#header">1.3.5.1. Header</a></li>
+<li><a class="reference internal" href="#data-types">1.3.5.2. Data Types</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#save-data">1.9.6. Save Data</a></li>
+<li><a class="reference internal" href="#save-data">1.3.6. Save Data</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="4.html"
-                        title="previous chapter">1.8. Economic Data Processing (MADDISON)</a></p>
+  <p class="topless"><a href="1.html"
+                        title="previous chapter">1.2. Tourism Master Dataset Merge</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="6.html"
-                        title="next chapter">1.10. Inequality Data Processing (WDI)</a></p>
+  <p class="topless"><a href="11.html"
+                        title="next chapter">1.4. General Indicators Data Processing (WDI)</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/notebooks/prep/5.rst.txt"
+      <li><a href="../../_sources/notebooks/prep/10.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -367,10 +527,10 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="6.html" title="1.10. Inequality Data Processing (WDI)"
+          <a href="11.html" title="1.4. General Indicators Data Processing (WDI)"
              >next</a> |</li>
         <li class="right" >
-          <a href="4.html" title="1.8. Economic Data Processing (MADDISON)"
+          <a href="1.html" title="1.2. Tourism Master Dataset Merge"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >1. Data Preperation Notebooks</a> &#187;</li> 

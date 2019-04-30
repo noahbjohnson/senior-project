@@ -88,58 +88,58 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>8720</th>
-          <td>IRQ</td>
-          <td>Iraq</td>
-          <td>2016</td>
-          <td>13976.000</td>
-          <td>13898.000</td>
-          <td>38957.000</td>
+          <th>19310</th>
+          <td>YEM</td>
+          <td>Yemen</td>
+          <td>1971</td>
+          <td>1637.000</td>
+          <td>2240.000</td>
+          <td>7251.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>1480</th>
-          <td>BGR</td>
-          <td>Bulgaria</td>
-          <td>1890</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>3445.000</td>
-          <td>NaN</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>19486</th>
-          <td>ZAF</td>
-          <td>South Africa</td>
-          <td>1723</td>
-          <td>3696.000</td>
-          <td>4212.000</td>
+          <th>6081</th>
+          <td>FRA</td>
+          <td>France</td>
+          <td>1755</td>
+          <td>1323.000</td>
+          <td>1713.000</td>
           <td>nan</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>5479</th>
-          <td>FIN</td>
-          <td>Finland</td>
-          <td>1892</td>
-          <td>1391.000</td>
-          <td>2072.000</td>
-          <td>2451.000</td>
+          <th>170</th>
+          <td>ALB</td>
+          <td>Albania</td>
+          <td>1941</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1100.000</td>
+          <td>NaN</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>15105</th>
+          <td>PRT</td>
+          <td>Portugal</td>
+          <td>1941</td>
+          <td>2320.000</td>
+          <td>3023.000</td>
+          <td>7757.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>17107</th>
-          <td>SWE</td>
-          <td>Sweden</td>
-          <td>1760</td>
-          <td>1406.000</td>
-          <td>1768.000</td>
+          <th>276</th>
+          <td>ARE</td>
+          <td>United Arab Emirates</td>
+          <td>1980</td>
           <td>nan</td>
-          <td>Extrapolated</td>
+          <td>nan</td>
+          <td>1000.000</td>
+          <td>NaN</td>
           <td>NaN</td>
         </tr>
       </tbody>

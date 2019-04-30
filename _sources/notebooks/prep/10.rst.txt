@@ -1,0 +1,438 @@
+
+Labor Data Processing (WDI/ILO)
+===============================
+
+Data Dictionary
+---------------
+
++--------------------------------+-------------------------------------------------------------------------------------------------+
+| **Code**                       | **Indicator Name**                                                                              |
++================================+=================================================================================================+
+| SL.TLF.ACTI.1524.FE.ZS         | Labor force participation rate for ages 15-24, female (%) (modeled ILO estimate)                |
++--------------------------------+-------------------------------------------------------------------------------------------------+
+| SL.TLF.CACT.ZS                 | Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)   |
++--------------------------------+-------------------------------------------------------------------------------------------------+
+| SL.TLF.CACT.FM.ZS              | Ratio of female to male labor force participation rate (%) (modeled ILO estimate)               |
++--------------------------------+-------------------------------------------------------------------------------------------------+
+| SL.TLF.0714.SW.TM              | Average working hours of children, study and work, ages 7-14 (hours per week)                   |
++--------------------------------+-------------------------------------------------------------------------------------------------+
+| SL.TLF.0714.WK.TM              | Average working hours of children, working only, ages 7-14 (hours per week)                     |
++--------------------------------+-------------------------------------------------------------------------------------------------+
+| SL.EMP.MPYR.ZS                 | Employers, total (% of total employment) (modeled ILO estimate)                                 |
++--------------------------------+-------------------------------------------------------------------------------------------------+
+| SL.AGR.EMPL.ZS                 | Employment in agriculture (% of total employment) (modeled ILO estimate)                        |
++--------------------------------+-------------------------------------------------------------------------------------------------+
+| SL.IND.EMPL.ZS                 | Employment in industry (% of total employment) (modeled ILO estimate)                           |
++--------------------------------+-------------------------------------------------------------------------------------------------+
+| SL.SRV.EMPL.ZS                 | Employment in services (% of total employment) (modeled ILO estimate)                           |
++--------------------------------+-------------------------------------------------------------------------------------------------+
+| SL.ISV.IFRM.ZS                 | Informal employment (% of total non-agricultural employment)                                    |
++--------------------------------+-------------------------------------------------------------------------------------------------+
+| SL.UEM.TOTL.ZS                 | Unemployment, total (% of total labor force) (modeled ILO estimate)                             |
++--------------------------------+-------------------------------------------------------------------------------------------------+
+| SL.EMP.SELF.ZS                 | Self-employed, total (% of total employment) (modeled ILO estimate)                             |
++--------------------------------+-------------------------------------------------------------------------------------------------+
+| per\_lm\_alllm.cov\_pop\_tot   | Coverage of unemployment benefits and ALMP (% of population)                                    |
++--------------------------------+-------------------------------------------------------------------------------------------------+
+
+.. code:: ipython3
+
+    import re
+    
+    import numpy as np
+    import pandas as pd
+    import pycountry
+    
+    %matplotlib inline
+    
+    pd.set_option('display.float_format', lambda x: '%.3f' % x)
+
+Load The File
+-------------
+
+.. code:: ipython3
+
+    df = pd.read_excel("../data/external/Labor/WDI/Data_Extract_From_World_Development_Indicators.xlsx")
+
+.. code:: ipython3
+
+    df.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Time</th>
+          <th>Time Code</th>
+          <th>Country Name</th>
+          <th>Country Code</th>
+          <th>Labor force participation rate for ages 15-24, female (%) (modeled ILO estimate) [SL.TLF.ACTI.1524.FE.ZS]</th>
+          <th>Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate) [SL.TLF.CACT.ZS]</th>
+          <th>Ratio of female to male labor force participation rate (%) (modeled ILO estimate) [SL.TLF.CACT.FM.ZS]</th>
+          <th>Average working hours of children, study and work, ages 7-14 (hours per week) [SL.TLF.0714.SW.TM]</th>
+          <th>Average working hours of children, working only, ages 7-14 (hours per week) [SL.TLF.0714.WK.TM]</th>
+          <th>Employers, total (% of total employment) (modeled ILO estimate) [SL.EMP.MPYR.ZS]</th>
+          <th>Employment in agriculture (% of total employment) (modeled ILO estimate) [SL.AGR.EMPL.ZS]</th>
+          <th>Employment in industry (% of total employment) (modeled ILO estimate) [SL.IND.EMPL.ZS]</th>
+          <th>Employment in services (% of total employment) (modeled ILO estimate) [SL.SRV.EMPL.ZS]</th>
+          <th>Informal employment (% of total non-agricultural employment) [SL.ISV.IFRM.ZS]</th>
+          <th>Unemployment, total (% of total labor force) (modeled ILO estimate) [SL.UEM.TOTL.ZS]</th>
+          <th>Self-employed, total (% of total employment) (modeled ILO estimate) [SL.EMP.SELF.ZS]</th>
+          <th>Coverage of unemployment benefits and ALMP (% of population) [per_lm_alllm.cov_pop_tot]</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>6343</th>
+          <td>2018</td>
+          <td>YR2018</td>
+          <td>Indonesia</td>
+          <td>IDN</td>
+          <td>38.350</td>
+          <td>67.124</td>
+          <td>63.727</td>
+          <td>..</td>
+          <td>..</td>
+          <td>3.448</td>
+          <td>30.526</td>
+          <td>21.999</td>
+          <td>47.475</td>
+          <td>..</td>
+          <td>4.300</td>
+          <td>50.670</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>1412</th>
+          <td>1999</td>
+          <td>YR1999</td>
+          <td>Grenada</td>
+          <td>GRD</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>1186</th>
+          <td>1998</td>
+          <td>YR1998</td>
+          <td>Maldives</td>
+          <td>MDV</td>
+          <td>26.676</td>
+          <td>52.757</td>
+          <td>46.704</td>
+          <td>..</td>
+          <td>..</td>
+          <td>3.342</td>
+          <td>18.717</td>
+          <td>24.343</td>
+          <td>56.940</td>
+          <td>..</td>
+          <td>1.368</td>
+          <td>36.711</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>1226</th>
+          <td>1998</td>
+          <td>YR1998</td>
+          <td>San Marino</td>
+          <td>SMR</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>2761</th>
+          <td>2004</td>
+          <td>YR2004</td>
+          <td>Liberia</td>
+          <td>LBR</td>
+          <td>31.114</td>
+          <td>56.030</td>
+          <td>89.739</td>
+          <td>..</td>
+          <td>..</td>
+          <td>1.981</td>
+          <td>49.547</td>
+          <td>9.596</td>
+          <td>40.857</td>
+          <td>..</td>
+          <td>2.526</td>
+          <td>81.893</td>
+          <td>..</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Standardize Country Codes
+-------------------------
+
+.. code:: ipython3
+
+    """ Only Select rows with valid country codes
+    """
+    country_locations = []
+    for country in df['Country Code']:
+        try:
+            pycountry.countries.lookup(country)
+            country_locations.append(True)
+        except LookupError:
+            country_locations.append(False)
+    df = df[country_locations]
+
+Standardize Indexes
+-------------------
+
+.. code:: ipython3
+
+    df.rename(
+        {
+            "Time": "Year"
+        },
+        axis='columns',
+        inplace=True)
+
+.. code:: ipython3
+
+    df.set_index(["Country Code", "Year"], inplace=True)
+
+Clean Data
+----------
+
+Header
+~~~~~~
+
+.. code:: ipython3
+
+    df.drop(["Time Code", "Country Name"],
+            axis='columns',
+            inplace=True)
+
+.. code:: ipython3
+
+    c = [ re.search(r"\[(\w+\.)+\w+\]",d)[0].replace("[","").replace("]","") for d in df.columns ]
+
+.. code:: ipython3
+
+    c_names = {}
+    for x in range(len(c)):
+        c_names[df.columns[x]] = c[x]
+
+.. code:: ipython3
+
+    df.rename(c_names,axis='columns',inplace=True)
+
+Data Types
+~~~~~~~~~~
+
+.. code:: ipython3
+
+    """ Replace '..' with np.nan for better parsing
+    """
+    df = df.replace('..', np.NaN)
+
+.. code:: ipython3
+
+    df = df.astype(float)
+
+.. code:: ipython3
+
+    df.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th></th>
+          <th>SL.TLF.ACTI.1524.FE.ZS</th>
+          <th>SL.TLF.CACT.ZS</th>
+          <th>SL.TLF.CACT.FM.ZS</th>
+          <th>SL.TLF.0714.SW.TM</th>
+          <th>SL.TLF.0714.WK.TM</th>
+          <th>SL.EMP.MPYR.ZS</th>
+          <th>SL.AGR.EMPL.ZS</th>
+          <th>SL.IND.EMPL.ZS</th>
+          <th>SL.SRV.EMPL.ZS</th>
+          <th>SL.ISV.IFRM.ZS</th>
+          <th>SL.UEM.TOTL.ZS</th>
+          <th>SL.EMP.SELF.ZS</th>
+          <th>per_lm_alllm.cov_pop_tot</th>
+        </tr>
+        <tr>
+          <th>Country Code</th>
+          <th>Year</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>MDG</th>
+          <th>2008</th>
+          <td>77.087</td>
+          <td>88.271</td>
+          <td>95.351</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>2.156</td>
+          <td>76.329</td>
+          <td>4.997</td>
+          <td>18.674</td>
+          <td>nan</td>
+          <td>2.673</td>
+          <td>89.111</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>KEN</th>
+          <th>2011</th>
+          <td>35.841</td>
+          <td>66.249</td>
+          <td>87.708</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>7.748</td>
+          <td>59.507</td>
+          <td>7.059</td>
+          <td>33.434</td>
+          <td>nan</td>
+          <td>9.678</td>
+          <td>63.786</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>IRN</th>
+          <th>2011</th>
+          <td>11.773</td>
+          <td>42.746</td>
+          <td>21.938</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>4.007</td>
+          <td>18.702</td>
+          <td>32.714</td>
+          <td>48.584</td>
+          <td>nan</td>
+          <td>12.450</td>
+          <td>44.019</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>AUS</th>
+          <th>1998</th>
+          <td>67.681</td>
+          <td>63.203</td>
+          <td>73.723</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>7.564</td>
+          <td>4.875</td>
+          <td>21.798</td>
+          <td>73.327</td>
+          <td>nan</td>
+          <td>7.676</td>
+          <td>19.912</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>CYM</th>
+          <th>2016</th>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Save Data
+---------
+
+.. code:: ipython3
+
+    df.to_pickle("../data/processed/Labor_WDI.pickle")

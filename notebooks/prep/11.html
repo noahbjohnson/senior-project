@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>1.4. General Indicators Data Processing (WDI) &#8212; Senior-Project 0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.5. Dataset Joining" href="12.html" />
+    <link rel="prev" title="1.3. Labor Data Processing (WDI/ILO)" href="10.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="12.html" title="1.5. Dataset Joining"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="10.html" title="1.3. Labor Data Processing (WDI/ILO)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">1. Data Preperation Notebooks</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="general-indicators-data-processing-wdi">
+<h1>1.4. General Indicators Data Processing (WDI)<a class="headerlink" href="#general-indicators-data-processing-wdi" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data-dictionary">
+<h2>1.4.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Code</strong></p></th>
+<th class="head"><p><strong>Indicator Name</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SP.DYN.LE00.IN</p></td>
+<td><p>Life expectancy at birth, total (years)</p></td>
+</tr>
+<tr class="row-odd"><td><p>EG.ELC.ACCS.ZS</p></td>
+<td><p>Access to electricity (% of population)</p></td>
+</tr>
+<tr class="row-even"><td><p>SH.STA.HYGN.ZS</p></td>
+<td><p>People with basic handwashing facilities including soap and water (% of population)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SH.H2O.SMDW.ZS</p></td>
+<td><p>People using safely managed drinking water services (% of population)</p></td>
+</tr>
+<tr class="row-even"><td><p>SH.H2O.BASW.ZS</p></td>
+<td><p>People using at least basic drinking water services (% of population)</p></td>
+</tr>
+<tr class="row-odd"><td><p>EN.ATM.CO2E.PC</p></td>
+<td><p>CO2 emissions (metric tons per capita)</p></td>
+</tr>
+<tr class="row-even"><td><p>EN.CO2.TRAN.ZS</p></td>
+<td><p>CO2 emissions from transport (% of total fuel combustion)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ER.LND.PTLD.ZS</p></td>
+<td><p>Terrestrial protected areas (% of total land area)</p></td>
+</tr>
+<tr class="row-even"><td><p>DT.DOD.PVLX.GN.ZS</p></td>
+<td><p>Present value of external debt (% of GNI)</p></td>
+</tr>
+<tr class="row-odd"><td><p>FB.ATM.TOTL.P5</p></td>
+<td><p>Automated teller machines (ATMs) (per 100,000 adults)</p></td>
+</tr>
+<tr class="row-even"><td><p>FB.CBK.BRCH.P5</p></td>
+<td><p>Commercial bank branches (per 100,000 adults)</p></td>
+</tr>
+<tr class="row-odd"><td><p>FB.CBK.DPTR.P3</p></td>
+<td><p>Depositors with commercial banks (per 1,000 adults)</p></td>
+</tr>
+<tr class="row-even"><td><p>FB.CBK.BRWR.P3</p></td>
+<td><p>Borrowers from commercial banks (per 1,000 adults)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SG.VAW.1549.ZS</p></td>
+<td><p>Proportion of women subjected to physical and/or sexual violence in the last 12 months (% of women age 15-49)</p></td>
+</tr>
+<tr class="row-even"><td><p>SG.DMK.ALLD.FN.ZS</p></td>
+<td><p>Women participating in the three decisions (own health care, major household purchases, and visiting family) (% of women age 15-49)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SG.DMK.SRCR.FN.ZS</p></td>
+<td><p>Women making their own informed decisions regarding sexual relations, contraceptive use and reproductive health care (% of women age 15-49)</p></td>
+</tr>
+<tr class="row-even"><td><p>SH.STA.SUIC.P5</p></td>
+<td><p>Suicide mortality rate (per 100,000 population)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SH.STA.WASH.P5</p></td>
+<td><p>Mortality rate attributed to unsafe water, unsafe sanitation and lack of hygiene (per 100,000 population)</p></td>
+</tr>
+<tr class="row-even"><td><p>SP.DYN.IMRT.IN</p></td>
+<td><p>Mortality rate, infant (per 1,000 live births)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SH.STA.BRTW.ZS</p></td>
+<td><p>Low-birthweight babies (% of births)</p></td>
+</tr>
+<tr class="row-even"><td><p>SH.ANM.CHLD.ZS</p></td>
+<td><p>Prevalence of anemia among children (% of children under 5)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SH.STA.ANVC.ZS</p></td>
+<td><p>Pregnant women receiving prenatal care (%)</p></td>
+</tr>
+<tr class="row-even"><td><p>SH.STA.FGMS.ZS</p></td>
+<td><p>Female genital mutilation prevalence (%)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SH.PRV.SMOK</p></td>
+<td><p>Smoking prevalence, total (ages 15+)</p></td>
+</tr>
+<tr class="row-even"><td><p>SH.ALC.PCAP.LI</p></td>
+<td><p>Total alcohol consumption per capita (liters of pure alcohol, projected estimates, 15+ years of age)</p></td>
+</tr>
+<tr class="row-odd"><td><p>IT.NET.BBND.P2</p></td>
+<td><p>Fixed broadband subscriptions (per 100 people)</p></td>
+</tr>
+<tr class="row-even"><td><p>IT.NET.USER.ZS</p></td>
+<td><p>Individuals using the Internet (% of population)</p></td>
+</tr>
+<tr class="row-odd"><td><p>IT.CEL.SETS.P2</p></td>
+<td><p>Mobile cellular subscriptions (per 100 people)</p></td>
+</tr>
+<tr class="row-even"><td><p>SM.POP.REFG.OR</p></td>
+<td><p>Refugee population by country or territory of origin</p></td>
+</tr>
+<tr class="row-odd"><td><p>per_si_allsi.cov_pop_tot</p></td>
+<td><p>Coverage of social insurance programs (% of population)</p></td>
+</tr>
+<tr class="row-even"><td><p>VC.IHR.PSRC.P5</p></td>
+<td><p>Intentional homicides (per 100,000 people)</p></td>
+</tr>
+<tr class="row-odd"><td><p>MS.MIL.TOTL.TF.ZS</p></td>
+<td><p>Armed forces personnel (% of total labor force)</p></td>
+</tr>
+<tr class="row-even"><td><p>HD.HCI.OVRL</p></td>
+<td><p>Human capital index (HCI) (scale 0-1)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pycountry</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.float_format&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="load-the-file">
+<h2>1.4.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/external/General Indicators/WDI/Data_Extract_From_World_Development_Indicators.xlsx&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>Time Code</th>
+      <th>Country Name</th>
+      <th>Country Code</th>
+      <th>Life expectancy at birth, total (years) [SP.DYN.LE00.IN]</th>
+      <th>Access to electricity (% of population) [EG.ELC.ACCS.ZS]</th>
+      <th>People with basic handwashing facilities including soap and water (% of population) [SH.STA.HYGN.ZS]</th>
+      <th>People using safely managed drinking water services (% of population) [SH.H2O.SMDW.ZS]</th>
+      <th>People using at least basic drinking water services (% of population) [SH.H2O.BASW.ZS]</th>
+      <th>CO2 emissions (metric tons per capita) [EN.ATM.CO2E.PC]</th>
+      <th>...</th>
+      <th>Smoking prevalence, total (ages 15+) [SH.PRV.SMOK]</th>
+      <th>Total alcohol consumption per capita (liters of pure alcohol, projected estimates, 15+ years of age) [SH.ALC.PCAP.LI]</th>
+      <th>Fixed broadband subscriptions (per 100 people) [IT.NET.BBND.P2]</th>
+      <th>Individuals using the Internet (% of population) [IT.NET.USER.ZS]</th>
+      <th>Mobile cellular subscriptions (per 100 people) [IT.CEL.SETS.P2]</th>
+      <th>Refugee population by country or territory of origin [SM.POP.REFG.OR]</th>
+      <th>Coverage of social insurance programs (% of population) [per_si_allsi.cov_pop_tot]</th>
+      <th>Intentional homicides (per 100,000 people) [VC.IHR.PSRC.P5]</th>
+      <th>Armed forces personnel (% of total labor force) [MS.MIL.TOTL.TF.ZS]</th>
+      <th>Human capital index (HCI) (scale 0-1) [HD.HCI.OVRL]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2936</th>
+      <td>2005</td>
+      <td>YR2005</td>
+      <td>Cabo Verde</td>
+      <td>CPV</td>
+      <td>71.760</td>
+      <td>67</td>
+      <td>..</td>
+      <td>..</td>
+      <td>79.893</td>
+      <td>0.927</td>
+      <td>...</td>
+      <td>11.400</td>
+      <td>..</td>
+      <td>0.197</td>
+      <td>6.074</td>
+      <td>17.220</td>
+      <td>5</td>
+      <td>..</td>
+      <td>9.272</td>
+      <td>0.530</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>1688</th>
+      <td>2000</td>
+      <td>YR2000</td>
+      <td>Korea, Rep.</td>
+      <td>KOR</td>
+      <td>75.910</td>
+      <td>100</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>9.521</td>
+      <td>...</td>
+      <td>34.300</td>
+      <td>..</td>
+      <td>8.167</td>
+      <td>44.700</td>
+      <td>56.591</td>
+      <td>73</td>
+      <td>..</td>
+      <td>..</td>
+      <td>3.014</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>3953</th>
+      <td>2008</td>
+      <td>YR2008</td>
+      <td>South Asia</td>
+      <td>SAS</td>
+      <td>66.037</td>
+      <td>70.642</td>
+      <td>..</td>
+      <td>..</td>
+      <td>85.232</td>
+      <td>1.135</td>
+      <td>...</td>
+      <td>..</td>
+      <td>..</td>
+      <td>0.355</td>
+      <td>4.409</td>
+      <td>31.774</td>
+      <td>3142120</td>
+      <td>..</td>
+      <td>..</td>
+      <td>0.698</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>5998</th>
+      <td>2016</td>
+      <td>YR2016</td>
+      <td>Tajikistan</td>
+      <td>TJK</td>
+      <td>71.051</td>
+      <td>100</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>...</td>
+      <td>..</td>
+      <td>3.300</td>
+      <td>0.069</td>
+      <td>20.470</td>
+      <td>107.614</td>
+      <td>925</td>
+      <td>..</td>
+      <td>..</td>
+      <td>0.661</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>6141</th>
+      <td>2017</td>
+      <td>YR2017</td>
+      <td>French Polynesia</td>
+      <td>PYF</td>
+      <td>76.996</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>...</td>
+      <td>..</td>
+      <td>..</td>
+      <td>20.383</td>
+      <td>72.704</td>
+      <td>101.707</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 37 columns</p>
+</div></div>
+<div class="section" id="standardize-country-codes">
+<h2>1.4.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Only Select rows with valid country codes</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">country_locations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Country Code&#39;</span><span class="p">]:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">pycountry</span><span class="o">.</span><span class="n">countries</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
+        <span class="n">country_locations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+        <span class="n">country_locations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">country_locations</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="standardize-indexes">
+<h2>1.4.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;Year&quot;</span>
+    <span class="p">},</span>
+    <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span>
+    <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;Country Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="clean-data">
+<h2>1.4.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="header">
+<h3>1.4.5.1. Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Time Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Country Name&quot;</span><span class="p">],</span>
+        <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span>
+        <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\[(\w+\.)+\w+\]&quot;</span><span class="p">,</span><span class="n">d</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;]&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c_names</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)):</span>
+    <span class="n">c_names</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">x</span><span class="p">]]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">c_names</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-types">
+<h3>1.4.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Replace &#39;..&#39; with np.nan for better parsing</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>SP.DYN.LE00.IN</th>
+      <th>EG.ELC.ACCS.ZS</th>
+      <th>SH.STA.HYGN.ZS</th>
+      <th>SH.H2O.SMDW.ZS</th>
+      <th>SH.H2O.BASW.ZS</th>
+      <th>EN.ATM.CO2E.PC</th>
+      <th>EN.CO2.TRAN.ZS</th>
+      <th>ER.LND.PTLD.ZS</th>
+      <th>DT.DOD.PVLX.GN.ZS</th>
+      <th>FB.ATM.TOTL.P5</th>
+      <th>...</th>
+      <th>SH.PRV.SMOK</th>
+      <th>SH.ALC.PCAP.LI</th>
+      <th>IT.NET.BBND.P2</th>
+      <th>IT.NET.USER.ZS</th>
+      <th>IT.CEL.SETS.P2</th>
+      <th>SM.POP.REFG.OR</th>
+      <th>per_si_allsi.cov_pop_tot</th>
+      <th>VC.IHR.PSRC.P5</th>
+      <th>MS.MIL.TOTL.TF.ZS</th>
+      <th>HD.HCI.OVRL</th>
+    </tr>
+    <tr>
+      <th>Country Code</th>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>TKM</th>
+      <th>2002</th>
+      <td>64.101</td>
+      <td>99.601</td>
+      <td>74.409</td>
+      <td>69.776</td>
+      <td>85.467</td>
+      <td>8.670</td>
+      <td>18.379</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>...</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0.302</td>
+      <td>0.177</td>
+      <td>801.000</td>
+      <td>nan</td>
+      <td>5.228</td>
+      <td>0.919</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>EGY</th>
+      <th>2007</th>
+      <td>69.797</td>
+      <td>98.820</td>
+      <td>76.514</td>
+      <td>nan</td>
+      <td>98.295</td>
+      <td>2.377</td>
+      <td>22.634</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>5.300</td>
+      <td>...</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0.600</td>
+      <td>16.030</td>
+      <td>37.836</td>
+      <td>6799.000</td>
+      <td>nan</td>
+      <td>0.855</td>
+      <td>3.359</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>GMB</th>
+      <th>2001</th>
+      <td>56.329</td>
+      <td>29.748</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>74.281</td>
+      <td>0.199</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>...</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>1.337</td>
+      <td>4.336</td>
+      <td>734.000</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0.202</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>TCD</th>
+      <th>2000</th>
+      <td>47.593</td>
+      <td>2.902</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>39.003</td>
+      <td>0.021</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>...</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0.036</td>
+      <td>0.066</td>
+      <td>54962.000</td>
+      <td>nan</td>
+      <td>11.378</td>
+      <td>1.124</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>SWE</th>
+      <th>2010</th>
+      <td>81.451</td>
+      <td>100.000</td>
+      <td>nan</td>
+      <td>97.950</td>
+      <td>100.000</td>
+      <td>5.547</td>
+      <td>47.111</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>42.797</td>
+      <td>...</td>
+      <td>23.100</td>
+      <td>9.500</td>
+      <td>31.943</td>
+      <td>90.000</td>
+      <td>117.063</td>
+      <td>25.000</td>
+      <td>nan</td>
+      <td>0.969</td>
+      <td>0.428</td>
+      <td>nan</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 33 columns</p>
+</div></div>
+</div>
+<div class="section" id="save-data">
+<h2>1.4.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;../data/processed/General_WDI.pickle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1.4. General Indicators Data Processing (WDI)</a><ul>
+<li><a class="reference internal" href="#data-dictionary">1.4.1. Data Dictionary</a></li>
+<li><a class="reference internal" href="#load-the-file">1.4.2. Load The File</a></li>
+<li><a class="reference internal" href="#standardize-country-codes">1.4.3. Standardize Country Codes</a></li>
+<li><a class="reference internal" href="#standardize-indexes">1.4.4. Standardize Indexes</a></li>
+<li><a class="reference internal" href="#clean-data">1.4.5. Clean Data</a><ul>
+<li><a class="reference internal" href="#header">1.4.5.1. Header</a></li>
+<li><a class="reference internal" href="#data-types">1.4.5.2. Data Types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#save-data">1.4.6. Save Data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="10.html"
+                        title="previous chapter">1.3. Labor Data Processing (WDI/ILO)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="12.html"
+                        title="next chapter">1.5. Dataset Joining</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/notebooks/prep/11.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="12.html" title="1.5. Dataset Joining"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="10.html" title="1.3. Labor Data Processing (WDI/ILO)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >1. Data Preperation Notebooks</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

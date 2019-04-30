@@ -1,0 +1,560 @@
+
+General Indicators Data Processing (WDI)
+========================================
+
+Data Dictionary
+---------------
+
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| **Code**                       | **Indicator Name**                                                                                                                            |
++================================+===============================================================================================================================================+
+| SP.DYN.LE00.IN                 | Life expectancy at birth, total (years)                                                                                                       |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| EG.ELC.ACCS.ZS                 | Access to electricity (% of population)                                                                                                       |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SH.STA.HYGN.ZS                 | People with basic handwashing facilities including soap and water (% of population)                                                           |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SH.H2O.SMDW.ZS                 | People using safely managed drinking water services (% of population)                                                                         |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SH.H2O.BASW.ZS                 | People using at least basic drinking water services (% of population)                                                                         |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| EN.ATM.CO2E.PC                 | CO2 emissions (metric tons per capita)                                                                                                        |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| EN.CO2.TRAN.ZS                 | CO2 emissions from transport (% of total fuel combustion)                                                                                     |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| ER.LND.PTLD.ZS                 | Terrestrial protected areas (% of total land area)                                                                                            |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| DT.DOD.PVLX.GN.ZS              | Present value of external debt (% of GNI)                                                                                                     |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| FB.ATM.TOTL.P5                 | Automated teller machines (ATMs) (per 100,000 adults)                                                                                         |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| FB.CBK.BRCH.P5                 | Commercial bank branches (per 100,000 adults)                                                                                                 |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| FB.CBK.DPTR.P3                 | Depositors with commercial banks (per 1,000 adults)                                                                                           |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| FB.CBK.BRWR.P3                 | Borrowers from commercial banks (per 1,000 adults)                                                                                            |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SG.VAW.1549.ZS                 | Proportion of women subjected to physical and/or sexual violence in the last 12 months (% of women age 15-49)                                 |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SG.DMK.ALLD.FN.ZS              | Women participating in the three decisions (own health care, major household purchases, and visiting family) (% of women age 15-49)           |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SG.DMK.SRCR.FN.ZS              | Women making their own informed decisions regarding sexual relations, contraceptive use and reproductive health care (% of women age 15-49)   |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SH.STA.SUIC.P5                 | Suicide mortality rate (per 100,000 population)                                                                                               |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SH.STA.WASH.P5                 | Mortality rate attributed to unsafe water, unsafe sanitation and lack of hygiene (per 100,000 population)                                     |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SP.DYN.IMRT.IN                 | Mortality rate, infant (per 1,000 live births)                                                                                                |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SH.STA.BRTW.ZS                 | Low-birthweight babies (% of births)                                                                                                          |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SH.ANM.CHLD.ZS                 | Prevalence of anemia among children (% of children under 5)                                                                                   |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SH.STA.ANVC.ZS                 | Pregnant women receiving prenatal care (%)                                                                                                    |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SH.STA.FGMS.ZS                 | Female genital mutilation prevalence (%)                                                                                                      |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SH.PRV.SMOK                    | Smoking prevalence, total (ages 15+)                                                                                                          |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SH.ALC.PCAP.LI                 | Total alcohol consumption per capita (liters of pure alcohol, projected estimates, 15+ years of age)                                          |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| IT.NET.BBND.P2                 | Fixed broadband subscriptions (per 100 people)                                                                                                |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| IT.NET.USER.ZS                 | Individuals using the Internet (% of population)                                                                                              |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| IT.CEL.SETS.P2                 | Mobile cellular subscriptions (per 100 people)                                                                                                |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| SM.POP.REFG.OR                 | Refugee population by country or territory of origin                                                                                          |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| per\_si\_allsi.cov\_pop\_tot   | Coverage of social insurance programs (% of population)                                                                                       |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| VC.IHR.PSRC.P5                 | Intentional homicides (per 100,000 people)                                                                                                    |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| MS.MIL.TOTL.TF.ZS              | Armed forces personnel (% of total labor force)                                                                                               |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+| HD.HCI.OVRL                    | Human capital index (HCI) (scale 0-1)                                                                                                         |
++--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+
+.. code:: ipython3
+
+    import re
+    
+    import numpy as np
+    import pandas as pd
+    import pycountry
+    
+    %matplotlib inline
+    
+    pd.set_option('display.float_format', lambda x: '%.3f' % x)
+
+Load The File
+-------------
+
+.. code:: ipython3
+
+    df = pd.read_excel("../data/external/General Indicators/WDI/Data_Extract_From_World_Development_Indicators.xlsx")
+
+.. code:: ipython3
+
+    df.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Time</th>
+          <th>Time Code</th>
+          <th>Country Name</th>
+          <th>Country Code</th>
+          <th>Life expectancy at birth, total (years) [SP.DYN.LE00.IN]</th>
+          <th>Access to electricity (% of population) [EG.ELC.ACCS.ZS]</th>
+          <th>People with basic handwashing facilities including soap and water (% of population) [SH.STA.HYGN.ZS]</th>
+          <th>People using safely managed drinking water services (% of population) [SH.H2O.SMDW.ZS]</th>
+          <th>People using at least basic drinking water services (% of population) [SH.H2O.BASW.ZS]</th>
+          <th>CO2 emissions (metric tons per capita) [EN.ATM.CO2E.PC]</th>
+          <th>...</th>
+          <th>Smoking prevalence, total (ages 15+) [SH.PRV.SMOK]</th>
+          <th>Total alcohol consumption per capita (liters of pure alcohol, projected estimates, 15+ years of age) [SH.ALC.PCAP.LI]</th>
+          <th>Fixed broadband subscriptions (per 100 people) [IT.NET.BBND.P2]</th>
+          <th>Individuals using the Internet (% of population) [IT.NET.USER.ZS]</th>
+          <th>Mobile cellular subscriptions (per 100 people) [IT.CEL.SETS.P2]</th>
+          <th>Refugee population by country or territory of origin [SM.POP.REFG.OR]</th>
+          <th>Coverage of social insurance programs (% of population) [per_si_allsi.cov_pop_tot]</th>
+          <th>Intentional homicides (per 100,000 people) [VC.IHR.PSRC.P5]</th>
+          <th>Armed forces personnel (% of total labor force) [MS.MIL.TOTL.TF.ZS]</th>
+          <th>Human capital index (HCI) (scale 0-1) [HD.HCI.OVRL]</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>2936</th>
+          <td>2005</td>
+          <td>YR2005</td>
+          <td>Cabo Verde</td>
+          <td>CPV</td>
+          <td>71.760</td>
+          <td>67</td>
+          <td>..</td>
+          <td>..</td>
+          <td>79.893</td>
+          <td>0.927</td>
+          <td>...</td>
+          <td>11.400</td>
+          <td>..</td>
+          <td>0.197</td>
+          <td>6.074</td>
+          <td>17.220</td>
+          <td>5</td>
+          <td>..</td>
+          <td>9.272</td>
+          <td>0.530</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>1688</th>
+          <td>2000</td>
+          <td>YR2000</td>
+          <td>Korea, Rep.</td>
+          <td>KOR</td>
+          <td>75.910</td>
+          <td>100</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>9.521</td>
+          <td>...</td>
+          <td>34.300</td>
+          <td>..</td>
+          <td>8.167</td>
+          <td>44.700</td>
+          <td>56.591</td>
+          <td>73</td>
+          <td>..</td>
+          <td>..</td>
+          <td>3.014</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>3953</th>
+          <td>2008</td>
+          <td>YR2008</td>
+          <td>South Asia</td>
+          <td>SAS</td>
+          <td>66.037</td>
+          <td>70.642</td>
+          <td>..</td>
+          <td>..</td>
+          <td>85.232</td>
+          <td>1.135</td>
+          <td>...</td>
+          <td>..</td>
+          <td>..</td>
+          <td>0.355</td>
+          <td>4.409</td>
+          <td>31.774</td>
+          <td>3142120</td>
+          <td>..</td>
+          <td>..</td>
+          <td>0.698</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>5998</th>
+          <td>2016</td>
+          <td>YR2016</td>
+          <td>Tajikistan</td>
+          <td>TJK</td>
+          <td>71.051</td>
+          <td>100</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>...</td>
+          <td>..</td>
+          <td>3.300</td>
+          <td>0.069</td>
+          <td>20.470</td>
+          <td>107.614</td>
+          <td>925</td>
+          <td>..</td>
+          <td>..</td>
+          <td>0.661</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>6141</th>
+          <td>2017</td>
+          <td>YR2017</td>
+          <td>French Polynesia</td>
+          <td>PYF</td>
+          <td>76.996</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>...</td>
+          <td>..</td>
+          <td>..</td>
+          <td>20.383</td>
+          <td>72.704</td>
+          <td>101.707</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>5 rows × 37 columns</p>
+    </div>
+
+
+
+Standardize Country Codes
+-------------------------
+
+.. code:: ipython3
+
+    """ Only Select rows with valid country codes
+    """
+    country_locations = []
+    for country in df['Country Code']:
+        try:
+            pycountry.countries.lookup(country)
+            country_locations.append(True)
+        except LookupError:
+            country_locations.append(False)
+    df = df[country_locations]
+
+Standardize Indexes
+-------------------
+
+.. code:: ipython3
+
+    df.rename(
+        {
+            "Time": "Year"
+        },
+        axis='columns',
+        inplace=True)
+
+.. code:: ipython3
+
+    df.set_index(["Country Code", "Year"], inplace=True)
+
+Clean Data
+----------
+
+Header
+~~~~~~
+
+.. code:: ipython3
+
+    df.drop(["Time Code", "Country Name"],
+            axis='columns',
+            inplace=True)
+
+.. code:: ipython3
+
+    c = [ re.search(r"\[(\w+\.)+\w+\]",d)[0].replace("[","").replace("]","") for d in df.columns ]
+
+.. code:: ipython3
+
+    c_names = {}
+    for x in range(len(c)):
+        c_names[df.columns[x]] = c[x]
+
+.. code:: ipython3
+
+    df.rename(c_names,axis='columns',inplace=True)
+
+Data Types
+~~~~~~~~~~
+
+.. code:: ipython3
+
+    """ Replace '..' with np.nan for better parsing
+    """
+    df = df.replace('..', np.NaN)
+
+.. code:: ipython3
+
+    df = df.astype(float)
+
+.. code:: ipython3
+
+    df.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th></th>
+          <th>SP.DYN.LE00.IN</th>
+          <th>EG.ELC.ACCS.ZS</th>
+          <th>SH.STA.HYGN.ZS</th>
+          <th>SH.H2O.SMDW.ZS</th>
+          <th>SH.H2O.BASW.ZS</th>
+          <th>EN.ATM.CO2E.PC</th>
+          <th>EN.CO2.TRAN.ZS</th>
+          <th>ER.LND.PTLD.ZS</th>
+          <th>DT.DOD.PVLX.GN.ZS</th>
+          <th>FB.ATM.TOTL.P5</th>
+          <th>...</th>
+          <th>SH.PRV.SMOK</th>
+          <th>SH.ALC.PCAP.LI</th>
+          <th>IT.NET.BBND.P2</th>
+          <th>IT.NET.USER.ZS</th>
+          <th>IT.CEL.SETS.P2</th>
+          <th>SM.POP.REFG.OR</th>
+          <th>per_si_allsi.cov_pop_tot</th>
+          <th>VC.IHR.PSRC.P5</th>
+          <th>MS.MIL.TOTL.TF.ZS</th>
+          <th>HD.HCI.OVRL</th>
+        </tr>
+        <tr>
+          <th>Country Code</th>
+          <th>Year</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>TKM</th>
+          <th>2002</th>
+          <td>64.101</td>
+          <td>99.601</td>
+          <td>74.409</td>
+          <td>69.776</td>
+          <td>85.467</td>
+          <td>8.670</td>
+          <td>18.379</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>...</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>0.302</td>
+          <td>0.177</td>
+          <td>801.000</td>
+          <td>nan</td>
+          <td>5.228</td>
+          <td>0.919</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>EGY</th>
+          <th>2007</th>
+          <td>69.797</td>
+          <td>98.820</td>
+          <td>76.514</td>
+          <td>nan</td>
+          <td>98.295</td>
+          <td>2.377</td>
+          <td>22.634</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>5.300</td>
+          <td>...</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>0.600</td>
+          <td>16.030</td>
+          <td>37.836</td>
+          <td>6799.000</td>
+          <td>nan</td>
+          <td>0.855</td>
+          <td>3.359</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>GMB</th>
+          <th>2001</th>
+          <td>56.329</td>
+          <td>29.748</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>74.281</td>
+          <td>0.199</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>...</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1.337</td>
+          <td>4.336</td>
+          <td>734.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>0.202</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>TCD</th>
+          <th>2000</th>
+          <td>47.593</td>
+          <td>2.902</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>39.003</td>
+          <td>0.021</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>...</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>0.036</td>
+          <td>0.066</td>
+          <td>54962.000</td>
+          <td>nan</td>
+          <td>11.378</td>
+          <td>1.124</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>SWE</th>
+          <th>2010</th>
+          <td>81.451</td>
+          <td>100.000</td>
+          <td>nan</td>
+          <td>97.950</td>
+          <td>100.000</td>
+          <td>5.547</td>
+          <td>47.111</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>42.797</td>
+          <td>...</td>
+          <td>23.100</td>
+          <td>9.500</td>
+          <td>31.943</td>
+          <td>90.000</td>
+          <td>117.063</td>
+          <td>25.000</td>
+          <td>nan</td>
+          <td>0.969</td>
+          <td>0.428</td>
+          <td>nan</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>5 rows × 33 columns</p>
+    </div>
+
+
+
+Save Data
+---------
+
+.. code:: ipython3
+
+    df.to_pickle("../data/processed/General_WDI.pickle")

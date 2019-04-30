@@ -96,47 +96,11 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>663</th>
-          <td>1997</td>
-          <td>YR1997</td>
-          <td>Myanmar</td>
-          <td>MMR</td>
-          <td>0</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>0</td>
-          <td>49380000</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>5687</th>
-          <td>2016</td>
-          <td>YR2016</td>
-          <td>Niger</td>
-          <td>NER</td>
-          <td>239406352.300</td>
-          <td>0</td>
-          <td>370</td>
-          <td>7664346448.279</td>
-          <td>30914901.730</td>
-          <td>951380000</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>6162</th>
-          <td>2018</td>
-          <td>YR2018</td>
-          <td>Indonesia</td>
-          <td>IDN</td>
+          <th>514</th>
+          <td>1996</td>
+          <td>YR1996</td>
+          <td>Not classified</td>
+          <td>INX</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -150,17 +114,17 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>3677</th>
-          <td>2008</td>
-          <td>YR2008</td>
-          <td>Middle East &amp; North Africa</td>
-          <td>MEA</td>
+          <th>1817</th>
+          <td>2001</td>
+          <td>YR2001</td>
+          <td>IDA &amp; IBRD total</td>
+          <td>IBT</td>
           <td>..</td>
           <td>..</td>
-          <td>6301.803</td>
-          <td>2344268742544.976</td>
+          <td>1198.181</td>
+          <td>6164466664024.563</td>
           <td>..</td>
-          <td>24222650000</td>
+          <td>39503820000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -168,17 +132,53 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>5733</th>
-          <td>2016</td>
-          <td>YR2016</td>
-          <td>Syrian Arab Republic</td>
-          <td>SYR</td>
-          <td>375312738.100</td>
-          <td>0</td>
+          <th>4165</th>
+          <td>2010</td>
+          <td>YR2010</td>
+          <td>United Kingdom</td>
+          <td>GBR</td>
           <td>..</td>
           <td>..</td>
+          <td>41380</td>
+          <td>2597497094264.294</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>34.400</td>
+        </tr>
+        <tr>
+          <th>2539</th>
+          <td>2004</td>
+          <td>YR2004</td>
+          <td>Samoa</td>
+          <td>WSM</td>
+          <td>1773537.400</td>
+          <td>..</td>
+          <td>1990</td>
+          <td>355587125.391</td>
           <td>0</td>
-          <td>8899750000</td>
+          <td>31050000</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>3960</th>
+          <td>2010</td>
+          <td>YR2010</td>
+          <td>Afghanistan</td>
+          <td>AFG</td>
+          <td>355229891.100</td>
+          <td>..</td>
+          <td>520</td>
+          <td>14872476818.459</td>
+          <td>121953081.280</td>
+          <td>6470360000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
