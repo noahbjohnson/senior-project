@@ -90,3 +90,5 @@ target/
 
 
 docs/notebooks/*
+
+venv/
