@@ -46,6 +46,8 @@ notebooks:
 	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/8.ipynb --output ../docs/notebooks/prep/8.rst
 	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/9.ipynb --output ../docs/notebooks/prep/9.rst
 	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/10.ipynb --output ../docs/notebooks/prep/10.rst
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/11.ipynb --output ../docs/notebooks/prep/11.rst
+
 
 ## Make Docs
 docs:
