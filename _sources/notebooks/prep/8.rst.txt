@@ -84,74 +84,74 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>1502</th>
+          <th>1434</th>
           <td>2000</td>
           <td>YR2000</td>
-          <td>South Africa</td>
-          <td>ZAF</td>
-          <td>1.005</td>
-          <td>..</td>
-          <td>9</td>
-          <td>7.823</td>
-          <td>34.903</td>
-          <td>28.060</td>
-          <td>59.954</td>
-        </tr>
-        <tr>
-          <th>1805</th>
-          <td>2001</td>
-          <td>YR2001</td>
-          <td>East Asia &amp; Pacific</td>
-          <td>EAS</td>
-          <td>0.972</td>
-          <td>91.709</td>
-          <td>9</td>
-          <td>4.663</td>
-          <td>23.164</td>
-          <td>18.621</td>
-          <td>65.584</td>
-        </tr>
-        <tr>
-          <th>2296</th>
-          <td>2003</td>
-          <td>YR2003</td>
-          <td>Sri Lanka</td>
-          <td>LKA</td>
+          <td>Kosovo</td>
+          <td>XKX</td>
           <td>..</td>
           <td>..</td>
-          <td>9</td>
-          <td>0.383</td>
-          <td>23.427</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
           <td>..</td>
           <td>..</td>
         </tr>
         <tr>
-          <th>3030</th>
+          <th>4001</th>
+          <td>2010</td>
+          <td>YR2010</td>
+          <td>Bolivia</td>
+          <td>BOL</td>
+          <td>0.983</td>
+          <td>..</td>
+          <td>14</td>
+          <td>4.449</td>
+          <td>..</td>
+          <td>..</td>
+          <td>73.199</td>
+        </tr>
+        <tr>
+          <th>4106</th>
+          <td>2010</td>
+          <td>YR2010</td>
+          <td>Nepal</td>
+          <td>NPL</td>
+          <td>1.011</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>31.919</td>
+          <td>31.972</td>
+          <td>50.485</td>
+        </tr>
+        <tr>
+          <th>2971</th>
           <td>2006</td>
           <td>YR2006</td>
-          <td>Macao SAR, China</td>
-          <td>MAC</td>
-          <td>0.942</td>
-          <td>93.500</td>
+          <td>Cyprus</td>
+          <td>CYP</td>
+          <td>1.007</td>
+          <td>..</td>
           <td>10</td>
-          <td>14.929</td>
-          <td>21.484</td>
-          <td>21.538</td>
-          <td>68.831</td>
+          <td>0.480</td>
+          <td>16.463</td>
+          <td>11.040</td>
+          <td>94.059</td>
         </tr>
         <tr>
-          <th>2831</th>
-          <td>2005</td>
-          <td>YR2005</td>
-          <td>Sweden</td>
-          <td>SWE</td>
-          <td>0.996</td>
+          <th>1270</th>
+          <td>1999</td>
+          <td>YR1999</td>
+          <td>Yemen, Rep.</td>
+          <td>YEM</td>
+          <td>0.492</td>
           <td>..</td>
           <td>9</td>
-          <td>4.607</td>
-          <td>10.050</td>
-          <td>9.662</td>
-          <td>99.835</td>
+          <td>44.057</td>
+          <td>22.370</td>
+          <td>21.684</td>
+          <td>32.289</td>
         </tr>
       </tbody>
     </table>
@@ -280,58 +280,58 @@ Data Types
       </thead>
       <tbody>
         <tr>
-          <th>VNM</th>
-          <th>2009</th>
+          <th>POL</th>
+          <th>2006</th>
+          <td>0.990</td>
           <td>nan</td>
-          <td>93.520</td>
-          <td>9.000</td>
-          <td>1.615</td>
-          <td>19.522</td>
-          <td>nan</td>
-          <td>nan</td>
+          <td>10.000</td>
+          <td>6.703</td>
+          <td>11.235</td>
+          <td>11.464</td>
+          <td>92.751</td>
         </tr>
         <tr>
-          <th>GHA</th>
-          <th>1998</th>
+          <th>HTI</th>
+          <th>2012</th>
           <td>nan</td>
-          <td>nan</td>
-          <td>9.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-        </tr>
-        <tr>
-          <th>ERI</th>
-          <th>2003</th>
-          <td>0.756</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>47.915</td>
-          <td>46.717</td>
-          <td>53.508</td>
-          <td>20.813</td>
-        </tr>
-        <tr>
-          <th>PYF</th>
-          <th>1999</th>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-        </tr>
-        <tr>
-          <th>COD</th>
-          <th>2011</th>
-          <td>0.789</td>
           <td>nan</td>
           <td>6.000</td>
           <td>nan</td>
-          <td>37.371</td>
-          <td>15.218</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>TUV</th>
+          <th>2012</th>
+          <td>nan</td>
+          <td>nan</td>
+          <td>8.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>GUM</th>
+          <th>2006</th>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>TZA</th>
+          <th>2012</th>
+          <td>nan</td>
+          <td>78.101</td>
+          <td>7.000</td>
+          <td>17.056</td>
+          <td>45.832</td>
+          <td>nan</td>
           <td>nan</td>
         </tr>
       </tbody>

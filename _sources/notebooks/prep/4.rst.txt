@@ -88,58 +88,58 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>19310</th>
-          <td>YEM</td>
-          <td>Yemen</td>
-          <td>1971</td>
-          <td>1637.000</td>
-          <td>2240.000</td>
-          <td>7251.000</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>6081</th>
+          <th>5752</th>
           <td>FRA</td>
           <td>France</td>
-          <td>1755</td>
-          <td>1323.000</td>
-          <td>1713.000</td>
+          <td>1426</td>
+          <td>1404.000</td>
+          <td>1818.000</td>
           <td>nan</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>170</th>
-          <td>ALB</td>
-          <td>Albania</td>
-          <td>1941</td>
+          <th>6050</th>
+          <td>FRA</td>
+          <td>France</td>
+          <td>1724</td>
+          <td>1364.000</td>
+          <td>1766.000</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>1100.000</td>
-          <td>NaN</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>15105</th>
-          <td>PRT</td>
-          <td>Portugal</td>
-          <td>1941</td>
-          <td>2320.000</td>
-          <td>3023.000</td>
-          <td>7757.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>276</th>
-          <td>ARE</td>
-          <td>United Arab Emirates</td>
-          <td>1980</td>
+          <th>19046</th>
+          <td>VEN</td>
+          <td>Venezuela (Bolivarian Republic of)</td>
+          <td>1847</td>
+          <td>820.000</td>
+          <td>1931.000</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>1000.000</td>
+          <td>Extrapolated</td>
           <td>NaN</td>
+        </tr>
+        <tr>
+          <th>2848</th>
+          <td>CHL</td>
+          <td>Chile</td>
+          <td>2007</td>
+          <td>16392.000</td>
+          <td>18012.000</td>
+          <td>16520.000</td>
+          <td>Interpolated</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>11724</th>
+          <td>MNG</td>
+          <td>Mongolia</td>
+          <td>1994</td>
+          <td>1867.000</td>
+          <td>4394.000</td>
+          <td>2272.000</td>
+          <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
       </tbody>
