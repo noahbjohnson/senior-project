@@ -18,3 +18,5 @@ sklearn
 pandas_profiling
 ipython
 xlrd
+bigml
+statsmodels
