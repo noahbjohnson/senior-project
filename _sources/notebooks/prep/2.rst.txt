@@ -58,7 +58,7 @@ There appears to be a large amount of missing data.
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2b8acf833518>
+    <matplotlib.axes._subplots.AxesSubplot at 0x2b19bff0aa20>
 
 
 
@@ -186,7 +186,7 @@ There appears to be a large amount of missing data.
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2b8acf69f860>
+    <matplotlib.axes._subplots.AxesSubplot at 0x2b19c0360e10>
 
 
 

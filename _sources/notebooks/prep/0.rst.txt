@@ -771,37 +771,37 @@ Cleaning data
       </thead>
       <tbody>
         <tr>
-          <th>12521</th>
+          <th>1344</th>
+          <td>17300.000</td>
+          <td>4.405</td>
+          <td>22000000.000</td>
           <td>nan</td>
+          <td>22000000.000</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>1973</td>
-          <td>VIR</td>
+          <td>9.897</td>
+          <td>36000000.000</td>
+          <td>13000000.000</td>
+          <td>23000000.000</td>
+          <td>2006</td>
+          <td>BTN</td>
         </tr>
         <tr>
-          <th>3223</th>
-          <td>20000.000</td>
-          <td>6.759</td>
-          <td>17100000.000</td>
-          <td>12100000.000</td>
-          <td>5000000.000</td>
+          <th>8773</th>
+          <td>829000.000</td>
+          <td>9.754</td>
+          <td>703000000.000</td>
+          <td>185000000.000</td>
+          <td>518000000.000</td>
           <td>nan</td>
-          <td>2.152</td>
-          <td>4200000.000</td>
-          <td>nan</td>
-          <td>4200000.000</td>
-          <td>1997</td>
-          <td>DJI</td>
+          <td>4.606</td>
+          <td>538000000.000</td>
+          <td>153000000.000</td>
+          <td>385000000.000</td>
+          <td>2001</td>
+          <td>OMN</td>
         </tr>
         <tr>
-          <th>9216</th>
+          <th>4964</th>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -812,8 +812,8 @@ Cleaning data
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>1972</td>
-          <td>POL</td>
+          <td>1968</td>
+          <td>HTI</td>
         </tr>
       </tbody>
     </table>

@@ -88,58 +88,58 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>5752</th>
-          <td>FRA</td>
-          <td>France</td>
-          <td>1426</td>
-          <td>1404.000</td>
-          <td>1818.000</td>
+          <th>16689</th>
+          <td>SWE</td>
+          <td>Sweden</td>
+          <td>1342</td>
+          <td>1204.000</td>
+          <td>1515.000</td>
           <td>nan</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>6050</th>
-          <td>FRA</td>
-          <td>France</td>
-          <td>1724</td>
-          <td>1364.000</td>
-          <td>1766.000</td>
-          <td>nan</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>19046</th>
-          <td>VEN</td>
-          <td>Venezuela (Bolivarian Republic of)</td>
-          <td>1847</td>
-          <td>820.000</td>
-          <td>1931.000</td>
-          <td>nan</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>2848</th>
-          <td>CHL</td>
-          <td>Chile</td>
-          <td>2007</td>
-          <td>16392.000</td>
-          <td>18012.000</td>
-          <td>16520.000</td>
+          <th>10014</th>
+          <td>LBN</td>
+          <td>Lebanon</td>
+          <td>1954</td>
+          <td>10034.000</td>
+          <td>13444.000</td>
+          <td>1519.000</td>
           <td>Interpolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>11724</th>
-          <td>MNG</td>
-          <td>Mongolia</td>
-          <td>1994</td>
-          <td>1867.000</td>
-          <td>4394.000</td>
-          <td>2272.000</td>
+          <th>4465</th>
+          <td>DMA</td>
+          <td>Dominica</td>
+          <td>1978</td>
+          <td>4979.000</td>
+          <td>3611.000</td>
+          <td>74.000</td>
           <td>Extrapolated</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>6404</th>
+          <td>GBR</td>
+          <td>United Kingdom</td>
+          <td>1712</td>
+          <td>1489.000</td>
+          <td>2213.000</td>
+          <td>nan</td>
+          <td>Extrapolated</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>15766</th>
+          <td>SAU</td>
+          <td>Saudi Arabia</td>
+          <td>1984</td>
+          <td>21663.000</td>
+          <td>49187.000</td>
+          <td>12607.000</td>
+          <td>Interpolated</td>
           <td>NaN</td>
         </tr>
       </tbody>
