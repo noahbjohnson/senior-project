@@ -88,58 +88,58 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>3957</th>
-          <td>CUB</td>
-          <td>Cuba</td>
-          <td>1996</td>
-          <td>4251.000</td>
-          <td>4251.000</td>
-          <td>10963.000</td>
+          <th>13350</th>
+          <td>PAN</td>
+          <td>Panama</td>
+          <td>1990</td>
+          <td>6274.000</td>
+          <td>7543.000</td>
+          <td>2393.000</td>
+          <td>Interpolated</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>2653</th>
+          <td>CHL</td>
+          <td>Chile</td>
+          <td>1812</td>
+          <td>599.000</td>
+          <td>699.000</td>
+          <td>nan</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>3610</th>
-          <td>CPV</td>
-          <td>Cabo Verde</td>
-          <td>2011</td>
-          <td>6295.000</td>
-          <td>6295.000</td>
-          <td>516.000</td>
-          <td>Benchmark</td>
-          <td>ICP PPP estimates</td>
-        </tr>
-        <tr>
-          <th>375</th>
-          <td>ARG</td>
-          <td>Argentina</td>
-          <td>1932</td>
-          <td>6033.000</td>
-          <td>6186.000</td>
-          <td>12402.000</td>
-          <td>Extrapolated</td>
+          <th>2625</th>
+          <td>CHE</td>
+          <td>Switzerland</td>
+          <td>1992</td>
+          <td>35651.000</td>
+          <td>48497.000</td>
+          <td>6999.000</td>
+          <td>Interpolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>14423</th>
+          <th>7768</th>
+          <td>HTI</td>
+          <td>Haiti</td>
+          <td>1938</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>2682.000</td>
+          <td>NaN</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>14285</th>
           <td>POL</td>
           <td>Poland</td>
-          <td>1934</td>
-          <td>2045.000</td>
-          <td>3100.000</td>
-          <td>29771.000</td>
+          <td>1769</td>
+          <td>791.000</td>
+          <td>1199.000</td>
+          <td>nan</td>
           <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>440</th>
-          <td>ARG</td>
-          <td>Argentina</td>
-          <td>1997</td>
-          <td>16353.000</td>
-          <td>15708.000</td>
-          <td>36103.000</td>
-          <td>Interpolated</td>
           <td>NaN</td>
         </tr>
       </tbody>
