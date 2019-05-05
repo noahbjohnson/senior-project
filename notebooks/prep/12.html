@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>5. Dataset Joining &#8212; Senior-Project 0.1 documentation</title>
+    <title>1.5. Dataset Joining &#8212; Senior-Project 0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
@@ -16,8 +16,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6. Tourism Missing Data" href="2.html" />
-    <link rel="prev" title="4. General Indicators Data Processing (WDI)" href="11.html" /> 
+    <link rel="next" title="1.6. Tourism Missing Data" href="2.html" />
+    <link rel="prev" title="1.4. General Indicators Data Processing (WDI)" href="11.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -26,13 +26,13 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="2.html" title="6. Tourism Missing Data"
+          <a href="2.html" title="1.6. Tourism Missing Data"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="11.html" title="4. General Indicators Data Processing (WDI)"
+          <a href="11.html" title="1.4. General Indicators Data Processing (WDI)"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">Data Preperation Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">1. Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -42,7 +42,7 @@
           <div class="body" role="main">
             
   <div class="section" id="dataset-joining">
-<h1>5. Dataset Joining<a class="headerlink" href="#dataset-joining" title="Permalink to this headline">¶</a></h1>
+<h1>1.5. Dataset Joining<a class="headerlink" href="#dataset-joining" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.float_format&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
@@ -50,7 +50,7 @@
 </pre></div>
 </div>
 <div class="section" id="load-the-files">
-<h2>5.1. Load The Files<a class="headerlink" href="#load-the-files" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.1. Load The Files<a class="headerlink" href="#load-the-files" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tourism</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;../data/processed/Tourism.pickle&#39;</span><span class="p">)</span>
 <span class="n">Inequality_WIID</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;../data/processed/Inequality_WIID.pickle&#39;</span><span class="p">)</span>
 <span class="n">Inequality_WDI</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;../data/processed/Inequality_WDI.pickle&#39;</span><span class="p">)</span>
@@ -64,9 +64,9 @@
 </div>
 </div>
 <div class="section" id="join-by-subject">
-<h2>5.2. Join By Subject<a class="headerlink" href="#join-by-subject" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.2. Join By Subject<a class="headerlink" href="#join-by-subject" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="inequality">
-<h3>5.2.1. Inequality<a class="headerlink" href="#inequality" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.2.1. Inequality<a class="headerlink" href="#inequality" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Inequality</span> <span class="o">=</span> <span class="n">Tourism</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Inequality_WDI</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Inequality_WIID</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -190,68 +190,19 @@
   </thead>
   <tbody>
     <tr>
-      <th>PSE</th>
-      <th>2013</th>
-      <td>545000.000</td>
-      <td>9.450</td>
-      <td>643000000.000</td>
+      <th>GIN</th>
+      <th>2011</th>
+      <td>131000.000</td>
+      <td>1.833</td>
+      <td>49000000.000</td>
       <td>nan</td>
-      <td>25.292</td>
-      <td>524000000.000</td>
+      <td>0.141</td>
+      <td>2120000.000</td>
       <td>nan</td>
-      <td>-119000000.000</td>
-      <td>961.468</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>SWZ</th>
-      <th>1997</th>
-      <td>269000.000</td>
-      <td>3.091</td>
-      <td>40000000.000</td>
-      <td>nan</td>
-      <td>4.244</td>
-      <td>44000000.000</td>
-      <td>nan</td>
-      <td>4000000.000</td>
-      <td>163.569</td>
-      <td>1003995.000</td>
-      <td>0.268</td>
+      <td>-46880000.000</td>
+      <td>16.183</td>
+      <td>11035170.000</td>
+      <td>0.012</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
@@ -288,26 +239,9 @@
       <td>nan</td>
     </tr>
     <tr>
-      <th>IRQ</th>
-      <th>2006</th>
-      <td>nan</td>
-      <td>2.174</td>
-      <td>526000000.000</td>
-      <td>nan</td>
-      <td>0.550</td>
-      <td>170000000.000</td>
-      <td>nan</td>
-      <td>-356000000.000</td>
-      <td>nan</td>
-      <td>27697912.000</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>28.600</td>
-      <td>9.500</td>
-      <td>2.800</td>
-      <td>4.700</td>
-      <td>23.600</td>
-      <td>3.900</td>
+      <th>LIE</th>
+      <th>2010</th>
+      <td>49800.000</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
@@ -316,40 +250,8 @@
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>MRT</th>
-      <th>2013</th>
-      <td>nan</td>
-      <td>2.597</td>
-      <td>105000000.000</td>
-      <td>nan</td>
-      <td>1.762</td>
-      <td>50000000.000</td>
-      <td>nan</td>
-      <td>-55000000.000</td>
-      <td>nan</td>
-      <td>3946170.000</td>
-      <td>nan</td>
+      <td>36003.000</td>
+      <td>1.383</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
@@ -386,19 +288,117 @@
       <td>nan</td>
     </tr>
     <tr>
-      <th>KWT</th>
+      <th>ETH</th>
+      <th>2000</th>
+      <td>136000.000</td>
+      <td>4.935</td>
+      <td>80000000.000</td>
+      <td>nan</td>
+      <td>20.660</td>
+      <td>205000000.000</td>
+      <td>nan</td>
+      <td>125000000.000</td>
+      <td>1507.353</td>
+      <td>66537331.000</td>
+      <td>0.002</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>ARM</th>
       <th>2016</th>
-      <td>7055000.000</td>
-      <td>25.008</td>
-      <td>13232000000.000</td>
+      <td>1260000.000</td>
+      <td>24.778</td>
+      <td>1119000000.000</td>
+      <td>1263000.000</td>
+      <td>28.225</td>
+      <td>988000000.000</td>
+      <td>-3000.000</td>
+      <td>-131000000.000</td>
+      <td>784.127</td>
+      <td>2924816.000</td>
+      <td>0.431</td>
+      <td>0.432</td>
+      <td>32.500</td>
       <td>nan</td>
-      <td>1.594</td>
-      <td>831000000.000</td>
       <td>nan</td>
-      <td>-12401000000.000</td>
-      <td>117.789</td>
-      <td>4052584.000</td>
-      <td>1.741</td>
+      <td>nan</td>
+      <td>25.300</td>
+      <td>3.300</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>ABW</th>
+      <th>2012</th>
+      <td>904000.000</td>
+      <td>10.246</td>
+      <td>294000000.000</td>
+      <td>nan</td>
+      <td>44.811</td>
+      <td>1412000000.000</td>
+      <td>nan</td>
+      <td>1118000000.000</td>
+      <td>1561.947</td>
+      <td>102577.000</td>
+      <td>8.813</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
@@ -438,7 +438,7 @@
 </table>
 </div></div>
 <div class="section" id="general">
-<h3>5.2.2. General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.2.2. General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">General</span> <span class="o">=</span> <span class="n">Tourism</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">General_WDI</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -562,125 +562,129 @@
   </thead>
   <tbody>
     <tr>
-      <th>DZA</th>
+      <th>BMU</th>
+      <th>2015</th>
+      <td>220000.000</td>
+      <td>19.858</td>
+      <td>363000000.000</td>
+      <td>nan</td>
+      <td>29.375</td>
+      <td>370000000.000</td>
+      <td>nan</td>
+      <td>7000000.000</td>
+      <td>1681.818</td>
+      <td>62003.000</td>
+      <td>3.548</td>
+      <td>nan</td>
+      <td>81.012</td>
+      <td>100.000</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>99.903</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>48.385</td>
+      <td>98.324</td>
+      <td>61.287</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>6.451</td>
+      <td>nan</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>HTI</th>
       <th>2008</th>
-      <td>1772000.000</td>
-      <td>1.249</td>
-      <td>613000000.000</td>
-      <td>1539000.000</td>
-      <td>0.580</td>
-      <td>473000000.000</td>
-      <td>233000.000</td>
-      <td>-140000000.000</td>
-      <td>266.930</td>
-      <td>34860715.000</td>
-      <td>0.051</td>
-      <td>0.044</td>
-      <td>74.032</td>
-      <td>99.300</td>
+      <td>258000.000</td>
+      <td>13.421</td>
+      <td>383000000.000</td>
       <td>nan</td>
+      <td>39.250</td>
+      <td>360000000.000</td>
       <td>nan</td>
-      <td>91.920</td>
-      <td>3.161</td>
-      <td>33.133</td>
+      <td>-23000000.000</td>
+      <td>1395.349</td>
+      <td>9705029.000</td>
+      <td>0.027</td>
       <td>nan</td>
+      <td>60.448</td>
+      <td>35.110</td>
+      <td>24.168</td>
       <td>nan</td>
-      <td>4.179</td>
-      <td>5.212</td>
-      <td>nan</td>
-      <td>28.616</td>
+      <td>61.142</td>
+      <td>0.247</td>
+      <td>57.328</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>25.300</td>
-      <td>nan</td>
-      <td>31.800</td>
+      <td>2.882</td>
+      <td>325.010</td>
+      <td>2.228</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
-      <td>1.391</td>
-      <td>10.180</td>
-      <td>77.541</td>
-      <td>9060.000</td>
       <td>nan</td>
-      <td>0.941</td>
-      <td>3.133</td>
+      <td>62.400</td>
+      <td>nan</td>
+      <td>60.900</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>7.600</td>
+      <td>32.973</td>
+      <td>23066.000</td>
+      <td>nan</td>
+      <td>5.131</td>
+      <td>nan</td>
       <td>nan</td>
     </tr>
     <tr>
-      <th>PRY</th>
+      <th>KOR</th>
       <th>2007</th>
-      <td>416000.000</td>
-      <td>2.874</td>
-      <td>184000000.000</td>
-      <td>242000.000</td>
-      <td>1.551</td>
-      <td>121000000.000</td>
-      <td>174000.000</td>
-      <td>-63000000.000</td>
-      <td>290.865</td>
-      <td>5966159.000</td>
-      <td>0.070</td>
-      <td>0.041</td>
-      <td>71.686</td>
-      <td>96.453</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>86.707</td>
-      <td>0.693</td>
-      <td>92.761</td>
+      <td>6448000.000</td>
+      <td>5.618</td>
+      <td>24431000000.000</td>
+      <td>13325000.000</td>
+      <td>2.039</td>
+      <td>9266000000.000</td>
+      <td>-6877000.000</td>
+      <td>-15165000000.000</td>
+      <td>1437.035</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
-      <td>4.328</td>
-      <td>64.428</td>
-      <td>55.486</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>23.900</td>
-      <td>nan</td>
-      <td>23.900</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>0.144</td>
-      <td>11.210</td>
-      <td>78.683</td>
-      <td>102.000</td>
-      <td>5.080</td>
-      <td>13.124</td>
-      <td>0.949</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>ITA</th>
-      <th>2000</th>
-      <td>41181000.000</td>
-      <td>6.401</td>
-      <td>18167000000.000</td>
-      <td>20080000.000</td>
-      <td>9.797</td>
-      <td>28708000000.000</td>
-      <td>21101000.000</td>
-      <td>10541000000.000</td>
-      <td>697.118</td>
-      <td>57293721.000</td>
-      <td>0.719</td>
-      <td>0.350</td>
-      <td>79.778</td>
+      <td>79.120</td>
       <td>100.000</td>
       <td>nan</td>
-      <td>86.465</td>
-      <td>100.000</td>
-      <td>7.913</td>
-      <td>27.677</td>
+      <td>97.002</td>
+      <td>98.646</td>
+      <td>10.182</td>
+      <td>18.567</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>234.238</td>
+      <td>18.309</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
@@ -688,100 +692,92 @@
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
+      <td>4.100</td>
+      <td>nan</td>
+      <td>9.700</td>
       <td>nan</td>
       <td>nan</td>
-      <td>7.800</td>
-      <td>nan</td>
-      <td>4.700</td>
-      <td>nan</td>
-      <td>11.700</td>
       <td>nan</td>
       <td>nan</td>
-      <td>26.500</td>
+      <td>29.982</td>
+      <td>78.800</td>
+      <td>90.434</td>
+      <td>1188.000</td>
       <td>nan</td>
-      <td>0.201</td>
-      <td>23.111</td>
-      <td>73.736</td>
-      <td>48.000</td>
       <td>nan</td>
-      <td>1.337</td>
-      <td>2.156</td>
+      <td>2.794</td>
       <td>nan</td>
     </tr>
     <tr>
       <th>BFA</th>
-      <th>1995</th>
-      <td>124000.000</td>
+      <th>2013</th>
+      <td>218000.000</td>
+      <td>4.522</td>
+      <td>215000000.000</td>
+      <td>nan</td>
+      <td>6.331</td>
+      <td>200000000.000</td>
+      <td>nan</td>
+      <td>-15000000.000</td>
+      <td>917.431</td>
+      <td>17072723.000</td>
+      <td>0.013</td>
+      <td>nan</td>
+      <td>58.942</td>
+      <td>17.085</td>
+      <td>11.321</td>
+      <td>nan</td>
+      <td>52.826</td>
+      <td>0.179</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>2.654</td>
+      <td>2.340</td>
+      <td>112.241</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
+      <td>58.200</td>
+      <td>nan</td>
+      <td>87.000</td>
       <td>nan</td>
       <td>nan</td>
-      <td>10089878.000</td>
-      <td>0.012</td>
+      <td>13.000</td>
       <td>nan</td>
-      <td>49.445</td>
-      <td>6.069</td>
+      <td>0.076</td>
+      <td>9.100</td>
+      <td>65.841</td>
+      <td>1584.000</td>
       <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>0.062</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>97.800</td>
-      <td>nan</td>
-      <td>90.400</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>0.000</td>
-      <td>63.000</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>0.239</td>
+      <td>0.715</td>
+      <td>0.183</td>
       <td>nan</td>
     </tr>
     <tr>
-      <th>UKR</th>
-      <th>1997</th>
-      <td>7558000.000</td>
-      <td>2.110</td>
-      <td>462000000.000</td>
-      <td>9632000.000</td>
-      <td>2.343</td>
-      <td>477000000.000</td>
-      <td>-2074000.000</td>
-      <td>15000000.000</td>
-      <td>63.112</td>
-      <td>50189314.000</td>
-      <td>0.151</td>
-      <td>0.192</td>
-      <td>67.576</td>
-      <td>99.110</td>
+      <th>VUT</th>
+      <th>1995</th>
+      <td>44000.000</td>
+      <td>8.718</td>
+      <td>10000000.000</td>
+      <td>11000.000</td>
+      <td>40.936</td>
+      <td>45000000.000</td>
+      <td>33000.000</td>
+      <td>35000000.000</td>
+      <td>1022.727</td>
+      <td>168235.000</td>
+      <td>0.262</td>
+      <td>0.065</td>
+      <td>65.345</td>
+      <td>14.826</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
-      <td>6.744</td>
-      <td>11.019</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
+      <td>0.392</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
@@ -790,27 +786,31 @@
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
-      <td>17.300</td>
-      <td>nan</td>
-      <td>27.500</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
+      <td>25.400</td>
       <td>nan</td>
-      <td>0.199</td>
-      <td>0.114</td>
-      <td>6348.000</td>
+      <td>40.400</td>
       <td>nan</td>
-      <td>8.404</td>
-      <td>1.898</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0.072</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
       <td>nan</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 <div class="section" id="economic">
-<h3>5.2.3. Economic<a class="headerlink" href="#economic" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.2.3. Economic<a class="headerlink" href="#economic" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Economic</span> <span class="o">=</span> <span class="n">Tourism</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Economic_MADDISON</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Economic_WDI</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -892,55 +892,27 @@
   </thead>
   <tbody>
     <tr>
-      <th>MWI</th>
+      <th>TKM</th>
       <th>2006</th>
-      <td>638000.000</td>
-      <td>6.440</td>
-      <td>85000000.000</td>
-      <td>nan</td>
-      <td>5.729</td>
-      <td>45000000.000</td>
-      <td>nan</td>
-      <td>-40000000.000</td>
-      <td>70.533</td>
-      <td>13429262.000</td>
-      <td>0.048</td>
-      <td>nan</td>
-      <td>996.000</td>
-      <td>35971708.400</td>
-      <td>nan</td>
-      <td>300.000</td>
-      <td>3999788008.001</td>
-      <td>29509391.810</td>
-      <td>722870000.000</td>
+      <td>5600.000</td>
       <td>nan</td>
       <td>nan</td>
+      <td>33000.000</td>
       <td>nan</td>
       <td>nan</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>NZL</th>
-      <th>2010</th>
-      <td>2435000.000</td>
-      <td>7.603</td>
-      <td>3039000000.000</td>
-      <td>2026000.000</td>
-      <td>15.066</td>
-      <td>6523000000.000</td>
-      <td>409000.000</td>
-      <td>3484000000.000</td>
-      <td>2678.850</td>
-      <td>4370062.000</td>
-      <td>0.557</td>
-      <td>0.464</td>
-      <td>30904.000</td>
+      <td>-27400.000</td>
       <td>nan</td>
       <td>nan</td>
-      <td>29770.000</td>
-      <td>129529751764.745</td>
+      <td>4810105.000</td>
+      <td>0.001</td>
+      <td>0.007</td>
+      <td>9423.000</td>
+      <td>105034313.500</td>
       <td>nan</td>
-      <td>nan</td>
+      <td>1890.000</td>
+      <td>9085452217.871</td>
+      <td>0.000</td>
+      <td>41110000.000</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
@@ -949,26 +921,26 @@
     </tr>
     <tr>
       <th>SEN</th>
-      <th>2003</th>
-      <td>354000.000</td>
-      <td>4.866</td>
-      <td>129000000.000</td>
+      <th>2002</th>
+      <td>427000.000</td>
+      <td>5.394</td>
+      <td>112000000.000</td>
       <td>nan</td>
-      <td>14.776</td>
-      <td>269000000.000</td>
+      <td>13.809</td>
+      <td>210000000.000</td>
       <td>nan</td>
-      <td>140000000.000</td>
-      <td>759.887</td>
-      <td>10670990.000</td>
-      <td>0.033</td>
+      <td>98000000.000</td>
+      <td>491.803</td>
+      <td>10396861.000</td>
+      <td>0.041</td>
       <td>nan</td>
-      <td>1852.000</td>
-      <td>276030815.200</td>
+      <td>1820.000</td>
+      <td>285811889.600</td>
       <td>nan</td>
-      <td>700.000</td>
-      <td>7472533464.696</td>
+      <td>600.000</td>
+      <td>6221257324.093</td>
       <td>0.000</td>
-      <td>458280000.000</td>
+      <td>445280000.000</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
@@ -976,66 +948,94 @@
       <td>nan</td>
     </tr>
     <tr>
-      <th>CZE</th>
-      <th>2007</th>
-      <td>6680000.000</td>
-      <td>3.195</td>
-      <td>3895000000.000</td>
-      <td>9048000.000</td>
-      <td>6.194</td>
-      <td>7803000000.000</td>
-      <td>-2368000.000</td>
-      <td>3908000000.000</td>
-      <td>1168.114</td>
-      <td>10356586.000</td>
-      <td>0.645</td>
-      <td>0.874</td>
-      <td>26622.000</td>
+      <th>SSD</th>
+      <th>2015</th>
       <td>nan</td>
+      <td>10.233</td>
+      <td>539000000.000</td>
       <td>nan</td>
-      <td>15740.000</td>
-      <td>162137205672.644</td>
+      <td>1.402</td>
+      <td>22000000.000</td>
       <td>nan</td>
+      <td>-517000000.000</td>
       <td>nan</td>
-      <td>9.000</td>
+      <td>11882136.000</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
-      <td>26.000</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>1020.000</td>
+      <td>12162365470.946</td>
+      <td>nan</td>
+      <td>1674830000.000</td>
+      <td>65.600</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
     </tr>
     <tr>
-      <th>AZE</th>
-      <th>1996</th>
-      <td>210000.000</td>
-      <td>6.466</td>
+      <th>FJI</th>
+      <th>2015</th>
+      <td>755000.000</td>
+      <td>4.710</td>
       <td>115000000.000</td>
-      <td>432000.000</td>
-      <td>7.189</td>
-      <td>57000000.000</td>
-      <td>-222000.000</td>
-      <td>-58000000.000</td>
-      <td>271.429</td>
-      <td>7855553.000</td>
-      <td>0.027</td>
-      <td>0.055</td>
-      <td>2322.000</td>
-      <td>174970976.300</td>
       <td>nan</td>
-      <td>400.000</td>
-      <td>3114681746.899</td>
+      <td>46.624</td>
+      <td>1038000000.000</td>
+      <td>nan</td>
+      <td>923000000.000</td>
+      <td>1374.834</td>
+      <td>892149.000</td>
+      <td>0.846</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>92974168.600</td>
+      <td>nan</td>
+      <td>4810.000</td>
+      <td>4290204064.065</td>
       <td>0.000</td>
-      <td>96360000.000</td>
+      <td>102480000.000</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
+    </tr>
+    <tr>
+      <th>FIN</th>
+      <th>2013</th>
+      <td>2797000.000</td>
+      <td>5.956</td>
+      <td>6387000000.000</td>
+      <td>8562000.000</td>
+      <td>5.507</td>
+      <td>5774000000.000</td>
+      <td>-5765000.000</td>
+      <td>-613000000.000</td>
+      <td>2064.355</td>
+      <td>5436616.000</td>
+      <td>0.514</td>
+      <td>1.575</td>
+      <td>37913.000</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>49220.000</td>
+      <td>267685631199.895</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>27.200</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 <div class="section" id="education">
-<h3>5.2.4. Education<a class="headerlink" href="#education" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.2.4. Education<a class="headerlink" href="#education" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Education</span> <span class="o">=</span> <span class="n">Tourism</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Education_WDI</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1107,125 +1107,125 @@
   </thead>
   <tbody>
     <tr>
-      <th>IDN</th>
-      <th>2014</th>
-      <td>9435000.000</td>
-      <td>5.084</td>
-      <td>10263000000.000</td>
-      <td>8074000.000</td>
-      <td>5.818</td>
-      <td>11567000000.000</td>
-      <td>1361000.000</td>
-      <td>1304000000.000</td>
-      <td>1225.967</td>
-      <td>255131116.000</td>
-      <td>0.037</td>
-      <td>0.032</td>
-      <td>0.985</td>
-      <td>95.116</td>
-      <td>9.000</td>
-      <td>7.998</td>
-      <td>16.559</td>
-      <td>15.473</td>
-      <td>76.010</td>
+      <th>NZL</th>
+      <th>1997</th>
+      <td>1497000.000</td>
+      <td>nan</td>
+      <td>1461000000.000</td>
+      <td>1132000.000</td>
+      <td>nan</td>
+      <td>2211000000.000</td>
+      <td>365000.000</td>
+      <td>750000000.000</td>
+      <td>1476.954</td>
+      <td>3752362.000</td>
+      <td>0.399</td>
+      <td>0.302</td>
+      <td>1.023</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0.242</td>
+      <td>18.315</td>
+      <td>15.180</td>
+      <td>91.595</td>
     </tr>
     <tr>
-      <th>MYS</th>
-      <th>2002</th>
-      <td>13292000.000</td>
-      <td>3.633</td>
-      <td>3330000000.000</td>
-      <td>29866000.000</td>
-      <td>7.469</td>
-      <td>8084000000.000</td>
-      <td>-16574000.000</td>
-      <td>4754000000.000</td>
-      <td>608.185</td>
-      <td>24198811.000</td>
-      <td>0.549</td>
-      <td>1.234</td>
+      <th>MRT</th>
+      <th>1999</th>
+      <td>24000.000</td>
+      <td>nan</td>
+      <td>55000000.000</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>28000000.000</td>
+      <td>nan</td>
+      <td>-27000000.000</td>
+      <td>1166.667</td>
+      <td>2628803.000</td>
+      <td>0.009</td>
+      <td>nan</td>
+      <td>0.926</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>40.746</td>
+      <td>47.003</td>
+      <td>28.243</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>PSE</th>
+      <th>2007</th>
+      <td>264000.000</td>
+      <td>9.220</td>
+      <td>395000000.000</td>
+      <td>nan</td>
+      <td>9.285</td>
+      <td>99000000.000</td>
+      <td>nan</td>
+      <td>-296000000.000</td>
+      <td>375.000</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
       <td>1.040</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>3.468</td>
-      <td>18.920</td>
-      <td>17.715</td>
-      <td>74.678</td>
+      <td>93.882</td>
+      <td>10.000</td>
+      <td>16.047</td>
+      <td>30.078</td>
+      <td>25.104</td>
+      <td>86.527</td>
     </tr>
     <tr>
-      <th>ASM</th>
-      <th>2008</th>
-      <td>24300.000</td>
+      <th>VCT</th>
+      <th>2015</th>
+      <td>75000.000</td>
+      <td>8.505</td>
+      <td>35000000.000</td>
       <td>nan</td>
+      <td>74.746</td>
+      <td>211100000.000</td>
       <td>nan</td>
+      <td>176100000.000</td>
+      <td>2814.667</td>
+      <td>109455.000</td>
+      <td>0.685</td>
       <td>nan</td>
+      <td>0.974</td>
       <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>57030.000</td>
-      <td>0.426</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
+      <td>12.000</td>
+      <td>1.225</td>
+      <td>14.896</td>
+      <td>15.016</td>
+      <td>84.026</td>
     </tr>
     <tr>
-      <th>MCO</th>
-      <th>1996</th>
-      <td>226000.000</td>
+      <th>CUB</th>
+      <th>2001</th>
+      <td>1736000.000</td>
       <td>nan</td>
       <td>nan</td>
+      <td>121000.000</td>
       <td>nan</td>
+      <td>1840000000.000</td>
+      <td>1615000.000</td>
       <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>30967.000</td>
-      <td>7.298</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>18.559</td>
-      <td>10.129</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>PRT</th>
-      <th>2003</th>
-      <td>5383000.000</td>
-      <td>5.345</td>
-      <td>2981000000.000</td>
-      <td>nan</td>
-      <td>17.287</td>
-      <td>7677000000.000</td>
-      <td>nan</td>
-      <td>4696000000.000</td>
-      <td>1426.156</td>
-      <td>10487113.000</td>
-      <td>0.513</td>
-      <td>nan</td>
-      <td>1.018</td>
+      <td>1059.908</td>
+      <td>11186542.000</td>
+      <td>0.155</td>
+      <td>0.011</td>
+      <td>0.993</td>
       <td>nan</td>
       <td>9.000</td>
-      <td>nan</td>
-      <td>11.111</td>
-      <td>8.776</td>
-      <td>79.856</td>
+      <td>2.593</td>
+      <td>10.739</td>
+      <td>11.363</td>
+      <td>82.750</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 <div class="section" id="labor">
-<h3>5.2.5. Labor<a class="headerlink" href="#labor" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.2.5. Labor<a class="headerlink" href="#labor" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Labor</span> <span class="o">=</span> <span class="n">Tourism</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Labor_WDI</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1309,155 +1309,155 @@
   </thead>
   <tbody>
     <tr>
-      <th>TON</th>
+      <th>JOR</th>
+      <th>2005</th>
+      <td>2987000.000</td>
+      <td>5.506</td>
+      <td>653000000.000</td>
+      <td>1523000.000</td>
+      <td>26.200</td>
+      <td>1759000000.000</td>
+      <td>1464000.000</td>
+      <td>1106000000.000</td>
+      <td>588.885</td>
+      <td>5714111.000</td>
+      <td>0.523</td>
+      <td>0.267</td>
+      <td>9.216</td>
+      <td>40.892</td>
+      <td>18.049</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>5.777</td>
+      <td>4.053</td>
+      <td>25.663</td>
+      <td>70.284</td>
+      <td>nan</td>
+      <td>14.800</td>
+      <td>15.149</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>LKA</th>
       <th>2010</th>
-      <td>47100.000</td>
-      <td>9.570</td>
-      <td>21600000.000</td>
-      <td>nan</td>
-      <td>38.408</td>
-      <td>17300000.000</td>
-      <td>nan</td>
-      <td>-4300000.000</td>
-      <td>367.304</td>
-      <td>104137.000</td>
-      <td>0.452</td>
-      <td>nan</td>
-      <td>25.446</td>
-      <td>59.897</td>
-      <td>60.365</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>1.111</td>
-      <td>31.182</td>
-      <td>30.224</td>
-      <td>38.594</td>
-      <td>nan</td>
-      <td>1.146</td>
-      <td>55.215</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>UZB</th>
-      <th>2006</th>
-      <td>560000.000</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>43000000.000</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>76.786</td>
-      <td>26890263.000</td>
-      <td>0.021</td>
-      <td>nan</td>
-      <td>35.151</td>
-      <td>63.297</td>
-      <td>70.054</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>1.551</td>
-      <td>35.946</td>
-      <td>29.444</td>
-      <td>34.610</td>
-      <td>nan</td>
-      <td>5.850</td>
-      <td>46.338</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>GTM</th>
-      <th>1999</th>
-      <td>823000.000</td>
-      <td>4.306</td>
-      <td>216000000.000</td>
-      <td>485000.000</td>
-      <td>10.747</td>
-      <td>374000000.000</td>
-      <td>338000.000</td>
-      <td>158000000.000</td>
-      <td>454.435</td>
-      <td>11387203.000</td>
-      <td>0.072</td>
-      <td>0.043</td>
-      <td>34.878</td>
-      <td>62.156</td>
-      <td>47.687</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>3.308</td>
-      <td>38.670</td>
-      <td>22.863</td>
-      <td>38.467</td>
-      <td>nan</td>
-      <td>2.919</td>
-      <td>49.231</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>DOM</th>
-      <th>2000</th>
-      <td>2978000.000</td>
-      <td>5.649</td>
-      <td>440000000.000</td>
-      <td>360000.000</td>
-      <td>48.460</td>
-      <td>2860000000.000</td>
-      <td>2618000.000</td>
-      <td>2420000000.000</td>
-      <td>960.376</td>
-      <td>8562622.000</td>
-      <td>0.348</td>
-      <td>0.042</td>
-      <td>29.383</td>
-      <td>56.590</td>
-      <td>51.103</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>3.041</td>
-      <td>15.602</td>
-      <td>24.642</td>
-      <td>59.755</td>
-      <td>90.570</td>
-      <td>6.432</td>
-      <td>42.926</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>AZE</th>
-      <th>1997</th>
-      <td>306000.000</td>
-      <td>9.186</td>
-      <td>193000000.000</td>
       <td>654000.000</td>
-      <td>15.304</td>
-      <td>176000000.000</td>
-      <td>-348000.000</td>
-      <td>-17000000.000</td>
-      <td>575.163</td>
-      <td>7925669.000</td>
-      <td>0.039</td>
-      <td>0.083</td>
-      <td>47.794</td>
-      <td>63.702</td>
-      <td>78.526</td>
+      <td>5.441</td>
+      <td>828000000.000</td>
+      <td>1122000.000</td>
+      <td>9.405</td>
+      <td>1044000000.000</td>
+      <td>-468000.000</td>
+      <td>216000000.000</td>
+      <td>1596.330</td>
+      <td>20198353.000</td>
+      <td>0.032</td>
+      <td>0.056</td>
+      <td>25.671</td>
+      <td>54.724</td>
+      <td>45.545</td>
       <td>nan</td>
       <td>nan</td>
-      <td>11.986</td>
-      <td>42.559</td>
-      <td>11.021</td>
-      <td>46.419</td>
+      <td>2.610</td>
+      <td>33.597</td>
+      <td>24.895</td>
+      <td>41.508</td>
+      <td>63.480</td>
+      <td>4.940</td>
+      <td>44.505</td>
       <td>nan</td>
-      <td>9.100</td>
-      <td>74.786</td>
+    </tr>
+    <tr>
+      <th>ECU</th>
+      <th>2005</th>
+      <td>860000.000</td>
+      <td>5.434</td>
+      <td>644000000.000</td>
+      <td>664000.000</td>
+      <td>4.251</td>
+      <td>488000000.000</td>
+      <td>196000.000</td>
+      <td>-156000000.000</td>
+      <td>567.442</td>
+      <td>13735233.000</td>
+      <td>0.063</td>
+      <td>0.048</td>
+      <td>40.235</td>
+      <td>68.082</td>
+      <td>62.668</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>6.293</td>
+      <td>30.346</td>
+      <td>17.595</td>
+      <td>52.059</td>
+      <td>75.680</td>
+      <td>3.779</td>
+      <td>46.592</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>MDA</th>
+      <th>2002</th>
+      <td>nan</td>
+      <td>9.290</td>
+      <td>109000000.000</td>
+      <td>nan</td>
+      <td>9.535</td>
+      <td>72000000.000</td>
+      <td>nan</td>
+      <td>-37000000.000</td>
+      <td>nan</td>
+      <td>4176616.000</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>22.754</td>
+      <td>50.345</td>
+      <td>94.162</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0.757</td>
+      <td>49.645</td>
+      <td>14.441</td>
+      <td>35.914</td>
+      <td>nan</td>
+      <td>6.800</td>
+      <td>40.679</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>PRI</th>
+      <th>2005</th>
+      <td>3686000.000</td>
+      <td>nan</td>
+      <td>1663000000.000</td>
+      <td>1410000.000</td>
+      <td>nan</td>
+      <td>3239000000.000</td>
+      <td>2276000.000</td>
+      <td>1576000000.000</td>
+      <td>878.730</td>
+      <td>3765399.000</td>
+      <td>0.979</td>
+      <td>0.374</td>
+      <td>23.426</td>
+      <td>47.368</td>
+      <td>62.415</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>3.321</td>
+      <td>2.077</td>
+      <td>19.010</td>
+      <td>78.914</td>
+      <td>nan</td>
+      <td>11.350</td>
+      <td>14.560</td>
       <td>nan</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 <div class="section" id="urbanization">
-<h3>5.2.6. Urbanization<a class="headerlink" href="#urbanization" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.2.6. Urbanization<a class="headerlink" href="#urbanization" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Urbanization</span> <span class="o">=</span> <span class="n">Tourism</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Urbanization_UNPD</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1525,116 +1525,116 @@
   </thead>
   <tbody>
     <tr>
-      <th>TUV</th>
-      <th>2005</th>
-      <td>1100.000</td>
-      <td>22.758</td>
-      <td>4600000.000</td>
-      <td>2200.000</td>
-      <td>45.679</td>
-      <td>1200000.000</td>
-      <td>-1100.000</td>
-      <td>-3400000.000</td>
-      <td>1090.909</td>
-      <td>10027.000</td>
-      <td>0.110</td>
-      <td>0.219</td>
-      <td>49.699</td>
-      <td>3.409</td>
+      <th>GBR</th>
+      <th>2013</th>
+      <td>31063000.000</td>
+      <td>9.440</td>
+      <td>81590000000.000</td>
+      <td>57792000.000</td>
+      <td>6.886</td>
+      <td>56368000000.000</td>
+      <td>-26729000.000</td>
+      <td>-25222000000.000</td>
+      <td>1814.635</td>
+      <td>64641110.000</td>
+      <td>0.481</td>
+      <td>0.894</td>
+      <td>82.102</td>
+      <td>0.993</td>
+      <td>nan</td>
+      <td>26.395</td>
+      <td>15.981</td>
+    </tr>
+    <tr>
+      <th>CMR</th>
+      <th>1996</th>
+      <td>145000.000</td>
+      <td>6.787</td>
+      <td>155000000.000</td>
+      <td>nan</td>
+      <td>6.046</td>
+      <td>151000000.000</td>
+      <td>nan</td>
+      <td>-4000000.000</td>
+      <td>1041.379</td>
+      <td>13812472.000</td>
+      <td>0.010</td>
+      <td>nan</td>
+      <td>43.164</td>
+      <td>3.956</td>
+      <td>nan</td>
+      <td>16.815</td>
+      <td>20.793</td>
+    </tr>
+    <tr>
+      <th>SWZ</th>
+      <th>2000</th>
+      <td>281000.000</td>
+      <td>2.228</td>
+      <td>32000000.000</td>
+      <td>nan</td>
+      <td>1.937</td>
+      <td>24000000.000</td>
+      <td>nan</td>
+      <td>-8000000.000</td>
+      <td>85.409</td>
+      <td>1061468.000</td>
+      <td>0.265</td>
+      <td>nan</td>
+      <td>22.686</td>
+      <td>0.928</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
     </tr>
     <tr>
-      <th>GRC</th>
-      <th>2008</th>
-      <td>15939000.000</td>
-      <td>3.314</td>
-      <td>3946000000.000</td>
-      <td>3765000.000</td>
-      <td>22.095</td>
-      <td>17586000000.000</td>
-      <td>12174000.000</td>
-      <td>13640000000.000</td>
-      <td>1103.331</td>
-      <td>11419647.000</td>
-      <td>1.396</td>
-      <td>0.330</td>
-      <td>75.568</td>
-      <td>0.755</td>
+      <th>SDN</th>
+      <th>2006</th>
+      <td>328000.000</td>
+      <td>14.683</td>
+      <td>1414000000.000</td>
       <td>nan</td>
-      <td>28.653</td>
-      <td>37.917</td>
+      <td>3.271</td>
+      <td>194000000.000</td>
+      <td>nan</td>
+      <td>-1220000000.000</td>
+      <td>591.463</td>
+      <td>31607064.000</td>
+      <td>0.010</td>
+      <td>nan</td>
+      <td>32.813</td>
+      <td>2.386</td>
+      <td>nan</td>
+      <td>12.912</td>
+      <td>39.350</td>
     </tr>
     <tr>
-      <th>SYR</th>
-      <th>1998</th>
-      <td>1267000.000</td>
-      <td>12.118</td>
-      <td>583000000.000</td>
-      <td>2411000.000</td>
-      <td>21.152</td>
-      <td>1017000000.000</td>
-      <td>-1144000.000</td>
-      <td>434000000.000</td>
-      <td>802.684</td>
-      <td>15602210.000</td>
-      <td>0.081</td>
-      <td>0.155</td>
-      <td>51.210</td>
-      <td>3.483</td>
-      <td>nan</td>
-      <td>30.709</td>
-      <td>25.794</td>
-    </tr>
-    <tr>
-      <th>TUV</th>
-      <th>1998</th>
-      <td>1000.000</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>1900.000</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>-900.000</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>9306.000</td>
-      <td>0.107</td>
-      <td>0.204</td>
-      <td>45.197</td>
-      <td>1.220</td>
+      <th>BTN</th>
+      <th>1997</th>
+      <td>5400.000</td>
       <td>nan</td>
       <td>nan</td>
       <td>nan</td>
-    </tr>
-    <tr>
-      <th>MWI</th>
-      <th>2009</th>
-      <td>755000.000</td>
-      <td>4.067</td>
-      <td>91000000.000</td>
       <td>nan</td>
-      <td>3.414</td>
-      <td>46000000.000</td>
+      <td>6000000.000</td>
       <td>nan</td>
-      <td>-45000000.000</td>
-      <td>60.927</td>
-      <td>14714602.000</td>
-      <td>0.051</td>
       <td>nan</td>
-      <td>15.429</td>
-      <td>3.729</td>
-      <td>68.900</td>
-      <td>4.758</td>
-      <td>30.841</td>
+      <td>1111.111</td>
+      <td>528754.000</td>
+      <td>0.010</td>
+      <td>nan</td>
+      <td>22.401</td>
+      <td>6.118</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
 <div class="section" id="full-dataset-join">
-<h2>5.3. Full Dataset Join<a class="headerlink" href="#full-dataset-join" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.3. Full Dataset Join<a class="headerlink" href="#full-dataset-join" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Full</span> <span class="o">=</span> <span class="n">Tourism</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
     <span class="n">Inequality_WIID</span><span class="p">,</span>
     <span class="n">Inequality_WDI</span><span class="p">,</span>
@@ -1647,7 +1647,7 @@
 </div>
 </div>
 <div class="section" id="save-files">
-<h2>5.4. Save Files<a class="headerlink" href="#save-files" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.4. Save Files<a class="headerlink" href="#save-files" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">General</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/processed/General.csv&quot;</span><span class="p">)</span>
 <span class="n">Labor</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/processed/Labor.csv&quot;</span><span class="p">)</span>
 <span class="n">Urbanization</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/processed/Urbanization.csv&quot;</span><span class="p">)</span>
@@ -1668,29 +1668,29 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">5. Dataset Joining</a><ul>
-<li><a class="reference internal" href="#load-the-files">5.1. Load The Files</a></li>
-<li><a class="reference internal" href="#join-by-subject">5.2. Join By Subject</a><ul>
-<li><a class="reference internal" href="#inequality">5.2.1. Inequality</a></li>
-<li><a class="reference internal" href="#general">5.2.2. General</a></li>
-<li><a class="reference internal" href="#economic">5.2.3. Economic</a></li>
-<li><a class="reference internal" href="#education">5.2.4. Education</a></li>
-<li><a class="reference internal" href="#labor">5.2.5. Labor</a></li>
-<li><a class="reference internal" href="#urbanization">5.2.6. Urbanization</a></li>
+<li><a class="reference internal" href="#">1.5. Dataset Joining</a><ul>
+<li><a class="reference internal" href="#load-the-files">1.5.1. Load The Files</a></li>
+<li><a class="reference internal" href="#join-by-subject">1.5.2. Join By Subject</a><ul>
+<li><a class="reference internal" href="#inequality">1.5.2.1. Inequality</a></li>
+<li><a class="reference internal" href="#general">1.5.2.2. General</a></li>
+<li><a class="reference internal" href="#economic">1.5.2.3. Economic</a></li>
+<li><a class="reference internal" href="#education">1.5.2.4. Education</a></li>
+<li><a class="reference internal" href="#labor">1.5.2.5. Labor</a></li>
+<li><a class="reference internal" href="#urbanization">1.5.2.6. Urbanization</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#full-dataset-join">5.3. Full Dataset Join</a></li>
-<li><a class="reference internal" href="#save-files">5.4. Save Files</a></li>
+<li><a class="reference internal" href="#full-dataset-join">1.5.3. Full Dataset Join</a></li>
+<li><a class="reference internal" href="#save-files">1.5.4. Save Files</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="11.html"
-                        title="previous chapter">4. General Indicators Data Processing (WDI)</a></p>
+                        title="previous chapter">1.4. General Indicators Data Processing (WDI)</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="2.html"
-                        title="next chapter">6. Tourism Missing Data</a></p>
+                        title="next chapter">1.6. Tourism Missing Data</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -1719,13 +1719,13 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="2.html" title="6. Tourism Missing Data"
+          <a href="2.html" title="1.6. Tourism Missing Data"
              >next</a> |</li>
         <li class="right" >
-          <a href="11.html" title="4. General Indicators Data Processing (WDI)"
+          <a href="11.html" title="1.4. General Indicators Data Processing (WDI)"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >Data Preperation Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >1. Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

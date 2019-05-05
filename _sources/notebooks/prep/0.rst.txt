@@ -771,37 +771,37 @@ Cleaning data
       </thead>
       <tbody>
         <tr>
-          <th>1344</th>
-          <td>17300.000</td>
-          <td>4.405</td>
-          <td>22000000.000</td>
+          <th>20</th>
           <td>nan</td>
-          <td>22000000.000</td>
           <td>nan</td>
-          <td>9.897</td>
-          <td>36000000.000</td>
-          <td>13000000.000</td>
-          <td>23000000.000</td>
-          <td>2006</td>
-          <td>BTN</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1980</td>
+          <td>AFG</td>
         </tr>
         <tr>
-          <th>8773</th>
-          <td>829000.000</td>
-          <td>9.754</td>
-          <td>703000000.000</td>
-          <td>185000000.000</td>
-          <td>518000000.000</td>
+          <th>14622</th>
+          <td>47052809.154</td>
+          <td>5.288</td>
+          <td>24517500000.000</td>
+          <td>3225700000.000</td>
+          <td>21291800000.000</td>
           <td>nan</td>
-          <td>4.606</td>
-          <td>538000000.000</td>
-          <td>153000000.000</td>
-          <td>385000000.000</td>
-          <td>2001</td>
-          <td>OMN</td>
+          <td>14.961</td>
+          <td>42797000000.000</td>
+          <td>4649326216.403</td>
+          <td>38267000000.000</td>
+          <td>2009</td>
+          <td>TMN</td>
         </tr>
         <tr>
-          <th>4964</th>
+          <th>6226</th>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -812,8 +812,8 @@ Cleaning data
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>1968</td>
-          <td>HTI</td>
+          <td>1991</td>
+          <td>XKX</td>
         </tr>
       </tbody>
     </table>

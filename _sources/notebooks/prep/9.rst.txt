@@ -78,64 +78,64 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>28</th>
-          <td>1994</td>
-          <td>YR1994</td>
-          <td>Aruba</td>
-          <td>ABW</td>
-          <td>49.177</td>
-          <td>4.795</td>
+          <th>2293</th>
+          <td>2002</td>
+          <td>YR2002</td>
+          <td>Somalia</td>
+          <td>SOM</td>
+          <td>33.990</td>
+          <td>4.003</td>
           <td>..</td>
-          <td>..</td>
-          <td>..</td>
+          <td>13.173</td>
+          <td>38.755</td>
         </tr>
         <tr>
-          <th>1726</th>
-          <td>2000</td>
-          <td>YR2000</td>
-          <td>Mozambique</td>
-          <td>MOZ</td>
-          <td>29.098</td>
-          <td>3.322</td>
-          <td>78.200</td>
-          <td>8.399</td>
-          <td>19.382</td>
-        </tr>
-        <tr>
-          <th>2413</th>
-          <td>2003</td>
-          <td>YR2003</td>
-          <td>Belize</td>
-          <td>BLZ</td>
-          <td>45.347</td>
-          <td>2.569</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>1442</th>
+          <th>1494</th>
           <td>1999</td>
           <td>YR1999</td>
-          <td>Libya</td>
-          <td>LBY</td>
-          <td>76.284</td>
-          <td>1.622</td>
+          <td>Seychelles</td>
+          <td>SYC</td>
+          <td>50.238</td>
+          <td>2.316</td>
           <td>..</td>
-          <td>19.236</td>
-          <td>25.217</td>
+          <td>..</td>
+          <td>..</td>
         </tr>
         <tr>
-          <th>6389</th>
-          <td>2018</td>
-          <td>YR2018</td>
-          <td>Cayman Islands</td>
-          <td>CYM</td>
+          <th>935</th>
+          <td>1997</td>
+          <td>YR1997</td>
+          <td>Myanmar</td>
+          <td>MMR</td>
+          <td>26.482</td>
+          <td>1.990</td>
           <td>..</td>
+          <td>9.336</td>
+          <td>28.601</td>
+        </tr>
+        <tr>
+          <th>6040</th>
+          <td>2016</td>
+          <td>YR2016</td>
+          <td>IBRD only</td>
+          <td>IBD</td>
+          <td>53.829</td>
+          <td>2.131</td>
           <td>..</td>
+          <td>22.752</td>
+          <td>12.471</td>
+        </tr>
+        <tr>
+          <th>3398</th>
+          <td>2006</td>
+          <td>YR2006</td>
+          <td>Heavily indebted poor countries (HIPC)</td>
+          <td>HPC</td>
+          <td>30.773</td>
+          <td>4.124</td>
           <td>..</td>
-          <td>..</td>
-          <td>..</td>
+          <td>12.657</td>
+          <td>34.163</td>
         </tr>
       </tbody>
     </table>
@@ -260,49 +260,49 @@ Data Types
       </thead>
       <tbody>
         <tr>
-          <th>SAU</th>
-          <th>2001</th>
-          <td>80.077</td>
-          <td>2.850</td>
-          <td>nan</td>
-          <td>41.971</td>
-          <td>21.598</td>
-        </tr>
-        <tr>
-          <th>SVK</th>
-          <th>2002</th>
-          <td>56.013</td>
-          <td>-0.304</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>14.208</td>
-        </tr>
-        <tr>
-          <th>WSM</th>
-          <th>2015</th>
-          <td>18.914</td>
-          <td>-0.474</td>
+          <th>CPV</th>
+          <th>2011</th>
+          <td>62.322</td>
+          <td>1.932</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
         </tr>
         <tr>
-          <th>KIR</th>
-          <th>1995</th>
-          <td>36.409</td>
-          <td>2.161</td>
+          <th>LAO</th>
+          <th>2018</th>
+          <td>nan</td>
+          <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
         </tr>
         <tr>
-          <th>GNB</th>
-          <th>2001</th>
-          <td>36.622</td>
-          <td>2.975</td>
+          <th>GRD</th>
+          <th>2010</th>
+          <td>35.865</td>
+          <td>0.347</td>
           <td>nan</td>
           <td>nan</td>
-          <td>61.909</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>BWA</th>
+          <th>2018</th>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>LKA</th>
+          <th>2005</th>
+          <td>18.303</td>
+          <td>0.694</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>17.178</td>
         </tr>
       </tbody>
     </table>

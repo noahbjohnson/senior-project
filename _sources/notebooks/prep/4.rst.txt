@@ -88,57 +88,57 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>16689</th>
-          <td>SWE</td>
-          <td>Sweden</td>
-          <td>1342</td>
-          <td>1204.000</td>
-          <td>1515.000</td>
-          <td>nan</td>
+          <th>3957</th>
+          <td>CUB</td>
+          <td>Cuba</td>
+          <td>1996</td>
+          <td>4251.000</td>
+          <td>4251.000</td>
+          <td>10963.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>10014</th>
-          <td>LBN</td>
-          <td>Lebanon</td>
-          <td>1954</td>
-          <td>10034.000</td>
-          <td>13444.000</td>
-          <td>1519.000</td>
-          <td>Interpolated</td>
-          <td>NaN</td>
+          <th>3610</th>
+          <td>CPV</td>
+          <td>Cabo Verde</td>
+          <td>2011</td>
+          <td>6295.000</td>
+          <td>6295.000</td>
+          <td>516.000</td>
+          <td>Benchmark</td>
+          <td>ICP PPP estimates</td>
         </tr>
         <tr>
-          <th>4465</th>
-          <td>DMA</td>
-          <td>Dominica</td>
-          <td>1978</td>
-          <td>4979.000</td>
-          <td>3611.000</td>
-          <td>74.000</td>
+          <th>375</th>
+          <td>ARG</td>
+          <td>Argentina</td>
+          <td>1932</td>
+          <td>6033.000</td>
+          <td>6186.000</td>
+          <td>12402.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>6404</th>
-          <td>GBR</td>
-          <td>United Kingdom</td>
-          <td>1712</td>
-          <td>1489.000</td>
-          <td>2213.000</td>
-          <td>nan</td>
+          <th>14423</th>
+          <td>POL</td>
+          <td>Poland</td>
+          <td>1934</td>
+          <td>2045.000</td>
+          <td>3100.000</td>
+          <td>29771.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>15766</th>
-          <td>SAU</td>
-          <td>Saudi Arabia</td>
-          <td>1984</td>
-          <td>21663.000</td>
-          <td>49187.000</td>
-          <td>12607.000</td>
+          <th>440</th>
+          <td>ARG</td>
+          <td>Argentina</td>
+          <td>1997</td>
+          <td>16353.000</td>
+          <td>15708.000</td>
+          <td>36103.000</td>
           <td>Interpolated</td>
           <td>NaN</td>
         </tr>

@@ -96,53 +96,17 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>4212</th>
-          <td>2010</td>
-          <td>YR2010</td>
-          <td>Other small states</td>
-          <td>OSS</td>
+          <th>3330</th>
+          <td>2007</td>
+          <td>YR2007</td>
+          <td>Rwanda</td>
+          <td>RWA</td>
+          <td>29756107.500</td>
           <td>..</td>
-          <td>..</td>
-          <td>11376.544</td>
-          <td>298828291502.393</td>
-          <td>..</td>
-          <td>2576830000</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>2154</th>
-          <td>2003</td>
-          <td>YR2003</td>
-          <td>Colombia</td>
-          <td>COL</td>
-          <td>169803277.900</td>
-          <td>..</td>
-          <td>2340</td>
-          <td>98467865108.175</td>
-          <td>0</td>
-          <td>803190000</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>53.400</td>
-        </tr>
-        <tr>
-          <th>2087</th>
-          <td>2002</td>
-          <td>YR2002</td>
-          <td>Latin America &amp; Caribbean (excluding high income)</td>
-          <td>LAC</td>
-          <td>24130659996.100</td>
-          <td>..</td>
-          <td>3590.566</td>
-          <td>1698653796683.377</td>
-          <td>36815474.080</td>
-          <td>4884630000</td>
+          <td>370</td>
+          <td>3491222531.926</td>
+          <td>73393659.510</td>
+          <td>780040000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -150,35 +114,71 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>4686</th>
+          <th>5518</th>
+          <td>2015</td>
+          <td>YR2015</td>
+          <td>Latin America &amp; Caribbean</td>
+          <td>LCN</td>
+          <td>..</td>
+          <td>..</td>
+          <td>9129.471</td>
+          <td>5761268512218.995</td>
+          <td>..</td>
+          <td>10287510000</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>4583</th>
           <td>2012</td>
           <td>YR2012</td>
-          <td>Turkey</td>
-          <td>TUR</td>
-          <td>2510466174.500</td>
+          <td>Israel</td>
+          <td>ISR</td>
           <td>..</td>
-          <td>11880</td>
-          <td>886126952615.486</td>
-          <td>0</td>
-          <td>3112170000</td>
-          <td>16.300</td>
+          <td>..</td>
+          <td>32180</td>
+          <td>254546206908.805</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
-          <td>40.200</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>41.400</td>
         </tr>
         <tr>
-          <th>5052</th>
-          <td>2014</td>
-          <td>YR2014</td>
-          <td>Cayman Islands</td>
-          <td>CYM</td>
+          <th>2362</th>
+          <td>2003</td>
+          <td>YR2003</td>
+          <td>Not classified</td>
+          <td>INX</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>677</th>
+          <td>1997</td>
+          <td>YR1997</td>
+          <td>Pakistan</td>
+          <td>PAK</td>
+          <td>1281173552.300</td>
+          <td>..</td>
+          <td>490</td>
+          <td>63655547705.666</td>
+          <td>0</td>
+          <td>902090000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
