@@ -21,3 +21,7 @@ xlrd
 bigml
 statsmodels
 fancyimpute
+plotly
+cufflinks
+xgboost
+tensorflow
