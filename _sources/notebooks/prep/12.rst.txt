@@ -160,68 +160,19 @@ Inequality
       </thead>
       <tbody>
         <tr>
-          <th>CHN</th>
-          <th>2013</th>
-          <td>55686000.000</td>
-          <td>6.064</td>
-          <td>128576000000.000</td>
-          <td>98185000.000</td>
-          <td>2.193</td>
-          <td>51664000000.000</td>
-          <td>-42499000.000</td>
-          <td>-76912000000.000</td>
-          <td>927.774</td>
-          <td>1382793212.000</td>
-          <td>0.040</td>
-          <td>0.071</td>
-          <td>39.700</td>
+          <th>TJK</th>
+          <th>2008</th>
+          <td>325000.000</td>
+          <td>0.260</td>
+          <td>10800000.000</td>
           <td>nan</td>
+          <td>1.349</td>
+          <td>23700000.000</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>30.300</td>
-          <td>2.500</td>
-          <td>2204.625</td>
-          <td>42.345</td>
-          <td>5.328</td>
-          <td>10.724</td>
-          <td>16.034</td>
-          <td>23.418</td>
-          <td>44.494</td>
-          <td>1.665</td>
-          <td>3.150</td>
-          <td>4.335</td>
-          <td>5.605</td>
-          <td>6.965</td>
-          <td>8.515</td>
-          <td>10.475</td>
-          <td>12.885</td>
-          <td>16.825</td>
-          <td>29.575</td>
-          <td>0.570</td>
-          <td>18.515</td>
-          <td>21042.080</td>
-          <td>19788.500</td>
-          <td>6.196</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>11732.000</td>
-          <td>1382793212.000</td>
-          <td>11.625</td>
-        </tr>
-        <tr>
-          <th>ARE</th>
-          <th>2007</th>
-          <td>nan</td>
-          <td>nan</td>
-          <td>11273000000.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>6072000000.000</td>
-          <td>nan</td>
-          <td>-5201000000.000</td>
-          <td>nan</td>
-          <td>6044067.000</td>
-          <td>nan</td>
+          <td>12900000.000</td>
+          <td>72.923</td>
+          <td>7309728.000</td>
+          <td>0.044</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -258,126 +209,166 @@ Inequality
           <td>nan</td>
         </tr>
         <tr>
-          <th>PRY</th>
-          <th>2016</th>
-          <td>1308000.000</td>
-          <td>4.775</td>
-          <td>512000000.000</td>
-          <td>1503000.000</td>
-          <td>2.804</td>
-          <td>356000000.000</td>
-          <td>-195000.000</td>
-          <td>-156000000.000</td>
-          <td>272.171</td>
-          <td>6725308.000</td>
-          <td>0.194</td>
-          <td>0.223</td>
-          <td>47.900</td>
+          <th>BIH</th>
+          <th>2017</th>
+          <td>923000.000</td>
+          <td>2.507</td>
+          <td>257000000.000</td>
+          <td>nan</td>
+          <td>12.267</td>
+          <td>894000000.000</td>
+          <td>nan</td>
+          <td>637000000.000</td>
+          <td>968.581</td>
+          <td>3507017.000</td>
+          <td>0.263</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>37.300</td>
-          <td>1.600</td>
-          <td>7933.000</td>
-          <td>48.360</td>
-          <td>4.290</td>
-          <td>8.538</td>
-          <td>13.232</td>
-          <td>20.616</td>
-          <td>53.306</td>
-          <td>1.514</td>
-          <td>2.776</td>
-          <td>3.768</td>
-          <td>4.770</td>
-          <td>5.908</td>
-          <td>7.324</td>
-          <td>9.050</td>
-          <td>11.566</td>
-          <td>15.714</td>
-          <td>37.592</td>
-          <td>0.455</td>
-          <td>27.050</td>
-          <td>14491498.640</td>
-          <td>9548819.453</td>
-          <td>5670.517</td>
-          <td>5951.000</td>
-          <td>3888.000</td>
-          <td>8871.000</td>
-          <td>6725308.000</td>
-          <td>12.600</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
         </tr>
         <tr>
-          <th>TUV</th>
+          <th>DNK</th>
           <th>2002</th>
-          <td>1300.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>2700.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>-1400.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>9635.000</td>
-          <td>0.135</td>
-          <td>0.280</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
+          <td>3436000.000</td>
+          <td>8.095</td>
+          <td>5838000000.000</td>
+          <td>4935000.000</td>
+          <td>5.833</td>
+          <td>4791000000.000</td>
+          <td>-1499000.000</td>
+          <td>-1047000000.000</td>
+          <td>1394.354</td>
+          <td>5372801.000</td>
+          <td>0.640</td>
+          <td>0.919</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
+          <td>3012.500</td>
+          <td>37.000</td>
+          <td>5.800</td>
+          <td>11.150</td>
+          <td>16.250</td>
+          <td>24.700</td>
+          <td>42.000</td>
+          <td>1.700</td>
+          <td>4.100</td>
+          <td>5.000</td>
+          <td>6.150</td>
+          <td>7.350</td>
+          <td>8.900</td>
+          <td>11.050</td>
+          <td>13.650</td>
+          <td>16.450</td>
+          <td>25.550</td>
           <td>nan</td>
           <td>nan</td>
+          <td>267800.000</td>
+          <td>215000.000</td>
+          <td>7.895</td>
           <td>nan</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
+          <td>42620.000</td>
+          <td>5372801.000</td>
+          <td>12.000</td>
         </tr>
         <tr>
-          <th>MDA</th>
+          <th>PAN</th>
+          <th>2012</th>
+          <td>1606000.000</td>
+          <td>1.837</td>
+          <td>591000000.000</td>
+          <td>447000.000</td>
+          <td>14.747</td>
+          <td>4585000000.000</td>
+          <td>1159000.000</td>
+          <td>3994000000.000</td>
+          <td>2854.919</td>
+          <td>3772938.000</td>
+          <td>0.426</td>
+          <td>0.118</td>
+          <td>51.700</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>39.700</td>
+          <td>1.000</td>
+          <td>7791.000</td>
+          <td>51.077</td>
+          <td>3.323</td>
+          <td>7.957</td>
+          <td>12.813</td>
+          <td>20.280</td>
+          <td>55.557</td>
+          <td>1.060</td>
+          <td>2.263</td>
+          <td>3.450</td>
+          <td>4.507</td>
+          <td>5.707</td>
+          <td>7.107</td>
+          <td>8.873</td>
+          <td>11.407</td>
+          <td>16.257</td>
+          <td>39.300</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>7551.240</td>
+          <td>4704.480</td>
+          <td>1.000</td>
+          <td>7551.000</td>
+          <td>4704.000</td>
+          <td>18441.000</td>
+          <td>3772938.000</td>
+          <td>12.333</td>
+        </tr>
+        <tr>
+          <th>VCT</th>
           <th>2003</th>
+          <td>79000.000</td>
+          <td>5.385</td>
+          <td>13000000.000</td>
           <td>nan</td>
-          <td>7.356</td>
-          <td>118000000.000</td>
+          <td>52.647</td>
+          <td>91000000.000</td>
           <td>nan</td>
-          <td>8.432</td>
-          <td>79000000.000</td>
-          <td>nan</td>
-          <td>-39000000.000</td>
-          <td>nan</td>
-          <td>4171646.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>34.900</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>27.700</td>
-          <td>3.100</td>
-          <td>6915.500</td>
-          <td>39.150</td>
+          <td>78000000.000</td>
+          <td>1151.899</td>
+          <td>108350.000</td>
+          <td>0.729</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -397,12 +388,21 @@ Inequality
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>13.945</td>
           <td>nan</td>
           <td>nan</td>
-          <td>2469.000</td>
-          <td>4171646.000</td>
-          <td>7.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
         </tr>
       </tbody>
     </table>
@@ -543,247 +543,247 @@ General
       </thead>
       <tbody>
         <tr>
-          <th>GEO</th>
-          <th>2005</th>
-          <td>560000.000</td>
-          <td>7.254</td>
-          <td>237000000.000</td>
-          <td>857000.000</td>
-          <td>13.338</td>
-          <td>287000000.000</td>
-          <td>-297000.000</td>
-          <td>50000000.000</td>
-          <td>512.500</td>
-          <td>4486547.000</td>
-          <td>0.125</td>
-          <td>0.191</td>
-          <td>72.730</td>
-          <td>97.935</td>
-          <td>nan</td>
-          <td>75.992</td>
-          <td>90.062</td>
-          <td>1.299</td>
-          <td>37.192</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>5.482</td>
-          <td>10.934</td>
-          <td>331.350</td>
-          <td>35.726</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>5.000</td>
-          <td>nan</td>
-          <td>21.700</td>
-          <td>4.700</td>
-          <td>26.500</td>
-          <td>96.300</td>
-          <td>nan</td>
-          <td>30.800</td>
-          <td>nan</td>
-          <td>0.053</td>
-          <td>6.079</td>
-          <td>26.174</td>
-          <td>7301.000</td>
-          <td>nan</td>
-          <td>8.982</td>
-          <td>1.155</td>
-          <td>nan</td>
-        </tr>
-        <tr>
-          <th>TUR</th>
-          <th>2008</th>
-          <td>29792000.000</td>
-          <td>2.127</td>
-          <td>4509000000.000</td>
-          <td>4893000.000</td>
-          <td>14.856</td>
-          <td>26446000000.000</td>
-          <td>24899000.000</td>
-          <td>21937000000.000</td>
-          <td>887.688</td>
-          <td>70440032.000</td>
-          <td>0.423</td>
-          <td>0.069</td>
-          <td>73.549</td>
-          <td>98.807</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>97.451</td>
-          <td>4.032</td>
-          <td>16.859</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>43.014</td>
-          <td>17.156</td>
-          <td>1298.620</td>
-          <td>705.804</td>
+          <th>GUM</th>
+          <th>2013</th>
+          <td>1334000.000</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>18.800</td>
-          <td>11.000</td>
-          <td>30.400</td>
-          <td>92.000</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>8.173</td>
-          <td>34.370</td>
-          <td>93.447</td>
-          <td>214378.000</td>
-          <td>34.624</td>
-          <td>4.624</td>
-          <td>2.623</td>
+          <td>160375.000</td>
+          <td>8.318</td>
           <td>nan</td>
-        </tr>
-        <tr>
-          <th>SAU</th>
-          <th>2005</th>
-          <td>8037000.000</td>
-          <td>10.368</td>
-          <td>9087000000.000</td>
-          <td>4403000.000</td>
-          <td>2.410</td>
-          <td>4626000000.000</td>
-          <td>3634000.000</td>
-          <td>-4461000000.000</td>
-          <td>575.588</td>
-          <td>23905654.000</td>
-          <td>0.336</td>
-          <td>0.184</td>
-          <td>73.112</td>
+          <td>78.938</td>
           <td>100.000</td>
           <td>nan</td>
           <td>nan</td>
-          <td>97.764</td>
-          <td>16.634</td>
-          <td>25.420</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>29.012</td>
-          <td>7.829</td>
-          <td>459.283</td>
-          <td>108.689</td>
+          <td>99.695</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>3.000</td>
-          <td>nan</td>
-          <td>14.200</td>
-          <td>nan</td>
-          <td>42.900</td>
           <td>nan</td>
           <td>nan</td>
-          <td>14.600</td>
           <td>nan</td>
-          <td>0.284</td>
-          <td>12.705</td>
-          <td>59.250</td>
-          <td>151.000</td>
           <td>nan</td>
-          <td>1.242</td>
-          <td>2.707</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1.871</td>
+          <td>65.400</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>MDA</th>
+          <th>2003</th>
+          <td>nan</td>
+          <td>7.356</td>
+          <td>118000000.000</td>
+          <td>nan</td>
+          <td>8.432</td>
+          <td>79000000.000</td>
+          <td>nan</td>
+          <td>-39000000.000</td>
+          <td>nan</td>
+          <td>4171646.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>67.521</td>
+          <td>98.750</td>
+          <td>nan</td>
+          <td>43.378</td>
+          <td>84.593</td>
+          <td>1.188</td>
+          <td>15.027</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>19.600</td>
+          <td>nan</td>
+          <td>30.200</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>0.014</td>
+          <td>7.408</td>
+          <td>11.409</td>
+          <td>11146.000</td>
+          <td>nan</td>
+          <td>7.647</td>
+          <td>0.716</td>
           <td>nan</td>
         </tr>
         <tr>
-          <th>TON</th>
-          <th>2009</th>
-          <td>45700.000</td>
-          <td>8.182</td>
-          <td>19800000.000</td>
+          <th>BFA</th>
+          <th>2016</th>
+          <td>152000.000</td>
+          <td>4.329</td>
+          <td>176000000.000</td>
           <td>nan</td>
-          <td>42.098</td>
-          <td>18400000.000</td>
+          <td>5.260</td>
+          <td>172000000.000</td>
           <td>nan</td>
-          <td>-1400000.000</td>
-          <td>402.626</td>
-          <td>103604.000</td>
-          <td>0.441</td>
+          <td>-4000000.000</td>
+          <td>1131.579</td>
+          <td>18646433.000</td>
+          <td>0.008</td>
           <td>nan</td>
-          <td>72.039</td>
-          <td>91.512</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>99.197</td>
-          <td>1.274</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>29.368</td>
-          <td>21.639</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>18.900</td>
+          <td>60.361</td>
+          <td>19.165</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>14.700</td>
           <td>nan</td>
-          <td>38.100</td>
+          <td>15.080</td>
+          <td>0.000</td>
+          <td>3.692</td>
+          <td>2.887</td>
+          <td>161.250</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>0.965</td>
-          <td>10.000</td>
-          <td>51.156</td>
-          <td>5.000</td>
-          <td>1.288</td>
-          <td>7.722</td>
+          <td>7.700</td>
+          <td>49.600</td>
+          <td>52.600</td>
           <td>nan</td>
+          <td>86.200</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>12.500</td>
+          <td>8.200</td>
+          <td>0.074</td>
+          <td>13.960</td>
+          <td>82.611</td>
+          <td>2357.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>0.168</td>
           <td>nan</td>
         </tr>
         <tr>
-          <th>ATG</th>
-          <th>2015</th>
-          <td>250000.000</td>
-          <td>11.271</td>
-          <td>95000000.000</td>
+          <th>EST</th>
+          <th>2013</th>
+          <td>3111000.000</td>
+          <td>6.033</td>
+          <td>1236000000.000</td>
+          <td>1166000.000</td>
+          <td>9.540</td>
+          <td>2022000000.000</td>
+          <td>1945000.000</td>
+          <td>786000000.000</td>
+          <td>649.952</td>
+          <td>1321560.000</td>
+          <td>2.354</td>
+          <td>0.882</td>
+          <td>77.141</td>
+          <td>100.000</td>
           <td>nan</td>
-          <td>79.269</td>
-          <td>805000000.000</td>
-          <td>nan</td>
-          <td>710000000.000</td>
-          <td>3220.000</td>
-          <td>99923.000</td>
-          <td>2.502</td>
-          <td>nan</td>
-          <td>76.207</td>
-          <td>96.826</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>96.739</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>71.634</td>
-          <td>27.858</td>
+          <td>84.659</td>
+          <td>99.579</td>
+          <td>15.094</td>
+          <td>11.718</td>
           <td>nan</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>0.800</td>
-          <td>nan</td>
-          <td>5.900</td>
-          <td>nan</td>
-          <td>32.100</td>
+          <td>79.560</td>
+          <td>13.950</td>
+          <td>2240.056</td>
+          <td>519.712</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>10.008</td>
-          <td>70.000</td>
-          <td>176.136</td>
-          <td>56.000</td>
+          <td>nan</td>
+          <td>2.900</td>
+          <td>nan</td>
+          <td>24.400</td>
           <td>nan</td>
           <td>nan</td>
+          <td>32.700</td>
+          <td>nan</td>
+          <td>27.312</td>
+          <td>80.004</td>
+          <td>145.845</td>
+          <td>352.000</td>
+          <td>nan</td>
+          <td>3.935</td>
+          <td>0.844</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>AND</th>
+          <th>2011</th>
+          <td>2242000.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>83751.000</td>
+          <td>26.770</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>100.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>100.000</td>
+          <td>5.867</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>3.700</td>
+          <td>nan</td>
+          <td>10.500</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>34.500</td>
+          <td>nan</td>
+          <td>30.761</td>
+          <td>81.000</td>
+          <td>77.664</td>
+          <td>6.000</td>
+          <td>nan</td>
+          <td>1.194</td>
           <td>nan</td>
           <td>nan</td>
         </tr>
@@ -884,55 +884,55 @@ Economic
       </thead>
       <tbody>
         <tr>
-          <th>ABW</th>
-          <th>2017</th>
-          <td>1070500.000</td>
+          <th>RUS</th>
+          <th>1998</th>
+          <td>16188000.000</td>
+          <td>11.718</td>
+          <td>8677000000.000</td>
+          <td>10635000.000</td>
+          <td>7.546</td>
+          <td>6508000000.000</td>
+          <td>5553000.000</td>
+          <td>-2169000000.000</td>
+          <td>402.026</td>
+          <td>147381001.000</td>
+          <td>0.110</td>
+          <td>0.072</td>
+          <td>7616.000</td>
+          <td>19335057150.400</td>
           <td>nan</td>
-          <td>362000000.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>1733000000.000</td>
-          <td>nan</td>
-          <td>1371000000.000</td>
-          <td>1618.870</td>
-          <td>105264.000</td>
-          <td>10.170</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>23660.000</td>
-          <td>2490319227.569</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-        </tr>
-        <tr>
-          <th>NIC</th>
-          <th>1996</th>
-          <td>303000.000</td>
-          <td>6.095</td>
-          <td>79000000.000</td>
-          <td>282000.000</td>
-          <td>8.518</td>
-          <td>55000000.000</td>
-          <td>21000.000</td>
-          <td>-24000000.000</td>
-          <td>181.518</td>
-          <td>4700779.000</td>
-          <td>0.064</td>
-          <td>0.060</td>
-          <td>2308.000</td>
-          <td>28787959.800</td>
-          <td>nan</td>
-          <td>880.000</td>
-          <td>4156977095.377</td>
+          <td>2130.000</td>
+          <td>314753869501.727</td>
           <td>0.000</td>
-          <td>930860000.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>38.100</td>
+        </tr>
+        <tr>
+          <th>GIN</th>
+          <th>2005</th>
+          <td>45000.000</td>
+          <td>3.698</td>
+          <td>38000000.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>9679745.000</td>
+          <td>0.005</td>
+          <td>nan</td>
+          <td>1008.000</td>
+          <td>112503558.800</td>
+          <td>nan</td>
+          <td>340.000</td>
+          <td>3271616054.635</td>
+          <td>5507576.370</td>
+          <td>192910000.000</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -940,27 +940,55 @@ Economic
           <td>nan</td>
         </tr>
         <tr>
-          <th>GRD</th>
-          <th>2017</th>
-          <td>168000.000</td>
-          <td>5.827</td>
-          <td>35000000.000</td>
+          <th>SWE</th>
+          <th>2008</th>
+          <td>4555000.000</td>
+          <td>6.470</td>
+          <td>14622000000.000</td>
+          <td>13291000.000</td>
+          <td>4.565</td>
+          <td>11732000000.000</td>
+          <td>-8736000.000</td>
+          <td>-2890000000.000</td>
+          <td>2575.631</td>
+          <td>9236890.000</td>
+          <td>0.493</td>
+          <td>1.439</td>
+          <td>42310.000</td>
           <td>nan</td>
-          <td>85.427</td>
-          <td>499000000.000</td>
           <td>nan</td>
-          <td>464000000.000</td>
-          <td>2970.238</td>
-          <td>107825.000</td>
-          <td>1.558</td>
+          <td>55380.000</td>
+          <td>510597434567.058</td>
           <td>nan</td>
           <td>nan</td>
-          <td>44465743.100</td>
-          <td>473677310.814</td>
-          <td>9180.000</td>
-          <td>990369680.753</td>
-          <td>0.000</td>
-          <td>5840000.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>28.100</td>
+        </tr>
+        <tr>
+          <th>ERI</th>
+          <th>2007</th>
+          <td>81000.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>61000000.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>753.086</td>
+          <td>4153332.000</td>
+          <td>0.020</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>23953653.900</td>
+          <td>nan</td>
+          <td>300.000</td>
+          <td>1244706195.438</td>
+          <td>12308727.610</td>
+          <td>158530000.000</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -968,60 +996,32 @@ Economic
           <td>nan</td>
         </tr>
         <tr>
-          <th>IRQ</th>
-          <th>2006</th>
+          <th>ISL</th>
+          <th>2003</th>
+          <td>317000.000</td>
+          <td>12.877</td>
+          <td>524000000.000</td>
           <td>nan</td>
-          <td>2.174</td>
-          <td>526000000.000</td>
+          <td>13.044</td>
+          <td>486000000.000</td>
           <td>nan</td>
-          <td>0.550</td>
-          <td>170000000.000</td>
+          <td>-38000000.000</td>
+          <td>1533.123</td>
+          <td>287952.000</td>
+          <td>1.101</td>
           <td>nan</td>
-          <td>-356000000.000</td>
-          <td>nan</td>
-          <td>27697912.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>5177.000</td>
+          <td>35177.000</td>
           <td>nan</td>
           <td>nan</td>
-          <td>2020.000</td>
-          <td>55938618091.944</td>
-          <td>nan</td>
-          <td>8889320000.000</td>
-          <td>22.400</td>
-          <td>15.700</td>
-          <td>39.000</td>
-          <td>4.700</td>
-          <td>28.600</td>
-        </tr>
-        <tr>
-          <th>AZE</th>
-          <th>2017</th>
-          <td>2454000.000</td>
-          <td>16.387</td>
-          <td>2803000000.000</td>
-          <td>4109000.000</td>
-          <td>16.199</td>
-          <td>3214000000.000</td>
-          <td>-1655000.000</td>
-          <td>411000000.000</td>
-          <td>1309.698</td>
-          <td>9827589.000</td>
-          <td>0.250</td>
-          <td>0.418</td>
-          <td>nan</td>
-          <td>218712839.000</td>
-          <td>11154692666.570</td>
-          <td>4080.000</td>
-          <td>40203466974.814</td>
-          <td>0.000</td>
-          <td>115510000.000</td>
+          <td>33710.000</td>
+          <td>9760934536.278</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
+          <td>nan</td>
+          <td>26.800</td>
         </tr>
       </tbody>
     </table>
@@ -1110,118 +1110,118 @@ Education
       </thead>
       <tbody>
         <tr>
-          <th>COG</th>
-          <th>1996</th>
-          <td>39000.000</td>
-          <td>5.646</td>
-          <td>86000000.000</td>
+          <th>IRQ</th>
+          <th>2014</th>
           <td>nan</td>
-          <td>0.631</td>
-          <td>11017590.000</td>
+          <td>7.324</td>
+          <td>4394000000.000</td>
           <td>nan</td>
-          <td>-74982410.000</td>
-          <td>282.502</td>
-          <td>2879222.000</td>
-          <td>0.014</td>
+          <td>2.842</td>
+          <td>2504000000.000</td>
           <td>nan</td>
-          <td>0.879</td>
+          <td>-1890000000.000</td>
           <td>nan</td>
+          <td>35006080.000</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>72.748</td>
-          <td>29.925</td>
-          <td>nan</td>
-        </tr>
-        <tr>
-          <th>KEN</th>
-          <th>2010</th>
-          <td>1470000.000</td>
-          <td>1.567</td>
-          <td>212000000.000</td>
-          <td>nan</td>
-          <td>18.034</td>
-          <td>1620000000.000</td>
-          <td>nan</td>
-          <td>1408000000.000</td>
-          <td>1102.041</td>
-          <td>41350152.000</td>
-          <td>0.036</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>8.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-        </tr>
-        <tr>
-          <th>ARE</th>
-          <th>2000</th>
-          <td>3907000.000</td>
-          <td>nan</td>
-          <td>3019000000.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>1063000000.000</td>
-          <td>nan</td>
-          <td>-1956000000.000</td>
-          <td>272.076</td>
-          <td>3154925.000</td>
-          <td>1.238</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>6.000</td>
           <td>nan</td>
-          <td>16.147</td>
+          <td>nan</td>
           <td>nan</td>
           <td>nan</td>
         </tr>
         <tr>
-          <th>NAM</th>
-          <th>2002</th>
-          <td>757000.000</td>
-          <td>4.292</td>
-          <td>65000000.000</td>
+          <th>TCA</th>
+          <th>2014</th>
+          <td>357000.000</td>
           <td>nan</td>
-          <td>18.768</td>
-          <td>251000000.000</td>
+          <td>6700000.000</td>
           <td>nan</td>
-          <td>186000000.000</td>
-          <td>331.572</td>
-          <td>1962147.000</td>
-          <td>0.386</td>
           <td>nan</td>
-          <td>1.022</td>
+          <td>599000000.000</td>
           <td>nan</td>
-          <td>7.000</td>
-          <td>9.029</td>
-          <td>31.209</td>
-          <td>25.050</td>
-          <td>50.152</td>
+          <td>592300000.000</td>
+          <td>1677.871</td>
+          <td>33739.000</td>
+          <td>10.581</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>13.000</td>
+          <td>nan</td>
+          <td>9.288</td>
+          <td>8.834</td>
+          <td>nan</td>
         </tr>
         <tr>
-          <th>BHS</th>
-          <th>1997</th>
-          <td>1618000.000</td>
-          <td>13.798</td>
-          <td>310000000.000</td>
+          <th>PSE</th>
+          <th>1995</th>
           <td>nan</td>
-          <td>75.587</td>
-          <td>1427000000.000</td>
+          <td>5.808</td>
+          <td>162000000.000</td>
           <td>nan</td>
-          <td>1117000000.000</td>
-          <td>881.953</td>
-          <td>286970.000</td>
-          <td>5.638</td>
+          <td>33.394</td>
+          <td>255000000.000</td>
           <td>nan</td>
-          <td>1.109</td>
+          <td>93000000.000</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>20.688</td>
+          <td>0.974</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>YEM</th>
+          <th>2003</th>
+          <td>155000.000</td>
+          <td>nan</td>
+          <td>134000000.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>139000000.000</td>
+          <td>nan</td>
+          <td>5000000.000</td>
+          <td>896.774</td>
+          <td>19462086.000</td>
+          <td>0.008</td>
+          <td>nan</td>
+          <td>0.601</td>
+          <td>nan</td>
+          <td>9.000</td>
+          <td>29.326</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>MDG</th>
+          <th>2006</th>
+          <td>312000.000</td>
+          <td>7.154</td>
+          <td>167000000.000</td>
+          <td>nan</td>
+          <td>23.367</td>
+          <td>382000000.000</td>
+          <td>nan</td>
+          <td>215000000.000</td>
+          <td>1224.359</td>
+          <td>18880268.000</td>
+          <td>0.017</td>
+          <td>nan</td>
+          <td>0.959</td>
+          <td>nan</td>
+          <td>5.000</td>
+          <td>nan</td>
+          <td>48.143</td>
+          <td>23.692</td>
           <td>nan</td>
         </tr>
       </tbody>
@@ -1323,67 +1323,67 @@ Labor
       </thead>
       <tbody>
         <tr>
-          <th>COL</th>
-          <th>1996</th>
-          <td>631000.000</td>
-          <td>8.712</td>
-          <td>1431000000.000</td>
-          <td>929000.000</td>
-          <td>10.365</td>
-          <td>1362000000.000</td>
-          <td>-298000.000</td>
-          <td>-69000000.000</td>
-          <td>2158.479</td>
-          <td>38049038.000</td>
-          <td>0.017</td>
-          <td>0.024</td>
-          <td>46.654</td>
-          <td>68.065</td>
-          <td>63.433</td>
+          <th>IND</th>
+          <th>2010</th>
+          <td>5776000.000</td>
+          <td>2.389</td>
+          <td>10490000000.000</td>
+          <td>12988000.000</td>
+          <td>4.163</td>
+          <td>14490000000.000</td>
+          <td>-7212000.000</td>
+          <td>4000000000.000</td>
+          <td>2508.657</td>
+          <td>1230980691.000</td>
+          <td>0.005</td>
+          <td>0.011</td>
+          <td>17.522</td>
+          <td>54.091</td>
+          <td>32.001</td>
           <td>nan</td>
           <td>nan</td>
-          <td>4.255</td>
-          <td>23.057</td>
-          <td>18.714</td>
-          <td>58.229</td>
-          <td>nan</td>
-          <td>11.810</td>
-          <td>51.424</td>
-          <td>nan</td>
-        </tr>
-        <tr>
-          <th>BRN</th>
-          <th>2008</th>
-          <td>226000.000</td>
-          <td>10.774</td>
-          <td>459000000.000</td>
-          <td>nan</td>
-          <td>2.093</td>
-          <td>242000000.000</td>
-          <td>nan</td>
-          <td>-217000000.000</td>
-          <td>1070.796</td>
-          <td>379252.000</td>
-          <td>0.596</td>
-          <td>nan</td>
-          <td>40.271</td>
-          <td>66.407</td>
-          <td>74.454</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>2.582</td>
-          <td>0.789</td>
-          <td>19.977</td>
-          <td>79.234</td>
-          <td>nan</td>
-          <td>5.697</td>
-          <td>7.042</td>
+          <td>1.209</td>
+          <td>51.056</td>
+          <td>22.378</td>
+          <td>26.566</td>
+          <td>75.300</td>
+          <td>2.444</td>
+          <td>83.323</td>
           <td>nan</td>
         </tr>
         <tr>
-          <th>ASM</th>
-          <th>2006</th>
-          <td>25300.000</td>
+          <th>ARG</th>
+          <th>2012</th>
+          <td>5587000.000</td>
+          <td>10.153</td>
+          <td>8466000000.000</td>
+          <td>7266000.000</td>
+          <td>6.005</td>
+          <td>5665000000.000</td>
+          <td>-1679000.000</td>
+          <td>-2801000000.000</td>
+          <td>1013.961</td>
+          <td>42096739.000</td>
+          <td>0.133</td>
+          <td>0.173</td>
+          <td>31.372</td>
+          <td>60.692</td>
+          <td>65.028</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>3.965</td>
+          <td>0.616</td>
+          <td>23.656</td>
+          <td>75.728</td>
+          <td>47.730</td>
+          <td>7.217</td>
+          <td>22.995</td>
+          <td>1.206</td>
+        </tr>
+        <tr>
+          <th>SMR</th>
+          <th>2003</th>
+          <td>41000.000</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -1392,8 +1392,8 @@ Labor
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>58650.000</td>
-          <td>0.431</td>
+          <td>28494.000</td>
+          <td>1.439</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -1410,61 +1410,61 @@ Labor
           <td>nan</td>
         </tr>
         <tr>
-          <th>TUR</th>
-          <th>2006</th>
-          <td>18916000.000</td>
-          <td>2.395</td>
-          <td>3517000000.000</td>
-          <td>8275000.000</td>
-          <td>15.965</td>
-          <td>19137000000.000</td>
-          <td>10641000.000</td>
-          <td>15620000000.000</td>
-          <td>1011.683</td>
-          <td>68763405.000</td>
-          <td>0.275</td>
-          <td>0.120</td>
-          <td>23.394</td>
-          <td>45.056</td>
-          <td>33.705</td>
-          <td>14.800</td>
-          <td>45.400</td>
-          <td>5.684</td>
-          <td>24.060</td>
-          <td>26.769</td>
-          <td>49.171</td>
-          <td>nan</td>
-          <td>8.718</td>
-          <td>41.096</td>
-          <td>0.341</td>
-        </tr>
-        <tr>
-          <th>UGA</th>
+          <th>GTM</th>
           <th>1999</th>
-          <td>189000.000</td>
+          <td>823000.000</td>
+          <td>4.306</td>
+          <td>216000000.000</td>
+          <td>485000.000</td>
+          <td>10.747</td>
+          <td>374000000.000</td>
+          <td>338000.000</td>
+          <td>158000000.000</td>
+          <td>454.435</td>
+          <td>11387203.000</td>
+          <td>0.072</td>
+          <td>0.043</td>
+          <td>34.878</td>
+          <td>62.156</td>
+          <td>47.687</td>
           <td>nan</td>
           <td>nan</td>
-          <td>327000.000</td>
-          <td>22.222</td>
-          <td>151000000.000</td>
-          <td>-138000.000</td>
+          <td>3.308</td>
+          <td>38.670</td>
+          <td>22.863</td>
+          <td>38.467</td>
           <td>nan</td>
-          <td>798.942</td>
-          <td>23272995.000</td>
-          <td>0.008</td>
-          <td>0.014</td>
-          <td>53.045</td>
-          <td>69.967</td>
-          <td>83.541</td>
+          <td>2.919</td>
+          <td>49.231</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>HRV</th>
+          <th>2007</th>
+          <td>8559000.000</td>
+          <td>3.675</td>
+          <td>1025000000.000</td>
+          <td>nan</td>
+          <td>40.878</td>
+          <td>9617000000.000</td>
+          <td>nan</td>
+          <td>8592000000.000</td>
+          <td>1123.613</td>
+          <td>4362266.000</td>
+          <td>1.962</td>
+          <td>nan</td>
+          <td>31.584</td>
+          <td>53.106</td>
+          <td>73.592</td>
           <td>nan</td>
           <td>nan</td>
-          <td>0.308</td>
-          <td>70.133</td>
-          <td>7.476</td>
-          <td>22.391</td>
+          <td>5.336</td>
+          <td>12.354</td>
+          <td>30.643</td>
+          <td>57.003</td>
           <td>nan</td>
-          <td>2.707</td>
-          <td>86.149</td>
+          <td>9.909</td>
+          <td>20.781</td>
           <td>nan</td>
         </tr>
       </tbody>
@@ -1550,109 +1550,109 @@ Urbanization
       </thead>
       <tbody>
         <tr>
-          <th>ARE</th>
-          <th>1999</th>
-          <td>3393000.000</td>
+          <th>CMR</th>
+          <th>2007</th>
+          <td>477000.000</td>
+          <td>7.785</td>
+          <td>466000000.000</td>
           <td>nan</td>
+          <td>4.015</td>
+          <td>254000000.000</td>
           <td>nan</td>
+          <td>-212000000.000</td>
+          <td>532.495</td>
+          <td>18395389.000</td>
+          <td>0.026</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>893000000.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>263.189</td>
-          <td>2988162.000</td>
-          <td>1.135</td>
-          <td>nan</td>
-          <td>79.810</td>
-          <td>5.694</td>
-          <td>nan</td>
-          <td>58.562</td>
-          <td>35.563</td>
+          <td>49.746</td>
+          <td>3.952</td>
+          <td>46.600</td>
+          <td>21.996</td>
+          <td>22.474</td>
         </tr>
         <tr>
-          <th>PLW</th>
-          <th>2001</th>
-          <td>54000.000</td>
-          <td>nan</td>
-          <td>14100000.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>41000000.000</td>
-          <td>nan</td>
-          <td>26900000.000</td>
-          <td>759.259</td>
-          <td>19404.000</td>
-          <td>2.783</td>
-          <td>nan</td>
-          <td>70.093</td>
-          <td>0.842</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-        </tr>
-        <tr>
-          <th>ROU</th>
-          <th>2001</th>
-          <td>4938000.000</td>
-          <td>2.939</td>
-          <td>475000000.000</td>
-          <td>6408000.000</td>
-          <td>3.205</td>
-          <td>419000000.000</td>
-          <td>-1470000.000</td>
-          <td>-56000000.000</td>
-          <td>84.852</td>
-          <td>21984135.000</td>
-          <td>0.225</td>
-          <td>0.291</td>
-          <td>52.852</td>
-          <td>-1.683</td>
-          <td>nan</td>
-          <td>8.747</td>
-          <td>16.550</td>
-        </tr>
-        <tr>
-          <th>LAO</th>
+          <th>MNG</th>
           <th>2005</th>
-          <td>672000.000</td>
-          <td>1.086</td>
-          <td>10000000.000</td>
+          <td>339000.000</td>
+          <td>9.065</td>
+          <td>142000000.000</td>
           <td>nan</td>
-          <td>18.883</td>
-          <td>143000000.000</td>
+          <td>13.711</td>
+          <td>203000000.000</td>
           <td>nan</td>
-          <td>133000000.000</td>
-          <td>212.798</td>
-          <td>5754026.000</td>
-          <td>0.117</td>
+          <td>61000000.000</td>
+          <td>598.820</td>
+          <td>2526446.000</td>
+          <td>0.134</td>
           <td>nan</td>
-          <td>27.186</td>
-          <td>5.100</td>
-          <td>79.300</td>
-          <td>nan</td>
-          <td>36.562</td>
+          <td>62.494</td>
+          <td>2.875</td>
+          <td>57.900</td>
+          <td>36.930</td>
+          <td>59.094</td>
         </tr>
         <tr>
-          <th>EGY</th>
-          <th>2004</th>
-          <td>7795000.000</td>
-          <td>5.733</td>
-          <td>1543000000.000</td>
-          <td>5210000.000</td>
-          <td>23.865</td>
-          <td>6328000000.000</td>
-          <td>2585000.000</td>
-          <td>4785000000.000</td>
-          <td>811.802</td>
-          <td>75381899.000</td>
-          <td>0.103</td>
-          <td>0.069</td>
-          <td>42.981</td>
-          <td>1.982</td>
+          <th>TGO</th>
+          <th>2013</th>
+          <td>327000.000</td>
+          <td>2.025</td>
+          <td>58000000.000</td>
           <td>nan</td>
-          <td>24.798</td>
-          <td>45.837</td>
+          <td>11.604</td>
+          <td>233000000.000</td>
+          <td>nan</td>
+          <td>175000000.000</td>
+          <td>712.538</td>
+          <td>7042948.000</td>
+          <td>0.046</td>
+          <td>nan</td>
+          <td>39.061</td>
+          <td>3.967</td>
+          <td>nan</td>
+          <td>22.228</td>
+          <td>56.905</td>
+        </tr>
+        <tr>
+          <th>PSE</th>
+          <th>2005</th>
+          <td>88000.000</td>
+          <td>6.240</td>
+          <td>223000000.000</td>
+          <td>nan</td>
+          <td>7.189</td>
+          <td>52000000.000</td>
+          <td>nan</td>
+          <td>-171000000.000</td>
+          <td>590.909</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>73.061</td>
+          <td>2.851</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>18.855</td>
+        </tr>
+        <tr>
+          <th>MLI</th>
+          <th>2002</th>
+          <td>96000.000</td>
+          <td>5.639</td>
+          <td>62000000.000</td>
+          <td>nan</td>
+          <td>10.052</td>
+          <td>105000000.000</td>
+          <td>nan</td>
+          <td>43000000.000</td>
+          <td>1093.750</td>
+          <td>11638929.000</td>
+          <td>0.008</td>
+          <td>nan</td>
+          <td>29.806</td>
+          <td>5.498</td>
+          <td>nan</td>
+          <td>10.900</td>
+          <td>36.571</td>
         </tr>
       </tbody>
     </table>
