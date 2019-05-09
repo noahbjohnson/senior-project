@@ -88,56 +88,56 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>15300</th>
-          <td>PRY</td>
-          <td>Paraguay</td>
-          <td>2016</td>
-          <td>8605.000</td>
-          <td>8786.000</td>
-          <td>6863.000</td>
+          <th>2186</th>
+          <td>BWA</td>
+          <td>Botswana</td>
+          <td>1979</td>
+          <td>2361.000</td>
+          <td>3479.000</td>
+          <td>863.000</td>
+          <td>Interpolated</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>12780</th>
+          <td>NOR</td>
+          <td>Norway</td>
+          <td>1907</td>
+          <td>4339.000</td>
+          <td>6687.000</td>
+          <td>2329.000</td>
+          <td>Interpolated</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>2515</th>
+          <td>CHE</td>
+          <td>Switzerland</td>
+          <td>1882</td>
+          <td>3308.000</td>
+          <td>8003.000</td>
+          <td>2863.000</td>
+          <td>Interpolated</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>17953</th>
+          <td>TKM</td>
+          <td>Turkmenistan</td>
+          <td>2013</td>
+          <td>18918.000</td>
+          <td>19751.000</td>
+          <td>5112.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>9974</th>
-          <td>LAO</td>
-          <td>Lao People's DR</td>
-          <td>1984</td>
-          <td>1120.000</td>
-          <td>1566.000</td>
-          <td>3577.000</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>13761</th>
-          <td>PER</td>
-          <td>Peru</td>
-          <td>1977</td>
-          <td>3710.000</td>
-          <td>7006.000</td>
-          <td>15990.000</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>4870</th>
-          <td>ECU</td>
-          <td>Ecuador</td>
-          <td>1917</td>
-          <td>1314.000</td>
-          <td>1849.000</td>
-          <td>1746.000</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>19577</th>
-          <td>ZAF</td>
-          <td>South Africa</td>
-          <td>1826</td>
-          <td>1768.000</td>
-          <td>2015.000</td>
+          <th>16934</th>
+          <td>SWE</td>
+          <td>Sweden</td>
+          <td>1587</td>
+          <td>1196.000</td>
+          <td>1504.000</td>
           <td>nan</td>
           <td>Extrapolated</td>
           <td>NaN</td>

@@ -96,71 +96,53 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>213</th>
-          <td>1995</td>
-          <td>YR1995</td>
-          <td>West Bank and Gaza</td>
-          <td>PSE</td>
+          <th>3549</th>
+          <td>2008</td>
+          <td>YR2008</td>
+          <td>Macao SAR, China</td>
+          <td>MAC</td>
+          <td>..</td>
+          <td>..</td>
+          <td>34420</td>
+          <td>17703544893.557</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>514110000</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>3906</th>
-          <td>2009</td>
-          <td>YR2009</td>
-          <td>Venezuela, RB</td>
-          <td>VEN</td>
-          <td>3987036794.800</td>
-          <td>..</td>
-          <td>10180</td>
-          <td>290886433370.565</td>
-          <td>0</td>
-          <td>59430000</td>
-          <td>26.400</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
         </tr>
         <tr>
-          <th>265</th>
-          <td>1996</td>
-          <td>YR1996</td>
-          <td>Albania</td>
-          <td>ALB</td>
-          <td>54212531.100</td>
+          <th>4262</th>
+          <td>2011</td>
+          <td>YR2011</td>
+          <td>Chad</td>
+          <td>TCD</td>
+          <td>91257631</td>
           <td>..</td>
           <td>890</td>
-          <td>2823121068.653</td>
-          <td>0</td>
-          <td>226640000</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>27</td>
+          <td>10924144856.534</td>
+          <td>21079975.300</td>
+          <td>457660000</td>
+          <td>46.700</td>
+          <td>20.900</td>
+          <td>52.500</td>
+          <td>19.700</td>
+          <td>43.300</td>
         </tr>
         <tr>
-          <th>2144</th>
-          <td>2003</td>
-          <td>YR2003</td>
-          <td>Cabo Verde</td>
-          <td>CPV</td>
-          <td>8232273.800</td>
-          <td>..</td>
-          <td>1490</td>
-          <td>683635767.552</td>
+          <th>976</th>
+          <td>1998</td>
+          <td>YR1998</td>
+          <td>St. Vincent and the Grenadines</td>
+          <td>VCT</td>
           <td>0</td>
-          <td>145330000</td>
+          <td>..</td>
+          <td>3180</td>
+          <td>343723843.141</td>
+          <td>0</td>
+          <td>20660000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -168,17 +150,35 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>6181</th>
-          <td>2018</td>
-          <td>YR2018</td>
-          <td>Latvia</td>
-          <td>LVA</td>
+          <th>77</th>
+          <td>1995</td>
+          <td>YR1995</td>
+          <td>Greenland</td>
+          <td>GRL</td>
+          <td>..</td>
+          <td>..</td>
+          <td>19470</td>
+          <td>1086181169.759</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>533</th>
+          <td>1997</td>
+          <td>YR1997</td>
+          <td>Angola</td>
+          <td>AGO</td>
+          <td>0</td>
+          <td>..</td>
+          <td>440</td>
+          <td>6626516968.781</td>
+          <td>0</td>
+          <td>354660000</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
