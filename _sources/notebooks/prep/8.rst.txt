@@ -84,74 +84,74 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>1047</th>
-          <td>1998</td>
-          <td>YR1998</td>
-          <td>Pre-demographic dividend</td>
-          <td>PRE</td>
-          <td>0.792</td>
-          <td>55.880</td>
-          <td>6.500</td>
-          <td>44.071</td>
-          <td>39.932</td>
-          <td>24.117</td>
-          <td>17.207</td>
-        </tr>
-        <tr>
-          <th>1611</th>
-          <td>2001</td>
-          <td>YR2001</td>
-          <td>Armenia</td>
-          <td>ARM</td>
+          <th>5059</th>
+          <td>2014</td>
+          <td>YR2014</td>
+          <td>Botswana</td>
+          <td>BWA</td>
           <td>..</td>
-          <td>99.400</td>
-          <td>11</td>
+          <td>87.700</td>
           <td>..</td>
-          <td>20.344</td>
+          <td>10.478</td>
+          <td>..</td>
           <td>..</td>
           <td>..</td>
         </tr>
         <tr>
-          <th>425</th>
-          <td>1996</td>
-          <td>YR1996</td>
-          <td>Peru</td>
-          <td>PER</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>11.958</td>
-          <td>27.429</td>
-          <td>18.756</td>
-          <td>54.788</td>
-        </tr>
-        <tr>
-          <th>2944</th>
+          <th>2997</th>
           <td>2006</td>
           <td>YR2006</td>
-          <td>Bhutan</td>
-          <td>BTN</td>
-          <td>0.964</td>
+          <td>Guam</td>
+          <td>GUM</td>
           <td>..</td>
           <td>..</td>
-          <td>25.891</td>
-          <td>29.182</td>
-          <td>21.876</td>
-          <td>36.422</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
         </tr>
         <tr>
-          <th>5803</th>
-          <td>2016</td>
-          <td>YR2016</td>
-          <td>Sub-Saharan Africa</td>
-          <td>SSF</td>
-          <td>0.932</td>
-          <td>64.350</td>
-          <td>8</td>
-          <td>21.239</td>
-          <td>37.629</td>
-          <td>21.570</td>
-          <td>34.545</td>
+          <th>5330</th>
+          <td>2015</td>
+          <td>YR2015</td>
+          <td>Cambodia</td>
+          <td>KHM</td>
+          <td>..</td>
+          <td>80.526</td>
+          <td>..</td>
+          <td>4.711</td>
+          <td>45.521</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>3459</th>
+          <td>2008</td>
+          <td>YR2008</td>
+          <td>Armenia</td>
+          <td>ARM</td>
+          <td>0.996</td>
+          <td>..</td>
+          <td>11</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>86.105</td>
+        </tr>
+        <tr>
+          <th>4651</th>
+          <td>2012</td>
+          <td>YR2012</td>
+          <td>Poland</td>
+          <td>POL</td>
+          <td>0.996</td>
+          <td>..</td>
+          <td>10</td>
+          <td>4.680</td>
+          <td>10.186</td>
+          <td>8.661</td>
+          <td>89.015</td>
         </tr>
       </tbody>
     </table>
@@ -280,59 +280,59 @@ Data Types
       </thead>
       <tbody>
         <tr>
-          <th>MCO</th>
-          <th>2010</th>
+          <th>LBN</th>
+          <th>2011</th>
+          <td>0.950</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>11.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
+          <td>9.000</td>
+          <td>6.671</td>
+          <td>14.231</td>
+          <td>9.306</td>
+          <td>69.628</td>
         </tr>
         <tr>
-          <th>WSM</th>
-          <th>2001</th>
-          <td>1.066</td>
-          <td>nan</td>
-          <td>8.000</td>
-          <td>5.253</td>
-          <td>25.045</td>
-          <td>20.851</td>
-          <td>65.816</td>
-        </tr>
-        <tr>
-          <th>ARM</th>
-          <th>2010</th>
-          <td>0.995</td>
-          <td>nan</td>
-          <td>11.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>92.511</td>
-        </tr>
-        <tr>
-          <th>SYR</th>
+          <th>PHL</th>
           <th>1997</th>
-          <td>0.910</td>
           <td>nan</td>
           <td>nan</td>
-          <td>4.421</td>
-          <td>23.457</td>
-          <td>14.811</td>
-          <td>37.478</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>34.726</td>
+          <td>31.597</td>
+          <td>nan</td>
         </tr>
         <tr>
-          <th>GIN</th>
-          <th>2005</th>
-          <td>0.712</td>
+          <th>AGO</th>
+          <th>2014</th>
           <td>nan</td>
+          <td>66.030</td>
           <td>6.000</td>
-          <td>35.710</td>
-          <td>44.865</td>
-          <td>34.425</td>
-          <td>23.275</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>SMR</th>
+          <th>1997</th>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>5.294</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>SLE</th>
+          <th>2004</th>
+          <td>nan</td>
+          <td>34.827</td>
+          <td>9.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
         </tr>
       </tbody>
     </table>
