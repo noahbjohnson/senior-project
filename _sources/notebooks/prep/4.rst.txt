@@ -88,58 +88,58 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>12004</th>
-          <td>MWI</td>
-          <td>Malawi</td>
-          <td>2000</td>
-          <td>873.000</td>
-          <td>923.000</td>
-          <td>11339.000</td>
+          <th>1789</th>
+          <td>BOL</td>
+          <td>Bolivia (Plurinational State of)</td>
+          <td>1870</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1495.000</td>
+          <td>NaN</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>10524</th>
+          <td>LTU</td>
+          <td>Lithuania</td>
+          <td>1974</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>3276.000</td>
+          <td>NaN</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>3435</th>
+          <td>COL</td>
+          <td>Colombia</td>
+          <td>1970</td>
+          <td>4209.000</td>
+          <td>4908.000</td>
+          <td>21430.000</td>
+          <td>Benchmark</td>
+          <td>ICP PPP estimates</td>
+        </tr>
+        <tr>
+          <th>1272</th>
+          <td>BEN</td>
+          <td>Benin</td>
+          <td>1951</td>
+          <td>1222.000</td>
+          <td>1306.000</td>
+          <td>1705.000</td>
           <td>Interpolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>3273</th>
-          <td>COG</td>
-          <td>Congo</td>
-          <td>1959</td>
-          <td>1380.000</td>
-          <td>3207.000</td>
-          <td>981.000</td>
+          <th>19353</th>
+          <td>YEM</td>
+          <td>Yemen</td>
+          <td>2014</td>
+          <td>3558.000</td>
+          <td>4054.000</td>
+          <td>27180.000</td>
           <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>1660</th>
-          <td>BIH</td>
-          <td>Bosnia and Herzegovina</td>
-          <td>1958</td>
-          <td>765.000</td>
-          <td>1769.000</td>
-          <td>3126.000</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>17835</th>
-          <td>TJK</td>
-          <td>Tajikistan</td>
-          <td>1962</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>2253.000</td>
-          <td>NaN</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>5228</th>
-          <td>ESP</td>
-          <td>Spain</td>
-          <td>1986</td>
-          <td>12383.000</td>
-          <td>18028.000</td>
-          <td>38708.000</td>
-          <td>Interpolated</td>
           <td>NaN</td>
         </tr>
       </tbody>
