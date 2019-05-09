@@ -771,49 +771,49 @@ Cleaning data
       </thead>
       <tbody>
         <tr>
-          <th>10901</th>
-          <td>96000.000</td>
-          <td>5.151</td>
-          <td>15000000.000</td>
-          <td>nan</td>
-          <td>15000000.000</td>
-          <td>nan</td>
-          <td>51.859</td>
-          <td>104000000.000</td>
-          <td>nan</td>
-          <td>104000000.000</td>
-          <td>2005</td>
-          <td>VCT</td>
+          <th>4535</th>
+          <td>16427000.000</td>
+          <td>4.481</td>
+          <td>3807000000.000</td>
+          <td>648000000.000</td>
+          <td>3159000000.000</td>
+          <td>4941000.000</td>
+          <td>24.039</td>
+          <td>16256000000.000</td>
+          <td>1455000000.000</td>
+          <td>14801000000.000</td>
+          <td>2011</td>
+          <td>GRC</td>
         </tr>
         <tr>
-          <th>2870</th>
-          <td>4499000.000</td>
-          <td>5.693</td>
-          <td>600000000.000</td>
+          <th>2778</th>
           <td>nan</td>
-          <td>600000000.000</td>
           <td>nan</td>
-          <td>31.989</td>
-          <td>2733400000.000</td>
           <td>nan</td>
-          <td>2733400000.000</td>
-          <td>1998</td>
-          <td>HRV</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1965</td>
+          <td>CIV</td>
         </tr>
         <tr>
-          <th>8592</th>
-          <td>611000.000</td>
-          <td>42.441</td>
-          <td>1840000000.000</td>
-          <td>24000000.000</td>
-          <td>1816000000.000</td>
+          <th>1033</th>
           <td>nan</td>
-          <td>1.701</td>
-          <td>83000000.000</td>
-          <td>28000000.000</td>
-          <td>55000000.000</td>
-          <td>1997</td>
-          <td>NGA</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1990</td>
+          <td>BLR</td>
         </tr>
       </tbody>
     </table>

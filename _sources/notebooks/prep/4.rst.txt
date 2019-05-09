@@ -88,58 +88,58 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>3911</th>
-          <td>CUB</td>
-          <td>Cuba</td>
-          <td>1950</td>
-          <td>3841.000</td>
-          <td>3841.000</td>
-          <td>5785.000</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>12068</th>
-          <td>MYS</td>
-          <td>Malaysia</td>
-          <td>1943</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>5630.000</td>
-          <td>NaN</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>3300</th>
-          <td>COG</td>
-          <td>Congo</td>
-          <td>1986</td>
-          <td>2616.000</td>
-          <td>6587.000</td>
-          <td>1981.000</td>
+          <th>12004</th>
+          <td>MWI</td>
+          <td>Malawi</td>
+          <td>2000</td>
+          <td>873.000</td>
+          <td>923.000</td>
+          <td>11339.000</td>
           <td>Interpolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>16428</th>
-          <td>SUN</td>
-          <td>Former USSR</td>
-          <td>1929</td>
-          <td>2769.000</td>
-          <td>2979.000</td>
-          <td>172017.000</td>
+          <th>3273</th>
+          <td>COG</td>
+          <td>Congo</td>
+          <td>1959</td>
+          <td>1380.000</td>
+          <td>3207.000</td>
+          <td>981.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>5987</th>
-          <td>FRA</td>
-          <td>France</td>
-          <td>1661</td>
-          <td>1337.000</td>
-          <td>1731.000</td>
-          <td>nan</td>
+          <th>1660</th>
+          <td>BIH</td>
+          <td>Bosnia and Herzegovina</td>
+          <td>1958</td>
+          <td>765.000</td>
+          <td>1769.000</td>
+          <td>3126.000</td>
           <td>Extrapolated</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>17835</th>
+          <td>TJK</td>
+          <td>Tajikistan</td>
+          <td>1962</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>2253.000</td>
+          <td>NaN</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>5228</th>
+          <td>ESP</td>
+          <td>Spain</td>
+          <td>1986</td>
+          <td>12383.000</td>
+          <td>18028.000</td>
+          <td>38708.000</td>
+          <td>Interpolated</td>
           <td>NaN</td>
         </tr>
       </tbody>
