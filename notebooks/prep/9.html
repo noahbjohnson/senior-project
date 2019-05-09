@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.13. Urbanization Data Processing (UNPD) &#8212; Senior-Project 0.1 documentation</title>
+    <title>13. Urbanization Data Processing (UNPD) &#8212; Senior-Project 0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
@@ -16,7 +16,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="1.12. Education Data Processing (WDI)" href="8.html" /> 
+    <link rel="prev" title="12. Education Data Processing (WDI)" href="8.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -25,10 +25,10 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="8.html" title="1.12. Education Data Processing (WDI)"
+          <a href="8.html" title="12. Education Data Processing (WDI)"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">1. Data Preperation Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -38,9 +38,9 @@
           <div class="body" role="main">
             
   <div class="section" id="urbanization-data-processing-unpd">
-<h1>1.13. Urbanization Data Processing (UNPD)<a class="headerlink" href="#urbanization-data-processing-unpd" title="Permalink to this headline">¶</a></h1>
+<h1>13. Urbanization Data Processing (UNPD)<a class="headerlink" href="#urbanization-data-processing-unpd" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="data-dictionary">
-<h2>1.13.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
+<h2>13.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-center">
 <colgroup>
 <col style="width: 20%" />
@@ -82,7 +82,7 @@
 </div>
 </div>
 <div class="section" id="load-the-file">
-<h2>1.13.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
+<h2>13.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/external/Urbanization/UNPD/Data_Extract_From_World_Development_Indicators.xlsx&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -120,70 +120,70 @@
   </thead>
   <tbody>
     <tr>
-      <th>6473</th>
-      <td>2018</td>
-      <td>YR2018</td>
-      <td>Moldova</td>
-      <td>MDA</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
+      <th>521</th>
+      <td>1995</td>
+      <td>YR1995</td>
+      <td>South Asia</td>
+      <td>SAS</td>
+      <td>26.198</td>
+      <td>2.955</td>
+      <td>51.444</td>
+      <td>11.848</td>
+      <td>10.309</td>
     </tr>
     <tr>
-      <th>1662</th>
-      <td>2000</td>
-      <td>YR2000</td>
-      <td>Estonia</td>
-      <td>EST</td>
-      <td>69.368</td>
-      <td>0.232</td>
+      <th>1275</th>
+      <td>1998</td>
+      <td>YR1998</td>
+      <td>Central Europe and the Baltics</td>
+      <td>CEB</td>
+      <td>61.534</td>
+      <td>-0.215</td>
       <td>..</td>
       <td>..</td>
-      <td>41.300</td>
+      <td>16.102</td>
     </tr>
     <tr>
-      <th>957</th>
+      <th>2865</th>
+      <td>2004</td>
+      <td>YR2004</td>
+      <td>Europe &amp; Central Asia</td>
+      <td>ECS</td>
+      <td>69.498</td>
+      <td>0.606</td>
+      <td>..</td>
+      <td>18.646</td>
+      <td>15.807</td>
+    </tr>
+    <tr>
+      <th>3210</th>
+      <td>2006</td>
+      <td>YR2006</td>
+      <td>Bosnia and Herzegovina</td>
+      <td>BIH</td>
+      <td>44.282</td>
+      <td>0.664</td>
+      <td>..</td>
+      <td>..</td>
+      <td>20.420</td>
+    </tr>
+    <tr>
+      <th>993</th>
       <td>1997</td>
       <td>YR1997</td>
-      <td>Puerto Rico</td>
-      <td>PRI</td>
-      <td>94.020</td>
-      <td>1.083</td>
-      <td>..</td>
-      <td>65.333</td>
-      <td>69.489</td>
-    </tr>
-    <tr>
-      <th>5940</th>
-      <td>2016</td>
-      <td>YR2016</td>
-      <td>Malta</td>
-      <td>MLT</td>
-      <td>94.480</td>
-      <td>2.358</td>
+      <td>Turkmenistan</td>
+      <td>TKM</td>
+      <td>45.241</td>
+      <td>2.062</td>
       <td>..</td>
       <td>..</td>
-      <td>..</td>
-    </tr>
-    <tr>
-      <th>6455</th>
-      <td>2018</td>
-      <td>YR2018</td>
-      <td>Lebanon</td>
-      <td>LBN</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
+      <td>24.745</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 <div class="section" id="standardize-country-codes">
-<h2>1.13.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
+<h2>13.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Only Select rows with valid country codes</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">country_locations</span> <span class="o">=</span> <span class="p">[]</span>
@@ -198,7 +198,7 @@
 </div>
 </div>
 <div class="section" id="standardize-indexes">
-<h2>1.13.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
+<h2>13.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="s2">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;Year&quot;</span>
@@ -212,9 +212,9 @@
 </div>
 </div>
 <div class="section" id="clean-data">
-<h2>1.13.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
+<h2>13.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="header">
-<h3>1.13.5.1. Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
+<h3>13.5.1. Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Time Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Country Name&quot;</span><span class="p">],</span>
         <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span>
         <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -233,7 +233,7 @@
 </div>
 </div>
 <div class="section" id="data-types">
-<h3>1.13.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<h3>13.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Replace &#39;..&#39; with np.nan for better parsing</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">)</span>
@@ -282,56 +282,56 @@
   </thead>
   <tbody>
     <tr>
-      <th>ECU</th>
-      <th>2018</th>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>VUT</th>
-      <th>2018</th>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>GHA</th>
-      <th>1997</th>
-      <td>41.654</td>
-      <td>4.269</td>
-      <td>nan</td>
-      <td>14.338</td>
-      <td>20.636</td>
-    </tr>
-    <tr>
-      <th>MHL</th>
-      <th>1997</th>
-      <td>67.385</td>
-      <td>1.053</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>ISR</th>
+      <th>LTU</th>
       <th>1995</th>
-      <td>90.866</td>
-      <td>2.777</td>
+      <td>67.285</td>
+      <td>-0.859</td>
       <td>nan</td>
-      <td>57.357</td>
-      <td>47.562</td>
+      <td>nan</td>
+      <td>22.863</td>
+    </tr>
+    <tr>
+      <th>PRI</th>
+      <th>2001</th>
+      <td>94.333</td>
+      <td>0.157</td>
+      <td>nan</td>
+      <td>65.603</td>
+      <td>69.544</td>
+    </tr>
+    <tr>
+      <th>BTN</th>
+      <th>2012</th>
+      <td>36.371</td>
+      <td>3.853</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>TGO</th>
+      <th>2017</th>
+      <td>41.162</td>
+      <td>3.790</td>
+      <td>nan</td>
+      <td>21.905</td>
+      <td>53.217</td>
+    </tr>
+    <tr>
+      <th>SLB</th>
+      <th>2009</th>
+      <td>19.589</td>
+      <td>4.603</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
 <div class="section" id="save-data">
-<h2>1.13.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
+<h2>13.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;../data/processed/Urbanization_UNPD.pickle&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -346,24 +346,24 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">1.13. Urbanization Data Processing (UNPD)</a><ul>
-<li><a class="reference internal" href="#data-dictionary">1.13.1. Data Dictionary</a></li>
-<li><a class="reference internal" href="#load-the-file">1.13.2. Load The File</a></li>
-<li><a class="reference internal" href="#standardize-country-codes">1.13.3. Standardize Country Codes</a></li>
-<li><a class="reference internal" href="#standardize-indexes">1.13.4. Standardize Indexes</a></li>
-<li><a class="reference internal" href="#clean-data">1.13.5. Clean Data</a><ul>
-<li><a class="reference internal" href="#header">1.13.5.1. Header</a></li>
-<li><a class="reference internal" href="#data-types">1.13.5.2. Data Types</a></li>
+<li><a class="reference internal" href="#">13. Urbanization Data Processing (UNPD)</a><ul>
+<li><a class="reference internal" href="#data-dictionary">13.1. Data Dictionary</a></li>
+<li><a class="reference internal" href="#load-the-file">13.2. Load The File</a></li>
+<li><a class="reference internal" href="#standardize-country-codes">13.3. Standardize Country Codes</a></li>
+<li><a class="reference internal" href="#standardize-indexes">13.4. Standardize Indexes</a></li>
+<li><a class="reference internal" href="#clean-data">13.5. Clean Data</a><ul>
+<li><a class="reference internal" href="#header">13.5.1. Header</a></li>
+<li><a class="reference internal" href="#data-types">13.5.2. Data Types</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#save-data">1.13.6. Save Data</a></li>
+<li><a class="reference internal" href="#save-data">13.6. Save Data</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="8.html"
-                        title="previous chapter">1.12. Education Data Processing (WDI)</a></p>
+                        title="previous chapter">12. Education Data Processing (WDI)</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -392,10 +392,10 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="8.html" title="1.12. Education Data Processing (WDI)"
+          <a href="8.html" title="12. Education Data Processing (WDI)"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >1. Data Preperation Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

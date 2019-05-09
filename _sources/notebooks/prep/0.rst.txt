@@ -771,49 +771,49 @@ Cleaning data
       </thead>
       <tbody>
         <tr>
-          <th>13150</th>
-          <td>134631328.173</td>
-          <td>4.944</td>
-          <td>143100544454.622</td>
+          <th>10901</th>
+          <td>96000.000</td>
+          <td>5.151</td>
+          <td>15000000.000</td>
           <td>nan</td>
-          <td>142063019156.468</td>
-          <td>117051489.970</td>
-          <td>4.292</td>
-          <td>134948411959.518</td>
+          <td>15000000.000</td>
           <td>nan</td>
-          <td>125554771582.298</td>
-          <td>2012</td>
-          <td>EAP</td>
+          <td>51.859</td>
+          <td>104000000.000</td>
+          <td>nan</td>
+          <td>104000000.000</td>
+          <td>2005</td>
+          <td>VCT</td>
         </tr>
         <tr>
-          <th>11985</th>
+          <th>2870</th>
+          <td>4499000.000</td>
+          <td>5.693</td>
+          <td>600000000.000</td>
           <td>nan</td>
+          <td>600000000.000</td>
           <td>nan</td>
+          <td>31.989</td>
+          <td>2733400000.000</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>1968</td>
-          <td>UKR</td>
+          <td>2733400000.000</td>
+          <td>1998</td>
+          <td>HRV</td>
         </tr>
         <tr>
-          <th>5633</th>
+          <th>8592</th>
+          <td>611000.000</td>
+          <td>42.441</td>
+          <td>1840000000.000</td>
+          <td>24000000.000</td>
+          <td>1816000000.000</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>1988</td>
-          <td>ISR</td>
+          <td>1.701</td>
+          <td>83000000.000</td>
+          <td>28000000.000</td>
+          <td>55000000.000</td>
+          <td>1997</td>
+          <td>NGA</td>
         </tr>
       </tbody>
     </table>
