@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Data Analysis Notebooks &#8212; Senior-Project 0.1 documentation</title>
+    <title>2. Data Analysis Notebooks &#8212; Senior-Project 0.1 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
@@ -17,7 +17,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. Full Dataset Cleaning and Imputation" href="notebooks/analysis/13.html" />
+    <link rel="next" title="2.1. Full Dataset Cleaning and Imputation" href="notebooks/analysis/13.html" />
     <link rel="prev" title="1.13. Urbanization Data Processing (UNPD)" href="notebooks/prep/9.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -27,7 +27,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="notebooks/analysis/13.html" title="1. Full Dataset Cleaning and Imputation"
+          <a href="notebooks/analysis/13.html" title="2.1. Full Dataset Cleaning and Imputation"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="notebooks/prep/9.html" title="1.13. Urbanization Data Processing (UNPD)"
@@ -42,58 +42,76 @@
           <div class="body" role="main">
             
   <div class="section" id="data-analysis-notebooks">
-<h1>Data Analysis Notebooks<a class="headerlink" href="#data-analysis-notebooks" title="Permalink to this headline">¶</a></h1>
+<h1>2. Data Analysis Notebooks<a class="headerlink" href="#data-analysis-notebooks" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/analysis/13.html">1. Full Dataset Cleaning and Imputation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/13.html#remove-unneeded-variables">1.1. Remove Unneeded Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/13.html#remove-sparse-variables">1.2. Remove Sparse Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/13.html#impute-remaining-nans">1.3. Impute Remaining NaNs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/13.html#check-the-integrity-of-imputed-dataframes">1.4. Check The Integrity of Imputed Dataframes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/13.html#save-the-data-frames">1.5. Save the Data Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/analysis/13.html">2.1. Full Dataset Cleaning and Imputation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/13.html#remove-unneeded-variables">2.1.1. Remove Unneeded Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/13.html#remove-sparse-variables">2.1.2. Remove Sparse Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/13.html#impute-remaining-nans">2.1.3. Impute Remaining NaNs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/13.html#check-the-integrity-of-imputed-dataframes">2.1.4. Check The Integrity of Imputed Dataframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/13.html#save-the-data-frames">2.1.5. Save the Data Frames</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/analysis/14.html">2. Full Dataset PCA</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/14.html#median-imputation">2.1. Median Imputation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/14.html#scaling">2.2. Scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/14.html#component-count-selection">2.3. Component Count Selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/14.html#pca-save">2.4. PCA Save</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/analysis/14.html">2.2. Full Dataset PCA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/14.html#median-imputation">2.2.1. Median Imputation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/14.html#scaling">2.2.2. Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/14.html#component-count-selection">2.2.3. Component Count Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/14.html#pca-save">2.2.4. PCA Save</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/analysis/15.html">3. Full Linear Modeling</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/15.html#process-the-data">3.1. Process the Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/15.html#linear-regression">3.2. Linear Regression</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/analysis/15.html#y-selection">3.2.1. Y Selection</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/15.html#r-2-without-pca">3.2.1.1. <span class="math notranslate nohighlight">\(R^2\)</span> without PCA</a></li>
-<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/15.html#r-2-with-pca">3.2.1.2. <span class="math notranslate nohighlight">\(R^2\)</span> With PCA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/analysis/15.html">2.3. Full Linear Modeling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/15.html#process-the-data">2.3.1. Process the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/15.html#linear-regression">2.3.2. Linear Regression</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/analysis/15.html#y-selection">2.3.2.1. Y Selection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/15.html#r-2-without-pca">2.3.2.1.1. <span class="math notranslate nohighlight">\(R^2\)</span> without PCA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/15.html#r-2-with-pca">2.3.2.1.2. <span class="math notranslate nohighlight">\(R^2\)</span> With PCA</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/15.html#regression-with-tensorflow">3.3. Regression With Tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/15.html#regression-with-tensorflow">2.3.3. Regression With Tensorflow</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/analysis/16.html">4. Subject Dataset Cleaning and Imputation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/16.html#remove-sparse-variables">4.1. Remove Sparse Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/16.html#impute-remaining-nans">4.2. Impute Remaining NaNs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/16.html#check-the-integrity-of-imputed-dataframes">4.3. Check The Integrity of Imputed Dataframes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/16.html#save-the-data-frames">4.4. Save the Data Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/analysis/16.html">2.4. Subject Dataset Cleaning and Imputation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/16.html#remove-sparse-variables">2.4.1. Remove Sparse Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/16.html#impute-remaining-nans">2.4.2. Impute Remaining NaNs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/16.html#check-the-integrity-of-imputed-dataframes">2.4.3. Check The Integrity of Imputed Dataframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/16.html#save-the-data-frames">2.4.4. Save the Data Frames</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/analysis/17.html">5. Economic Data Analysis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/17.html#data-importing">5.1. Data Importing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/17.html#correlations">5.2. Correlations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/17.html#variable-distributions">5.3. Variable Distributions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/analysis/17.html#normalize">5.3.1. Normalize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/analysis/17.html">2.5. Economic Data Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/17.html#data-importing">2.5.1. Data Importing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/17.html#correlations">2.5.2. Correlations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/17.html#variable-distributions">2.5.3. Variable Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/analysis/17.html#normalize">2.5.3.1. Normalize</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/17.html#analysis">5.4. Analysis</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/analysis/17.html#economic-correlation-with-tourism-variables">5.4.1. Economic Correlation with Tourism Variables</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/17.html#more-tourists-more-tourism-income">5.4.1.1. More Tourists, More Tourism Income</a></li>
-<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/17.html#more-tourists-higher-gni">5.4.1.2. More Tourists, Higher GNI</a></li>
-<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/17.html#higher-proportion-of-tourism-for-exports-higher-gni">5.4.1.3. Higher proportion of tourism for exports, higher gni</a></li>
-<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/17.html#richer-countries-send-more-tourists-abroad">5.4.1.4. Richer countries send more tourists abroad</a></li>
-<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/17.html#richer-countries-per-capita-send-more-tourists-abroad-per-capita">5.4.1.5. Richer countries (per capita) send more tourists abroad (per capita)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/17.html#analysis">2.5.4. Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/analysis/17.html#economic-correlation-with-tourism-variables">2.5.4.1. Economic Correlation with Tourism Variables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/17.html#more-tourists-more-tourism-income">2.5.4.1.1. More Tourists, More Tourism Income</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/17.html#more-tourists-higher-gni">2.5.4.1.2. More Tourists, Higher GNI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/17.html#higher-proportion-of-tourism-for-exports-higher-gni">2.5.4.1.3. Higher proportion of tourism for exports, higher gni</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/17.html#richer-countries-send-more-tourists-abroad">2.5.4.1.4. Richer countries send more tourists abroad</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/17.html#richer-countries-per-capita-send-more-tourists-abroad-per-capita">2.5.4.1.5. Richer countries (per capita) send more tourists abroad (per capita)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/analysis/18.html">2.6. Inequality Data Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/18.html#data-importing">2.6.1. Data Importing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/18.html#correlations">2.6.2. Correlations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/18.html#variable-distributions">2.6.3. Variable Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/analysis/18.html#normalize">2.6.3.1. Normalize</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/analysis/18.html#analysis">2.6.4. Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/analysis/18.html#inequality-correlation-with-tourism-variables">2.6.4.1. Inequality Correlation with Tourism Variables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/18.html#a-bigger-market-share-for-tourism-results-in-higher-equality">2.6.4.1.1. A Bigger market share for tourism results in higher equality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/18.html#a-bigger-market-share-for-tourism-results-in-higher-equality-round-2">2.6.4.1.2. A Bigger market share for tourism results in higher equality (round 2)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/analysis/18.html#a-bigger-market-share-for-tourism-results-in-lower-equality">2.6.4.1.3. A Bigger market share for tourism results in lower equality</a></li>
 </ul>
 </li>
 </ul>
@@ -115,7 +133,7 @@
                         title="previous chapter">1.13. Urbanization Data Processing (UNPD)</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="notebooks/analysis/13.html"
-                        title="next chapter">1. Full Dataset Cleaning and Imputation</a></p>
+                        title="next chapter">2.1. Full Dataset Cleaning and Imputation</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -144,7 +162,7 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="notebooks/analysis/13.html" title="1. Full Dataset Cleaning and Imputation"
+          <a href="notebooks/analysis/13.html" title="2.1. Full Dataset Cleaning and Imputation"
              >next</a> |</li>
         <li class="right" >
           <a href="notebooks/prep/9.html" title="1.13. Urbanization Data Processing (UNPD)"
