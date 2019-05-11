@@ -13,6 +13,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -69,8 +70,8 @@
 <h2>7.1. Descriptive Statistics<a class="headerlink" href="#descriptive-statistics" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-center">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
+<col style="width: 17%" />
+<col style="width: 83%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Variable</p></th>
@@ -78,47 +79,76 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>ST.INT.ARVL</p></td>
+<tr class="row-even"><td><p>ST.INT.ARV
+L</p></td>
 <td><p>International tourism, number of arrivals</p></td>
 </tr>
-<tr class="row-odd"><td><p>ST.INT.RCPT.CD</p></td>
+<tr class="row-odd"><td><p>ST.INT.RCP
+T.CD</p></td>
 <td><p>International tourism, receipts (current US$)</p></td>
 </tr>
-<tr class="row-even"><td><p>ST.INT.TVLR.CD</p></td>
-<td><p>International tourism, receipts for passenger transport items (current US$)</p></td>
+<tr class="row-even"><td><p>ST.INT.TVL
+R.CD</p></td>
+<td><p>International tourism, receipts for passenger transport
+items (current US$)</p></td>
 </tr>
-<tr class="row-odd"><td><p>ST.INT.TRNR.CD</p></td>
-<td><p>International tourism, receipts for travel items (current US$)</p></td>
+<tr class="row-odd"><td><p>ST.INT.TRN
+R.CD</p></td>
+<td><p>International tourism, receipts for travel items
+(current US$)</p></td>
 </tr>
-<tr class="row-even"><td><p>ST.INT.DPRT</p></td>
+<tr class="row-even"><td><p>ST.INT.DPR
+T</p></td>
 <td><p>International tourism, expenditures (current US$)</p></td>
 </tr>
-<tr class="row-odd"><td><p>ST.INT.XPND.CD</p></td>
-<td><p>International tourism, expenditures for passenger transport items (current US$)</p></td>
+<tr class="row-odd"><td><p>ST.INT.XPN
+D.CD</p></td>
+<td><p>International tourism, expenditures for passenger
+transport items (current US$)</p></td>
 </tr>
-<tr class="row-even"><td><p>ST.INT.TVLX.CD</p></td>
-<td><p>International tourism, expenditures for travel items (current US$)</p></td>
+<tr class="row-even"><td><p>ST.INT.TVL
+X.CD</p></td>
+<td><p>International tourism, expenditures for travel items
+(current US$)</p></td>
 </tr>
-<tr class="row-odd"><td><p>ST.INT.TRNX.CD</p></td>
+<tr class="row-odd"><td><p>ST.INT.TRN
+X.CD</p></td>
 <td><p>International tourism, number of departures</p></td>
 </tr>
-<tr class="row-even"><td><p>ST.INT.RCPT.XP.ZS</p></td>
+<tr class="row-even"><td><p>ST.INT.RCP
+T.XP.ZS</p></td>
 <td><p>International tourism, receipts (% of total exports)</p></td>
 </tr>
-<tr class="row-odd"><td><p>ST.INT.XPND.MP.ZS</p></td>
-<td><p>International tourism, expenditures (% of total imports)</p></td>
+<tr class="row-odd"><td><p>ST.INT.XPN
+D.MP.ZS</p></td>
+<td><p>International tourism, expenditures (% of total
+imports)</p></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="central-tendency">
 <h3>7.1.1. Central Tendency<a class="headerlink" href="#central-tendency" title="Permalink to this headline">¶</a></h3>
-<p>| {{ m.to_frame() }} | {{ md.to_frame() }} | |
-|————————————————————–|———————————————————————|—|</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 49%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>{{ m.to_frame() }}</p></th>
+<th class="head"><p>{{ md.to_frame() }}</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="variance-and-ranges">
 <h3>7.1.2. Variance and Ranges<a class="headerlink" href="#variance-and-ranges" title="Permalink to this headline">¶</a></h3>
-<p>{{ df.describe().transpose()[[‘std’,’min’,’max’]].rename(index=str,
-columns={“std”:”Standard Deviation”,”min”:”Minimum Value”,”max”:”Maximum
+<p>{{ df.describe().transpose()[[‘std’,‘min’,‘max’]].rename(index=str,
+columns={“std”:“Standard Deviation”,“min”:“Minimum Value”,“max”:“Maximum
 Value”}) }}</p>
 </div>
 <div class="section" id="skewness">
@@ -169,7 +199,7 @@ Value”}) }}</p>
 </div>
 <div class="section" id="quartiles">
 <h3>7.1.5. Quartiles<a class="headerlink" href="#quartiles" title="Permalink to this headline">¶</a></h3>
-<p>{{ df.describe().transpose()[[“min”,”25%”,”50%”,”75%”,”max”]] }}</p>
+<p>{{ df.describe().transpose()[[“min”,“25%”,“50%”,“75%”,“max”]] }}</p>
 </div>
 </div>
 <div class="section" id="eda-reduction">
@@ -193,7 +223,7 @@ Value”}) }}</p>
             <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="o">.</span><span class="mi">5</span><span class="p">})</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x2b661c711cc0</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7f6b10fa1da0</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <img alt="notebooks/prep/../docs/notebooks/prep/3_files/../docs/notebooks/prep/3_14_1.png" src="notebooks/prep/../docs/notebooks/prep/3_files/../docs/notebooks/prep/3_14_1.png" />
@@ -328,44 +358,60 @@ Value”}) }}</p>
     </tr>
   </tbody>
 </table>
-</div><ul>
-<li><p>ST.INT.TVLR.CD with ST.INT.TRNR.CD (ρ = 0.9294)</p></li>
+</div><ul class="simple">
+<li><p>ST.INT.TVLR.CD with ST.INT.TRNR.CD (ρ = 0.9294)</p>
+<ul>
 <li><p>Receipts for travel items in country</p></li>
-<li><p>Receipts for passenger transport items in country</p>
+<li><p>Receipts for passenger transport items in country</p></li>
+</ul>
+</li>
+</ul>
 <blockquote>
 <div><p>93% of tourism travel receipts are from passenger transport</p>
 </div></blockquote>
-</li>
-<li><p>ST.INT.TRNR.CD with ST.INT.RCPT.CD (ρ = 0.952)</p></li>
+<ul class="simple">
+<li><p>ST.INT.TRNR.CD with ST.INT.RCPT.CD (ρ = 0.952)</p>
+<ul>
 <li><p>Receipts for passenger transport items in country</p></li>
-<li><p>Receipts for tourism in country</p>
+<li><p>Receipts for tourism in country</p></li>
+</ul>
+</li>
+</ul>
 <blockquote>
 <div><p>Passenger transport makes up 95.2% of export tourism</p>
 </div></blockquote>
-</li>
-<li><p>ST.INT.RCPT.CD with ST.INT.TRNX.CD (ρ = 0.90905)</p></li>
+<ul class="simple">
+<li><p>ST.INT.RCPT.CD with ST.INT.TRNX.CD (ρ = 0.90905)</p>
+<ul>
 <li><p>Receipts for tourism in country</p></li>
-<li><p>Expenditures for passenger transport items abroad</p>
+<li><p>Expenditures for passenger transport items abroad</p></li>
+</ul>
+</li>
+</ul>
 <blockquote>
 <div><p>Total tourism income and passenger transport abroad are highly
 correlated.</p>
 </div></blockquote>
-</li>
-<li><p>ST.INT.TVLX.CD with ST.INT.TRNX.CD (ρ = 0.91601)</p></li>
+<ul>
+<li><p>ST.INT.TVLX.CD with ST.INT.TRNX.CD (ρ = 0.91601)</p>
+<ul class="simple">
 <li><p>Expenditures for travel items abroad</p></li>
-<li><p>Expenditures for passenger transport items abroad</p>
+<li><p>Expenditures for passenger transport items abroad</p></li>
+</ul>
 <blockquote>
 <div><p>92% of tourism travel expenditures are from passenger transport</p>
 </div></blockquote>
 </li>
-<li><p>ST.INT.TRNX.CD with ST.INT.XPND.CD (ρ = 0.94419)</p></li>
+<li><p>ST.INT.TRNX.CD with ST.INT.XPND.CD (ρ = 0.94419)</p>
+<ul class="simple">
 <li><p>Expenditures for passenger transport items abroad</p></li>
-<li><p>Expenditures for tourism abroad</p>
+<li><p>Expenditures for tourism abroad</p></li>
+</ul>
+</li>
+</ul>
 <blockquote>
 <div><p>Passenger transport makes up 94.42% of import tourism</p>
 </div></blockquote>
-</li>
-</ul>
 <p>#### Summary:</p>
 <ul class="simple">
 <li><p>About 95% of tourism spending is on transportation. This is
@@ -388,13 +434,13 @@ rest are in the pair plot below.</p>
 <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_small</span><span class="p">)</span>  <span class="c1"># ¯\_(ツ)_/¯</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">travis</span><span class="o">/</span><span class="n">virtualenv</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numpy</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">histograms</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">602</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">greater_equal</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numpy</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">histograms</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">754</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">greater_equal</span>
   <span class="n">keep</span> <span class="o">=</span> <span class="p">(</span><span class="n">tmp_a</span> <span class="o">&gt;=</span> <span class="n">first_edge</span><span class="p">)</span>
-<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">travis</span><span class="o">/</span><span class="n">virtualenv</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numpy</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">histograms</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">603</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">less_equal</span>
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numpy</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">histograms</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">755</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">less_equal</span>
   <span class="n">keep</span> <span class="o">&amp;=</span> <span class="p">(</span><span class="n">tmp_a</span> <span class="o">&lt;=</span> <span class="n">last_edge</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">seaborn</span><span class="o">.</span><span class="n">axisgrid</span><span class="o">.</span><span class="n">PairGrid</span> <span class="n">at</span> <span class="mh">0x2b661c921128</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">seaborn</span><span class="o">.</span><span class="n">axisgrid</span><span class="o">.</span><span class="n">PairGrid</span> <span class="n">at</span> <span class="mh">0x7f6b10c03278</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <img alt="notebooks/prep/../docs/notebooks/prep/3_files/../docs/notebooks/prep/3_22_2.png" src="notebooks/prep/../docs/notebooks/prep/3_files/../docs/notebooks/prep/3_22_2.png" />
@@ -404,10 +450,16 @@ rest are in the pair plot below.</p>
 <h2>7.3. Pair-plot analysis<a class="headerlink" href="#pair-plot-analysis" title="Permalink to this headline">¶</a></h2>
 <p>There are some interesting visual relationships in the pair plot above.</p>
 <ul class="simple">
-<li><p>International tourism receipts (ST.INT.RCPT.XP.ZS &amp; ST.INT.RCPT.CD)</p></li>
+<li><p>International tourism receipts (ST.INT.RCPT.XP.ZS &amp; ST.INT.RCPT.CD)</p>
+<ul>
 <li><p>Two disparate coefficients</p></li>
-<li><p>International departures (ST.INT.DPRT)</p></li>
+</ul>
+</li>
+<li><p>International departures (ST.INT.DPRT)</p>
+<ul>
 <li><p>3-5 disparate coefficients</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="feature-construction">
@@ -545,33 +597,119 @@ rest are in the pair plot below.</p>
 because the max value is ~52 and the mean is outside the quartile
 ranges</p>
 </div></blockquote>
-<p>| {{pretty_table(‘ST.INT.ARVL.PER.CAPITA’)}} |
-{{plot_dist(df_with_pop[‘ST.INT.ARVL.PER.CAPITA’])}} | |
-|————————————————————–|———————————————————————|—|</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 51%" />
+<col style="width: 4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>{{pretty_table(‘ST.INT.ARVL.PE
+R.CAPITA’)}}</p></th>
+<th class="head"><p>{{plot_dist(df_with_pop[‘ST.INT.AR
+VL.PER.CAPITA’])}}</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="international-departures-per-capita">
 <h4>7.6.1.2. International Departures Per Capita<a class="headerlink" href="#international-departures-per-capita" title="Permalink to this headline">¶</a></h4>
-<p>| {{pretty_table(‘ST.INT.DPRT.PER.CAPITA’)}} |
-{{plot_dist(df_with_pop[‘ST.INT.DPRT.PER.CAPITA’])}} | |
-|————————————————————–|———————————————————————|—|</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 51%" />
+<col style="width: 4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>{{pretty_table(‘ST.INT.DPRT.PE
+R.CAPITA’)}}</p></th>
+<th class="head"><p>{{plot_dist(df_with_pop[‘ST.INT.DP
+RT.PER.CAPITA’])}}</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="population-estimate">
 <h4>7.6.1.3. Population Estimate<a class="headerlink" href="#population-estimate" title="Permalink to this headline">¶</a></h4>
-<p>| {{pretty_table(‘Population Estimate’)}} |
-{{plot_dist(df_with_pop[‘Population Estimate’])}} | |
-|————————————————————–|———————————————————————|—|</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 51%" />
+<col style="width: 4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>{{pretty_table(‘Population
+Estimate’)}}</p></th>
+<th class="head"><p>{{plot_dist(df_with_pop[‘Populatio
+n
+Estimate’])}}</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="tourism-net">
 <h4>7.6.1.4. Tourism Net<a class="headerlink" href="#tourism-net" title="Permalink to this headline">¶</a></h4>
-<p>| {{pretty_table(‘Tourism Net’)}} |
-{{plot_dist(df_with_pop[‘Tourism Net’])}} | |
-|————————————————————–|———————————————————————|—|</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>{{pretty_table(‘Tourism Net’)}}</p></th>
+<th class="head"><p>{{plot_dist(df_with_pop[‘Tourism Net’])}}</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="tourist-defecit">
 <h4>7.6.1.5. Tourist Defecit<a class="headerlink" href="#tourist-defecit" title="Permalink to this headline">¶</a></h4>
-<p>| {{pretty_table(‘Tourist Defecit’)}} |
-{{plot_dist(df_with_pop[‘Tourist Defecit’])}} | |
-|————————————————————–|———————————————————————|—|</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 51%" />
+<col style="width: 4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>{{pretty_table(‘Tourist
+Defecit’)}}</p></th>
+<th class="head"><p>{{plot_dist(df_with_pop[‘Tourist
+Defecit’])}}</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

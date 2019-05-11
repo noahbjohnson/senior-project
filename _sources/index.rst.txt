@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
 
    setup
+   dd
 
 
 Notebooks
@@ -22,8 +23,7 @@ Notebooks
    :maxdepth: 2
 
    prep_notebooks
-
-
+   analysis_notebooks
 
 
 Indices and tables

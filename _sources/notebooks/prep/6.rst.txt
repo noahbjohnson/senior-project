@@ -5,21 +5,16 @@ Inequality Data Processing (WDI)
 Data Dictionary
 ---------------
 
-+------------------+---------------------------------------------------+
-| Code             | Indicator Name                                    |
-+==================+===================================================+
-| SI.POV.GINI      | GINI index (World Bank estimate)                  |
-+------------------+---------------------------------------------------+
-| SI.POV.RUGP      | Rural poverty gap at national poverty lines (%)   |
-+------------------+---------------------------------------------------+
-| SI.POV.URGP      | Urban poverty gap at national poverty lines (%)   |
-+------------------+---------------------------------------------------+
-| SI.POV.NAGP      | Poverty gap at national poverty lines (%)         |
-+------------------+---------------------------------------------------+
-| SI.DST.10TH.10   | Income share held by highest 10%                  |
-+------------------+---------------------------------------------------+
-| SI.DST.FRST.10   | Income share held by lowest 10%                   |
-+------------------+---------------------------------------------------+
+============== ===============================================
+Code           Indicator Name
+============== ===============================================
+SI.POV.GINI    GINI index (World Bank estimate)
+SI.POV.RUGP    Rural poverty gap at national poverty lines (%)
+SI.POV.URGP    Urban poverty gap at national poverty lines (%)
+SI.POV.NAGP    Poverty gap at national poverty lines (%)
+SI.DST.10TH.10 Income share held by highest 10%
+SI.DST.FRST.10 Income share held by lowest 10%
+============== ===============================================
 
 .. code:: ipython3
 

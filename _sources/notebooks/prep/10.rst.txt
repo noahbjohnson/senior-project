@@ -5,35 +5,59 @@ Labor Data Processing (WDI/ILO)
 Data Dictionary
 ---------------
 
-+--------------------------------+-------------------------------------------------------------------------------------------------+
-| **Code**                       | **Indicator Name**                                                                              |
-+================================+=================================================================================================+
-| SL.TLF.ACTI.1524.FE.ZS         | Labor force participation rate for ages 15-24, female (%) (modeled ILO estimate)                |
-+--------------------------------+-------------------------------------------------------------------------------------------------+
-| SL.TLF.CACT.ZS                 | Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)   |
-+--------------------------------+-------------------------------------------------------------------------------------------------+
-| SL.TLF.CACT.FM.ZS              | Ratio of female to male labor force participation rate (%) (modeled ILO estimate)               |
-+--------------------------------+-------------------------------------------------------------------------------------------------+
-| SL.TLF.0714.SW.TM              | Average working hours of children, study and work, ages 7-14 (hours per week)                   |
-+--------------------------------+-------------------------------------------------------------------------------------------------+
-| SL.TLF.0714.WK.TM              | Average working hours of children, working only, ages 7-14 (hours per week)                     |
-+--------------------------------+-------------------------------------------------------------------------------------------------+
-| SL.EMP.MPYR.ZS                 | Employers, total (% of total employment) (modeled ILO estimate)                                 |
-+--------------------------------+-------------------------------------------------------------------------------------------------+
-| SL.AGR.EMPL.ZS                 | Employment in agriculture (% of total employment) (modeled ILO estimate)                        |
-+--------------------------------+-------------------------------------------------------------------------------------------------+
-| SL.IND.EMPL.ZS                 | Employment in industry (% of total employment) (modeled ILO estimate)                           |
-+--------------------------------+-------------------------------------------------------------------------------------------------+
-| SL.SRV.EMPL.ZS                 | Employment in services (% of total employment) (modeled ILO estimate)                           |
-+--------------------------------+-------------------------------------------------------------------------------------------------+
-| SL.ISV.IFRM.ZS                 | Informal employment (% of total non-agricultural employment)                                    |
-+--------------------------------+-------------------------------------------------------------------------------------------------+
-| SL.UEM.TOTL.ZS                 | Unemployment, total (% of total labor force) (modeled ILO estimate)                             |
-+--------------------------------+-------------------------------------------------------------------------------------------------+
-| SL.EMP.SELF.ZS                 | Self-employed, total (% of total employment) (modeled ILO estimate)                             |
-+--------------------------------+-------------------------------------------------------------------------------------------------+
-| per\_lm\_alllm.cov\_pop\_tot   | Coverage of unemployment benefits and ALMP (% of population)                                    |
-+--------------------------------+-------------------------------------------------------------------------------------------------+
++-----------------------------------+-----------------------------------+
+| **Code**                          | **Indicator Name**                |
++===================================+===================================+
+| SL.TLF.ACTI.1524.FE.ZS            | Labor force participation rate    |
+|                                   | for ages 15-24, female (%)        |
+|                                   | (modeled ILO estimate)            |
++-----------------------------------+-----------------------------------+
+| SL.TLF.CACT.ZS                    | Labor force participation rate,   |
+|                                   | total (% of total population ages |
+|                                   | 15+) (modeled ILO estimate)       |
++-----------------------------------+-----------------------------------+
+| SL.TLF.CACT.FM.ZS                 | Ratio of female to male labor     |
+|                                   | force participation rate (%)      |
+|                                   | (modeled ILO estimate)            |
++-----------------------------------+-----------------------------------+
+| SL.TLF.0714.SW.TM                 | Average working hours of          |
+|                                   | children, study and work, ages    |
+|                                   | 7-14 (hours per week)             |
++-----------------------------------+-----------------------------------+
+| SL.TLF.0714.WK.TM                 | Average working hours of          |
+|                                   | children, working only, ages 7-14 |
+|                                   | (hours per week)                  |
++-----------------------------------+-----------------------------------+
+| SL.EMP.MPYR.ZS                    | Employers, total (% of total      |
+|                                   | employment) (modeled ILO          |
+|                                   | estimate)                         |
++-----------------------------------+-----------------------------------+
+| SL.AGR.EMPL.ZS                    | Employment in agriculture (% of   |
+|                                   | total employment) (modeled ILO    |
+|                                   | estimate)                         |
++-----------------------------------+-----------------------------------+
+| SL.IND.EMPL.ZS                    | Employment in industry (% of      |
+|                                   | total employment) (modeled ILO    |
+|                                   | estimate)                         |
++-----------------------------------+-----------------------------------+
+| SL.SRV.EMPL.ZS                    | Employment in services (% of      |
+|                                   | total employment) (modeled ILO    |
+|                                   | estimate)                         |
++-----------------------------------+-----------------------------------+
+| SL.ISV.IFRM.ZS                    | Informal employment (% of total   |
+|                                   | non-agricultural employment)      |
++-----------------------------------+-----------------------------------+
+| SL.UEM.TOTL.ZS                    | Unemployment, total (% of total   |
+|                                   | labor force) (modeled ILO         |
+|                                   | estimate)                         |
++-----------------------------------+-----------------------------------+
+| SL.EMP.SELF.ZS                    | Self-employed, total (% of total  |
+|                                   | employment) (modeled ILO          |
+|                                   | estimate)                         |
++-----------------------------------+-----------------------------------+
+| per_lm_alllm.cov_pop_tot          | Coverage of unemployment benefits |
+|                                   | and ALMP (% of population)        |
++-----------------------------------+-----------------------------------+
 
 .. code:: ipython3
 
@@ -102,103 +126,103 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>4399</th>
-          <td>2010</td>
-          <td>YR2010</td>
+          <th>4762</th>
+          <td>2012</td>
+          <td>YR2012</td>
+          <td>Korea, Rep.</td>
+          <td>KOR</td>
+          <td>30.407</td>
+          <td>61.146</td>
+          <td>69.109</td>
+          <td>..</td>
+          <td>..</td>
+          <td>1.923</td>
+          <td>6.133</td>
+          <td>24.581</td>
+          <td>69.286</td>
+          <td>..</td>
+          <td>3.200</td>
+          <td>28.187</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>1396</th>
+          <td>1999</td>
+          <td>YR1999</td>
+          <td>Equatorial Guinea</td>
+          <td>GNQ</td>
+          <td>28.957</td>
+          <td>58.543</td>
+          <td>75.345</td>
+          <td>..</td>
+          <td>..</td>
+          <td>1.567</td>
+          <td>49.449</td>
+          <td>16.701</td>
+          <td>33.850</td>
+          <td>..</td>
+          <td>7.723</td>
+          <td>67.145</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>4663</th>
+          <td>2011</td>
+          <td>YR2011</td>
           <td>Sierra Leone</td>
           <td>SLE</td>
-          <td>39.878</td>
-          <td>61.179</td>
-          <td>97.764</td>
+          <td>38.435</td>
+          <td>60.391</td>
+          <td>97.688</td>
           <td>..</td>
           <td>..</td>
-          <td>2.608</td>
-          <td>64.257</td>
-          <td>5.232</td>
-          <td>30.510</td>
+          <td>2.620</td>
+          <td>63.138</td>
+          <td>5.228</td>
+          <td>31.634</td>
           <td>..</td>
-          <td>3.791</td>
-          <td>89.833</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>4222</th>
-          <td>2009</td>
-          <td>YR2009</td>
-          <td>Upper middle income</td>
-          <td>UMC</td>
-          <td>44.943</td>
-          <td>66.541</td>
-          <td>75.458</td>
-          <td>..</td>
-          <td>..</td>
-          <td>3.209</td>
-          <td>30.721</td>
-          <td>25.950</td>
-          <td>43.329</td>
-          <td>..</td>
-          <td>6.111</td>
-          <td>45.361</td>
+          <td>3.740</td>
+          <td>89.705</td>
           <td>..</td>
         </tr>
         <tr>
-          <th>3799</th>
-          <td>2008</td>
-          <td>YR2008</td>
-          <td>Iran, Islamic Rep.</td>
-          <td>IRN</td>
-          <td>12.630</td>
-          <td>43.265</td>
-          <td>22.017</td>
+          <th>6011</th>
+          <td>2016</td>
+          <td>YR2016</td>
+          <td>Tuvalu</td>
+          <td>TUV</td>
           <td>..</td>
           <td>..</td>
-          <td>4.859</td>
-          <td>21.211</td>
-          <td>32.272</td>
-          <td>46.517</td>
-          <td>..</td>
-          <td>10.480</td>
-          <td>46.839</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>2589</th>
-          <td>2003</td>
-          <td>YR2003</td>
-          <td>West Bank and Gaza</td>
-          <td>PSE</td>
-          <td>7.198</td>
-          <td>40.341</td>
-          <td>19.273</td>
           <td>..</td>
           <td>..</td>
-          <td>3.630</td>
-          <td>16.237</td>
-          <td>25.580</td>
-          <td>58.184</td>
           <td>..</td>
-          <td>25.480</td>
-          <td>43.588</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
           <td>..</td>
         </tr>
         <tr>
-          <th>1275</th>
+          <th>1132</th>
           <td>1998</td>
           <td>YR1998</td>
-          <td>Central Europe and the Baltics</td>
-          <td>CEB</td>
-          <td>34.805</td>
-          <td>57.775</td>
-          <td>76.903</td>
+          <td>Equatorial Guinea</td>
+          <td>GNQ</td>
+          <td>29.007</td>
+          <td>58.429</td>
+          <td>74.620</td>
           <td>..</td>
           <td>..</td>
-          <td>3.059</td>
-          <td>21.509</td>
-          <td>32.631</td>
-          <td>45.860</td>
+          <td>1.535</td>
+          <td>50.117</td>
+          <td>16.840</td>
+          <td>33.043</td>
           <td>..</td>
-          <td>8.951</td>
-          <td>25.862</td>
+          <td>7.075</td>
+          <td>68.512</td>
           <td>..</td>
         </tr>
       </tbody>
@@ -340,88 +364,88 @@ Data Types
       </thead>
       <tbody>
         <tr>
-          <th>LSO</th>
-          <th>1997</th>
-          <td>59.568</td>
-          <td>74.390</td>
-          <td>85.197</td>
+          <th>SDN</th>
+          <th>2009</th>
+          <td>17.000</td>
+          <td>47.618</td>
+          <td>31.374</td>
           <td>nan</td>
           <td>nan</td>
-          <td>0.634</td>
-          <td>72.075</td>
-          <td>9.492</td>
-          <td>18.433</td>
+          <td>5.785</td>
+          <td>44.692</td>
+          <td>15.534</td>
+          <td>39.774</td>
           <td>nan</td>
-          <td>37.940</td>
-          <td>61.709</td>
+          <td>13.000</td>
+          <td>47.129</td>
           <td>nan</td>
         </tr>
         <tr>
-          <th>AFG</th>
+          <th>MWI</th>
+          <th>2007</th>
+          <td>60.760</td>
+          <td>77.181</td>
+          <td>91.351</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1.137</td>
+          <td>74.464</td>
+          <td>7.853</td>
+          <td>17.684</td>
+          <td>nan</td>
+          <td>6.462</td>
+          <td>61.939</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>USA</th>
+          <th>2002</th>
+          <td>57.454</td>
+          <td>65.714</td>
+          <td>80.051</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>2.975</td>
+          <td>1.544</td>
+          <td>22.743</td>
+          <td>75.713</td>
+          <td>nan</td>
+          <td>5.783</td>
+          <td>7.361</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>COG</th>
           <th>2005</th>
-          <td>38.295</td>
-          <td>64.348</td>
-          <td>52.965</td>
+          <td>43.879</td>
+          <td>68.654</td>
+          <td>94.476</td>
           <td>nan</td>
           <td>nan</td>
-          <td>0.489</td>
-          <td>61.483</td>
-          <td>11.690</td>
-          <td>26.827</td>
+          <td>1.115</td>
+          <td>39.969</td>
+          <td>23.412</td>
+          <td>36.620</td>
           <td>nan</td>
-          <td>2.942</td>
-          <td>91.441</td>
-          <td>nan</td>
-        </tr>
-        <tr>
-          <th>BDI</th>
-          <th>2001</th>
-          <td>70.419</td>
-          <td>83.092</td>
-          <td>101.861</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>0.073</td>
-          <td>92.133</td>
-          <td>2.178</td>
-          <td>5.689</td>
-          <td>nan</td>
-          <td>2.062</td>
-          <td>94.810</td>
+          <td>19.796</td>
+          <td>78.177</td>
           <td>nan</td>
         </tr>
         <tr>
-          <th>TLS</th>
-          <th>2000</th>
-          <td>38.666</td>
-          <td>58.781</td>
-          <td>51.075</td>
+          <th>BHS</th>
+          <th>2016</th>
+          <td>42.352</td>
+          <td>74.585</td>
+          <td>82.241</td>
           <td>nan</td>
           <td>nan</td>
-          <td>1.438</td>
-          <td>53.270</td>
-          <td>8.192</td>
-          <td>38.539</td>
+          <td>4.489</td>
+          <td>2.674</td>
+          <td>16.056</td>
+          <td>81.270</td>
           <td>nan</td>
-          <td>3.971</td>
-          <td>79.507</td>
-          <td>nan</td>
-        </tr>
-        <tr>
-          <th>CIV</th>
-          <th>2006</th>
-          <td>36.095</td>
-          <td>62.717</td>
-          <td>63.498</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>0.919</td>
-          <td>46.899</td>
-          <td>11.674</td>
-          <td>41.427</td>
-          <td>nan</td>
-          <td>5.694</td>
-          <td>78.547</td>
+          <td>12.700</td>
+          <td>14.468</td>
           <td>nan</td>
         </tr>
       </tbody>

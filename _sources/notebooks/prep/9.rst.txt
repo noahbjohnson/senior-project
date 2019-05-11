@@ -5,19 +5,24 @@ Urbanization Data Processing (UNPD)
 Data Dictionary
 ---------------
 
-+---------------------+-------------------------------------------------------------------------------------+
-| Code                | Indicator Name                                                                      |
-+=====================+=====================================================================================+
-| SP.URB.TOTL.IN.ZS   | Urban population (% of total)                                                       |
-+---------------------+-------------------------------------------------------------------------------------+
-| SP.URB.GROW         | Urban population growth (annual %)                                                  |
-+---------------------+-------------------------------------------------------------------------------------+
-| EN.POP.SLUM.UR.ZS   | Population living in slums (% of urban population)                                  |
-+---------------------+-------------------------------------------------------------------------------------+
-| EN.URB.MCTY.TL.ZS   | Population in urban agglomerations of more than 1 million (% of total population)   |
-+---------------------+-------------------------------------------------------------------------------------+
-| EN.URB.LCTY.UR.ZS   | Population in the largest city (% of urban population)                              |
-+---------------------+-------------------------------------------------------------------------------------+
++------------+---------------------------------------------------------+
+| Code       | Indicator Name                                          |
++============+=========================================================+
+| SP.URB.TOT | Urban population (% of total)                           |
+| L.IN.ZS    |                                                         |
++------------+---------------------------------------------------------+
+| SP.URB.GRO | Urban population growth (annual %)                      |
+| W          |                                                         |
++------------+---------------------------------------------------------+
+| EN.POP.SLU | Population living in slums (% of urban population)      |
+| M.UR.ZS    |                                                         |
++------------+---------------------------------------------------------+
+| EN.URB.MCT | Population in urban agglomerations of more than 1       |
+| Y.TL.ZS    | million (% of total population)                         |
++------------+---------------------------------------------------------+
+| EN.URB.LCT | Population in the largest city (% of urban population)  |
+| Y.UR.ZS    |                                                         |
++------------+---------------------------------------------------------+
 
 .. code:: ipython3
 
@@ -78,64 +83,64 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>3349</th>
-          <td>2006</td>
-          <td>YR2006</td>
-          <td>Somalia</td>
-          <td>SOM</td>
-          <td>37.100</td>
-          <td>5.069</td>
-          <td>..</td>
-          <td>13.724</td>
-          <td>36.992</td>
-        </tr>
-        <tr>
-          <th>994</th>
+          <th>841</th>
           <td>1997</td>
           <td>YR1997</td>
-          <td>Turks and Caicos Islands</td>
-          <td>TCA</td>
-          <td>81.890</td>
-          <td>4.643</td>
+          <td>Cabo Verde</td>
+          <td>CPV</td>
+          <td>50.637</td>
+          <td>4.190</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
         </tr>
         <tr>
-          <th>1748</th>
-          <td>2000</td>
-          <td>YR2000</td>
-          <td>Portugal</td>
-          <td>PRT</td>
-          <td>54.399</td>
-          <td>1.916</td>
+          <th>1341</th>
+          <td>1999</td>
+          <td>YR1999</td>
+          <td>Albania</td>
+          <td>ALB</td>
+          <td>41.169</td>
+          <td>0.756</td>
           <td>..</td>
-          <td>38.158</td>
-          <td>47.743</td>
+          <td>..</td>
+          <td>25.414</td>
         </tr>
         <tr>
-          <th>6048</th>
-          <td>2016</td>
-          <td>YR2016</td>
-          <td>Latin America &amp; the Caribbean (IDA &amp; IBRD coun...</td>
-          <td>TLA</td>
-          <td>80.156</td>
-          <td>1.414</td>
+          <th>1001</th>
+          <td>1997</td>
+          <td>YR1997</td>
+          <td>Vanuatu</td>
+          <td>VUT</td>
+          <td>20.766</td>
+          <td>3.310</td>
           <td>..</td>
-          <td>37.308</td>
-          <td>22.531</td>
+          <td>..</td>
+          <td>..</td>
         </tr>
         <tr>
-          <th>4309</th>
-          <td>2010</td>
-          <td>YR2010</td>
-          <td>Gabon</td>
-          <td>GAB</td>
-          <td>85.533</td>
-          <td>3.991</td>
+          <th>1120</th>
+          <td>1998</td>
+          <td>YR1998</td>
+          <td>Croatia</td>
+          <td>HRV</td>
+          <td>52.968</td>
+          <td>0.372</td>
           <td>..</td>
           <td>..</td>
-          <td>46.230</td>
+          <td>28.986</td>
+        </tr>
+        <tr>
+          <th>1890</th>
+          <td>2001</td>
+          <td>YR2001</td>
+          <td>Bosnia and Herzegovina</td>
+          <td>BIH</td>
+          <td>42.698</td>
+          <td>0.860</td>
+          <td>..</td>
+          <td>..</td>
+          <td>21.203</td>
         </tr>
       </tbody>
     </table>
@@ -260,46 +265,46 @@ Data Types
       </thead>
       <tbody>
         <tr>
-          <th>ARE</th>
-          <th>1995</th>
-          <td>78.319</td>
-          <td>4.841</td>
+          <th>GMB</th>
+          <th>2017</th>
+          <td>60.599</td>
+          <td>4.129</td>
           <td>nan</td>
-          <td>55.266</td>
-          <td>33.879</td>
-        </tr>
-        <tr>
-          <th>UGA</th>
-          <th>2000</th>
-          <td>14.786</td>
-          <td>6.031</td>
-          <td>75.000</td>
-          <td>5.129</td>
-          <td>34.691</td>
-        </tr>
-        <tr>
-          <th>CUB</th>
-          <th>2011</th>
-          <td>76.689</td>
-          <td>0.310</td>
           <td>nan</td>
-          <td>18.809</td>
-          <td>24.526</td>
+          <td>33.894</td>
         </tr>
         <tr>
-          <th>NLD</th>
-          <th>2004</th>
-          <td>81.514</td>
-          <td>1.797</td>
+          <th>ARG</th>
+          <th>2010</th>
+          <td>90.849</td>
+          <td>1.209</td>
           <td>nan</td>
-          <td>12.391</td>
-          <td>7.678</td>
+          <td>43.689</td>
+          <td>38.038</td>
         </tr>
         <tr>
-          <th>NCL</th>
-          <th>2000</th>
-          <td>61.919</td>
-          <td>2.485</td>
+          <th>OMN</th>
+          <th>2012</th>
+          <td>77.564</td>
+          <td>8.584</td>
+          <td>nan</td>
+          <td>24.844</td>
+          <td>32.031</td>
+        </tr>
+        <tr>
+          <th>LBN</th>
+          <th>1994</th>
+          <td>84.491</td>
+          <td>2.908</td>
+          <td>nan</td>
+          <td>42.039</td>
+          <td>49.755</td>
+        </tr>
+        <tr>
+          <th>TLS</th>
+          <th>2014</th>
+          <td>29.133</td>
+          <td>3.596</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>

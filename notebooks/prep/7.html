@@ -13,6 +13,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -47,11 +48,13 @@
 <h2>11.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-center">
 <colgroup>
-<col style="width: 11%" />
-<col style="width: 89%" />
+<col style="width: 7%" />
+<col style="width: 93%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<tr class="row-odd"><th class="head"><p>Var
+iab
+le</p></th>
 <th class="head"><p>Definition</p></th>
 </tr>
 </thead>
@@ -59,7 +62,9 @@
 <tr class="row-even"><td><p>id</p></td>
 <td><p>Identifier</p></td>
 </tr>
-<tr class="row-odd"><td><p>country</p></td>
+<tr class="row-odd"><td><p>cou
+ntr
+y</p></td>
 <td><p>Country/area</p></td>
 </tr>
 <tr class="row-even"><td><p>c3</p></td>
@@ -68,115 +73,232 @@
 <tr class="row-odd"><td><p>c2</p></td>
 <td><p>2-digit country code in ISO 3166-1 alpha-2 format</p></td>
 </tr>
-<tr class="row-even"><td><p>year</p></td>
-<td><p>Year. Note that when a survey continues for more than a year, the year when it is finished is considered</p></td>
+<tr class="row-even"><td><p>yea
+r</p></td>
+<td><p>Year. Note that when a survey continues for more than a year,
+the year when it is finished is considered</p></td>
 </tr>
-<tr class="row-odd"><td><p>gini_reported</p></td>
-<td><p>Gini coefficient as reported by the source (in most cases based on microdata, in some older observations estimates derive from grouped data)</p></td>
+<tr class="row-odd"><td><p>gin
+i_r
+epo
+rte
+d</p></td>
+<td><p>Gini coefficient as reported by the source (in most cases
+based on microdata, in some older observations estimates
+derive from grouped data)</p></td>
 </tr>
-<tr class="row-even"><td><p>q1-q5</p></td>
+<tr class="row-even"><td><p>q1-
+q5</p></td>
 <td><p>Quintile group shares of resource</p></td>
 </tr>
-<tr class="row-odd"><td><p>d1-d10</p></td>
+<tr class="row-odd"><td><p>d1-
+d10</p></td>
 <td><p>Decile group shares of resource</p></td>
 </tr>
-<tr class="row-even"><td><p>bottom5 and top5</p></td>
+<tr class="row-even"><td><p>bot
+tom
+5
+and
+top
+5</p></td>
 <td><p>Bottom five and top five percent group shares of resource</p></td>
 </tr>
-<tr class="row-odd"><td><p>resource</p></td>
+<tr class="row-odd"><td><p>res
+our
+ce</p></td>
 <td><p>Resource concept</p></td>
 </tr>
-<tr class="row-even"><td><p>resource_detailed</p></td>
+<tr class="row-even"><td><p>res
+our
+<a href="#id1"><span class="problematic" id="id2">ce_</span></a>
+det
+ail
+ed</p></td>
 <td><p>Detailed resource concept</p></td>
 </tr>
-<tr class="row-odd"><td><p>scale</p></td>
+<tr class="row-odd"><td><p>sca
+le</p></td>
 <td><p>Equivalence scale</p></td>
 </tr>
-<tr class="row-even"><td><p>scale_detailed</p></td>
+<tr class="row-even"><td><p>sca
+<a href="#id3"><span class="problematic" id="id4">le_</span></a>
+det
+ail
+ed</p></td>
 <td><p>Detailed equivalence scale</p></td>
 </tr>
-<tr class="row-odd"><td><p>sharing_unit</p></td>
+<tr class="row-odd"><td><p>sha
+rin
+g_u
+nit</p></td>
 <td><p>Income sharing unit/statistical unit</p></td>
 </tr>
-<tr class="row-even"><td><p>reference_unit</p></td>
-<td><p>Unit of analysis, indicates whether the data has been weighted with a person or a household weight</p></td>
+<tr class="row-even"><td><p>ref
+ere
+nce
+_un
+it</p></td>
+<td><p>Unit of analysis, indicates whether the data has been weighted
+with a person or a household weight</p></td>
 </tr>
-<tr class="row-odd"><td><p>areacovr</p></td>
-<td><p>Area coverage. The land area which was included in the original sample surveys etc.</p></td>
+<tr class="row-odd"><td><p>are
+aco
+vr</p></td>
+<td><p>Area coverage. The land area which was included in the
+original sample surveys etc.</p></td>
 </tr>
-<tr class="row-even"><td><p>areacovr_detailed</p></td>
+<tr class="row-even"><td><p>are
+aco
+<a href="#id5"><span class="problematic" id="id6">vr_</span></a>
+det
+ail
+ed</p></td>
 <td><p>Detailed area coverage</p></td>
 </tr>
-<tr class="row-odd"><td><p>popcovr</p></td>
-<td><p>Population coverage. The population covered in the sample surveys in the land area (all, rural, urban etc.) which was included</p></td>
+<tr class="row-odd"><td><p>pop
+cov
+r</p></td>
+<td><p>Population coverage. The population covered in the sample
+surveys in the land area (all, rural, urban etc.) which was
+included</p></td>
 </tr>
-<tr class="row-even"><td><p>popcovr_detailed</p></td>
-<td><p>Detailed population coverage, including age coverage information in certain cases</p></td>
+<tr class="row-even"><td><p>pop
+cov
+r_d
+eta
+ile
+d</p></td>
+<td><p>Detailed population coverage, including age coverage
+information in certain cases</p></td>
 </tr>
-<tr class="row-odd"><td><p>region_un</p></td>
+<tr class="row-odd"><td><p>reg
+ion
+_un</p></td>
 <td><p>Regional grouping based on United Nations geoscheme</p></td>
 </tr>
-<tr class="row-even"><td><p>region_un_sub</p></td>
+<tr class="row-even"><td><p>reg
+ion
+_un
+_su
+b</p></td>
 <td><p>Sub-regional grouping based on United Nations geoscheme</p></td>
 </tr>
-<tr class="row-odd"><td><p>region_wb</p></td>
+<tr class="row-odd"><td><p>reg
+ion
+_wb</p></td>
 <td><p>Regional grouping based on World Bank classification</p></td>
 </tr>
 <tr class="row-even"><td><p>eu</p></td>
 <td><p>Current EU member state</p></td>
 </tr>
-<tr class="row-odd"><td><p>oecd</p></td>
+<tr class="row-odd"><td><p>oec
+d</p></td>
 <td><p>Current OECD member state</p></td>
 </tr>
-<tr class="row-even"><td><p>incomegroup</p></td>
+<tr class="row-even"><td><p>inc
+ome
+gro
+up</p></td>
 <td><p>World Bank classification by country income</p></td>
 </tr>
-<tr class="row-odd"><td><p>mean</p></td>
-<td><p>Survey mean given with the same underlying definitions as the Gini coefficient and the share data</p></td>
+<tr class="row-odd"><td><p>mea
+n</p></td>
+<td><p>Survey mean given with the same underlying definitions as the
+Gini coefficient and the share data</p></td>
 </tr>
-<tr class="row-even"><td><p>median</p></td>
-<td><p>Survey median given with the same underlying definitions as the Gini coefficient and the share data</p></td>
+<tr class="row-even"><td><p>med
+ian</p></td>
+<td><p>Survey median given with the same underlying definitions as
+the Gini coefficient and the share data</p></td>
 </tr>
-<tr class="row-odd"><td><p>currency</p></td>
-<td><p>Currency for the mean and median values. If the reference is US$2011PPP it means that the currency is in 2011 US dollar per month, with purchasing power parity applied on it.</p></td>
+<tr class="row-odd"><td><p>cur
+ren
+cy</p></td>
+<td><p>Currency for the mean and median values. If the reference is
+US$2011PPP it means that the currency is in 2011 US dollar per
+month, with purchasing power parity applied on it.</p></td>
 </tr>
-<tr class="row-even"><td><p>reference_period</p></td>
+<tr class="row-even"><td><p>ref
+ere
+nce
+_pe
+rio
+d</p></td>
 <td><p>Time period for measuring mean and median values</p></td>
 </tr>
-<tr class="row-odd"><td><p>exchangerate</p></td>
-<td><p>Conversion rate from local currency units (LCU) to United States Dollars (USD)</p></td>
+<tr class="row-odd"><td><p>exc
+han
+ger
+ate</p></td>
+<td><p>Conversion rate from local currency units (LCU) to United
+States Dollars (USD)</p></td>
 </tr>
-<tr class="row-even"><td><p>mean_usd</p></td>
+<tr class="row-even"><td><p>mea
+n_u
+sd</p></td>
 <td><p>Mean measure in United States Dollar (USD)</p></td>
 </tr>
-<tr class="row-odd"><td><p>median_usd</p></td>
+<tr class="row-odd"><td><p>med
+ian
+_us
+d</p></td>
 <td><p>Median measure in United States Dollar (USD)</p></td>
 </tr>
-<tr class="row-even"><td><p>gdp_ppp_pc_usd2011</p></td>
-<td><p>Gross Domestic Product (GDP) is converted to United States Dollars (USD) using purchasing power parity rates and divided by total population. Data are in constant 2011 United States Dollar (USD)</p></td>
+<tr class="row-even"><td><p>gdp
+_pp
+p_p
+c_u
+sd2
+011</p></td>
+<td><p>Gross Domestic Product (GDP) is converted to United States
+Dollars (USD) using purchasing power parity rates and divided
+by total population. Data are in constant 2011 United States
+Dollar (USD)</p></td>
 </tr>
-<tr class="row-odd"><td><p>population</p></td>
+<tr class="row-odd"><td><p>pop
+ula
+tio
+n</p></td>
 <td><p>Population of countries from the UN population prospects</p></td>
 </tr>
-<tr class="row-even"><td><p>revision</p></td>
-<td><p>Indicates the time of the revision when the observation was included to the database</p></td>
+<tr class="row-even"><td><p>rev
+isi
+on</p></td>
+<td><p>Indicates the time of the revision when the observation was
+included to the database</p></td>
 </tr>
-<tr class="row-odd"><td><p>quality</p></td>
+<tr class="row-odd"><td><p>qua
+lit
+y</p></td>
 <td><p>Quality assessment</p></td>
 </tr>
-<tr class="row-even"><td><p>quality_score</p></td>
+<tr class="row-even"><td><p>qua
+lit
+y_s
+cor
+e</p></td>
 <td><p>Computed quality score</p></td>
 </tr>
-<tr class="row-odd"><td><p>source</p></td>
+<tr class="row-odd"><td><p>sou
+rce</p></td>
 <td><p>Source type</p></td>
 </tr>
-<tr class="row-even"><td><p>source_detailed</p></td>
+<tr class="row-even"><td><p>sou
+rce
+_de
+tai
+led</p></td>
 <td><p>Source from which the observation was obtained</p></td>
 </tr>
-<tr class="row-odd"><td><p>source_comments</p></td>
+<tr class="row-odd"><td><p>sou
+rce
+_co
+mme
+nts</p></td>
 <td><p>Additional source comments</p></td>
 </tr>
-<tr class="row-even"><td><p>survey</p></td>
+<tr class="row-even"><td><p>sur
+vey</p></td>
 <td><p>Originating survey information</p></td>
 </tr>
 </tbody>

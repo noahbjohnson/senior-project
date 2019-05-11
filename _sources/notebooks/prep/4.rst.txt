@@ -2,35 +2,48 @@
 Economic Data Processing (MADDISON)
 ===================================
 
-    Maddison Project Database, version 2018. Bolt, Jutta, Robert
-    Inklaar, Herman de Jong and Jan Luiten van Zanden (2018), “Rebasing
-    ‘Maddison’: new income comparisons and the shape of long-run
-    economic development”, Maddison Project Working paper 10
+   Maddison Project Database, version 2018. Bolt, Jutta, Robert Inklaar,
+   Herman de Jong and Jan Luiten van Zanden (2018), “Rebasing
+   ‘Maddison’: new income comparisons and the shape of long-run economic
+   development”, Maddison Project Working paper 10
 
 Data Dictionary
 ---------------
 
-+---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Full data           | Data in single table                                                                                                                                                        |
-+=====================+=============================================================================================================================================================================+
-| countrycode         | 3-letter ISO country code                                                                                                                                                   |
-+---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| country             | Country name                                                                                                                                                                |
-+---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| year                | Year                                                                                                                                                                        |
-+---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| cgdppc              | Real GDP per capita in 2011US$, multiple benchmarks (suitable for cross-country income comparisons)                                                                         |
-+---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| rgdpnapc            | Real GDP per capita in 2011US$, 2011 benchmark (suitable for cross-country growth comparisons)                                                                              |
-+---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| pop                 | Population, mid-year (thousands)                                                                                                                                            |
-+---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| i\_cig              | 0/1/2: observation is extrapolated (0), benchmark (1), or interpolated (2)                                                                                                  |
-+---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| i\_bm               | For benchmark observations: 1: ICP PPP estimates, 2: Historical income benchmarks, 3: Real wages and urbanization, 4: Multiple of subsistence, 5: Braithwaite (1968) PPPs   |
-+---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Partial countries   | Data for selected sub-national units with long time series                                                                                                                  |
-+---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++------+---------------------------------------------------------------+
+| Full | Data in single table                                          |
+| data |                                                               |
++======+===============================================================+
+| coun | 3-letter ISO country code                                     |
+| tryc |                                                               |
+| ode  |                                                               |
++------+---------------------------------------------------------------+
+| coun | Country name                                                  |
+| try  |                                                               |
++------+---------------------------------------------------------------+
+| year | Year                                                          |
++------+---------------------------------------------------------------+
+| cgdp | Real GDP per capita in 2011US$, multiple benchmarks (suitable |
+| pc   | for cross-country income comparisons)                         |
++------+---------------------------------------------------------------+
+| rgdp | Real GDP per capita in 2011US$, 2011 benchmark (suitable for  |
+| napc | cross-country growth comparisons)                             |
++------+---------------------------------------------------------------+
+| pop  | Population, mid-year (thousands)                              |
++------+---------------------------------------------------------------+
+| i_ci | 0/1/2: observation is extrapolated (0), benchmark (1), or     |
+| g    | interpolated (2)                                              |
++------+---------------------------------------------------------------+
+| i_bm | For benchmark observations: 1: ICP PPP estimates, 2:          |
+|      | Historical income benchmarks, 3: Real wages and urbanization, |
+|      | 4: Multiple of subsistence, 5: Braithwaite (1968) PPPs        |
++------+---------------------------------------------------------------+
+| Part | Data for selected sub-national units with long time series    |
+| ial  |                                                               |
+| coun |                                                               |
+| trie |                                                               |
+| s    |                                                               |
++------+---------------------------------------------------------------+
 
 .. code:: ipython3
 
@@ -88,57 +101,57 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>16373</th>
-          <td>STP</td>
-          <td>Sao Tome and Principe</td>
-          <td>2014</td>
-          <td>3489.000</td>
-          <td>3474.000</td>
-          <td>190.000</td>
-          <td>Extrapolated</td>
+          <th>13232</th>
+          <td>PAK</td>
+          <td>Pakistan</td>
+          <td>1992</td>
+          <td>2464.000</td>
+          <td>3290.000</td>
+          <td>120535.000</td>
+          <td>Interpolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>10865</th>
-          <td>MDG</td>
-          <td>Madagascar</td>
-          <td>1966</td>
-          <td>1204.000</td>
-          <td>2197.000</td>
-          <td>6200.000</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>12393</th>
-          <td>NIC</td>
-          <td>Nicaragua</td>
-          <td>1947</td>
-          <td>1565.000</td>
-          <td>3351.000</td>
-          <td>980.000</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>16180</th>
-          <td>SLV</td>
-          <td>El Salvador</td>
-          <td>1955</td>
-          <td>1475.000</td>
-          <td>3589.000</td>
-          <td>2221.000</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>6484</th>
-          <td>GBR</td>
-          <td>United Kingdom</td>
-          <td>1792</td>
-          <td>2067.000</td>
-          <td>3072.000</td>
+          <th>14797</th>
+          <td>PRT</td>
+          <td>Portugal</td>
+          <td>1633</td>
+          <td>1237.000</td>
+          <td>1611.000</td>
           <td>nan</td>
+          <td>Extrapolated</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>9853</th>
+          <td>KOR</td>
+          <td>Republic of Korea</td>
+          <td>2000</td>
+          <td>22930.000</td>
+          <td>21420.000</td>
+          <td>47008.000</td>
+          <td>Interpolated</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>17821</th>
+          <td>THA</td>
+          <td>Thailand</td>
+          <td>2015</td>
+          <td>13938.000</td>
+          <td>15020.000</td>
+          <td>66886.000</td>
+          <td>Extrapolated</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>17929</th>
+          <td>TKM</td>
+          <td>Turkmenistan</td>
+          <td>1989</td>
+          <td>6061.000</td>
+          <td>7524.000</td>
+          <td>3572.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>

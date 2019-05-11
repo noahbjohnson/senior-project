@@ -8,186 +8,200 @@ Data Sources Overview
 World Tourism Organization (UWTO)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    The United Nations agency responsible for the promotion of
-    responsible, sustainable and universally accessible tourism.
+   The United Nations agency responsible for the promotion of
+   responsible, sustainable and universally accessible tourism.
 
 Variables
 ^^^^^^^^^
 
 -  Inbound tourism
--  Arrivals - Thousands
--  Tourism expenditure in the country - US$ Mn
--  Travel - US$ Mn
--  Passenger transport - US$ Mn
+
+   -  Arrivals - Thousands
+   -  Tourism expenditure in the country - US$ Mn
+   -  Travel - US$ Mn
+   -  Passenger transport - US$ Mn
+
 -  Outbound tourism
--  Departures - Thousands
--  Tourism expenditure in other countries - US$ Mn
--  Travel - US$ Mn
--  Passenger transport - US$ Mn
+
+   -  Departures - Thousands
+   -  Tourism expenditure in other countries - US$ Mn
+   -  Travel - US$ Mn
+   -  Passenger transport - US$ Mn
 
 World Development Indicators (table 6.14)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    The World Development Indicators is a compilation of relevant,
-    high-quality, and internationally comparable statistics about global
-    development and the fight against poverty. The data concerning
-    tourism in the WDI is primarily from the UWTO, with supplementary
-    data from IMF and World Bank.
+   The World Development Indicators is a compilation of relevant,
+   high-quality, and internationally comparable statistics about global
+   development and the fight against poverty. The data concerning
+   tourism in the WDI is primarily from the UWTO, with supplementary
+   data from IMF and World Bank.
+
+.. _variables-1:
 
 Variables
 ^^^^^^^^^
 
 -  Inbound tourism
--  ST.INT.ARVL
 
-   -  International tourism, number of arrivals
-   -  International inbound tourists (overnight visitors) are the number
-      of tourists who travel to a country other than that in which they
-      have their usual residence, but outside their usual environment,
-      for a period not exceeding 12 months and whose main purpose in
-      visiting is other than an activity remunerated from within the
-      country visited. When data on number of tourists are not
-      available, the number of visitors, which includes tourists,
-      same-day visitors, cruise passengers, and crew members, is shown
-      instead. Sources and collection methods for arrivals differ across
-      countries. In some cases data are from border statistics (police,
-      immigration, and the like) and supplemented by border surveys.
+   -  ST.INT.ARVL
 
--  ST.INT.RCPT.XP.ZS
+      -  International tourism, number of arrivals
+      -  International inbound tourists (overnight visitors) are the
+         number of tourists who travel to a country other than that in
+         which they have their usual residence, but outside their usual
+         environment, for a period not exceeding 12 months and whose
+         main purpose in visiting is other than an activity remunerated
+         from within the country visited. When data on number of
+         tourists are not available, the number of visitors, which
+         includes tourists, same-day visitors, cruise passengers, and
+         crew members, is shown instead. Sources and collection methods
+         for arrivals differ across countries. In some cases data are
+         from border statistics (police, immigration, and the like) and
+         supplemented by border surveys.
 
-   -  International tourism, receipts (% of total exports)
-   -  International tourism receipts are expenditures by international
-      inbound visitors, including payments to national carriers for
-      international transport. These receipts include any other
-      prepayment made for goods or services received in the destination
-      country. They also may include receipts from same-day visitors,
-      except when these are important enough to justify separate
-      classification. For some countries they do not include receipts
-      for passenger transport items. Their share in exports is
-      calculated as a ratio to exports of goods and services, which
-      comprise all transactions between residents of a country and the
-      rest of the world involving a change of ownership from residents
-      to nonresidents of general merchandise, goods sent for processing
-      and repairs, nonmonetary gold, and services.
+   -  ST.INT.RCPT.XP.ZS
 
--  ST.INT.RCPT.CD
+      -  International tourism, receipts (% of total exports)
+      -  International tourism receipts are expenditures by
+         international inbound visitors, including payments to national
+         carriers for international transport. These receipts include
+         any other prepayment made for goods or services received in the
+         destination country. They also may include receipts from
+         same-day visitors, except when these are important enough to
+         justify separate classification. For some countries they do not
+         include receipts for passenger transport items. Their share in
+         exports is calculated as a ratio to exports of goods and
+         services, which comprise all transactions between residents of
+         a country and the rest of the world involving a change of
+         ownership from residents to nonresidents of general
+         merchandise, goods sent for processing and repairs, nonmonetary
+         gold, and services.
 
-   -  International tourism, receipts (current US$)
-   -  International tourism receipts are expenditures by international
-      inbound visitors, including payments to national carriers for
-      international transport. These receipts include any other
-      prepayment made for goods or services received in the destination
-      country. They also may include receipts from same-day visitors,
-      except when these are important enough to justify separate
-      classification. For some countries they do not include receipts
-      for passenger transport items. Data are in current U.S. dollars.
+   -  ST.INT.RCPT.CD
 
--  ST.INT.TRNR.CD
+      -  International tourism, receipts (current US$)
+      -  International tourism receipts are expenditures by
+         international inbound visitors, including payments to national
+         carriers for international transport. These receipts include
+         any other prepayment made for goods or services received in the
+         destination country. They also may include receipts from
+         same-day visitors, except when these are important enough to
+         justify separate classification. For some countries they do not
+         include receipts for passenger transport items. Data are in
+         current U.S. dollars.
 
-   -  International tourism, receipts for passenger transport items
-      (current US$)
-   -  International tourism receipts for passenger transport items are
-      expenditures by international inbound visitors for all services
-      provided in the international transportation by resident carriers.
-      Also included are passenger services performed within an economy
-      by nonresident carriers. Excluded are passenger services provided
-      to nonresidents by resident carriers within the resident
-      economies; these are included in travel items. In addition to the
-      services covered by passenger fares--including fares that are a
-      part of package tours but excluding cruise fares, which are
-      included in travel--passenger services include such items as
-      charges for excess baggage, vehicles, or other personal
-      accompanying effects and expenditures for food, drink, or other
-      items for which passengers make expenditures while on board
-      carriers. Data are in current U.S. dollars.
+   -  ST.INT.TRNR.CD
 
--  ST.INT.TVLR.CD
+      -  International tourism, receipts for passenger transport items
+         (current US$)
+      -  International tourism receipts for passenger transport items
+         are expenditures by international inbound visitors for all
+         services provided in the international transportation by
+         resident carriers. Also included are passenger services
+         performed within an economy by nonresident carriers. Excluded
+         are passenger services provided to nonresidents by resident
+         carriers within the resident economies; these are included in
+         travel items. In addition to the services covered by passenger
+         fares–including fares that are a part of package tours but
+         excluding cruise fares, which are included in travel–passenger
+         services include such items as charges for excess baggage,
+         vehicles, or other personal accompanying effects and
+         expenditures for food, drink, or other items for which
+         passengers make expenditures while on board carriers. Data are
+         in current U.S. dollars.
 
-   -  International tourism, receipts for travel items (current US$)
-   -  International tourism receipts for travel items are expenditures
-      by international inbound visitors in the reporting economy. The
-      goods and services are purchased by, or on behalf of, the traveler
-      or provided, without a quid pro quo, for the traveler to use or
-      give away. These receipts should include any other prepayment made
-      for goods or services received in the destination country. They
-      also may include receipts from same-day visitors, except in cases
-      where these are so important as to justify a separate
-      classification. Excluded is the international carriage of
-      travelers, which is covered in passenger travel items. Data are in
-      current U.S. dollars.
+   -  ST.INT.TVLR.CD
+
+      -  International tourism, receipts for travel items (current US$)
+      -  International tourism receipts for travel items are
+         expenditures by international inbound visitors in the reporting
+         economy. The goods and services are purchased by, or on behalf
+         of, the traveler or provided, without a quid pro quo, for the
+         traveler to use or give away. These receipts should include any
+         other prepayment made for goods or services received in the
+         destination country. They also may include receipts from
+         same-day visitors, except in cases where these are so important
+         as to justify a separate classification. Excluded is the
+         international carriage of travelers, which is covered in
+         passenger travel items. Data are in current U.S. dollars.
 
 -  Outbound tourism
--  ST.INT.XPND.MP.ZS
 
-   -  International tourism, expenditures (% of total imports)
-   -  International tourism expenditures are expenditures of
-      international outbound visitors in other countries, including
-      payments to foreign carriers for international transport. These
-      expenditures may include those by residents traveling abroad as
-      same-day visitors, except in cases where these are important
-      enough to justify separate classification. For some countries they
-      do not include expenditures for passenger transport items. Their
-      share in imports is calculated as a ratio to imports of goods and
-      services, which comprise all transactions between residents of a
-      country and the rest of the world involving a change of ownership
-      from nonresidents to residents of general merchandise, goods sent
-      for processing and repairs, nonmonetary gold, and services.
+   -  ST.INT.XPND.MP.ZS
 
--  ST.INT.XPND.CD
+      -  International tourism, expenditures (% of total imports)
+      -  International tourism expenditures are expenditures of
+         international outbound visitors in other countries, including
+         payments to foreign carriers for international transport. These
+         expenditures may include those by residents traveling abroad as
+         same-day visitors, except in cases where these are important
+         enough to justify separate classification. For some countries
+         they do not include expenditures for passenger transport items.
+         Their share in imports is calculated as a ratio to imports of
+         goods and services, which comprise all transactions between
+         residents of a country and the rest of the world involving a
+         change of ownership from nonresidents to residents of general
+         merchandise, goods sent for processing and repairs, nonmonetary
+         gold, and services.
 
-   -  International tourism, expenditures (current US$)
-   -  International tourism expenditures are expenditures of
-      international outbound visitors in other countries, including
-      payments to foreign carriers for international transport. These
-      expenditures may include those by residents traveling abroad as
-      same-day visitors, except in cases where these are important
-      enough to justify separate classification. For some countries they
-      do not include expenditures for passenger transport items. Data
-      are in current U.S. dollars.
+   -  ST.INT.XPND.CD
 
--  ST.INT.TRNX.CD
+      -  International tourism, expenditures (current US$)
+      -  International tourism expenditures are expenditures of
+         international outbound visitors in other countries, including
+         payments to foreign carriers for international transport. These
+         expenditures may include those by residents traveling abroad as
+         same-day visitors, except in cases where these are important
+         enough to justify separate classification. For some countries
+         they do not include expenditures for passenger transport items.
+         Data are in current U.S. dollars.
 
-   -  International tourism, expenditures for passenger transport items
-      (current US$)
-   -  International tourism expenditures for passenger transport items
-      are expenditures of international outbound visitors in other
-      countries for all services provided during international
-      transportation by nonresident carriers. Also included are
-      passenger services performed within an economy by nonresident
-      carriers. Excluded are passenger services provided to nonresidents
-      by resident carriers within the resident economies; these are
-      included in travel items. In addition to the services covered by
-      passenger fares--including fares that are a part of package tours
-      but excluding cruise fares, which are included in
-      travel--passenger services include such items as charges for
-      excess baggage, vehicles, or other personal accompanying effects
-      and expenditures for food, drink, or other items for which
-      passengers make expenditures while on board carriers. Data are in
-      current U.S. dollars.
+   -  ST.INT.TRNX.CD
 
--  ST.INT.TVLX.CD
+      -  International tourism, expenditures for passenger transport
+         items (current US$)
+      -  International tourism expenditures for passenger transport
+         items are expenditures of international outbound visitors in
+         other countries for all services provided during international
+         transportation by nonresident carriers. Also included are
+         passenger services performed within an economy by nonresident
+         carriers. Excluded are passenger services provided to
+         nonresidents by resident carriers within the resident
+         economies; these are included in travel items. In addition to
+         the services covered by passenger fares–including fares that
+         are a part of package tours but excluding cruise fares, which
+         are included in travel–passenger services include such items as
+         charges for excess baggage, vehicles, or other personal
+         accompanying effects and expenditures for food, drink, or other
+         items for which passengers make expenditures while on board
+         carriers. Data are in current U.S. dollars.
 
-   -  International tourism, expenditures for travel items (current US$)
-   -  International tourism expenditures are expenditures of
-      international outbound visitors in other countries. The goods and
-      services are purchased by, or on behalf of, the traveler or
-      provided, without a quid pro quo, for the traveler to use or give
-      away. These may include expenditures by residents traveling abroad
-      as same-day visitors, except in cases where these are so important
-      as to justify a separate classification. Excluded is the
-      international carriage of travelers, which is covered in passenger
-      travel items. Data are in current U.S. dollars.
+   -  ST.INT.TVLX.CD
 
--  ST.INT.DPRT
+      -  International tourism, expenditures for travel items (current
+         US$)
+      -  International tourism expenditures are expenditures of
+         international outbound visitors in other countries. The goods
+         and services are purchased by, or on behalf of, the traveler or
+         provided, without a quid pro quo, for the traveler to use or
+         give away. These may include expenditures by residents
+         traveling abroad as same-day visitors, except in cases where
+         these are so important as to justify a separate classification.
+         Excluded is the international carriage of travelers, which is
+         covered in passenger travel items. Data are in current U.S.
+         dollars.
 
-   -  International tourism, number of departures
-   -  International outbound tourists are the number of departures that
-      people make from their country of usual residence to any other
-      country for any purpose other than a remunerated activity in the
-      country visited. The data on outbound tourists refer to the number
-      of departures, not to the number of people traveling. Thus a
-      person who makes several trips from a country during a given
-      period is counted each time as a new departure.
+   -  ST.INT.DPRT
+
+      -  International tourism, number of departures
+      -  International outbound tourists are the number of departures
+         that people make from their country of usual residence to any
+         other country for any purpose other than a remunerated activity
+         in the country visited. The data on outbound tourists refer to
+         the number of departures, not to the number of people
+         traveling. Thus a person who makes several trips from a country
+         during a given period is counted each time as a new departure.
 
 Data Comparison
 ---------------
@@ -195,35 +209,61 @@ Data Comparison
 Variable Comparison
 ~~~~~~~~~~~~~~~~~~~
 
-+-------------------------------------------------------------+---------------------+-----------------------------------------------------------------------------------+
-| UWTO Variable                                               | WDI Variable        | WDI Name                                                                          |
-+=============================================================+=====================+===================================================================================+
-| Inbound: Arrivals - Thousands                               | ST.INT.ARVL         | International tourism, number of arrivals                                         |
-+-------------------------------------------------------------+---------------------+-----------------------------------------------------------------------------------+
-| Inbound: Tourism expenditure in the country - US$ Mn        | ST.INT.RCPT.CD      | International tourism, receipts (current US$)                                     |
-+-------------------------------------------------------------+---------------------+-----------------------------------------------------------------------------------+
-| Inbound: Travel - US$ Mn                                    | ST.INT.TVLR.CD      | International tourism, receipts for passenger transport items (current US$)       |
-+-------------------------------------------------------------+---------------------+-----------------------------------------------------------------------------------+
-| Inbound: Passenger transport - US$ Mn                       | ST.INT.TRNR.CD      | International tourism, receipts for travel items (current US$)                    |
-+-------------------------------------------------------------+---------------------+-----------------------------------------------------------------------------------+
-| Outbound: Departures - Thousands                            | ST.INT.DPRT         | International tourism, expenditures (current US$)                                 |
-+-------------------------------------------------------------+---------------------+-----------------------------------------------------------------------------------+
-| Outbound: Tourism expenditure in other countries - US$ Mn   | ST.INT.XPND.CD      | International tourism, expenditures for passenger transport items (current US$)   |
-+-------------------------------------------------------------+---------------------+-----------------------------------------------------------------------------------+
-| Outbound: Travel - US$ Mn                                   | ST.INT.TVLX.CD      | International tourism, expenditures for travel items (current US$)                |
-+-------------------------------------------------------------+---------------------+-----------------------------------------------------------------------------------+
-| Outbound: Passenger transport - US$ Mn                      | ST.INT.TRNX.CD      | International tourism, number of departures                                       |
-+-------------------------------------------------------------+---------------------+-----------------------------------------------------------------------------------+
-| None                                                        | ST.INT.RCPT.XP.ZS   | International tourism, receipts (% of total exports)                              |
-+-------------------------------------------------------------+---------------------+-----------------------------------------------------------------------------------+
-| None                                                        | ST.INT.XPND.MP.ZS   | International tourism, expenditures (% of total imports)                          |
-+-------------------------------------------------------------+---------------------+-----------------------------------------------------------------------------------+
++-------------------------+-------+-----------------------------------+
+| UWTO Variable           | WDI   | WDI Name                          |
+|                         | Varia |                                   |
+|                         | ble   |                                   |
++=========================+=======+===================================+
+| Inbound: Arrivals -     | ST.IN | International tourism, number of  |
+| Thousands               | T.ARV | arrivals                          |
+|                         | L     |                                   |
++-------------------------+-------+-----------------------------------+
+| Inbound: Tourism        | ST.IN | International tourism, receipts   |
+| expenditure in the      | T.RCP | (current US$)                     |
+| country - US$ Mn        | T.CD  |                                   |
++-------------------------+-------+-----------------------------------+
+| Inbound: Travel - US$   | ST.IN | International tourism, receipts   |
+| Mn                      | T.TVL | for passenger transport items     |
+|                         | R.CD  | (current US$)                     |
++-------------------------+-------+-----------------------------------+
+| Inbound: Passenger      | ST.IN | International tourism, receipts   |
+| transport - US$ Mn      | T.TRN | for travel items (current US$)    |
+|                         | R.CD  |                                   |
++-------------------------+-------+-----------------------------------+
+| Outbound: Departures -  | ST.IN | International tourism,            |
+| Thousands               | T.DPR | expenditures (current US$)        |
+|                         | T     |                                   |
++-------------------------+-------+-----------------------------------+
+| Outbound: Tourism       | ST.IN | International tourism,            |
+| expenditure in other    | T.XPN | expenditures for passenger        |
+| countries - US$ Mn      | D.CD  | transport items (current US$)     |
++-------------------------+-------+-----------------------------------+
+| Outbound: Travel - US$  | ST.IN | International tourism,            |
+| Mn                      | T.TVL | expenditures for travel items     |
+|                         | X.CD  | (current US$)                     |
++-------------------------+-------+-----------------------------------+
+| Outbound: Passenger     | ST.IN | International tourism, number of  |
+| transport - US$ Mn      | T.TRN | departures                        |
+|                         | X.CD  |                                   |
++-------------------------+-------+-----------------------------------+
+| None                    | ST.IN | International tourism, receipts   |
+|                         | T.RCP | (% of total exports)              |
+|                         | T.XP. |                                   |
+|                         | ZS    |                                   |
++-------------------------+-------+-----------------------------------+
+| None                    | ST.IN | International tourism,            |
+|                         | T.XPN | expenditures (% of total imports) |
+|                         | D.MP. |                                   |
+|                         | ZS    |                                   |
++-------------------------+-------+-----------------------------------+
 
 All of the data from the UWTO dataset appears to be included in the WDI
 data. The WDI dataset has two additional indicators that are computed as
 a percentage of total imports and exports.
 
-$ \* 100 $
+$
+:raw-latex:`\frac{(ST.INT.RCPT.CD|ST.INT.XPND.CD)}{sum(exports|imports)}`
+\* 100 $
 
 .. code:: ipython3
 
@@ -251,14 +291,14 @@ $ \* 100 $
 Data Time Span
 ~~~~~~~~~~~~~~
 
-UWTO has data from {{ min(uwto\_years) }} to {{ max(uwto\_years) }}, WDI
-has {{ min(wdi\_years) }} to {{ max(wdi\_years) }}.
+UWTO has data from {{ min(uwto_years) }} to {{ max(uwto_years) }}, WDI
+has {{ min(wdi_years) }} to {{ max(wdi_years) }}.
 
 Countries Included
 ~~~~~~~~~~~~~~~~~~
 
-UWTO has {{ len(uwto\_countries) }} countries with data, WDI has {{
-len(wdi\_countries) }} countries with data.
+UWTO has {{ len(uwto_countries) }} countries with data, WDI has {{
+len(wdi_countries) }} countries with data.
 
 .. code:: ipython3
 
@@ -266,14 +306,14 @@ len(wdi\_countries) }} countries with data.
     uwto_unique = str([x for x in uwto_countries if x not in wdi_countries])
     wdi_unique = str([x for x in wdi_countries if x not in uwto_countries])
 
-Only UWTO has data for {{uwto\_unique}}, and only WDI has data for
-{{wdi\_unique}}
+Only UWTO has data for {{uwto_unique}}, and only WDI has data for
+{{wdi_unique}}
 
 Variable Characteristics
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-    UWTO data has to be transformed to standard single units and
-    identically labeled for comparison
+   UWTO data has to be transformed to standard single units and
+   identically labeled for comparison
 
 .. code:: ipython3
 
@@ -617,7 +657,7 @@ Missing Data
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2ae212468e48>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7ffadf8319e8>
 
 
 
@@ -663,7 +703,7 @@ take the WDI data and fill mising values with UWTO data when possible.
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2ae2121b1b00>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7ffadc6562b0>
 
 
 

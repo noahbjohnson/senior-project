@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>2. Full Dataset PCA &#8212; Senior-Project 0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. Full Linear Modeling" href="15.html" />
+    <link rel="prev" title="1. Full Dataset Cleaning and Imputation" href="13.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="15.html" title="3. Full Linear Modeling"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="13.html" title="1. Full Dataset Cleaning and Imputation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" accesskey="U">Data Analysis Notebooks</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="full-dataset-pca">
+<h1>2. Full Dataset PCA<a class="headerlink" href="#full-dataset-pca" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span><span class="p">;</span> <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">preprocessing</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="k">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the datasets</span>
+<span class="n">imputed_files</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;../data/production/Full_clean_imputed_1.csv&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;../data/production/Full_clean_imputed_2.csv&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;../data/production/Full_clean_imputed_3.csv&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;../data/production/Full_clean_imputed_4.csv&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;../data/production/Full_clean_imputed_5.csv&quot;</span><span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/production/Full_clean.csv&quot;</span><span class="p">)</span>
+<span class="n">df_imputed</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">imputed_files</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create data without meta</span>
+<span class="n">no_meta_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Country Code&quot;</span><span class="p">,</span><span class="s2">&quot;Year&quot;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
+<span class="n">no_meta_imputed</span> <span class="o">=</span> <span class="p">[</span><span class="n">frame</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Country Code&quot;</span><span class="p">,</span><span class="s2">&quot;Year&quot;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">df_imputed</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split data into tourist and non-tourist data</span>
+<span class="n">tourist_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ST.INT.ARVL&#39;</span><span class="p">,</span> <span class="s1">&#39;ST.INT.XPND.MP.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;ST.INT.XPND.CD&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;ST.INT.DPRT&#39;</span><span class="p">,</span> <span class="s1">&#39;ST.INT.RCPT.XP.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;ST.INT.RCPT.CD&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Tourist Defecit&#39;</span><span class="p">,</span> <span class="s1">&#39;Tourism Net&#39;</span><span class="p">,</span> <span class="s1">&#39;Tourist Avg Net&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Population Estimate&#39;</span><span class="p">,</span> <span class="s1">&#39;ST.INT.ARVL.PER.CAPITA&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;ST.INT.DPRT.PER.CAPITA&#39;</span><span class="p">]</span>
+<span class="n">factors_df</span> <span class="o">=</span> <span class="n">no_meta_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">tourist_vars</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
+<span class="n">targets_df</span> <span class="o">=</span> <span class="n">no_meta_df</span><span class="p">[</span><span class="n">tourist_vars</span><span class="p">]</span>
+<span class="n">factors_imputed</span> <span class="o">=</span> <span class="p">[</span><span class="n">frame</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">tourist_vars</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">no_meta_imputed</span><span class="p">]</span>
+<span class="n">targets_imputed</span> <span class="o">=</span> <span class="p">[</span><span class="n">frame</span><span class="p">[</span><span class="n">tourist_vars</span><span class="p">]</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">no_meta_imputed</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="median-imputation">
+<h2>2.1. Median Imputation<a class="headerlink" href="#median-imputation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Impute the missing values</span>
+<span class="n">imp</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">missing_values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">)</span>
+<span class="n">imputed</span> <span class="o">=</span> <span class="n">imp</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">factors_df</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scaling">
+<h2>2.2. Scaling<a class="headerlink" href="#scaling" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_max_scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">min_max_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">imputed</span><span class="p">)</span>
+<span class="n">data_imputed</span> <span class="o">=</span> <span class="p">[</span><span class="n">min_max_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">factors_imputed</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="component-count-selection">
+<h2>2.3. Component Count Selection<a class="headerlink" href="#component-count-selection" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Median imputed</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">explained</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">explained</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;number of components&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;cumulative explained variance&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="notebooks/analysis/../docs/notebooks/analysis/14_files/../docs/notebooks/analysis/14_10_0.png" src="notebooks/analysis/../docs/notebooks/analysis/14_files/../docs/notebooks/analysis/14_10_0.png" />
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iterate through explained variance until .99 is acheived</span>
+<span class="k">for</span> <span class="n">components</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">explained</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">explained</span><span class="p">[</span><span class="n">components</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">.</span><span class="mi">99</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is the optimal number of components&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">components</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">46</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">optimal</span> <span class="n">number</span> <span class="n">of</span> <span class="n">components</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">46</span><span class="p">)</span>
+<span class="n">reduced</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">component_matrixes</span> <span class="o">=</span> <span class="p">[</span><span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">multiple imputed</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">pca_imputed</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">data_imputed</span><span class="p">:</span>
+    <span class="n">pca1</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">explained</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca1</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">explained</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;number of components&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;cumulative explained variance&#39;</span><span class="p">);</span>
+
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">components</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">explained</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">explained</span><span class="p">[</span><span class="n">components</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">.</span><span class="mi">99</span><span class="p">:</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="n">components</span>
+            <span class="k">break</span>
+
+    <span class="n">r</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">count</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">component_matrixes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">components_</span><span class="p">)</span>
+
+    <span class="n">pca_imputed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="notebooks/analysis/../docs/notebooks/analysis/14_files/../docs/notebooks/analysis/14_14_0.png" src="notebooks/analysis/../docs/notebooks/analysis/14_files/../docs/notebooks/analysis/14_14_0.png" />
+</div>
+<div class="section" id="pca-save">
+<h2>2.4. PCA Save<a class="headerlink" href="#pca-save" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reduced</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="s2">&quot;../data/production/pca/x_median.pickle&quot;</span><span class="p">)</span>
+<span class="n">x_out</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;../data/production/pca/x_imputed_1.pickle&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;../data/production/pca/x_imputed_2.pickle&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;../data/production/pca/x_imputed_3.pickle&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;../data/production/pca/x_imputed_4.pickle&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;../data/production/pca/x_imputed_5.pickle&quot;</span><span class="p">]</span>
+<span class="p">[</span><span class="n">pca_imputed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">x_out</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+
+<span class="n">matrixes_files</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;median&quot;</span><span class="p">,</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="s2">&quot;4&quot;</span><span class="p">,</span><span class="s2">&quot;5&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrixes_files</span><span class="p">)):</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">component_matrixes</span><span class="p">[</span><span class="n">f</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">factors_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/production/pca/</span><span class="si">{}</span><span class="s2">_components.csv&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">matrixes_files</span><span class="p">[</span><span class="n">f</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Full Dataset PCA</a><ul>
+<li><a class="reference internal" href="#median-imputation">2.1. Median Imputation</a></li>
+<li><a class="reference internal" href="#scaling">2.2. Scaling</a></li>
+<li><a class="reference internal" href="#component-count-selection">2.3. Component Count Selection</a></li>
+<li><a class="reference internal" href="#pca-save">2.4. PCA Save</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="13.html"
+                        title="previous chapter">1. Full Dataset Cleaning and Imputation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="15.html"
+                        title="next chapter">3. Full Linear Modeling</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/notebooks/analysis/14.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="15.html" title="3. Full Linear Modeling"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="13.html" title="1. Full Dataset Cleaning and Imputation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" >Data Analysis Notebooks</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

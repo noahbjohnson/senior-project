@@ -13,6 +13,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -44,49 +45,65 @@
   <div class="section" id="economic-data-processing-maddison">
 <h1>8. Economic Data Processing (MADDISON)<a class="headerlink" href="#economic-data-processing-maddison" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><p>Maddison Project Database, version 2018. Bolt, Jutta, Robert
-Inklaar, Herman de Jong and Jan Luiten van Zanden (2018), “Rebasing
-‘Maddison’: new income comparisons and the shape of long-run
-economic development”, Maddison Project Working paper 10</p>
+<div><p>Maddison Project Database, version 2018. Bolt, Jutta, Robert Inklaar,
+Herman de Jong and Jan Luiten van Zanden (2018), “Rebasing
+‘Maddison’: new income comparisons and the shape of long-run economic
+development”, Maddison Project Working paper 10</p>
 </div></blockquote>
 <div class="section" id="data-dictionary">
 <h2>8.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-center">
 <colgroup>
-<col style="width: 11%" />
-<col style="width: 89%" />
+<col style="width: 9%" />
+<col style="width: 91%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Full data</p></th>
+<tr class="row-odd"><th class="head"><p>Full
+data</p></th>
 <th class="head"><p>Data in single table</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>countrycode</p></td>
+<tr class="row-even"><td><p>coun
+tryc
+ode</p></td>
 <td><p>3-letter ISO country code</p></td>
 </tr>
-<tr class="row-odd"><td><p>country</p></td>
+<tr class="row-odd"><td><p>coun
+try</p></td>
 <td><p>Country name</p></td>
 </tr>
 <tr class="row-even"><td><p>year</p></td>
 <td><p>Year</p></td>
 </tr>
-<tr class="row-odd"><td><p>cgdppc</p></td>
-<td><p>Real GDP per capita in 2011US$, multiple benchmarks (suitable for cross-country income comparisons)</p></td>
+<tr class="row-odd"><td><p>cgdp
+pc</p></td>
+<td><p>Real GDP per capita in 2011US$, multiple benchmarks (suitable
+for cross-country income comparisons)</p></td>
 </tr>
-<tr class="row-even"><td><p>rgdpnapc</p></td>
-<td><p>Real GDP per capita in 2011US$, 2011 benchmark (suitable for cross-country growth comparisons)</p></td>
+<tr class="row-even"><td><p>rgdp
+napc</p></td>
+<td><p>Real GDP per capita in 2011US$, 2011 benchmark (suitable for
+cross-country growth comparisons)</p></td>
 </tr>
 <tr class="row-odd"><td><p>pop</p></td>
 <td><p>Population, mid-year (thousands)</p></td>
 </tr>
-<tr class="row-even"><td><p>i_cig</p></td>
-<td><p>0/1/2: observation is extrapolated (0), benchmark (1), or interpolated (2)</p></td>
+<tr class="row-even"><td><p>i_ci
+g</p></td>
+<td><p>0/1/2: observation is extrapolated (0), benchmark (1), or
+interpolated (2)</p></td>
 </tr>
 <tr class="row-odd"><td><p>i_bm</p></td>
-<td><p>For benchmark observations: 1: ICP PPP estimates, 2: Historical income benchmarks, 3: Real wages and urbanization, 4: Multiple of subsistence, 5: Braithwaite (1968) PPPs</p></td>
+<td><p>For benchmark observations: 1: ICP PPP estimates, 2:
+Historical income benchmarks, 3: Real wages and urbanization,
+4: Multiple of subsistence, 5: Braithwaite (1968) PPPs</p></td>
 </tr>
-<tr class="row-even"><td><p>Partial countries</p></td>
+<tr class="row-even"><td><p>Part
+ial
+coun
+trie
+s</p></td>
 <td><p>Data for selected sub-national units with long time series</p></td>
 </tr>
 </tbody>
@@ -139,57 +156,57 @@ economic development”, Maddison Project Working paper 10</p>
   </thead>
   <tbody>
     <tr>
-      <th>16373</th>
-      <td>STP</td>
-      <td>Sao Tome and Principe</td>
-      <td>2014</td>
-      <td>3489.000</td>
-      <td>3474.000</td>
-      <td>190.000</td>
-      <td>Extrapolated</td>
+      <th>13232</th>
+      <td>PAK</td>
+      <td>Pakistan</td>
+      <td>1992</td>
+      <td>2464.000</td>
+      <td>3290.000</td>
+      <td>120535.000</td>
+      <td>Interpolated</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>10865</th>
-      <td>MDG</td>
-      <td>Madagascar</td>
-      <td>1966</td>
-      <td>1204.000</td>
-      <td>2197.000</td>
-      <td>6200.000</td>
-      <td>Extrapolated</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>12393</th>
-      <td>NIC</td>
-      <td>Nicaragua</td>
-      <td>1947</td>
-      <td>1565.000</td>
-      <td>3351.000</td>
-      <td>980.000</td>
-      <td>Extrapolated</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>16180</th>
-      <td>SLV</td>
-      <td>El Salvador</td>
-      <td>1955</td>
-      <td>1475.000</td>
-      <td>3589.000</td>
-      <td>2221.000</td>
-      <td>Extrapolated</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>6484</th>
-      <td>GBR</td>
-      <td>United Kingdom</td>
-      <td>1792</td>
-      <td>2067.000</td>
-      <td>3072.000</td>
+      <th>14797</th>
+      <td>PRT</td>
+      <td>Portugal</td>
+      <td>1633</td>
+      <td>1237.000</td>
+      <td>1611.000</td>
       <td>nan</td>
+      <td>Extrapolated</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9853</th>
+      <td>KOR</td>
+      <td>Republic of Korea</td>
+      <td>2000</td>
+      <td>22930.000</td>
+      <td>21420.000</td>
+      <td>47008.000</td>
+      <td>Interpolated</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17821</th>
+      <td>THA</td>
+      <td>Thailand</td>
+      <td>2015</td>
+      <td>13938.000</td>
+      <td>15020.000</td>
+      <td>66886.000</td>
+      <td>Extrapolated</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17929</th>
+      <td>TKM</td>
+      <td>Turkmenistan</td>
+      <td>1989</td>
+      <td>6061.000</td>
+      <td>7524.000</td>
+      <td>3572.000</td>
       <td>Extrapolated</td>
       <td>NaN</td>
     </tr>

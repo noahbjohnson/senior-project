@@ -439,7 +439,7 @@ World Development Indicators
 Pivoting the Data
 ~~~~~~~~~~~~~~~~~
 
-    Target format is data by year-country with indicator columns
+   Target format is data by year-country with indicator columns
 
 .. code:: ipython3
 
@@ -501,7 +501,7 @@ Pivoting the Data
 Cleaning data
 ~~~~~~~~~~~~~
 
-    fix nans, assign correct data types, and standardize countries
+   fix nans, assign correct data types, and standardize countries
 
 .. code:: ipython3
 
@@ -771,22 +771,22 @@ Cleaning data
       </thead>
       <tbody>
         <tr>
-          <th>976</th>
+          <th>14912</th>
+          <td>18795696.340</td>
+          <td>8.465</td>
+          <td>4802054562.545</td>
+          <td>nan</td>
+          <td>4128651604.950</td>
+          <td>nan</td>
+          <td>16.582</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>1992</td>
-          <td>BRB</td>
+          <td>2004</td>
+          <td>OSS</td>
         </tr>
         <tr>
-          <th>1600</th>
+          <th>14114</th>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -797,23 +797,23 @@ Cleaning data
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>1967</td>
-          <td>VGB</td>
+          <td>1973</td>
+          <td>LAC</td>
         </tr>
         <tr>
-          <th>11232</th>
+          <th>12559</th>
+          <td>567000.000</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
+          <td>1122000000.000</td>
           <td>nan</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>1982</td>
-          <td>TJK</td>
+          <td>2011</td>
+          <td>VIR</td>
         </tr>
       </tbody>
     </table>
@@ -1143,7 +1143,7 @@ Grouping by Country
 
 .. parsed-literal::
 
-    /home/travis/virtualenv/python3.7-dev/lib/python3.7/site-packages/pandas/core/indexing.py:543: SettingWithCopyWarning: 
+    /opt/conda/lib/python3.7/site-packages/pandas/core/indexing.py:543: SettingWithCopyWarning: 
     A value is trying to be set on a copy of a slice from a DataFrame.
     Try using .loc[row_indexer,col_indexer] = value instead
     

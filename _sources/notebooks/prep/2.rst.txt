@@ -5,29 +5,39 @@ Tourism Missing Data
 Initial Dimensions
 ------------------
 
-+---------------------+-----------------------------------------------------------------------------------+
-| Variable            | Name                                                                              |
-+=====================+===================================================================================+
-| ST.INT.ARVL         | International tourism, number of arrivals                                         |
-+---------------------+-----------------------------------------------------------------------------------+
-| ST.INT.RCPT.CD      | International tourism, receipts (current US$)                                     |
-+---------------------+-----------------------------------------------------------------------------------+
-| ST.INT.TVLR.CD      | International tourism, receipts for passenger transport items (current US$)       |
-+---------------------+-----------------------------------------------------------------------------------+
-| ST.INT.TRNR.CD      | International tourism, receipts for travel items (current US$)                    |
-+---------------------+-----------------------------------------------------------------------------------+
-| ST.INT.DPRT         | International tourism, expenditures (current US$)                                 |
-+---------------------+-----------------------------------------------------------------------------------+
-| ST.INT.XPND.CD      | International tourism, expenditures for passenger transport items (current US$)   |
-+---------------------+-----------------------------------------------------------------------------------+
-| ST.INT.TVLX.CD      | International tourism, expenditures for travel items (current US$)                |
-+---------------------+-----------------------------------------------------------------------------------+
-| ST.INT.TRNX.CD      | International tourism, number of departures                                       |
-+---------------------+-----------------------------------------------------------------------------------+
-| ST.INT.RCPT.XP.ZS   | International tourism, receipts (% of total exports)                              |
-+---------------------+-----------------------------------------------------------------------------------+
-| ST.INT.XPND.MP.ZS   | International tourism, expenditures (% of total imports)                          |
-+---------------------+-----------------------------------------------------------------------------------+
++------------+---------------------------------------------------------+
+| Variable   | Name                                                    |
++============+=========================================================+
+| ST.INT.ARV | International tourism, number of arrivals               |
+| L          |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.RCP | International tourism, receipts (current US$)           |
+| T.CD       |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.TVL | International tourism, receipts for passenger transport |
+| R.CD       | items (current US$)                                     |
++------------+---------------------------------------------------------+
+| ST.INT.TRN | International tourism, receipts for travel items        |
+| R.CD       | (current US$)                                           |
++------------+---------------------------------------------------------+
+| ST.INT.DPR | International tourism, expenditures (current US$)       |
+| T          |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.XPN | International tourism, expenditures for passenger       |
+| D.CD       | transport items (current US$)                           |
++------------+---------------------------------------------------------+
+| ST.INT.TVL | International tourism, expenditures for travel items    |
+| X.CD       | (current US$)                                           |
++------------+---------------------------------------------------------+
+| ST.INT.TRN | International tourism, number of departures             |
+| X.CD       |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.RCP | International tourism, receipts (% of total exports)    |
+| T.XP.ZS    |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.XPN | International tourism, expenditures (% of total         |
+| D.MP.ZS    | imports)                                                |
++------------+---------------------------------------------------------+
 
 .. code:: ipython3
 
@@ -58,7 +68,7 @@ There appears to be a large amount of missing data.
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2acb59697668>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7fe650dda278>
 
 
 
@@ -167,8 +177,8 @@ There appears to be a large amount of missing data.
 
 
 
-    There is no data before 1995 or after 2017, so those years should be
-    dropped and variables reassesed
+   There is no data before 1995 or after 2017, so those years should be
+   dropped and variables reassesed
 
 .. code:: ipython3
 
@@ -186,7 +196,7 @@ There appears to be a large amount of missing data.
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x2acb59b7da58>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7fe6531455f8>
 
 
 
@@ -242,15 +252,15 @@ Country-level
     no_data = countries[(countries == 0)]
     all_data = countries[(countries == 230)]
 
-{{ no\_data.count() }} countries have no data: {{
-no\_data.index.tolist() }}
+{{ no_data.count() }} countries have no data: {{ no_data.index.tolist()
+}}
 
-{{ all\_data.count() }} countries have all 10 variables for all 23
-years: {{ all\_data.index.tolist() }}
+{{ all_data.count() }} countries have all 10 variables for all 23 years:
+{{ all_data.index.tolist() }}
 
 Histogram of countries data values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    It looks like most of the countries have 200 or more data points.
+   It looks like most of the countries have 200 or more data points.
 
 {{ countries.hist(bins=23) }}

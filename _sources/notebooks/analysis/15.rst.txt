@@ -1,0 +1,576 @@
+
+Full Linear Modeling
+====================
+
+.. code:: ipython3
+
+    %matplotlib inline
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import seaborn as sns; sns.set()
+    from sklearn.impute import SimpleImputer
+    from sklearn.decomposition import PCA
+    from sklearn import preprocessing
+    import pandas as pd
+    import statsmodels.api as sm
+    from sklearn.linear_model import LinearRegression
+    import plotly.plotly as py
+    import cufflinks as cf
+    import plotly.graph_objs as go
+    from statsmodels.formula.api import ols
+    import tensorflow as tf
+    from tensorflow import keras
+    from tensorflow.keras import layers
+
+.. code:: ipython3
+
+    pca_x = ["../data/production/pca/x_median.pickle",
+             "../data/production/pca/x_imputed_1.pickle",
+             "../data/production/pca/x_imputed_2.pickle",
+             "../data/production/pca/x_imputed_3.pickle",
+             "../data/production/pca/x_imputed_4.pickle",
+             "../data/production/pca/x_imputed_5.pickle"]
+    imputed = ["../data/production/Full_clean_imputed_1.csv",
+                "../data/production/Full_clean_imputed_2.csv",
+                "../data/production/Full_clean_imputed_3.csv",
+                "../data/production/Full_clean_imputed_4.csv",
+                "../data/production/Full_clean_imputed_5.csv"]
+    clean = "../data/processed/Full_clean.csv"
+    tourism_columns = ['ST.INT.ARVL',
+                        'ST.INT.XPND.MP.ZS', 'ST.INT.XPND.CD',
+                       'ST.INT.DPRT', 'ST.INT.RCPT.XP.ZS', 'ST.INT.RCPT.CD',
+                       'Tourist Defecit', 'Tourism Net', 'Tourist Avg Net',
+                       'Population Estimate', 'ST.INT.ARVL.PER.CAPITA',
+                       'ST.INT.DPRT.PER.CAPITA']
+
+.. code:: ipython3
+
+    imputations = [pd.read_csv(x).set_index(["Country Code", "Year"]) for x in imputed]
+    pca_x_arrays = [np.load(x, allow_pickle=True) for x in pca_x]
+    clean_df = pd.read_csv(clean).set_index(["Country Code", "Year"])
+    y_df = clean_df[tourism_columns]
+
+Process the Data
+----------------
+
+.. code:: ipython3
+
+    # scale the data
+    scaler = preprocessing.MinMaxScaler()
+    for df in imputations:
+        df[:] = scaler.fit_transform(df[:])
+    y_df[:] = scaler.fit_transform(y_df[:])
+    clean_df[:] = scaler.fit_transform(clean_df[:]);
+
+
+.. parsed-literal::
+
+    /opt/conda/lib/python3.7/site-packages/sklearn/preprocessing/data.py:334: DataConversionWarning:
+    
+    Data with input dtype int64, float64 were all converted to float64 by MinMaxScaler.
+    
+
+
+.. code:: ipython3
+
+    # Remove fake index columns
+    for df in imputations:
+        if "Unnamed: 0" in df.columns:
+            df.drop("Unnamed: 0", axis="columns", inplace=True)
+    if "Unnamed: 0" in clean_df.columns:
+            clean_df.drop("Unnamed: 0", axis="columns", inplace=True)
+
+Linear Regression
+-----------------
+
+.. code:: ipython3
+
+    # Impute the missing values
+    imp = SimpleImputer(missing_values=np.nan, strategy='median')
+    median_imputed = clean_df.copy()
+    median_imputed[:] = imp.fit_transform(clean_df.values)
+
+.. code:: ipython3
+
+    # Create lists of x and y columns
+    x = median_imputed.drop(tourism_columns,axis="columns").columns.values.tolist()
+    y_list = y_df.columns
+
+.. code:: ipython3
+
+    ols_scores = {}
+    for y in y_list:
+        scores = []
+        for dataset in imputations:
+            msk = np.random.rand(len(dataset)) < 0.8
+            train = dataset[msk]
+            test = dataset[~msk]
+            res = LinearRegression()
+            res.fit(train.drop(tourism_columns,axis="columns"),train[y])
+            scores.append(res.score(test.drop(tourism_columns,axis="columns"),test[y]))
+        res = LinearRegression()
+        res.fit(median_imputed.drop(tourism_columns,axis="columns"),median_imputed[y])
+        scores.append(res.score(median_imputed.drop(tourism_columns,axis="columns"),median_imputed[y]))
+        for x_array in pca_x_arrays:
+            msk = np.random.rand(len(dataset)) < 0.8
+            train = x_array[msk]
+            train_y = median_imputed[msk][y]
+            test = x_array[~msk]
+            test_y = median_imputed[~msk][y]
+            res = LinearRegression()
+            res.fit(train,train_y)
+            scores.append(res.score(test,test_y))
+        ols_scores[y] = max(scores)
+
+.. code:: ipython3
+
+    ols_scores
+
+
+
+
+.. parsed-literal::
+
+    {'ST.INT.ARVL': 0.6767800910881236,
+     'ST.INT.XPND.MP.ZS': 0.29320192015402335,
+     'ST.INT.XPND.CD': 0.8436738687896184,
+     'ST.INT.DPRT': 0.5843581021349076,
+     'ST.INT.RCPT.XP.ZS': 0.33970490718496615,
+     'ST.INT.RCPT.CD': 0.8963962696663049,
+     'Tourist Defecit': 0.1567283755641693,
+     'Tourism Net': 0.249035267839405,
+     'Tourist Avg Net': 0.37358915778681057,
+     'Population Estimate': 0.6539278536868223,
+     'ST.INT.ARVL.PER.CAPITA': 0.38167376802973163,
+     'ST.INT.DPRT.PER.CAPITA': 0.4228549320135835}
+
+
+
+Y Selection
+~~~~~~~~~~~
+
+:math:`R^2` without PCA
+^^^^^^^^^^^^^^^^^^^^^^^
+
+{‘ST.INT.ARVL’: 0.675852391062048,
+
+‘ST.INT.XPND.MP.ZS’: 0.21200341745156914,
+
+‘ST.INT.XPND.CD’: 0.8412919537938548,
+
+‘ST.INT.DPRT’: 0.6113813727042621,
+
+‘ST.INT.RCPT.XP.ZS’: 0.3644287678690312,
+
+‘ST.INT.RCPT.CD’: 0.8535041218396786,
+
+‘Tourist Defecit’: 0.13105893926103807,
+
+‘Tourism Net’: 0.24427317525706657,
+
+‘Tourist Avg Net’: 0.34475616068936765,
+
+‘Population Estimate’: 0.636766087835353,
+
+‘ST.INT.ARVL.PER.CAPITA’: 0.46876625238076747,
+
+‘ST.INT.DPRT.PER.CAPITA’: 0.3624594993732483}
+
+:math:`R^2` With PCA
+^^^^^^^^^^^^^^^^^^^^
+
+{‘ST.INT.ARVL’: 0.6856360885037339,
+
+‘ST.INT.XPND.MP.ZS’: 0.23129413567801616,
+
+‘ST.INT.XPND.CD’: 0.8275349772305574,
+
+‘ST.INT.DPRT’: 0.5836403128964276,
+
+‘ST.INT.RCPT.XP.ZS’: 0.4014869884684903,
+
+‘ST.INT.RCPT.CD’: 0.8883785813247653,
+
+‘Tourist Defecit’: 0.1752872287880265,
+
+‘Tourism Net’: 0.23271929515733414,
+
+‘Tourist Avg Net’: 0.3562943380288015,
+
+‘Population Estimate’: 0.5736344237791429,
+
+‘ST.INT.ARVL.PER.CAPITA’: 0.4843666779553838,
+
+‘ST.INT.DPRT.PER.CAPITA’: 0.3624594993732483}
+
+.. code:: ipython3
+
+    ols_models = {}
+    for y in y_list:
+        top_score = 0
+        top_model = 1
+        xi = 0
+        for dataset in imputations:
+            msk = np.random.rand(len(dataset)) < 0.8
+            train = dataset[msk]
+            test = dataset[~msk]
+            res = LinearRegression()
+            res.fit(train.drop(tourism_columns,axis="columns"),train[y])
+            score = res.score(test.drop(tourism_columns,axis="columns"),test[y])
+            if score > top_score:
+                top_score = score
+                top_model = "imputation {}".format(xi)
+            xi += 1
+        res = LinearRegression()
+        res.fit(median_imputed.drop(tourism_columns,axis="columns"),median_imputed[y])
+        score = res.score(median_imputed.drop(tourism_columns,axis="columns"),median_imputed[y])
+        if score > top_score:
+                top_score = score
+                top_model = "median"
+        for i in range(len(pca_x_arrays)):
+            x_array = pca_x_arrays[i]
+            msk = np.random.rand(len(dataset)) < 0.8
+            train = x_array[msk]
+            train_y = median_imputed[msk][y]
+            test = x_array[~msk]
+            test_y = median_imputed[~msk][y]
+            res = LinearRegression()
+            res.fit(train,train_y)
+            score = res.score(test,test_y)
+            if score > top_score:
+                top_score = score
+                top_model = "pca {}".format(i)
+        ols_models[y] = top_model
+        print(top_score, top_model)
+
+
+.. parsed-literal::
+
+    0.6955767034402249 imputation 2
+    0.2558337126436795 imputation 4
+    0.8502573959319707 imputation 4
+    0.6357580998819229 imputation 3
+    0.3492508230910567 imputation 1
+    0.8571377466283896 imputation 4
+    0.14919700269108094 imputation 3
+    0.24363311805131405 imputation 2
+    0.364926140855361 imputation 4
+    0.6177921893432959 imputation 4
+    0.38167376802973163 median
+    0.3897509887408797 pca 0
+
+
+.. code:: ipython3
+
+    ols_models
+
+
+
+
+.. parsed-literal::
+
+    {'ST.INT.ARVL': 'imputation 2',
+     'ST.INT.XPND.MP.ZS': 'imputation 4',
+     'ST.INT.XPND.CD': 'imputation 4',
+     'ST.INT.DPRT': 'imputation 3',
+     'ST.INT.RCPT.XP.ZS': 'imputation 1',
+     'ST.INT.RCPT.CD': 'imputation 4',
+     'Tourist Defecit': 'imputation 3',
+     'Tourism Net': 'imputation 2',
+     'Tourist Avg Net': 'imputation 4',
+     'Population Estimate': 'imputation 4',
+     'ST.INT.ARVL.PER.CAPITA': 'median',
+     'ST.INT.DPRT.PER.CAPITA': 'pca 0'}
+
+
+
+.. code:: ipython3
+
+    def lin_model(dataset, y):
+        msk = np.random.rand(len(dataset)) < 0.8
+        train = dataset[msk]
+        test = dataset[~msk]
+        res = LinearRegression()
+        res.fit(train.drop(tourism_columns,axis="columns"),train[y])
+        score = res.score(test.drop(tourism_columns,axis="columns"),test[y])
+        y_hat = res.predict(test.drop(tourism_columns,axis="columns"))
+        y_actual = test[y]
+        print(score)
+        g = sns.scatterplot(y_actual, y_hat)
+        plt.plot([1, 0], [1, 0], linewidth=1,color="red")
+        g.set_xlabel("Expected Y")
+        g.set_ylabel("Actual Y")
+        g.set_title('ST.INT.XPND.CD Multiple Linear Regression');
+        plt.show()
+        g = sns.scatterplot(y_actual, y_actual-y_hat)
+        plt.plot([1, 0], [0, 0], linewidth=1,color="red")
+        g.set_ylabel("Residual Y")
+        g.set_xlabel("Actual Y")
+        g.set_title('ST.INT.XPND.CD Multiple Linear Regression');
+    def lin_model_np(dataset, y):
+        msk = np.random.rand(len(dataset)) < 0.8
+        train = dataset[msk]
+        test = dataset[~msk]
+        train_y = y[msk]
+        test_y = y[~msk]
+        res = LinearRegression()
+        res.fit(train,train_y)
+        score = res.score(test,test_y)
+        y_hat = res.predict(test)
+        y_actual = test_y
+        print(score)
+        g = sns.scatterplot(y_actual, y_hat)
+        plt.plot([1, 0], [1, 0], linewidth=1,color="red")
+        g.set_xlabel("Expected Y")
+        g.set_ylabel("Actual Y")
+        g.set_title('Multiple Linear Regression');
+        plt.show()
+        g = sns.scatterplot(y_actual, y_actual-y_hat)
+        plt.plot([1, 0], [0, 0], linewidth=1,color="red")
+        g.set_ylabel("Residual Y")
+        g.set_xlabel("Actual Y")
+        g.set_title('Multiple Linear Regression');
+
+.. code:: ipython3
+
+    lin_model(imputations[0],'ST.INT.XPND.CD')
+
+
+.. parsed-literal::
+
+    0.8076261360420968
+
+
+
+.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_16_1.png
+
+
+
+.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_16_2.png
+
+
+.. code:: ipython3
+
+    lin_model_np(pca_x_arrays[4],median_imputed['ST.INT.RCPT.CD'])
+
+
+.. parsed-literal::
+
+    0.7408512785675596
+
+
+
+.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_17_1.png
+
+
+
+.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_17_2.png
+
+
+Regression With Tensorflow
+--------------------------
+
+.. code:: ipython3
+
+    def plot_history(history):
+      hist = pd.DataFrame(history.history)
+      hist['epoch'] = history.epoch
+      
+      plt.figure()
+      plt.xlabel('Epoch')
+      plt.ylabel('Mean Abs Error [Y]')
+      plt.plot(hist['epoch'], hist['mean_absolute_error'],
+               label='Train Error')
+      plt.plot(hist['epoch'], hist['val_mean_absolute_error'],
+               label = 'Val Error')
+    #   plt.ylim([0,5])
+      plt.legend()
+      
+      plt.figure()
+      plt.xlabel('Epoch')
+      plt.ylabel('Mean Square Error [$Y^2$]')
+      plt.plot(hist['epoch'], hist['mean_squared_error'],
+               label='Train Error')
+      plt.plot(hist['epoch'], hist['val_mean_squared_error'],
+               label = 'Val Error')
+    #   plt.ylim([0,20])
+      plt.legend()
+      plt.show()
+    
+    class PrintDot(keras.callbacks.Callback):
+      def on_epoch_end(self, epoch, logs):
+        if epoch % 25 == 0: print('')
+        print('.', end='')
+
+.. code:: ipython3
+
+    def train_test(df):
+        msk = np.random.rand(len(df)) < 0.8
+        train = df[msk]
+        test = df[~msk]
+        return train, test
+
+.. code:: ipython3
+
+    def build_model():
+      model = keras.Sequential([
+        layers.Dense(256, activation=tf.nn.relu, input_shape=[len(x)]),
+        layers.Dense(256, activation=tf.nn.relu),
+        layers.Dense(256, activation=tf.nn.relu),
+        layers.Dense(128, activation=tf.nn.relu),
+        layers.Dense(64, activation=tf.sigmoid),
+        layers.Dense(32, activation=tf.sigmoid),
+        layers.Dense(1)
+      ])
+    
+      optimizer = tf.keras.optimizers.RMSprop(0.001)
+    
+      model.compile(loss='mean_squared_error',
+                    optimizer=optimizer,
+                    metrics=['mean_absolute_error', 'mean_squared_error'])
+      return model
+
+.. code:: ipython3
+
+    model = build_model()
+    
+    train, test = train_test(median_imputed)
+    # The patience parameter is the amount of epochs to check for improvement
+    early_stop = keras.callbacks.EarlyStopping(monitor='val_loss', patience=10)
+    
+    history = model.fit(train[x], train['ST.INT.RCPT.CD'], epochs=1000,
+                        validation_split = 0.2, verbose=0, callbacks=[early_stop, PrintDot()])
+    
+    plot_history(history)
+
+
+.. parsed-literal::
+
+    WARNING:tensorflow:From /opt/conda/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+    Instructions for updating:
+    Colocations handled automatically by placer.
+    WARNING:tensorflow:From /opt/conda/lib/python3.7/site-packages/tensorflow/python/keras/utils/losses_utils.py:170: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+    Instructions for updating:
+    Use tf.cast instead.
+    WARNING:tensorflow:From /opt/conda/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+    Instructions for updating:
+    Use tf.cast instead.
+    
+    .........................
+    ........................
+
+
+.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_22_1.png
+
+
+
+.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_22_2.png
+
+
+.. code:: ipython3
+
+    loss, mae, mse = model.evaluate(test[x], test['ST.INT.RCPT.CD'], verbose=0)
+    print("Testing set Mean Abs Error: {:5.3f}".format(mae))
+
+
+.. parsed-literal::
+
+    Testing set Mean Abs Error: 0.017
+
+
+.. code:: ipython3
+
+    test_predictions = model.predict(test[x]).flatten()
+    plt.scatter(test['ST.INT.RCPT.CD'], test_predictions)
+    plt.xlabel('True Values')
+    plt.ylabel('Predictions')
+    plt.axis('equal')
+    plt.axis('square')
+    _ = plt.plot([-100, 100], [-100, 100])
+
+
+
+.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_24_0.png
+
+
+.. code:: ipython3
+
+    error = test_predictions - test['ST.INT.RCPT.CD']
+    plt.scatter(test['ST.INT.RCPT.CD'], error)
+    plt.xlabel('True Values')
+    plt.ylabel('Prediction Error')
+    plt.plot([1, 0], [0, 0], linewidth=1,color="red");
+
+
+
+.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_25_0.png
+
+
+.. code:: ipython3
+
+    model = build_model()
+    
+    # The patience parameter is the amount of epochs to check for improvement
+    early_stop = keras.callbacks.EarlyStopping(monitor='val_loss', patience=10)
+    
+    history = model.fit(train[x], train['ST.INT.XPND.CD'], epochs=1000,
+                        validation_split = 0.2, verbose=0, callbacks=[early_stop, PrintDot()])
+    
+    plot_history(history)
+
+
+.. parsed-literal::
+
+    
+    .........................
+    .........................
+    ........
+
+
+.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_26_1.png
+
+
+
+.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_26_2.png
+
+
+.. code:: ipython3
+
+    loss, mae, mse = model.evaluate(test[x], test['ST.INT.XPND.CD'], verbose=0)
+    print("Testing set Mean Abs Error: {:5.3f}".format(mae))
+
+
+.. parsed-literal::
+
+    Testing set Mean Abs Error: 0.016
+
+
+.. code:: ipython3
+
+    test_predictions = model.predict(test[x]).flatten()
+    plt.scatter(test['ST.INT.XPND.CD'], test_predictions)
+    plt.xlabel('True Values')
+    plt.ylabel('Predictions')
+    plt.axis('equal')
+    plt.axis('square')
+    # plt.xlim([0,plt.xlim()[1]])
+    # plt.ylim([0,plt.ylim()[1]])
+    _ = plt.plot([-100, 100], [-100, 100])
+
+
+
+.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_28_0.png
+
+
+.. code:: ipython3
+
+    error = test_predictions - test['ST.INT.XPND.CD']
+    plt.scatter(test['ST.INT.XPND.CD'], error)
+    plt.xlabel('True Values')
+    plt.ylabel('Prediction Error')
+    plt.plot([1, 0], [0, 0], linewidth=1,color="red");
+
+
+
+.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_29_0.png
+

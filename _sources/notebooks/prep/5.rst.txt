@@ -5,31 +5,42 @@ Economic Data Processing (WDI)
 Data Dictionary
 ---------------
 
-+------------------+-----------------------------------------------------------------------------------+
-| Code             | Indicator Name                                                                    |
-+==================+===================================================================================+
-| DT.DOD.DIMF.CD   | Use of IMF credit (DOD, current US$)                                              |
-+------------------+-----------------------------------------------------------------------------------+
-| DT.DOD.PVLX.CD   | Present value of external debt (current US$)                                      |
-+------------------+-----------------------------------------------------------------------------------+
-| NY.GNP.PCAP.CD   | GNI per capita, Atlas method (current US$)                                        |
-+------------------+-----------------------------------------------------------------------------------+
-| NY.GNP.ATLS.CD   | GNI, Atlas method (current US$)                                                   |
-+------------------+-----------------------------------------------------------------------------------+
-| DT.DIS.IDAG.CD   | IDA grants (current US$)                                                          |
-+------------------+-----------------------------------------------------------------------------------+
-| DT.ODA.ODAT.CD   | Net official development assistance received (current US$)                        |
-+------------------+-----------------------------------------------------------------------------------+
-| SI.POV.NAHC      | Poverty headcount ratio at national poverty lines (% of population)               |
-+------------------+-----------------------------------------------------------------------------------+
-| SI.POV.URHC      | Urban poverty headcount ratio at national poverty lines (% of urban population)   |
-+------------------+-----------------------------------------------------------------------------------+
-| SI.POV.RUHC      | Rural poverty headcount ratio at national poverty lines (% of rural population)   |
-+------------------+-----------------------------------------------------------------------------------+
-| SI.POV.NAGP      | Poverty gap at national poverty lines (%)                                         |
-+------------------+-----------------------------------------------------------------------------------+
-| SI.POV.GINI      | GINI index (World Bank estimate)                                                  |
-+------------------+-----------------------------------------------------------------------------------+
++----------+-----------------------------------------------------------+
+| Code     | Indicator Name                                            |
++==========+===========================================================+
+| DT.DOD.D | Use of IMF credit (DOD, current US$)                      |
+| IMF.CD   |                                                           |
++----------+-----------------------------------------------------------+
+| DT.DOD.P | Present value of external debt (current US$)              |
+| VLX.CD   |                                                           |
++----------+-----------------------------------------------------------+
+| NY.GNP.P | GNI per capita, Atlas method (current US$)                |
+| CAP.CD   |                                                           |
++----------+-----------------------------------------------------------+
+| NY.GNP.A | GNI, Atlas method (current US$)                           |
+| TLS.CD   |                                                           |
++----------+-----------------------------------------------------------+
+| DT.DIS.I | IDA grants (current US$)                                  |
+| DAG.CD   |                                                           |
++----------+-----------------------------------------------------------+
+| DT.ODA.O | Net official development assistance received (current     |
+| DAT.CD   | US$)                                                      |
++----------+-----------------------------------------------------------+
+| SI.POV.N | Poverty headcount ratio at national poverty lines (% of   |
+| AHC      | population)                                               |
++----------+-----------------------------------------------------------+
+| SI.POV.U | Urban poverty headcount ratio at national poverty lines   |
+| RHC      | (% of urban population)                                   |
++----------+-----------------------------------------------------------+
+| SI.POV.R | Rural poverty headcount ratio at national poverty lines   |
+| UHC      | (% of rural population)                                   |
++----------+-----------------------------------------------------------+
+| SI.POV.N | Poverty gap at national poverty lines (%)                 |
+| AGP      |                                                           |
++----------+-----------------------------------------------------------+
+| SI.POV.G | GINI index (World Bank estimate)                          |
+| INI      |                                                           |
++----------+-----------------------------------------------------------+
 
 .. code:: ipython3
 
@@ -96,15 +107,15 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>2286</th>
-          <td>2003</td>
-          <td>YR2003</td>
-          <td>Slovenia</td>
-          <td>SVN</td>
+          <th>4694</th>
+          <td>2012</td>
+          <td>YR2012</td>
+          <td>United States</td>
+          <td>USA</td>
           <td>..</td>
           <td>..</td>
-          <td>12700</td>
-          <td>25347731710.743</td>
+          <td>52540</td>
+          <td>16495942480312.270</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -114,16 +125,52 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>952</th>
-          <td>1998</td>
-          <td>YR1998</td>
-          <td>Romania</td>
-          <td>ROU</td>
-          <td>539061482.100</td>
+          <th>5780</th>
+          <td>2016</td>
+          <td>YR2016</td>
+          <td>IDA total</td>
+          <td>IDA</td>
           <td>..</td>
-          <td>1590</td>
-          <td>35752490065.498</td>
+          <td>..</td>
+          <td>1328.237</td>
+          <td>2091113854545.449</td>
+          <td>..</td>
+          <td>67340500000</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>3289</th>
+          <td>2007</td>
+          <td>YR2007</td>
+          <td>Maldives</td>
+          <td>MDV</td>
+          <td>6925287.600</td>
+          <td>..</td>
+          <td>4460</td>
+          <td>1500187832.830</td>
           <td>0</td>
+          <td>38090000</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>3116</th>
+          <td>2006</td>
+          <td>YR2006</td>
+          <td>Virgin Islands (U.S.)</td>
+          <td>VIR</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -132,51 +179,15 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>4017</th>
-          <td>2010</td>
-          <td>YR2010</td>
-          <td>Ecuador</td>
-          <td>ECU</td>
-          <td>444080218.700</td>
-          <td>..</td>
-          <td>4420</td>
-          <td>65949609527.978</td>
-          <td>0</td>
-          <td>150950000</td>
-          <td>32.800</td>
-          <td>22.500</td>
-          <td>53</td>
-          <td>12.700</td>
-          <td>48.700</td>
-        </tr>
-        <tr>
-          <th>4484</th>
-          <td>2011</td>
-          <td>YR2011</td>
-          <td>Sub-Saharan Africa (excluding high income)</td>
-          <td>SSA</td>
-          <td>20743257561.600</td>
-          <td>..</td>
-          <td>1504.068</td>
-          <td>1356523065730.330</td>
-          <td>1755144986.540</td>
-          <td>47284940000</td>
+          <th>4850</th>
+          <td>2013</td>
+          <td>YR2013</td>
+          <td>Japan</td>
+          <td>JPN</td>
           <td>..</td>
           <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>6121</th>
-          <td>2018</td>
-          <td>YR2018</td>
-          <td>Cuba</td>
-          <td>CUB</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
+          <td>48280</td>
+          <td>6152741865330.326</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>

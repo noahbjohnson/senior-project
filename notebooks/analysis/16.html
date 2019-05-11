@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>4. Subject Dataset Cleaning and Imputation &#8212; Senior-Project 0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="3. Full Linear Modeling" href="15.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="15.html" title="3. Full Linear Modeling"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" accesskey="U">Data Analysis Notebooks</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="subject-dataset-cleaning-and-imputation">
+<h1>4. Subject Dataset Cleaning and Imputation<a class="headerlink" href="#subject-dataset-cleaning-and-imputation" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">fancyimpute</span> <span class="k">import</span> <span class="n">IterativeImputer</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Using</span> <span class="n">TensorFlow</span> <span class="n">backend</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the datasets</span>
+<span class="n">General</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/processed/General.csv&quot;</span><span class="p">)</span>
+<span class="n">Labor</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/processed/Labor.csv&quot;</span><span class="p">)</span>
+<span class="n">Urbanization</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/processed/Urbanization.csv&quot;</span><span class="p">)</span>
+<span class="n">Education</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/processed/Education.csv&quot;</span><span class="p">)</span>
+<span class="n">Inequality</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/processed/Inequality.csv&quot;</span><span class="p">)</span>
+<span class="n">Economic</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/processed/Economic.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="remove-sparse-variables">
+<h2>4.1. Remove Sparse Variables<a class="headerlink" href="#remove-sparse-variables" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">General</span><span class="p">,</span>
+            <span class="n">Labor</span><span class="p">,</span>
+            <span class="n">Urbanization</span><span class="p">,</span>
+            <span class="n">Education</span><span class="p">,</span>
+            <span class="n">Inequality</span><span class="p">,</span>
+            <span class="n">Economic</span><span class="p">]:</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="c1"># columns with &lt;50% values</span>
+    <span class="n">sparse</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[(</span><span class="n">ds</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sparse</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">sparse</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;SH.STA.HYGN.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;SH.H2O.SMDW.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;ER.LND.PTLD.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;DT.DOD.PVLX.GN.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;FB.CBK.DPTR.P3&#39;</span><span class="p">,</span> <span class="s1">&#39;FB.CBK.BRWR.P3&#39;</span><span class="p">,</span> <span class="s1">&#39;SG.VAW.1549.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;SG.DMK.ALLD.FN.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;SG.DMK.SRCR.FN.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;SH.STA.SUIC.P5&#39;</span><span class="p">,</span> <span class="s1">&#39;SH.STA.WASH.P5&#39;</span><span class="p">,</span> <span class="s1">&#39;SH.STA.BRTW.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;SH.STA.ANVC.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;SH.STA.FGMS.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;SH.PRV.SMOK&#39;</span><span class="p">,</span> <span class="s1">&#39;SH.ALC.PCAP.LI&#39;</span><span class="p">,</span> <span class="s1">&#39;per_si_allsi.cov_pop_tot&#39;</span><span class="p">,</span> <span class="s1">&#39;HD.HCI.OVRL&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;SL.TLF.0714.SW.TM&#39;</span><span class="p">,</span> <span class="s1">&#39;SL.TLF.0714.WK.TM&#39;</span><span class="p">,</span> <span class="s1">&#39;SL.ISV.IFRM.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;per_lm_alllm.cov_pop_tot&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;EN.POP.SLUM.UR.ZS&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;SE.ADT.LITR.ZS&#39;</span><span class="p">,</span> <span class="s1">&#39;SE.SEC.NENR&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;SI.POV.GINI&#39;</span><span class="p">,</span> <span class="s1">&#39;SI.POV.RUGP&#39;</span><span class="p">,</span> <span class="s1">&#39;SI.POV.URGP&#39;</span><span class="p">,</span> <span class="s1">&#39;SI.POV.NAGP&#39;</span><span class="p">,</span> <span class="s1">&#39;SI.DST.10TH.10&#39;</span><span class="p">,</span> <span class="s1">&#39;SI.DST.FRST.10&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;gini_reported&#39;</span><span class="p">,</span> <span class="s1">&#39;q1&#39;</span><span class="p">,</span> <span class="s1">&#39;q2&#39;</span><span class="p">,</span> <span class="s1">&#39;q3&#39;</span><span class="p">,</span> <span class="s1">&#39;q4&#39;</span><span class="p">,</span> <span class="s1">&#39;q5&#39;</span><span class="p">,</span> <span class="s1">&#39;d1&#39;</span><span class="p">,</span> <span class="s1">&#39;d2&#39;</span><span class="p">,</span> <span class="s1">&#39;d3&#39;</span><span class="p">,</span> <span class="s1">&#39;d4&#39;</span><span class="p">,</span> <span class="s1">&#39;d5&#39;</span><span class="p">,</span> <span class="s1">&#39;d6&#39;</span><span class="p">,</span> <span class="s1">&#39;d7&#39;</span><span class="p">,</span> <span class="s1">&#39;d8&#39;</span><span class="p">,</span> <span class="s1">&#39;d9&#39;</span><span class="p">,</span> <span class="s1">&#39;d10&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom5&#39;</span><span class="p">,</span> <span class="s1">&#39;top5&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="s1">&#39;exchangerate&#39;</span><span class="p">,</span> <span class="s1">&#39;mean_usd&#39;</span><span class="p">,</span> <span class="s1">&#39;median_usd&#39;</span><span class="p">,</span> <span class="s1">&#39;gdp_ppp_pc_usd2011&#39;</span><span class="p">,</span> <span class="s1">&#39;population&#39;</span><span class="p">,</span> <span class="s1">&#39;quality_score&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;DT.DOD.PVLX.CD&#39;</span><span class="p">,</span> <span class="s1">&#39;SI.POV.NAHC&#39;</span><span class="p">,</span> <span class="s1">&#39;SI.POV.URHC&#39;</span><span class="p">,</span> <span class="s1">&#39;SI.POV.RUHC&#39;</span><span class="p">,</span> <span class="s1">&#39;SI.POV.NAGP&#39;</span><span class="p">,</span> <span class="s1">&#39;SI.POV.GINI&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">General</span><span class="p">,</span>
+            <span class="n">Labor</span><span class="p">,</span>
+            <span class="n">Urbanization</span><span class="p">,</span>
+            <span class="n">Education</span><span class="p">,</span>
+            <span class="n">Inequality</span><span class="p">,</span>
+            <span class="n">Economic</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">29</span>
+<span class="mi">23</span>
+<span class="mi">18</span>
+<span class="mi">19</span>
+<span class="mi">14</span>
+<span class="mi">20</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="impute-remaining-nans">
+<h2>4.2. Impute Remaining NaNs<a class="headerlink" href="#impute-remaining-nans" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">General</span><span class="p">,</span>
+            <span class="n">Labor</span><span class="p">,</span>
+            <span class="n">Urbanization</span><span class="p">,</span>
+            <span class="n">Education</span><span class="p">,</span>
+            <span class="n">Inequality</span><span class="p">,</span>
+            <span class="n">Economic</span><span class="p">]:</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;Country Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">General_imputed</span> <span class="o">=</span> <span class="n">General</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">Labor_imputed</span> <span class="o">=</span> <span class="n">Labor</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">Urbanization_imputed</span> <span class="o">=</span> <span class="n">Urbanization</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">Education_imputed</span> <span class="o">=</span> <span class="n">Education</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">Inequality_imputed</span> <span class="o">=</span> <span class="n">Inequality</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">Economic_imputed</span> <span class="o">=</span> <span class="n">Economic</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">General_imputed</span><span class="p">,</span>
+            <span class="n">Labor_imputed</span><span class="p">,</span>
+            <span class="n">Urbanization_imputed</span><span class="p">,</span>
+            <span class="n">Education_imputed</span><span class="p">,</span>
+            <span class="n">Inequality_imputed</span><span class="p">,</span>
+            <span class="n">Economic_imputed</span><span class="p">]:</span>
+    <span class="n">XY_incomplete</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">n_imputations</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">XY_completed</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_imputations</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Imputing set </span><span class="si">{}</span><span class="s2"> of 5&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">imputer</span> <span class="o">=</span> <span class="n">IterativeImputer</span><span class="p">(</span><span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sample_posterior</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">initial_strategy</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">)</span>
+        <span class="n">XY_completed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">XY_incomplete</span><span class="p">))</span>
+
+    <span class="n">XY_completed_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">XY_completed</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">XY_completed_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">XY_completed</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">XY_completed_mean</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">1</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">2</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">3</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">4</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">5</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">1</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">2</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">3</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">4</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">5</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">1</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">2</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">3</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">4</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">5</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">1</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">2</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">3</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">4</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">5</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">1</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">2</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">3</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">4</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">5</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">1</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">2</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">3</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">4</span> <span class="n">of</span> <span class="mi">5</span>
+<span class="n">Imputing</span> <span class="nb">set</span> <span class="mi">5</span> <span class="n">of</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="check-the-integrity-of-imputed-dataframes">
+<h2>4.3. Check The Integrity of Imputed Dataframes<a class="headerlink" href="#check-the-integrity-of-imputed-dataframes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dfDiff</span><span class="p">(</span><span class="n">pair</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Takes a tuple of two pandas.DataFrames and returns a dataframe with changed values</span>
+
+<span class="sd">    Source: https://wellsr.com/python/pandas-compare-two-data-frames/</span>
+
+<span class="sd">    IN:</span>
+<span class="sd">    (</span>
+<span class="sd">    Index | Col</span>
+<span class="sd">    ------|-----</span>
+<span class="sd">    0     |0</span>
+<span class="sd">    1     |1</span>
+<span class="sd">    2     |0</span>
+<span class="sd">    3     |1</span>
+<span class="sd">    4     |1</span>
+<span class="sd">    ,</span>
+<span class="sd">    Index | Col</span>
+<span class="sd">    ------|-----</span>
+<span class="sd">    0     |1</span>
+<span class="sd">    1     |1</span>
+<span class="sd">    2     |1</span>
+<span class="sd">    3     |1</span>
+<span class="sd">    4     |0</span>
+<span class="sd">    )</span>
+
+<span class="sd">    OUT:</span>
+<span class="sd">    Index | Col | Old | New</span>
+<span class="sd">    ------|-----|-----|-----</span>
+<span class="sd">    0     |num  |0    |1</span>
+<span class="sd">    2     |num  |0    |1</span>
+<span class="sd">    4     |num  |1    |0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">oldFrame</span><span class="p">,</span> <span class="n">newFrame</span> <span class="o">=</span> <span class="n">pair</span>
+    <span class="n">dfBool</span> <span class="o">=</span> <span class="p">(</span><span class="n">oldFrame</span> <span class="o">!=</span> <span class="n">newFrame</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">oldFrame</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="n">dfBool</span><span class="p">],</span> <span class="n">newFrame</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="n">dfBool</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">diff</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Old&quot;</span><span class="p">,</span> <span class="s2">&quot;New&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">diff</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diffs</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># This will hold the computed difference dataframes</span>
+<span class="n">combinations</span> <span class="o">=</span> <span class="p">[(</span><span class="n">General_imputed</span><span class="p">,</span> <span class="n">General</span><span class="p">),</span>
+            <span class="p">(</span><span class="n">Labor_imputed</span><span class="p">,</span> <span class="n">Labor</span><span class="p">),</span>
+            <span class="p">(</span><span class="n">Urbanization_imputed</span><span class="p">,</span> <span class="n">Urbanization</span><span class="p">),</span>
+            <span class="p">(</span><span class="n">Education_imputed</span><span class="p">,</span> <span class="n">Education</span><span class="p">),</span>
+            <span class="p">(</span><span class="n">Inequality_imputed</span><span class="p">,</span> <span class="n">Inequality</span><span class="p">),</span>
+            <span class="p">(</span><span class="n">Economic_imputed</span><span class="p">,</span> <span class="n">Economic</span><span class="p">)]</span> <span class="c1"># All possible combinations of two dataframes</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">:</span>
+    <span class="n">diffs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dfDiff</span><span class="p">(</span><span class="n">pair</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">changed</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span> <span class="k">for</span> <span class="n">diff</span> <span class="ow">in</span> <span class="n">diffs</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">changed</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>33926</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>24037</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>18937</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>24801</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>14102</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>22065</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+<div class="section" id="save-the-data-frames">
+<h2>4.4. Save the Data Frames<a class="headerlink" href="#save-the-data-frames" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">General_imputed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/production/subject/General.csv&quot;</span><span class="p">)</span>
+<span class="n">Labor_imputed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/production/subject/Labor.csv&quot;</span><span class="p">)</span>
+<span class="n">Urbanization_imputed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/production/subject/Urbanization.csv&quot;</span><span class="p">)</span>
+<span class="n">Education_imputed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/production/subject/Education.csv&quot;</span><span class="p">)</span>
+<span class="n">Inequality_imputed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/production/subject/Inequality.csv&quot;</span><span class="p">)</span>
+<span class="n">Economic_imputed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/production/subject/Economic.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. Subject Dataset Cleaning and Imputation</a><ul>
+<li><a class="reference internal" href="#remove-sparse-variables">4.1. Remove Sparse Variables</a></li>
+<li><a class="reference internal" href="#impute-remaining-nans">4.2. Impute Remaining NaNs</a></li>
+<li><a class="reference internal" href="#check-the-integrity-of-imputed-dataframes">4.3. Check The Integrity of Imputed Dataframes</a></li>
+<li><a class="reference internal" href="#save-the-data-frames">4.4. Save the Data Frames</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="15.html"
+                        title="previous chapter">3. Full Linear Modeling</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/notebooks/analysis/16.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="15.html" title="3. Full Linear Modeling"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" >Data Analysis Notebooks</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>
