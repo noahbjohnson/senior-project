@@ -9,7 +9,7 @@ install:
   - make requirements
   - make sync_data_from_s3
 script:
-  - make notebooks
+#  - make notebooks
   - make docs
 deploy:
   provider: pages
