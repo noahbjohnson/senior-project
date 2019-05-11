@@ -1,0 +1,323 @@
+
+Urbanization Data Processing (UNPD)
+===================================
+
+Data Dictionary
+---------------
+
++------------+---------------------------------------------------------+
+| Code       | Indicator Name                                          |
++============+=========================================================+
+| SP.URB.TOT | Urban population (% of total)                           |
+| L.IN.ZS    |                                                         |
++------------+---------------------------------------------------------+
+| SP.URB.GRO | Urban population growth (annual %)                      |
+| W          |                                                         |
++------------+---------------------------------------------------------+
+| EN.POP.SLU | Population living in slums (% of urban population)      |
+| M.UR.ZS    |                                                         |
++------------+---------------------------------------------------------+
+| EN.URB.MCT | Population in urban agglomerations of more than 1       |
+| Y.TL.ZS    | million (% of total population)                         |
++------------+---------------------------------------------------------+
+| EN.URB.LCT | Population in the largest city (% of urban population)  |
+| Y.UR.ZS    |                                                         |
++------------+---------------------------------------------------------+
+
+.. code:: ipython3
+
+    import re
+    
+    import numpy as np
+    import pandas as pd
+    import pycountry
+    
+    %matplotlib inline
+    
+    pd.set_option('display.float_format', lambda x: '%.3f' % x)
+
+Load The File
+-------------
+
+.. code:: ipython3
+
+    df = pd.read_excel("../data/external/Urbanization/UNPD/Data_Extract_From_World_Development_Indicators.xlsx")
+
+.. code:: ipython3
+
+    df.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Time</th>
+          <th>Time Code</th>
+          <th>Country Name</th>
+          <th>Country Code</th>
+          <th>Urban population (% of total) [SP.URB.TOTL.IN.ZS]</th>
+          <th>Urban population growth (annual %) [SP.URB.GROW]</th>
+          <th>Population living in slums (% of urban population) [EN.POP.SLUM.UR.ZS]</th>
+          <th>Population in urban agglomerations of more than 1 million (% of total population) [EN.URB.MCTY.TL.ZS]</th>
+          <th>Population in the largest city (% of urban population) [EN.URB.LCTY.UR.ZS]</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>841</th>
+          <td>1997</td>
+          <td>YR1997</td>
+          <td>Cabo Verde</td>
+          <td>CPV</td>
+          <td>50.637</td>
+          <td>4.190</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>1341</th>
+          <td>1999</td>
+          <td>YR1999</td>
+          <td>Albania</td>
+          <td>ALB</td>
+          <td>41.169</td>
+          <td>0.756</td>
+          <td>..</td>
+          <td>..</td>
+          <td>25.414</td>
+        </tr>
+        <tr>
+          <th>1001</th>
+          <td>1997</td>
+          <td>YR1997</td>
+          <td>Vanuatu</td>
+          <td>VUT</td>
+          <td>20.766</td>
+          <td>3.310</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>1120</th>
+          <td>1998</td>
+          <td>YR1998</td>
+          <td>Croatia</td>
+          <td>HRV</td>
+          <td>52.968</td>
+          <td>0.372</td>
+          <td>..</td>
+          <td>..</td>
+          <td>28.986</td>
+        </tr>
+        <tr>
+          <th>1890</th>
+          <td>2001</td>
+          <td>YR2001</td>
+          <td>Bosnia and Herzegovina</td>
+          <td>BIH</td>
+          <td>42.698</td>
+          <td>0.860</td>
+          <td>..</td>
+          <td>..</td>
+          <td>21.203</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Standardize Country Codes
+-------------------------
+
+.. code:: ipython3
+
+    """ Only Select rows with valid country codes
+    """
+    country_locations = []
+    for country in df['Country Code']:
+        try:
+            pycountry.countries.lookup(country)
+            country_locations.append(True)
+        except LookupError:
+            country_locations.append(False)
+    df = df[country_locations]
+
+Standardize Indexes
+-------------------
+
+.. code:: ipython3
+
+    df.rename(
+        {
+            "Time": "Year"
+        },
+        axis='columns',
+        inplace=True)
+
+.. code:: ipython3
+
+    df.set_index(["Country Code", "Year"], inplace=True)
+
+Clean Data
+----------
+
+Header
+~~~~~~
+
+.. code:: ipython3
+
+    df.drop(["Time Code", "Country Name"],
+            axis='columns',
+            inplace=True)
+
+.. code:: ipython3
+
+    c = [ re.search(r"\[(\w+\.)+\w+\]",d)[0].replace("[","").replace("]","") for d in df.columns ]
+
+.. code:: ipython3
+
+    c_names = {}
+    for x in range(len(c)):
+        c_names[df.columns[x]] = c[x]
+
+.. code:: ipython3
+
+    df.rename(c_names,axis='columns',inplace=True)
+
+Data Types
+~~~~~~~~~~
+
+.. code:: ipython3
+
+    """ Replace '..' with np.nan for better parsing
+    """
+    df = df.replace('..', np.NaN)
+
+.. code:: ipython3
+
+    df = df.astype(float)
+
+.. code:: ipython3
+
+    df.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th></th>
+          <th>SP.URB.TOTL.IN.ZS</th>
+          <th>SP.URB.GROW</th>
+          <th>EN.POP.SLUM.UR.ZS</th>
+          <th>EN.URB.MCTY.TL.ZS</th>
+          <th>EN.URB.LCTY.UR.ZS</th>
+        </tr>
+        <tr>
+          <th>Country Code</th>
+          <th>Year</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>GMB</th>
+          <th>2017</th>
+          <td>60.599</td>
+          <td>4.129</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>33.894</td>
+        </tr>
+        <tr>
+          <th>ARG</th>
+          <th>2010</th>
+          <td>90.849</td>
+          <td>1.209</td>
+          <td>nan</td>
+          <td>43.689</td>
+          <td>38.038</td>
+        </tr>
+        <tr>
+          <th>OMN</th>
+          <th>2012</th>
+          <td>77.564</td>
+          <td>8.584</td>
+          <td>nan</td>
+          <td>24.844</td>
+          <td>32.031</td>
+        </tr>
+        <tr>
+          <th>LBN</th>
+          <th>1994</th>
+          <td>84.491</td>
+          <td>2.908</td>
+          <td>nan</td>
+          <td>42.039</td>
+          <td>49.755</td>
+        </tr>
+        <tr>
+          <th>TLS</th>
+          <th>2014</th>
+          <td>29.133</td>
+          <td>3.596</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Save Data
+---------
+
+.. code:: ipython3
+
+    df.to_pickle("../data/processed/Urbanization_UNPD.pickle")

@@ -1,0 +1,353 @@
+
+Education Data Processing (WDI)
+===============================
+
+Data Dictionary
+---------------
+
++-------------+--------------------------------------------------------+
+| Code        | Indicator Name                                         |
++=============+========================================================+
+| SE.ENR.PRSC | School enrollment, primary and secondary (gross),      |
+| .FM.ZS      | gender parity index (GPI)                              |
++-------------+--------------------------------------------------------+
+| SE.ADT.LITR | Literacy rate, adult total (% of people ages 15 and    |
+| .ZS         | above)                                                 |
++-------------+--------------------------------------------------------+
+| SE.COM.DURS | Compulsory education, duration (years)                 |
++-------------+--------------------------------------------------------+
+| SE.PRM.UNER | Children out of school (% of primary school age)       |
+| .ZS         |                                                        |
++-------------+--------------------------------------------------------+
+| SE.PRM.ENRL | Pupil-teacher ratio, primary                           |
+| .TC.ZS      |                                                        |
++-------------+--------------------------------------------------------+
+| SE.SEC.ENRL | Pupil-teacher ratio, secondary                         |
+| .TC.ZS      |                                                        |
++-------------+--------------------------------------------------------+
+| SE.SEC.NENR | School enrollment, secondary (% net)                   |
++-------------+--------------------------------------------------------+
+
+.. code:: ipython3
+
+    import re
+    
+    import numpy as np
+    import pandas as pd
+    import pycountry
+    
+    %matplotlib inline
+    
+    pd.set_option('display.float_format', lambda x: '%.3f' % x)
+
+Load The File
+-------------
+
+.. code:: ipython3
+
+    df = pd.read_excel("../data/external/Education/WDI/Data_Extract_From_World_Development_Indicators.xlsx")
+
+.. code:: ipython3
+
+    df.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Time</th>
+          <th>Time Code</th>
+          <th>Country Name</th>
+          <th>Country Code</th>
+          <th>School enrollment, primary and secondary (gross), gender parity index (GPI) [SE.ENR.PRSC.FM.ZS]</th>
+          <th>Literacy rate, adult total (% of people ages 15 and above) [SE.ADT.LITR.ZS]</th>
+          <th>Compulsory education, duration (years) [SE.COM.DURS]</th>
+          <th>Children out of school (% of primary school age) [SE.PRM.UNER.ZS]</th>
+          <th>Pupil-teacher ratio, primary [SE.PRM.ENRL.TC.ZS]</th>
+          <th>Pupil-teacher ratio, secondary [SE.SEC.ENRL.TC.ZS]</th>
+          <th>School enrollment, secondary (% net) [SE.SEC.NENR]</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>2733</th>
+          <td>2005</td>
+          <td>YR2005</td>
+          <td>Guam</td>
+          <td>GUM</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>5814</th>
+          <td>2017</td>
+          <td>YR2017</td>
+          <td>India</td>
+          <td>IND</td>
+          <td>..</td>
+          <td>..</td>
+          <td>8</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>5967</th>
+          <td>2017</td>
+          <td>YR2017</td>
+          <td>Papua New Guinea</td>
+          <td>PNG</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>3504</th>
+          <td>2008</td>
+          <td>YR2008</td>
+          <td>Dominican Republic</td>
+          <td>DOM</td>
+          <td>1.028</td>
+          <td>..</td>
+          <td>9</td>
+          <td>13.410</td>
+          <td>19.622</td>
+          <td>24.468</td>
+          <td>60.843</td>
+        </tr>
+        <tr>
+          <th>4177</th>
+          <td>2010</td>
+          <td>YR2010</td>
+          <td>Arab World</td>
+          <td>ARB</td>
+          <td>0.924</td>
+          <td>69.637</td>
+          <td>9</td>
+          <td>14.011</td>
+          <td>21.056</td>
+          <td>14.513</td>
+          <td>61.016</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Standardize Country Codes
+-------------------------
+
+.. code:: ipython3
+
+    """ Only Select rows with valid country codes
+    """
+    country_locations = []
+    for country in df['Country Code']:
+        try:
+            pycountry.countries.lookup(country)
+            country_locations.append(True)
+        except LookupError:
+            country_locations.append(False)
+    df = df[country_locations]
+
+Standardize Indexes
+-------------------
+
+.. code:: ipython3
+
+    df.rename(
+        {
+            "Time": "Year"
+        },
+        axis='columns',
+        inplace=True)
+
+.. code:: ipython3
+
+    df.set_index(["Country Code", "Year"], inplace=True)
+
+Clean Data
+----------
+
+Header
+~~~~~~
+
+.. code:: ipython3
+
+    df.drop(["Time Code", "Country Name"],
+            axis='columns',
+            inplace=True)
+
+.. code:: ipython3
+
+    c = [ re.search(r"\[(\w+\.)+\w+\]",d)[0].replace("[","").replace("]","") for d in df.columns ]
+
+.. code:: ipython3
+
+    c_names = {}
+    for x in range(len(c)):
+        c_names[df.columns[x]] = c[x]
+
+.. code:: ipython3
+
+    df.rename(c_names,axis='columns',inplace=True)
+
+Data Types
+~~~~~~~~~~
+
+.. code:: ipython3
+
+    """ Replace '..' with np.nan for better parsing
+    """
+    df = df.replace('..', np.NaN)
+
+.. code:: ipython3
+
+    df = df.astype(float)
+
+.. code:: ipython3
+
+    df.sample(5)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th></th>
+          <th>SE.ENR.PRSC.FM.ZS</th>
+          <th>SE.ADT.LITR.ZS</th>
+          <th>SE.COM.DURS</th>
+          <th>SE.PRM.UNER.ZS</th>
+          <th>SE.PRM.ENRL.TC.ZS</th>
+          <th>SE.SEC.ENRL.TC.ZS</th>
+          <th>SE.SEC.NENR</th>
+        </tr>
+        <tr>
+          <th>Country Code</th>
+          <th>Year</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>VEN</th>
+          <th>2002</th>
+          <td>1.038</td>
+          <td>nan</td>
+          <td>14.000</td>
+          <td>6.875</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>56.073</td>
+        </tr>
+        <tr>
+          <th>ISR</th>
+          <th>2005</th>
+          <td>1.000</td>
+          <td>nan</td>
+          <td>11.000</td>
+          <td>2.454</td>
+          <td>13.019</td>
+          <td>9.886</td>
+          <td>99.772</td>
+        </tr>
+        <tr>
+          <th>BGR</th>
+          <th>1999</th>
+          <td>0.979</td>
+          <td>nan</td>
+          <td>9.000</td>
+          <td>2.415</td>
+          <td>17.914</td>
+          <td>12.503</td>
+          <td>85.232</td>
+        </tr>
+        <tr>
+          <th>DNK</th>
+          <th>2001</th>
+          <td>1.027</td>
+          <td>nan</td>
+          <td>9.000</td>
+          <td>0.153</td>
+          <td>9.933</td>
+          <td>10.053</td>
+          <td>89.477</td>
+        </tr>
+        <tr>
+          <th>MYS</th>
+          <th>2016</th>
+          <td>1.033</td>
+          <td>93.735</td>
+          <td>6.000</td>
+          <td>1.087</td>
+          <td>11.612</td>
+          <td>13.213</td>
+          <td>73.797</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Save Data
+---------
+
+.. code:: ipython3
+
+    df.to_pickle("../data/processed/Education_WDI.pickle")

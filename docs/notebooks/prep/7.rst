@@ -1,0 +1,269 @@
+
+Inequality Data Processing (WIID)
+=================================
+
+Data Dictionary
+---------------
+
++-----+----------------------------------------------------------------+
+| Var | Definition                                                     |
+| iab |                                                                |
+| le  |                                                                |
++=====+================================================================+
+| id  | Identifier                                                     |
++-----+----------------------------------------------------------------+
+| cou | Country/area                                                   |
+| ntr |                                                                |
+| y   |                                                                |
++-----+----------------------------------------------------------------+
+| c3  | 3-digit country code in ISO 3166-1 alpha-3 format              |
++-----+----------------------------------------------------------------+
+| c2  | 2-digit country code in ISO 3166-1 alpha-2 format              |
++-----+----------------------------------------------------------------+
+| yea | Year. Note that when a survey continues for more than a year,  |
+| r   | the year when it is finished is considered                     |
++-----+----------------------------------------------------------------+
+| gin | Gini coefficient as reported by the source (in most cases      |
+| i_r | based on microdata, in some older observations estimates       |
+| epo | derive from grouped data)                                      |
+| rte |                                                                |
+| d   |                                                                |
++-----+----------------------------------------------------------------+
+| q1- | Quintile group shares of resource                              |
+| q5  |                                                                |
++-----+----------------------------------------------------------------+
+| d1- | Decile group shares of resource                                |
+| d10 |                                                                |
++-----+----------------------------------------------------------------+
+| bot | Bottom five and top five percent group shares of resource      |
+| tom |                                                                |
+| 5   |                                                                |
+| and |                                                                |
+| top |                                                                |
+| 5   |                                                                |
++-----+----------------------------------------------------------------+
+| res | Resource concept                                               |
+| our |                                                                |
+| ce  |                                                                |
++-----+----------------------------------------------------------------+
+| res | Detailed resource concept                                      |
+| our |                                                                |
+| ce_ |                                                                |
+| det |                                                                |
+| ail |                                                                |
+| ed  |                                                                |
++-----+----------------------------------------------------------------+
+| sca | Equivalence scale                                              |
+| le  |                                                                |
++-----+----------------------------------------------------------------+
+| sca | Detailed equivalence scale                                     |
+| le_ |                                                                |
+| det |                                                                |
+| ail |                                                                |
+| ed  |                                                                |
++-----+----------------------------------------------------------------+
+| sha | Income sharing unit/statistical unit                           |
+| rin |                                                                |
+| g_u |                                                                |
+| nit |                                                                |
++-----+----------------------------------------------------------------+
+| ref | Unit of analysis, indicates whether the data has been weighted |
+| ere | with a person or a household weight                            |
+| nce |                                                                |
+| _un |                                                                |
+| it  |                                                                |
++-----+----------------------------------------------------------------+
+| are | Area coverage. The land area which was included in the         |
+| aco | original sample surveys etc.                                   |
+| vr  |                                                                |
++-----+----------------------------------------------------------------+
+| are | Detailed area coverage                                         |
+| aco |                                                                |
+| vr_ |                                                                |
+| det |                                                                |
+| ail |                                                                |
+| ed  |                                                                |
++-----+----------------------------------------------------------------+
+| pop | Population coverage. The population covered in the sample      |
+| cov | surveys in the land area (all, rural, urban etc.) which was    |
+| r   | included                                                       |
++-----+----------------------------------------------------------------+
+| pop | Detailed population coverage, including age coverage           |
+| cov | information in certain cases                                   |
+| r_d |                                                                |
+| eta |                                                                |
+| ile |                                                                |
+| d   |                                                                |
++-----+----------------------------------------------------------------+
+| reg | Regional grouping based on United Nations geoscheme            |
+| ion |                                                                |
+| _un |                                                                |
++-----+----------------------------------------------------------------+
+| reg | Sub-regional grouping based on United Nations geoscheme        |
+| ion |                                                                |
+| _un |                                                                |
+| _su |                                                                |
+| b   |                                                                |
++-----+----------------------------------------------------------------+
+| reg | Regional grouping based on World Bank classification           |
+| ion |                                                                |
+| _wb |                                                                |
++-----+----------------------------------------------------------------+
+| eu  | Current EU member state                                        |
++-----+----------------------------------------------------------------+
+| oec | Current OECD member state                                      |
+| d   |                                                                |
++-----+----------------------------------------------------------------+
+| inc | World Bank classification by country income                    |
+| ome |                                                                |
+| gro |                                                                |
+| up  |                                                                |
++-----+----------------------------------------------------------------+
+| mea | Survey mean given with the same underlying definitions as the  |
+| n   | Gini coefficient and the share data                            |
++-----+----------------------------------------------------------------+
+| med | Survey median given with the same underlying definitions as    |
+| ian | the Gini coefficient and the share data                        |
++-----+----------------------------------------------------------------+
+| cur | Currency for the mean and median values. If the reference is   |
+| ren | US$2011PPP it means that the currency is in 2011 US dollar per |
+| cy  | month, with purchasing power parity applied on it.             |
++-----+----------------------------------------------------------------+
+| ref | Time period for measuring mean and median values               |
+| ere |                                                                |
+| nce |                                                                |
+| _pe |                                                                |
+| rio |                                                                |
+| d   |                                                                |
++-----+----------------------------------------------------------------+
+| exc | Conversion rate from local currency units (LCU) to United      |
+| han | States Dollars (USD)                                           |
+| ger |                                                                |
+| ate |                                                                |
++-----+----------------------------------------------------------------+
+| mea | Mean measure in United States Dollar (USD)                     |
+| n_u |                                                                |
+| sd  |                                                                |
++-----+----------------------------------------------------------------+
+| med | Median measure in United States Dollar (USD)                   |
+| ian |                                                                |
+| _us |                                                                |
+| d   |                                                                |
++-----+----------------------------------------------------------------+
+| gdp | Gross Domestic Product (GDP) is converted to United States     |
+| _pp | Dollars (USD) using purchasing power parity rates and divided  |
+| p_p | by total population. Data are in constant 2011 United States   |
+| c_u | Dollar (USD)                                                   |
+| sd2 |                                                                |
+| 011 |                                                                |
++-----+----------------------------------------------------------------+
+| pop | Population of countries from the UN population prospects       |
+| ula |                                                                |
+| tio |                                                                |
+| n   |                                                                |
++-----+----------------------------------------------------------------+
+| rev | Indicates the time of the revision when the observation was    |
+| isi | included to the database                                       |
+| on  |                                                                |
++-----+----------------------------------------------------------------+
+| qua | Quality assessment                                             |
+| lit |                                                                |
+| y   |                                                                |
++-----+----------------------------------------------------------------+
+| qua | Computed quality score                                         |
+| lit |                                                                |
+| y_s |                                                                |
+| cor |                                                                |
+| e   |                                                                |
++-----+----------------------------------------------------------------+
+| sou | Source type                                                    |
+| rce |                                                                |
++-----+----------------------------------------------------------------+
+| sou | Source from which the observation was obtained                 |
+| rce |                                                                |
+| _de |                                                                |
+| tai |                                                                |
+| led |                                                                |
++-----+----------------------------------------------------------------+
+| sou | Additional source comments                                     |
+| rce |                                                                |
+| _co |                                                                |
+| mme |                                                                |
+| nts |                                                                |
++-----+----------------------------------------------------------------+
+| sur | Originating survey information                                 |
+| vey |                                                                |
++-----+----------------------------------------------------------------+
+
+.. code:: ipython3
+
+    import re
+    
+    import numpy as np
+    import pandas as pd
+    import pycountry
+    
+    %matplotlib inline
+    
+    pd.set_option('display.float_format', lambda x: '%.3f' % x)
+    pd.set_option('display.max_columns', None)
+
+Load The File
+-------------
+
+.. code:: ipython3
+
+    df = pd.read_excel('../data/external/Inequality/WIID/WIID_19Dec2018.xlsx')
+
+Standardize Country Codes
+-------------------------
+
+.. code:: ipython3
+
+    """ Only Select rows with valid country codes
+    """
+    country_locations = []
+    for country in df['c3']:
+        try:
+            pycountry.countries.lookup(country)
+            country_locations.append(True)
+        except LookupError:
+            country_locations.append(False)
+    df = df[country_locations]
+
+Standardize Indexes
+-------------------
+
+.. code:: ipython3
+
+    df.rename(
+        {
+            "c3": "Country Code",
+            "year": "Year"
+        },
+        axis='columns',
+        inplace=True)
+
+Remove out of scope rows (consumption/gross)
+--------------------------------------------
+
+.. code:: ipython3
+
+    df = df[(df.resource != "Consumption")]
+
+Remove out of scope rows by year
+--------------------------------
+
+.. code:: ipython3
+
+    df = df[df["Year"] > 1994]
+    df = df[df["Year"] < 2018]
+    
+    df = df.groupby(["Country Code","Year"]).mean()
+
+Save Data
+---------
+
+.. code:: ipython3
+
+    df.to_pickle("../data/processed/Inequality_WIID.pickle")

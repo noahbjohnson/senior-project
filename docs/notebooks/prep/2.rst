@@ -1,0 +1,266 @@
+
+Tourism Missing Data
+====================
+
+Initial Dimensions
+------------------
+
++------------+---------------------------------------------------------+
+| Variable   | Name                                                    |
++============+=========================================================+
+| ST.INT.ARV | International tourism, number of arrivals               |
+| L          |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.RCP | International tourism, receipts (current US$)           |
+| T.CD       |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.TVL | International tourism, receipts for passenger transport |
+| R.CD       | items (current US$)                                     |
++------------+---------------------------------------------------------+
+| ST.INT.TRN | International tourism, receipts for travel items        |
+| R.CD       | (current US$)                                           |
++------------+---------------------------------------------------------+
+| ST.INT.DPR | International tourism, expenditures (current US$)       |
+| T          |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.XPN | International tourism, expenditures for passenger       |
+| D.CD       | transport items (current US$)                           |
++------------+---------------------------------------------------------+
+| ST.INT.TVL | International tourism, expenditures for travel items    |
+| X.CD       | (current US$)                                           |
++------------+---------------------------------------------------------+
+| ST.INT.TRN | International tourism, number of departures             |
+| X.CD       |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.RCP | International tourism, receipts (% of total exports)    |
+| T.XP.ZS    |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.XPN | International tourism, expenditures (% of total         |
+| D.MP.ZS    | imports)                                                |
++------------+---------------------------------------------------------+
+
+.. code:: ipython3
+
+    import missingno as msno
+    import pandas as pd
+    
+    %matplotlib inline
+    
+    pd.set_option('display.float_format', lambda x: '%.3f' % x)
+
+.. code:: ipython3
+
+    # Read dataframe from parsing notebook
+    df = pd.read_pickle("../data/interim/Tourism.pickle")
+
+Missing Data Drop
+-----------------
+
+There appears to be a large amount of missing data.
+
+.. code:: ipython3
+
+    # Visualize missing data
+    msno.matrix(df)
+
+
+
+
+.. parsed-literal::
+
+    <matplotlib.axes._subplots.AxesSubplot at 0x7fe650dda278>
+
+
+
+
+.. image:: ../docs/notebooks/prep/2_files/../docs/notebooks/prep/2_5_1.png
+
+
+.. code:: ipython3
+
+    # Describe missing by variable
+    counts = df.describe().loc['count', :]
+    ratios = counts.apply(lambda x: x / counts['Year'])
+    ratios
+
+
+
+
+.. parsed-literal::
+
+    Year                1.000
+    ST.INT.ARVL         0.350
+    ST.INT.XPND.MP.ZS   0.295
+    ST.INT.XPND.CD      0.320
+    ST.INT.TRNX.CD      0.261
+    ST.INT.TVLX.CD      0.313
+    ST.INT.DPRT         0.177
+    ST.INT.RCPT.XP.ZS   0.296
+    ST.INT.RCPT.CD      0.336
+    ST.INT.TRNR.CD      0.239
+    ST.INT.TVLR.CD      0.314
+    Name: count, dtype: float64
+
+
+
+.. code:: ipython3
+
+    # count data points by year
+    df.drop('Country Code', axis='columns').groupby('Year').count().sum(axis=1)
+
+
+
+
+.. parsed-literal::
+
+    Year
+    1960       0
+    1961       0
+    1962       0
+    1963       0
+    1964       0
+    1965       0
+    1966       0
+    1967       0
+    1968       0
+    1969       0
+    1970       0
+    1971       0
+    1972       0
+    1973       0
+    1974       0
+    1975       0
+    1976       0
+    1977       0
+    1978       0
+    1979       0
+    1980       0
+    1981       0
+    1982       0
+    1983       0
+    1984       0
+    1985       0
+    1986       0
+    1987       0
+    1988       0
+    1989       0
+    1990       0
+    1991       0
+    1992       0
+    1993       0
+    1994       0
+    1995    1426
+    1996    1457
+    1997    1477
+    1998    1479
+    1999    1491
+    2000    1504
+    2001    1527
+    2002    1563
+    2003    1577
+    2004    1591
+    2005    1653
+    2006    1660
+    2007    1691
+    2008    1694
+    2009    1705
+    2010    1696
+    2011    1697
+    2012    1714
+    2013    1693
+    2014    1693
+    2015    1679
+    2016    1663
+    2017    1485
+    2018       0
+    dtype: int64
+
+
+
+   There is no data before 1995 or after 2017, so those years should be
+   dropped and variables reassesed
+
+.. code:: ipython3
+
+    dy = df[(df['Year'] > 1994)]
+    dy = dy[(dy['Year'] < 2018)]
+
+.. code:: ipython3
+
+    # Visualize missing data
+    
+    msno.matrix(dy)
+
+
+
+
+.. parsed-literal::
+
+    <matplotlib.axes._subplots.AxesSubplot at 0x7fe6531455f8>
+
+
+
+
+.. image:: ../docs/notebooks/prep/2_files/../docs/notebooks/prep/2_10_1.png
+
+
+.. code:: ipython3
+
+    # Describe missing by variable
+    counts = dy.describe().loc['count', :]
+    ratios = counts.apply(lambda x: x / counts['Year'])
+    ratios
+
+
+
+
+.. parsed-literal::
+
+    Year                1.000
+    ST.INT.ARVL         0.899
+    ST.INT.XPND.MP.ZS   0.758
+    ST.INT.XPND.CD      0.821
+    ST.INT.TRNX.CD      0.669
+    ST.INT.TVLX.CD      0.803
+    ST.INT.DPRT         0.454
+    ST.INT.RCPT.XP.ZS   0.759
+    ST.INT.RCPT.CD      0.863
+    ST.INT.TRNR.CD      0.613
+    ST.INT.TVLR.CD      0.806
+    Name: count, dtype: float64
+
+
+
+Save Data
+---------
+
+.. code:: ipython3
+
+    dy.to_pickle("../data/interim/Tourism2.pickle")
+
+Mising Analysis
+---------------
+
+Country-level
+~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    # data points by country
+    countries = dy.drop('Year',
+                        axis='columns').groupby('Country Code').count().sum(axis=1)
+    no_data = countries[(countries == 0)]
+    all_data = countries[(countries == 230)]
+
+{{ no_data.count() }} countries have no data: {{ no_data.index.tolist()
+}}
+
+{{ all_data.count() }} countries have all 10 variables for all 23 years:
+{{ all_data.index.tolist() }}
+
+Histogram of countries data values
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   It looks like most of the countries have 200 or more data points.
+
+{{ countries.hist(bins=23) }}

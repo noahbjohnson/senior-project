@@ -1,0 +1,629 @@
+
+Tourism Exploratory Data Analysis and Feature Engineering
+=========================================================
+
+.. code:: ipython3
+
+    import IPython.display as disp
+    import matplotlib.pyplot as plt
+    import numpy as np
+    import pandas as pd
+    import pandas_profiling
+    import pycountry
+    import seaborn as sns
+    from scipy.stats import boxcox, kurtosis, kurtosistest, skew, skewtest
+    from sklearn import preprocessing
+    from sklearn.decomposition import PCA, FactorAnalysis
+    
+    %matplotlib inline
+    pd.set_option('display.float_format', lambda x: '%.3f' % x)
+    df = pd.read_pickle("../data/interim/Tourism2.pickle").set_index(
+        ['Country Code', 'Year'])
+    
+    m = df.mean()
+    m.name = "Mean"
+    md = df.median()
+    md.name = "Median"
+
+Descriptive Statistics
+----------------------
+
++------------+---------------------------------------------------------+
+| Variable   | Name                                                    |
++============+=========================================================+
+| ST.INT.ARV | International tourism, number of arrivals               |
+| L          |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.RCP | International tourism, receipts (current US$)           |
+| T.CD       |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.TVL | International tourism, receipts for passenger transport |
+| R.CD       | items (current US$)                                     |
++------------+---------------------------------------------------------+
+| ST.INT.TRN | International tourism, receipts for travel items        |
+| R.CD       | (current US$)                                           |
++------------+---------------------------------------------------------+
+| ST.INT.DPR | International tourism, expenditures (current US$)       |
+| T          |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.XPN | International tourism, expenditures for passenger       |
+| D.CD       | transport items (current US$)                           |
++------------+---------------------------------------------------------+
+| ST.INT.TVL | International tourism, expenditures for travel items    |
+| X.CD       | (current US$)                                           |
++------------+---------------------------------------------------------+
+| ST.INT.TRN | International tourism, number of departures             |
+| X.CD       |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.RCP | International tourism, receipts (% of total exports)    |
+| T.XP.ZS    |                                                         |
++------------+---------------------------------------------------------+
+| ST.INT.XPN | International tourism, expenditures (% of total         |
+| D.MP.ZS    | imports)                                                |
++------------+---------------------------------------------------------+
+
+Central Tendency
+~~~~~~~~~~~~~~~~
+
+================== ===================
+{{ m.to_frame() }} {{ md.to_frame() }}
+================== ===================
+================== ===================
+
+Variance and Ranges
+~~~~~~~~~~~~~~~~~~~
+
+{{ df.describe().transpose()[[‘std’,‘min’,‘max’]].rename(index=str,
+columns={“std”:“Standard Deviation”,“min”:“Minimum Value”,“max”:“Maximum
+Value”}) }}
+
+Skewness
+~~~~~~~~
+
+.. code:: ipython3
+
+    # calculate skews of variables
+    skews = []
+    for var_name in df.columns:
+        variable = df[var_name][(df[var_name].notna())].tolist()
+        s = skew(variable)
+        zscore, pvalue = skewtest(variable)
+        skews.append({
+            'variable': var_name,
+            'skewness': s,
+            'z-score': zscore,
+            'p-value': pvalue,
+            'normal': (pvalue >= .05)
+        })
+    skew_df = pd.DataFrame(
+        skews, columns=['variable', 'normal', 'skewness', 'z-score', 'p-value'])
+
+H0: Variable sample has skew of the normal distribution (p ≥ .05)
+
+Ha: Variable does not have the skew of the normal distribution
+
+{{ skew_df }}
+
+Kurtosis
+~~~~~~~~
+
+.. code:: ipython3
+
+    # calculate kurtosis of variables
+    kurt = []
+    for var_name in df.columns:
+        variable = df[var_name][(df[var_name].notna())].tolist()
+        k = kurtosis(variable)
+        zscore, pvalue = kurtosistest(variable)
+        kurt.append({
+            'variable': var_name,
+            'kurtosis': k,
+            'z-score': zscore,
+            'p-value': pvalue,
+            'normal': (pvalue >= .05)
+        })
+    kurt_df = pd.DataFrame(
+        kurt, columns=['variable', 'normal', 'kurtosis', 'z-score', 'p-value'])
+
+H0: Variable sample has kurtosis of the normal distribution (p ≥ .05)
+
+Ha: Variable does not have the kurtosis of the normal distribution
+
+{{ kurt_df }}
+
+Quartiles
+~~~~~~~~~
+
+{{ df.describe().transpose()[[“min”,“25%”,“50%”,“75%”,“max”]] }}
+
+EDA & Reduction
+---------------
+
+Correlation Matrix Heatmap
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    """ Plot a (non-square) correlation heatmap
+    """
+    corr = df.corr()
+    mask = np.zeros_like(corr, dtype=np.bool)
+    mask[np.triu_indices_from(mask)] = True
+    f, ax = plt.subplots(figsize=(8, 7))
+    cmap = sns.diverging_palette(220, 10, as_cmap=True)
+    sns.heatmap(corr,
+                mask=mask,
+                cmap=cmap,
+                vmax=1,
+                center=0,
+                square=True,
+                linewidths=.5,
+                cbar_kws={"shrink": .5})
+
+
+
+
+.. parsed-literal::
+
+    <matplotlib.axes._subplots.AxesSubplot at 0x7f6b10fa1da0>
+
+
+
+
+.. image:: ../docs/notebooks/prep/3_files/../docs/notebooks/prep/3_14_1.png
+
+
+Data Profile Report
+~~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    profile = pandas_profiling.ProfileReport(df)
+    profile.to_file("../docs/profile.html")
+
+Highly correlated variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Anything with ``ρ ≥ .9`` could end up skewing the calculations.
+
+.. code:: ipython3
+
+    profile.description_set['correlations']['pearson'][
+        profile.get_rejected_variables(.9)]
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>ST.INT.RCPT.CD</th>
+          <th>ST.INT.TRNR.CD</th>
+          <th>ST.INT.TRNX.CD</th>
+          <th>ST.INT.TVLR.CD</th>
+          <th>ST.INT.TVLX.CD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Year</th>
+          <td>0.125</td>
+          <td>0.083</td>
+          <td>0.061</td>
+          <td>0.120</td>
+          <td>0.111</td>
+        </tr>
+        <tr>
+          <th>ST.INT.ARVL</th>
+          <td>0.805</td>
+          <td>0.722</td>
+          <td>0.678</td>
+          <td>0.824</td>
+          <td>0.660</td>
+        </tr>
+        <tr>
+          <th>ST.INT.XPND.MP.ZS</th>
+          <td>-0.031</td>
+          <td>-0.008</td>
+          <td>0.028</td>
+          <td>-0.035</td>
+          <td>0.062</td>
+        </tr>
+        <tr>
+          <th>ST.INT.XPND.CD</th>
+          <td>0.777</td>
+          <td>0.893</td>
+          <td>0.944</td>
+          <td>0.765</td>
+          <td>0.993</td>
+        </tr>
+        <tr>
+          <th>ST.INT.TRNX.CD</th>
+          <td>0.909</td>
+          <td>0.913</td>
+          <td>1.000</td>
+          <td>0.897</td>
+          <td>0.916</td>
+        </tr>
+        <tr>
+          <th>ST.INT.TVLX.CD</th>
+          <td>0.726</td>
+          <td>0.875</td>
+          <td>0.916</td>
+          <td>0.719</td>
+          <td>1.000</td>
+        </tr>
+        <tr>
+          <th>ST.INT.DPRT</th>
+          <td>0.623</td>
+          <td>0.684</td>
+          <td>0.738</td>
+          <td>0.608</td>
+          <td>0.821</td>
+        </tr>
+        <tr>
+          <th>ST.INT.RCPT.XP.ZS</th>
+          <td>-0.090</td>
+          <td>-0.109</td>
+          <td>-0.138</td>
+          <td>-0.084</td>
+          <td>-0.167</td>
+        </tr>
+        <tr>
+          <th>ST.INT.RCPT.CD</th>
+          <td>1.000</td>
+          <td>0.952</td>
+          <td>0.909</td>
+          <td>0.996</td>
+          <td>0.726</td>
+        </tr>
+        <tr>
+          <th>ST.INT.TRNR.CD</th>
+          <td>0.952</td>
+          <td>1.000</td>
+          <td>0.913</td>
+          <td>0.929</td>
+          <td>0.875</td>
+        </tr>
+        <tr>
+          <th>ST.INT.TVLR.CD</th>
+          <td>0.996</td>
+          <td>0.929</td>
+          <td>0.897</td>
+          <td>1.000</td>
+          <td>0.719</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+-  ST.INT.TVLR.CD with ST.INT.TRNR.CD (ρ = 0.9294)
+
+   -  Receipts for travel items in country
+
+   -  Receipts for passenger transport items in country
+
+..
+
+   93% of tourism travel receipts are from passenger transport
+
+-  ST.INT.TRNR.CD with ST.INT.RCPT.CD (ρ = 0.952)
+
+   -  Receipts for passenger transport items in country
+
+   -  Receipts for tourism in country
+
+..
+
+   Passenger transport makes up 95.2% of export tourism
+
+-  ST.INT.RCPT.CD with ST.INT.TRNX.CD (ρ = 0.90905)
+
+   -  Receipts for tourism in country
+
+   -  Expenditures for passenger transport items abroad
+
+..
+
+   Total tourism income and passenger transport abroad are highly
+   correlated.
+
+-  ST.INT.TVLX.CD with ST.INT.TRNX.CD (ρ = 0.91601)
+
+   -  Expenditures for travel items abroad
+
+   -  Expenditures for passenger transport items abroad
+
+   ..
+
+      92% of tourism travel expenditures are from passenger transport
+
+-  ST.INT.TRNX.CD with ST.INT.XPND.CD (ρ = 0.94419)
+
+   -  Expenditures for passenger transport items abroad
+
+   -  Expenditures for tourism abroad
+
+..
+
+   Passenger transport makes up 94.42% of import tourism
+
+#### Summary:
+
+-  About 95% of tourism spending is on transportation. This is
+   interesting, but for comparison analysis, these variables will skew
+   the models and not provide much more insight.
+
+.. code:: ipython3
+
+    df_small = df.drop([
+        'ST.INT.TRNX.CD', 'ST.INT.TVLX.CD', 'ST.INT.TRNX.CD', 'ST.INT.TRNR.CD',
+        'ST.INT.TVLR.CD'
+    ],
+        axis="columns")
+
+Remaining Variables
+~~~~~~~~~~~~~~~~~~~
+
+5 of the 11 original variables were dropped due to high correlation. The
+rest are in the pair plot below.
+
+.. code:: ipython3
+
+    sns.set(style="ticks")
+    sns.pairplot(df_small)  # ¯\_(ツ)_/¯
+
+
+.. parsed-literal::
+
+    /opt/conda/lib/python3.7/site-packages/numpy/lib/histograms.py:754: RuntimeWarning: invalid value encountered in greater_equal
+      keep = (tmp_a >= first_edge)
+    /opt/conda/lib/python3.7/site-packages/numpy/lib/histograms.py:755: RuntimeWarning: invalid value encountered in less_equal
+      keep &= (tmp_a <= last_edge)
+
+
+
+
+.. parsed-literal::
+
+    <seaborn.axisgrid.PairGrid at 0x7f6b10c03278>
+
+
+
+
+.. image:: ../docs/notebooks/prep/3_files/../docs/notebooks/prep/3_22_2.png
+
+
+Pair-plot analysis
+------------------
+
+There are some interesting visual relationships in the pair plot above.
+
+Relationships with International Arrivals (ST.INT.ARVL)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+-  International tourism receipts (ST.INT.RCPT.XP.ZS & ST.INT.RCPT.CD)
+
+   -  Two disparate coefficients
+
+-  International departures (ST.INT.DPRT)
+
+   -  3-5 disparate coefficients
+
+Feature Construction
+--------------------
+
+.. code:: ipython3
+
+    """ Tourist defecit (# More arrivals than departures)  
+    """
+    df_small["Tourist Defecit"] = df_small["ST.INT.ARVL"] - df_small["ST.INT.DPRT"]
+
+.. code:: ipython3
+
+    """ Tourist net ($ More exports than imports)  
+    """
+    df_small["Tourism Net"] = df_small["ST.INT.RCPT.CD"] - \
+        df_small["ST.INT.XPND.CD"]
+
+.. code:: ipython3
+
+    """ Tourist avg net ($ receipt per arrival)  
+    """
+    df_small["Tourist Avg Net"] = df_small["ST.INT.RCPT.CD"] / \
+        df_small["ST.INT.ARVL"]
+
+Population-based feature construction
+-------------------------------------
+
+.. code:: ipython3
+
+    # Drop nan rows to avoid div/0 errors and load population data
+    # 4945 rows to start
+    # 4609 rows if drop where all = nan
+    # 2057 rows if drop where any = nan
+    df_small.dropna(how='all', inplace=True)
+    
+    pop_df = pd.read_csv("../data/external/Population/population.csv")
+
+.. code:: ipython3
+
+    # Clean and join population data
+    """ 
+    Create a mask without regions and custom groupings, 
+    selecting only valid country entries
+    """
+    country_bool = []
+    for country in pop_df['Country or Area'].tolist():
+        try:
+            pycountry.countries.lookup(country)
+            country_bool.append(True)
+        except LookupError:
+            country_bool.append(False)
+    pop_df = pop_df[country_bool]
+    """ Standardize the country codes
+    """
+    country_codes = []
+    for country in pop_df['Country or Area'].tolist():
+        country_codes.append(pycountry.countries.lookup(country).alpha_3)
+    
+    pop_df.loc[:, 'Country Code'] = country_codes
+    """Drop unneeded columns
+    """
+    pop_df.drop(['Country or Area', 'Variant'], axis='columns', inplace=True)
+    """ Change values from thousands to plain integers and rename columns
+    """
+    pop_df['Value'] = pop_df['Value'].apply(lambda x: x * 1000)
+    pop_df.rename({
+        'Year(s)': 'Year',
+        'Value': 'Population Estimate'
+    },
+        axis='columns',
+        inplace=True)
+    """ Standardize index for join
+    """
+    pop_df.set_index(['Country Code', 'Year'], inplace=True)
+    """ Join the population data
+    """
+    df_with_pop = df_small.join(pop_df, how='left')
+
+Arrivals and Departures per capita
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    df_with_pop['ST.INT.ARVL.PER.CAPITA'] = df_with_pop[
+        'ST.INT.ARVL'] / df_with_pop['Population Estimate']
+    
+    df_with_pop['ST.INT.DPRT.PER.CAPITA'] = df_with_pop[
+        'ST.INT.DPRT'] / df_with_pop['Population Estimate']
+
+EDA Part Two
+------------
+
+.. code:: ipython3
+
+    """ Plot a (non-square) correlation heatmap
+    """
+    corr = df_with_pop.corr()
+    mask = np.zeros_like(corr, dtype=np.bool)
+    mask[np.triu_indices_from(mask)] = True
+    f, ax = plt.subplots(figsize=(8, 7))
+    cmap = sns.diverging_palette(220, 10, as_cmap=True)
+    sns.heatmap(corr,
+                mask=mask,
+                cmap=cmap,
+                vmax=1,
+                center=0,
+                square=True,
+                linewidths=.5,
+                cbar_kws={"shrink": .5});
+
+
+
+.. image:: ../docs/notebooks/prep/3_files/../docs/notebooks/prep/3_35_0.png
+
+
+.. code:: ipython3
+
+    """
+    New profile report suggests that none of the variables 
+    are highly correlated enough to remove or ignore
+    """
+    profile_two = pandas_profiling.ProfileReport(df_with_pop)
+    profile_two.to_file("../docs/profile_two.html")
+
+Descriptive Statistics
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    desc = df_with_pop.describe()
+    
+    
+    def pretty_table(var):
+        d = desc[var]
+        d.index = d.index.str.replace("mean", "x̄").str.replace(
+            "count", "𝑛").str.replace("std",
+                                      "𝑠").str.replace("25%", "𝑸₁").str.replace(
+                                          "50%", "𝑸₂").str.replace("75%", "𝑸₃")
+        return d.to_frame()
+    
+    
+    def plot_dist(x):
+        sns.distplot(x[x.notna()])
+
+International Arrivals Per Capita
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+   The mean is slightly higher than 1, but this must be highly skewed
+   because the max value is ~52 and the mean is outside the quartile
+   ranges
+
++--------------------------------+------------------------------------+---+
+| {{pretty_table(‘ST.INT.ARVL.PE | {{plot_dist(df_with_pop[‘ST.INT.AR |   |
+| R.CAPITA’)}}                   | VL.PER.CAPITA’])}}                 |   |
++================================+====================================+===+
++--------------------------------+------------------------------------+---+
+
+International Departures Per Capita
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
++--------------------------------+------------------------------------+---+
+| {{pretty_table(‘ST.INT.DPRT.PE | {{plot_dist(df_with_pop[‘ST.INT.DP |   |
+| R.CAPITA’)}}                   | RT.PER.CAPITA’])}}                 |   |
++================================+====================================+===+
++--------------------------------+------------------------------------+---+
+
+Population Estimate
+^^^^^^^^^^^^^^^^^^^
+
++--------------------------------+------------------------------------+---+
+| {{pretty_table(‘Population     | {{plot_dist(df_with_pop[‘Populatio |   |
+| Estimate’)}}                   | n                                  |   |
+|                                | Estimate’])}}                      |   |
++================================+====================================+===+
++--------------------------------+------------------------------------+---+
+
+Tourism Net
+^^^^^^^^^^^
+
+=============================== =========================================
+{{pretty_table(‘Tourism Net’)}} {{plot_dist(df_with_pop[‘Tourism Net’])}}
+=============================== =========================================
+=============================== =========================================
+
+Tourist Defecit
+^^^^^^^^^^^^^^^
+
++--------------------------------+------------------------------------+---+
+| {{pretty_table(‘Tourist        | {{plot_dist(df_with_pop[‘Tourist   |   |
+| Defecit’)}}                    | Defecit’])}}                       |   |
++================================+====================================+===+
++--------------------------------+------------------------------------+---+
+
+Save the data
+-------------
+
+.. code:: ipython3
+
+    df_with_pop.to_pickle("../data/processed/Tourism.pickle")

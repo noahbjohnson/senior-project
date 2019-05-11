@@ -1,0 +1,213 @@
+
+Inequality Data Processing (WDI)
+================================
+
+Data Dictionary
+---------------
+
+============== ===============================================
+Code           Indicator Name
+============== ===============================================
+SI.POV.GINI    GINI index (World Bank estimate)
+SI.POV.RUGP    Rural poverty gap at national poverty lines (%)
+SI.POV.URGP    Urban poverty gap at national poverty lines (%)
+SI.POV.NAGP    Poverty gap at national poverty lines (%)
+SI.DST.10TH.10 Income share held by highest 10%
+SI.DST.FRST.10 Income share held by lowest 10%
+============== ===============================================
+
+.. code:: ipython3
+
+    import re
+    
+    import numpy as np
+    import pandas as pd
+    import pycountry
+    
+    %matplotlib inline
+    
+    pd.set_option('display.float_format', lambda x: '%.3f' % x)
+
+Load The File
+-------------
+
+.. code:: ipython3
+
+    df = pd.read_excel('../data/external/Inequality/WDI/Data_Extract_From_Poverty_and_Equity.xlsx')
+
+Standardize Country Codes
+-------------------------
+
+.. code:: ipython3
+
+    """ Only Select rows with valid country codes
+    """
+    country_locations = []
+    for country in df['Country Code']:
+        try:
+            pycountry.countries.lookup(country)
+            country_locations.append(True)
+        except LookupError:
+            country_locations.append(False)
+    df = df[country_locations]
+
+Standardize Indexes
+-------------------
+
+.. code:: ipython3
+
+    df.set_index(["Country Code", "Year"], inplace=True)
+
+Clean Data
+----------
+
+Header
+~~~~~~
+
+.. code:: ipython3
+
+    df.head()
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th></th>
+          <th>Year Code</th>
+          <th>Country</th>
+          <th>GINI index (World Bank estimate) [SI.POV.GINI]</th>
+          <th>Rural poverty gap at national poverty lines (%) [SI.POV.RUGP]</th>
+          <th>Urban poverty gap at national poverty lines (%) [SI.POV.URGP]</th>
+          <th>Poverty gap at national poverty lines (%) [SI.POV.NAGP]</th>
+          <th>Income share held by highest 10% [SI.DST.10TH.10]</th>
+          <th>Income share held by lowest 10% [SI.DST.FRST.10]</th>
+        </tr>
+        <tr>
+          <th>Country Code</th>
+          <th>Year</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>AFG</th>
+          <th>1994</th>
+          <td>YR1994</td>
+          <td>Afghanistan</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>ALB</th>
+          <th>1994</th>
+          <td>YR1994</td>
+          <td>Albania</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>DZA</th>
+          <th>1994</th>
+          <td>YR1994</td>
+          <td>Algeria</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>AGO</th>
+          <th>1994</th>
+          <td>YR1994</td>
+          <td>Angola</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>ARG</th>
+          <th>1994</th>
+          <td>YR1994</td>
+          <td>Argentina</td>
+          <td>45.900</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>34.400</td>
+          <td>1.500</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+.. code:: ipython3
+
+    df.drop(["Year Code", "Country"],
+            axis='columns',
+            inplace=True)
+
+.. code:: ipython3
+
+    c = [ re.search(r"\[(\w+\.)+\w+\]",d)[0].replace("[","").replace("]","") for d in df.columns ]
+    c_names = {}
+    for x in range(len(c)):
+        c_names[df.columns[x]] = c[x]
+    df.rename(c_names,axis='columns',inplace=True)
+
+Data Types
+~~~~~~~~~~
+
+.. code:: ipython3
+
+    """ Replace '..' with np.nan for better parsing
+    """
+    df = df.replace('..', np.NaN)
+    df = df.astype(float)
+
+Save Data
+---------
+
+.. code:: ipython3
+
+    df.to_pickle("../data/processed/Inequality_WDI.pickle")
