@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>2.4. Subject Dataset Cleaning and Imputation &#8212; Senior-Project 0.1 documentation</title>
+    <title>4. Subject Dataset Cleaning and Imputation &#8212; Senior-Project 0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
@@ -17,8 +17,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.5. Economic Data Analysis" href="17.html" />
-    <link rel="prev" title="2.3. Full Linear Modeling" href="15.html" /> 
+    <link rel="next" title="5. Economic Data Analysis" href="17.html" />
+    <link rel="prev" title="3. Full Linear Modeling" href="15.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -27,13 +27,13 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="17.html" title="2.5. Economic Data Analysis"
+          <a href="17.html" title="5. Economic Data Analysis"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="15.html" title="2.3. Full Linear Modeling"
+          <a href="15.html" title="3. Full Linear Modeling"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" accesskey="U">2. Data Analysis Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" accesskey="U">Data Analysis Notebooks</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -43,7 +43,7 @@
           <div class="body" role="main">
             
   <div class="section" id="subject-dataset-cleaning-and-imputation">
-<h1>2.4. Subject Dataset Cleaning and Imputation<a class="headerlink" href="#subject-dataset-cleaning-and-imputation" title="Permalink to this headline">¶</a></h1>
+<h1>4. Subject Dataset Cleaning and Imputation<a class="headerlink" href="#subject-dataset-cleaning-and-imputation" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">fancyimpute</span> <span class="k">import</span> <span class="n">IterativeImputer</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -62,7 +62,7 @@
 </pre></div>
 </div>
 <div class="section" id="remove-sparse-variables">
-<h2>2.4.1. Remove Sparse Variables<a class="headerlink" href="#remove-sparse-variables" title="Permalink to this headline">¶</a></h2>
+<h2>4.1. Remove Sparse Variables<a class="headerlink" href="#remove-sparse-variables" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">General</span><span class="p">,</span>
             <span class="n">Labor</span><span class="p">,</span>
             <span class="n">Urbanization</span><span class="p">,</span>
@@ -103,7 +103,7 @@
 </div>
 </div>
 <div class="section" id="impute-remaining-nans">
-<h2>2.4.2. Impute Remaining NaNs<a class="headerlink" href="#impute-remaining-nans" title="Permalink to this headline">¶</a></h2>
+<h2>4.2. Impute Remaining NaNs<a class="headerlink" href="#impute-remaining-nans" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">General</span><span class="p">,</span>
             <span class="n">Labor</span><span class="p">,</span>
             <span class="n">Urbanization</span><span class="p">,</span>
@@ -173,7 +173,7 @@
 </div>
 </div>
 <div class="section" id="check-the-integrity-of-imputed-dataframes">
-<h2>2.4.3. Check The Integrity of Imputed Dataframes<a class="headerlink" href="#check-the-integrity-of-imputed-dataframes" title="Permalink to this headline">¶</a></h2>
+<h2>4.3. Check The Integrity of Imputed Dataframes<a class="headerlink" href="#check-the-integrity-of-imputed-dataframes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dfDiff</span><span class="p">(</span><span class="n">pair</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Takes a tuple of two pandas.DataFrames and returns a dataframe with changed values</span>
@@ -282,7 +282,7 @@
 </table>
 </div></div>
 <div class="section" id="save-the-data-frames">
-<h2>2.4.4. Save the Data Frames<a class="headerlink" href="#save-the-data-frames" title="Permalink to this headline">¶</a></h2>
+<h2>4.4. Save the Data Frames<a class="headerlink" href="#save-the-data-frames" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">General_imputed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/production/subject/General.csv&quot;</span><span class="p">)</span>
 <span class="n">Labor_imputed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/production/subject/Labor.csv&quot;</span><span class="p">)</span>
 <span class="n">Urbanization_imputed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/production/subject/Urbanization.csv&quot;</span><span class="p">)</span>
@@ -302,21 +302,21 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">2.4. Subject Dataset Cleaning and Imputation</a><ul>
-<li><a class="reference internal" href="#remove-sparse-variables">2.4.1. Remove Sparse Variables</a></li>
-<li><a class="reference internal" href="#impute-remaining-nans">2.4.2. Impute Remaining NaNs</a></li>
-<li><a class="reference internal" href="#check-the-integrity-of-imputed-dataframes">2.4.3. Check The Integrity of Imputed Dataframes</a></li>
-<li><a class="reference internal" href="#save-the-data-frames">2.4.4. Save the Data Frames</a></li>
+<li><a class="reference internal" href="#">4. Subject Dataset Cleaning and Imputation</a><ul>
+<li><a class="reference internal" href="#remove-sparse-variables">4.1. Remove Sparse Variables</a></li>
+<li><a class="reference internal" href="#impute-remaining-nans">4.2. Impute Remaining NaNs</a></li>
+<li><a class="reference internal" href="#check-the-integrity-of-imputed-dataframes">4.3. Check The Integrity of Imputed Dataframes</a></li>
+<li><a class="reference internal" href="#save-the-data-frames">4.4. Save the Data Frames</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="15.html"
-                        title="previous chapter">2.3. Full Linear Modeling</a></p>
+                        title="previous chapter">3. Full Linear Modeling</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="17.html"
-                        title="next chapter">2.5. Economic Data Analysis</a></p>
+                        title="next chapter">5. Economic Data Analysis</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -345,13 +345,13 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="17.html" title="2.5. Economic Data Analysis"
+          <a href="17.html" title="5. Economic Data Analysis"
              >next</a> |</li>
         <li class="right" >
-          <a href="15.html" title="2.3. Full Linear Modeling"
+          <a href="15.html" title="3. Full Linear Modeling"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" >2. Data Analysis Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" >Data Analysis Notebooks</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
