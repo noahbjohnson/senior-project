@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements docs notebooks sync_data_to_s3 sync_data_from_s3 prep
+.PHONY: clean data lint requirements docs notebooks sync_data_to_s3 sync_data_from_s3 prep data_dictionary
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -49,13 +49,16 @@ prep:
 	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/11.ipynb --output ../docs/notebooks/prep/11.rst
 	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/12.ipynb --output ../docs/notebooks/prep/12.rst
     
+    
 data_dictionary:
 	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/DataDictionary.ipynb --output ../docs/notebooks/DataDictionary.rst
     
 notebooks:
 	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/13.ipynb --output ../docs/notebooks/analysis/13.rst
-	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/13.ipynb --output ../docs/notebooks/analysis/14.rst
-	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/13.ipynb --output ../docs/notebooks/analysis/15.rst
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/14.ipynb --output ../docs/notebooks/analysis/14.rst
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/15.ipynb --output ../docs/notebooks/analysis/15.rst
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/16.ipynb --output ../docs/notebooks/analysis/16.rst
+    
     
     
 

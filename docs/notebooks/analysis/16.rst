@@ -1,0 +1,284 @@
+
+Subject Dataset Cleaning and Imputation
+=======================================
+
+.. code:: ipython3
+
+    import pandas as pd
+    from fancyimpute import IterativeImputer
+    import numpy as np
+
+
+.. parsed-literal::
+
+    Using TensorFlow backend.
+
+
+.. code:: ipython3
+
+    # Import the datasets
+    General = pd.read_csv("../data/processed/General.csv")
+    Labor = pd.read_csv("../data/processed/Labor.csv")
+    Urbanization = pd.read_csv("../data/processed/Urbanization.csv")
+    Education = pd.read_csv("../data/processed/Education.csv")
+    Inequality = pd.read_csv("../data/processed/Inequality.csv")
+    Economic = pd.read_csv("../data/processed/Economic.csv")
+
+Remove Sparse Variables
+-----------------------
+
+.. code:: ipython3
+
+    for df in [General,
+                Labor,
+                Urbanization,
+                Education,
+                Inequality,
+                Economic]:
+        ds = df.describe().transpose()
+        # columns with <50% values
+        sparse = ds[(ds["count"] < 2000)].index.values.tolist()
+        print(sparse)
+        df.drop(sparse,axis=1,inplace=True)
+
+
+.. parsed-literal::
+
+    ['SH.STA.HYGN.ZS', 'SH.H2O.SMDW.ZS', 'ER.LND.PTLD.ZS', 'DT.DOD.PVLX.GN.ZS', 'FB.CBK.DPTR.P3', 'FB.CBK.BRWR.P3', 'SG.VAW.1549.ZS', 'SG.DMK.ALLD.FN.ZS', 'SG.DMK.SRCR.FN.ZS', 'SH.STA.SUIC.P5', 'SH.STA.WASH.P5', 'SH.STA.BRTW.ZS', 'SH.STA.ANVC.ZS', 'SH.STA.FGMS.ZS', 'SH.PRV.SMOK', 'SH.ALC.PCAP.LI', 'per_si_allsi.cov_pop_tot', 'HD.HCI.OVRL']
+    ['SL.TLF.0714.SW.TM', 'SL.TLF.0714.WK.TM', 'SL.ISV.IFRM.ZS', 'per_lm_alllm.cov_pop_tot']
+    ['EN.POP.SLUM.UR.ZS']
+    ['SE.ADT.LITR.ZS', 'SE.SEC.NENR']
+    ['SI.POV.GINI', 'SI.POV.RUGP', 'SI.POV.URGP', 'SI.POV.NAGP', 'SI.DST.10TH.10', 'SI.DST.FRST.10', 'id', 'gini_reported', 'q1', 'q2', 'q3', 'q4', 'q5', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10', 'bottom5', 'top5', 'mean', 'median', 'exchangerate', 'mean_usd', 'median_usd', 'gdp_ppp_pc_usd2011', 'population', 'quality_score']
+    ['DT.DOD.PVLX.CD', 'SI.POV.NAHC', 'SI.POV.URHC', 'SI.POV.RUHC', 'SI.POV.NAGP', 'SI.POV.GINI']
+
+
+.. code:: ipython3
+
+    for df in [General,
+                Labor,
+                Urbanization,
+                Education,
+                Inequality,
+                Economic]:
+        print(len(df.columns))
+
+
+.. parsed-literal::
+
+    29
+    23
+    18
+    19
+    14
+    20
+
+
+Impute Remaining NaNs
+---------------------
+
+.. code:: ipython3
+
+    for df in [General,
+                Labor,
+                Urbanization,
+                Education,
+                Inequality,
+                Economic]:
+        df.set_index(["Country Code", "Year"], inplace=True)
+
+.. code:: ipython3
+
+    General_imputed = General.copy()
+    Labor_imputed = Labor.copy()
+    Urbanization_imputed = Urbanization.copy()
+    Education_imputed = Education.copy()
+    Inequality_imputed = Inequality.copy()
+    Economic_imputed = Economic.copy()
+    for df in [General_imputed,
+                Labor_imputed,
+                Urbanization_imputed,
+                Education_imputed,
+                Inequality_imputed,
+                Economic_imputed]:
+        XY_incomplete = df.values
+        n_imputations = 5
+        XY_completed = []
+        for i in range(n_imputations):
+            print("Imputing set {} of 5".format(i+1))
+            imputer = IterativeImputer(n_iter=10, sample_posterior=True, random_state=i, initial_strategy="median")
+            XY_completed.append(imputer.fit_transform(XY_incomplete))
+    
+        XY_completed_mean = np.mean(XY_completed, 0)
+        XY_completed_std = np.std(XY_completed, 0)
+        
+        df[:] = XY_completed_mean
+
+
+.. parsed-literal::
+
+    Imputing set 1 of 5
+    Imputing set 2 of 5
+    Imputing set 3 of 5
+    Imputing set 4 of 5
+    Imputing set 5 of 5
+    Imputing set 1 of 5
+    Imputing set 2 of 5
+    Imputing set 3 of 5
+    Imputing set 4 of 5
+    Imputing set 5 of 5
+    Imputing set 1 of 5
+    Imputing set 2 of 5
+    Imputing set 3 of 5
+    Imputing set 4 of 5
+    Imputing set 5 of 5
+    Imputing set 1 of 5
+    Imputing set 2 of 5
+    Imputing set 3 of 5
+    Imputing set 4 of 5
+    Imputing set 5 of 5
+    Imputing set 1 of 5
+    Imputing set 2 of 5
+    Imputing set 3 of 5
+    Imputing set 4 of 5
+    Imputing set 5 of 5
+    Imputing set 1 of 5
+    Imputing set 2 of 5
+    Imputing set 3 of 5
+    Imputing set 4 of 5
+    Imputing set 5 of 5
+
+
+Check The Integrity of Imputed Dataframes
+-----------------------------------------
+
+.. code:: ipython3
+
+    def dfDiff(pair: tuple):
+        """
+        Takes a tuple of two pandas.DataFrames and returns a dataframe with changed values 
+        
+        Source: https://wellsr.com/python/pandas-compare-two-data-frames/
+        
+        IN:
+        (
+        Index | Col 
+        ------|-----
+        0     |0  
+        1     |1  
+        2     |0  
+        3     |1  
+        4     |1  
+        ,
+        Index | Col 
+        ------|-----
+        0     |1  
+        1     |1  
+        2     |1  
+        3     |1  
+        4     |0  
+        )
+        
+        OUT:
+        Index | Col | Old | New
+        ------|-----|-----|-----
+        0     |num  |0    |1
+        2     |num  |0    |1
+        4     |num  |1    |0
+        """
+        oldFrame, newFrame = pair
+        dfBool = (oldFrame != newFrame).stack()
+        diff = pd.concat([oldFrame.stack()[dfBool], newFrame.stack()[dfBool]], axis=1)
+        diff.columns=["Old", "New"]
+        return diff
+
+.. code:: ipython3
+
+    diffs = [] # This will hold the computed difference dataframes
+    combinations = [(General_imputed, General),
+                (Labor_imputed, Labor),
+                (Urbanization_imputed, Urbanization),
+                (Education_imputed, Education),
+                (Inequality_imputed, Inequality),
+                (Economic_imputed, Economic)] # All possible combinations of two dataframes
+
+.. code:: ipython3
+
+    for pair in combinations:
+        diffs.append(dfDiff(pair))
+
+.. code:: ipython3
+
+    changed = [len(diff) for diff in diffs]
+
+.. code:: ipython3
+
+    pd.DataFrame(changed).head(20)
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>0</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>0</th>
+          <td>33926</td>
+        </tr>
+        <tr>
+          <th>1</th>
+          <td>24037</td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td>18937</td>
+        </tr>
+        <tr>
+          <th>3</th>
+          <td>24801</td>
+        </tr>
+        <tr>
+          <th>4</th>
+          <td>14102</td>
+        </tr>
+        <tr>
+          <th>5</th>
+          <td>22065</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Save the Data Frames
+--------------------
+
+.. code:: ipython3
+
+    General_imputed.to_csv("../data/production/subject/General.csv")
+    Labor_imputed.to_csv("../data/production/subject/Labor.csv")
+    Urbanization_imputed.to_csv("../data/production/subject/Urbanization.csv")
+    Education_imputed.to_csv("../data/production/subject/Education.csv")
+    Inequality_imputed.to_csv("../data/production/subject/Inequality.csv")
+    Economic_imputed.to_csv("../data/production/subject/Economic.csv")
