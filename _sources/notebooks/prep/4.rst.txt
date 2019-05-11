@@ -88,57 +88,57 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>1092</th>
+          <th>16801</th>
+          <td>SWE</td>
+          <td>Sweden</td>
+          <td>1454</td>
+          <td>1017.000</td>
+          <td>1279.000</td>
+          <td>nan</td>
+          <td>Extrapolated</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>1098</th>
           <td>BEL</td>
           <td>Belgium</td>
-          <td>1838</td>
+          <td>1844</td>
           <td>nan</td>
           <td>nan</td>
-          <td>4012.000</td>
+          <td>4223.000</td>
           <td>NaN</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>12308</th>
-          <td>NGA</td>
-          <td>Nigeria</td>
-          <td>1982</td>
-          <td>5698.000</td>
-          <td>2917.000</td>
-          <td>79511.000</td>
-          <td>Interpolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>14915</th>
-          <td>PRT</td>
-          <td>Portugal</td>
-          <td>1751</td>
-          <td>1612.000</td>
-          <td>2100.000</td>
+          <th>14220</th>
+          <td>POL</td>
+          <td>Poland</td>
+          <td>1704</td>
+          <td>790.000</td>
+          <td>1198.000</td>
           <td>nan</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>11721</th>
-          <td>MNG</td>
-          <td>Mongolia</td>
-          <td>1991</td>
-          <td>2385.000</td>
-          <td>5124.000</td>
-          <td>2170.000</td>
-          <td>Extrapolated</td>
+          <th>277</th>
+          <td>ARE</td>
+          <td>United Arab Emirates</td>
+          <td>1981</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1070.000</td>
+          <td>NaN</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>17840</th>
-          <td>TJK</td>
-          <td>Tajikistan</td>
-          <td>1967</td>
+          <th>12365</th>
+          <td>NIC</td>
+          <td>Nicaragua</td>
+          <td>1919</td>
           <td>nan</td>
           <td>nan</td>
-          <td>2672.000</td>
+          <td>631.000</td>
           <td>NaN</td>
           <td>NaN</td>
         </tr>

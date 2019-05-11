@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.3. Labor Data Processing (WDI/ILO) &#8212; Senior-Project 0.1 documentation</title>
+    <title>3. Labor Data Processing (WDI/ILO) &#8212; Senior-Project 0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
@@ -16,8 +16,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.4. General Indicators Data Processing (WDI)" href="11.html" />
-    <link rel="prev" title="1.2. Tourism Master Dataset Merge" href="1.html" /> 
+    <link rel="next" title="4. General Indicators Data Processing (WDI)" href="11.html" />
+    <link rel="prev" title="2. Tourism Master Dataset Merge" href="1.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -26,13 +26,13 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="11.html" title="1.4. General Indicators Data Processing (WDI)"
+          <a href="11.html" title="4. General Indicators Data Processing (WDI)"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="1.html" title="1.2. Tourism Master Dataset Merge"
+          <a href="1.html" title="2. Tourism Master Dataset Merge"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">1. Data Preperation Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -42,9 +42,9 @@
           <div class="body" role="main">
             
   <div class="section" id="labor-data-processing-wdi-ilo">
-<h1>1.3. Labor Data Processing (WDI/ILO)<a class="headerlink" href="#labor-data-processing-wdi-ilo" title="Permalink to this headline">¶</a></h1>
+<h1>3. Labor Data Processing (WDI/ILO)<a class="headerlink" href="#labor-data-processing-wdi-ilo" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="data-dictionary">
-<h2>1.3.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
+<h2>3.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-center">
 <colgroup>
 <col style="width: 25%" />
@@ -110,7 +110,7 @@
 </div>
 </div>
 <div class="section" id="load-the-file">
-<h2>1.3.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
+<h2>3.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/external/Labor/WDI/Data_Extract_From_World_Development_Indicators.xlsx&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -156,110 +156,110 @@
   </thead>
   <tbody>
     <tr>
-      <th>1744</th>
+      <th>3783</th>
+      <td>2008</td>
+      <td>YR2008</td>
+      <td>Georgia</td>
+      <td>GEO</td>
+      <td>24.942</td>
+      <td>63.550</td>
+      <td>73.266</td>
+      <td>..</td>
+      <td>..</td>
+      <td>1.148</td>
+      <td>52.920</td>
+      <td>10.461</td>
+      <td>36.620</td>
+      <td>..</td>
+      <td>17.870</td>
+      <td>61.026</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>5839</th>
+      <td>2016</td>
+      <td>YR2016</td>
+      <td>Bahamas, The</td>
+      <td>BHS</td>
+      <td>42.352</td>
+      <td>74.585</td>
+      <td>82.241</td>
+      <td>..</td>
+      <td>..</td>
+      <td>4.489</td>
+      <td>2.674</td>
+      <td>16.056</td>
+      <td>81.270</td>
+      <td>..</td>
+      <td>12.700</td>
+      <td>14.468</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <th>1585</th>
       <td>2000</td>
       <td>YR2000</td>
-      <td>Paraguay</td>
-      <td>PRY</td>
-      <td>48.388</td>
-      <td>69.608</td>
-      <td>60.821</td>
+      <td>Australia</td>
+      <td>AUS</td>
+      <td>68.451</td>
+      <td>63.360</td>
+      <td>75.538</td>
       <td>..</td>
       <td>..</td>
-      <td>3.797</td>
-      <td>34.061</td>
-      <td>15.637</td>
-      <td>50.302</td>
+      <td>7.546</td>
+      <td>4.857</td>
+      <td>21.615</td>
+      <td>73.527</td>
       <td>..</td>
-      <td>9.704</td>
-      <td>57.566</td>
-      <td>..</td>
-    </tr>
-    <tr>
-      <th>2348</th>
-      <td>2002</td>
-      <td>YR2002</td>
-      <td>IDA total</td>
-      <td>IDA</td>
-      <td>42.928</td>
-      <td>64.785</td>
-      <td>67.591</td>
-      <td>..</td>
-      <td>..</td>
-      <td>1.829</td>
-      <td>60.564</td>
-      <td>11.729</td>
-      <td>27.707</td>
-      <td>..</td>
-      <td>4.711</td>
-      <td>76.101</td>
+      <td>6.283</td>
+      <td>19.981</td>
       <td>..</td>
     </tr>
     <tr>
-      <th>1280</th>
-      <td>1998</td>
-      <td>YR1998</td>
-      <td>Euro area</td>
-      <td>EMU</td>
-      <td>39.947</td>
-      <td>54.722</td>
-      <td>68.164</td>
+      <th>6082</th>
+      <td>2017</td>
+      <td>YR2017</td>
+      <td>Korea, Rep.</td>
+      <td>KOR</td>
+      <td>34.766</td>
+      <td>62.938</td>
+      <td>72.011</td>
       <td>..</td>
       <td>..</td>
-      <td>5.222</td>
-      <td>5.807</td>
-      <td>30.640</td>
-      <td>63.553</td>
+      <td>1.755</td>
+      <td>4.784</td>
+      <td>25.072</td>
+      <td>70.143</td>
       <td>..</td>
-      <td>11.200</td>
-      <td>17.605</td>
-      <td>..</td>
-    </tr>
-    <tr>
-      <th>3179</th>
-      <td>2006</td>
-      <td>YR2006</td>
-      <td>Mexico</td>
-      <td>MEX</td>
-      <td>35.304</td>
-      <td>61.805</td>
-      <td>51.989</td>
-      <td>..</td>
-      <td>..</td>
-      <td>4.937</td>
-      <td>14.253</td>
-      <td>26.190</td>
-      <td>59.557</td>
-      <td>..</td>
-      <td>3.566</td>
-      <td>34.733</td>
+      <td>3.700</td>
+      <td>25.411</td>
       <td>..</td>
     </tr>
     <tr>
-      <th>915</th>
-      <td>1997</td>
-      <td>YR1997</td>
-      <td>Liechtenstein</td>
-      <td>LIE</td>
+      <th>3892</th>
+      <td>2008</td>
+      <td>YR2008</td>
+      <td>Timor-Leste</td>
+      <td>TLS</td>
+      <td>14.014</td>
+      <td>44.186</td>
+      <td>46.790</td>
       <td>..</td>
       <td>..</td>
+      <td>1.721</td>
+      <td>51.167</td>
+      <td>9.693</td>
+      <td>39.140</td>
       <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
+      <td>2.964</td>
+      <td>70.846</td>
       <td>..</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 <div class="section" id="standardize-country-codes">
-<h2>1.3.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
+<h2>3.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Only Select rows with valid country codes</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">country_locations</span> <span class="o">=</span> <span class="p">[]</span>
@@ -274,7 +274,7 @@
 </div>
 </div>
 <div class="section" id="standardize-indexes">
-<h2>1.3.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
+<h2>3.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="s2">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;Year&quot;</span>
@@ -288,9 +288,9 @@
 </div>
 </div>
 <div class="section" id="clean-data">
-<h2>1.3.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
+<h2>3.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="header">
-<h3>1.3.5.1. Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
+<h3>3.5.1. Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Time Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Country Name&quot;</span><span class="p">],</span>
         <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span>
         <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -309,7 +309,7 @@
 </div>
 </div>
 <div class="section" id="data-types">
-<h3>1.3.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<h3>3.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Replace &#39;..&#39; with np.nan for better parsing</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">)</span>
@@ -374,88 +374,88 @@
   </thead>
   <tbody>
     <tr>
-      <th>PNG</th>
-      <th>1999</th>
-      <td>59.692</td>
-      <td>71.487</td>
-      <td>96.399</td>
+      <th>LBN</th>
+      <th>2013</th>
+      <td>17.597</td>
+      <td>46.359</td>
+      <td>32.684</td>
       <td>nan</td>
       <td>nan</td>
-      <td>1.621</td>
-      <td>72.328</td>
-      <td>3.637</td>
-      <td>24.035</td>
+      <td>9.428</td>
+      <td>12.815</td>
+      <td>23.199</td>
+      <td>63.986</td>
       <td>nan</td>
-      <td>3.035</td>
-      <td>81.698</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>AUT</th>
-      <th>2000</th>
-      <td>51.541</td>
-      <td>58.514</td>
-      <td>71.042</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>5.004</td>
-      <td>6.051</td>
-      <td>30.025</td>
-      <td>63.925</td>
-      <td>nan</td>
-      <td>4.687</td>
-      <td>13.512</td>
+      <td>6.382</td>
+      <td>36.773</td>
       <td>nan</td>
     </tr>
     <tr>
-      <th>MKD</th>
+      <th>BRN</th>
+      <th>2012</th>
+      <td>38.830</td>
+      <td>66.293</td>
+      <td>76.967</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>3.226</td>
+      <td>0.620</td>
+      <td>19.147</td>
+      <td>80.232</td>
+      <td>nan</td>
+      <td>6.897</td>
+      <td>7.760</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>MDG</th>
+      <th>2006</th>
+      <td>74.804</td>
+      <td>87.235</td>
+      <td>94.782</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>2.136</td>
+      <td>80.369</td>
+      <td>3.846</td>
+      <td>15.785</td>
+      <td>nan</td>
+      <td>2.520</td>
+      <td>87.564</td>
+      <td>nan</td>
+    </tr>
+    <tr>
+      <th>ETH</th>
       <th>2009</th>
-      <td>26.086</td>
-      <td>55.396</td>
-      <td>61.977</td>
+      <td>70.890</td>
+      <td>81.461</td>
+      <td>82.926</td>
       <td>nan</td>
       <td>nan</td>
-      <td>5.155</td>
-      <td>18.550</td>
-      <td>30.472</td>
-      <td>50.978</td>
+      <td>0.590</td>
+      <td>75.274</td>
+      <td>7.808</td>
+      <td>16.918</td>
       <td>nan</td>
-      <td>32.179</td>
-      <td>28.079</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>MLT</th>
-      <th>2005</th>
-      <td>51.145</td>
-      <td>48.372</td>
-      <td>43.863</td>
-      <td>nan</td>
-      <td>nan</td>
-      <td>4.507</td>
-      <td>2.095</td>
-      <td>29.849</td>
-      <td>68.055</td>
-      <td>nan</td>
-      <td>6.923</td>
-      <td>13.907</td>
+      <td>2.354</td>
+      <td>89.908</td>
       <td>nan</td>
     </tr>
     <tr>
-      <th>IRL</th>
-      <th>2009</th>
-      <td>57.084</td>
-      <td>64.198</td>
-      <td>77.407</td>
+      <th>NLD</th>
+      <th>2010</th>
+      <td>69.423</td>
+      <td>64.692</td>
+      <td>81.671</td>
       <td>nan</td>
       <td>nan</td>
-      <td>5.299</td>
-      <td>5.591</td>
-      <td>19.852</td>
-      <td>74.557</td>
+      <td>3.878</td>
+      <td>3.073</td>
+      <td>17.632</td>
+      <td>79.295</td>
       <td>nan</td>
-      <td>12.609</td>
-      <td>17.403</td>
+      <td>4.450</td>
+      <td>15.014</td>
       <td>nan</td>
     </tr>
   </tbody>
@@ -463,7 +463,7 @@
 </div></div>
 </div>
 <div class="section" id="save-data">
-<h2>1.3.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
+<h2>3.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;../data/processed/Labor_WDI.pickle&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -478,27 +478,27 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">1.3. Labor Data Processing (WDI/ILO)</a><ul>
-<li><a class="reference internal" href="#data-dictionary">1.3.1. Data Dictionary</a></li>
-<li><a class="reference internal" href="#load-the-file">1.3.2. Load The File</a></li>
-<li><a class="reference internal" href="#standardize-country-codes">1.3.3. Standardize Country Codes</a></li>
-<li><a class="reference internal" href="#standardize-indexes">1.3.4. Standardize Indexes</a></li>
-<li><a class="reference internal" href="#clean-data">1.3.5. Clean Data</a><ul>
-<li><a class="reference internal" href="#header">1.3.5.1. Header</a></li>
-<li><a class="reference internal" href="#data-types">1.3.5.2. Data Types</a></li>
+<li><a class="reference internal" href="#">3. Labor Data Processing (WDI/ILO)</a><ul>
+<li><a class="reference internal" href="#data-dictionary">3.1. Data Dictionary</a></li>
+<li><a class="reference internal" href="#load-the-file">3.2. Load The File</a></li>
+<li><a class="reference internal" href="#standardize-country-codes">3.3. Standardize Country Codes</a></li>
+<li><a class="reference internal" href="#standardize-indexes">3.4. Standardize Indexes</a></li>
+<li><a class="reference internal" href="#clean-data">3.5. Clean Data</a><ul>
+<li><a class="reference internal" href="#header">3.5.1. Header</a></li>
+<li><a class="reference internal" href="#data-types">3.5.2. Data Types</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#save-data">1.3.6. Save Data</a></li>
+<li><a class="reference internal" href="#save-data">3.6. Save Data</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="1.html"
-                        title="previous chapter">1.2. Tourism Master Dataset Merge</a></p>
+                        title="previous chapter">2. Tourism Master Dataset Merge</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="11.html"
-                        title="next chapter">1.4. General Indicators Data Processing (WDI)</a></p>
+                        title="next chapter">4. General Indicators Data Processing (WDI)</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -527,13 +527,13 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="11.html" title="1.4. General Indicators Data Processing (WDI)"
+          <a href="11.html" title="4. General Indicators Data Processing (WDI)"
              >next</a> |</li>
         <li class="right" >
-          <a href="1.html" title="1.2. Tourism Master Dataset Merge"
+          <a href="1.html" title="2. Tourism Master Dataset Merge"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >1. Data Preperation Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

@@ -78,64 +78,64 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>1428</th>
-          <td>1999</td>
-          <td>YR1999</td>
-          <td>Jamaica</td>
-          <td>JAM</td>
-          <td>51.574</td>
-          <td>1.361</td>
+          <th>2382</th>
+          <td>2003</td>
+          <td>YR2003</td>
+          <td>India</td>
+          <td>IND</td>
+          <td>28.572</td>
+          <td>2.813</td>
           <td>..</td>
-          <td>..</td>
-          <td>42.410</td>
+          <td>12.795</td>
+          <td>5.533</td>
         </tr>
         <tr>
-          <th>5083</th>
+          <th>4758</th>
+          <td>2012</td>
+          <td>YR2012</td>
+          <td>India</td>
+          <td>IND</td>
+          <td>31.634</td>
+          <td>2.399</td>
+          <td>..</td>
+          <td>14.092</td>
+          <td>5.872</td>
+        </tr>
+        <tr>
+          <th>5052</th>
           <td>2013</td>
           <td>YR2013</td>
-          <td>Cyprus</td>
-          <td>CYP</td>
-          <td>67.137</td>
-          <td>0.591</td>
+          <td>Belgium</td>
+          <td>BEL</td>
+          <td>97.789</td>
+          <td>0.517</td>
+          <td>..</td>
+          <td>26.694</td>
+          <td>18.068</td>
+        </tr>
+        <tr>
+          <th>198</th>
+          <td>1994</td>
+          <td>YR1994</td>
+          <td>Tonga</td>
+          <td>TON</td>
+          <td>22.832</td>
+          <td>0.339</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
         </tr>
         <tr>
-          <th>6343</th>
-          <td>2018</td>
-          <td>YR2018</td>
-          <td>Indonesia</td>
-          <td>IDN</td>
+          <th>1106</th>
+          <td>1998</td>
+          <td>YR1998</td>
+          <td>Cambodia</td>
+          <td>KHM</td>
+          <td>18.355</td>
+          <td>4.257</td>
           <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>5881</th>
-          <td>2016</td>
-          <td>YR2016</td>
-          <td>Ecuador</td>
-          <td>ECU</td>
-          <td>63.534</td>
-          <td>1.694</td>
-          <td>..</td>
-          <td>27.794</td>
-          <td>26.809</td>
-        </tr>
-        <tr>
-          <th>5292</th>
-          <td>2014</td>
-          <td>YR2014</td>
-          <td>Netherlands</td>
-          <td>NLD</td>
-          <td>89.690</td>
-          <td>0.922</td>
-          <td>..</td>
-          <td>12.469</td>
-          <td>7.257</td>
+          <td>9.378</td>
+          <td>51.090</td>
         </tr>
       </tbody>
     </table>
@@ -260,49 +260,49 @@ Data Types
       </thead>
       <tbody>
         <tr>
-          <th>BEL</th>
-          <th>2018</th>
+          <th>PAK</th>
+          <th>2008</th>
+          <td>34.590</td>
+          <td>2.633</td>
           <td>nan</td>
-          <td>nan</td>
+          <td>19.271</td>
+          <td>21.196</td>
+        </tr>
+        <tr>
+          <th>GIB</th>
+          <th>1997</th>
+          <td>100.000</td>
+          <td>0.695</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
         </tr>
         <tr>
-          <th>ZAF</th>
-          <th>2009</th>
-          <td>61.687</td>
-          <td>1.970</td>
-          <td>23.000</td>
-          <td>31.835</td>
-          <td>13.091</td>
-        </tr>
-        <tr>
-          <th>CRI</th>
-          <th>2015</th>
-          <td>76.862</td>
-          <td>2.257</td>
+          <th>TJK</th>
+          <th>2012</th>
+          <td>26.545</td>
+          <td>2.356</td>
           <td>nan</td>
-          <td>26.979</td>
-          <td>35.100</td>
+          <td>nan</td>
+          <td>35.632</td>
         </tr>
         <tr>
-          <th>TCA</th>
-          <th>2009</th>
-          <td>89.770</td>
-          <td>3.089</td>
+          <th>SVN</th>
+          <th>2013</th>
+          <td>53.332</td>
+          <td>0.557</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
         </tr>
         <tr>
-          <th>POL</th>
-          <th>2003</th>
-          <td>61.676</td>
-          <td>-0.247</td>
+          <th>TCD</th>
+          <th>2016</th>
+          <td>22.677</td>
+          <td>3.831</td>
           <td>nan</td>
-          <td>4.387</td>
-          <td>7.112</td>
+          <td>8.514</td>
+          <td>37.543</td>
         </tr>
       </tbody>
     </table>

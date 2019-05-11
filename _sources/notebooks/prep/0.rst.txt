@@ -771,49 +771,49 @@ Cleaning data
       </thead>
       <tbody>
         <tr>
-          <th>877</th>
-          <td>6732000.000</td>
-          <td>6.475</td>
-          <td>899000000.000</td>
-          <td>181000000.000</td>
-          <td>718000000.000</td>
+          <th>9690</th>
           <td>nan</td>
-          <td>7.696</td>
-          <td>1766000000.000</td>
-          <td>731000000.000</td>
-          <td>1035000000.000</td>
-          <td>2011</td>
-          <td>BHR</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1974</td>
+          <td>SMR</td>
         </tr>
         <tr>
-          <th>754</th>
-          <td>682000.000</td>
-          <td>3.244</td>
-          <td>256000000.000</td>
-          <td>55000000.000</td>
-          <td>201000000.000</td>
-          <td>1836000.000</td>
-          <td>1.466</td>
-          <td>201000000.000</td>
-          <td>84000000.000</td>
-          <td>117000000.000</td>
-          <td>2006</td>
-          <td>AZE</td>
+          <th>12096</th>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1961</td>
+          <td>GBR</td>
         </tr>
         <tr>
-          <th>3660</th>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>1962</td>
-          <td>EST</td>
+          <th>14205</th>
+          <td>53313000.000</td>
+          <td>5.056</td>
+          <td>29428000000.000</td>
+          <td>6287677580.542</td>
+          <td>23167000000.000</td>
+          <td>34698502.573</td>
+          <td>6.188</td>
+          <td>40062000000.000</td>
+          <td>4475271353.235</td>
+          <td>35692000000.000</td>
+          <td>2005</td>
+          <td>TLA</td>
         </tr>
       </tbody>
     </table>

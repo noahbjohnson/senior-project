@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.8. Economic Data Processing (MADDISON) &#8212; Senior-Project 0.1 documentation</title>
+    <title>8. Economic Data Processing (MADDISON) &#8212; Senior-Project 0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
@@ -16,8 +16,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.9. Economic Data Processing (WDI)" href="5.html" />
-    <link rel="prev" title="1.7. Tourism Exploratory Data Analysis and Feature Engineering" href="3.html" /> 
+    <link rel="next" title="9. Economic Data Processing (WDI)" href="5.html" />
+    <link rel="prev" title="7. Tourism Exploratory Data Analysis and Feature Engineering" href="3.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -26,13 +26,13 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="5.html" title="1.9. Economic Data Processing (WDI)"
+          <a href="5.html" title="9. Economic Data Processing (WDI)"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="3.html" title="1.7. Tourism Exploratory Data Analysis and Feature Engineering"
+          <a href="3.html" title="7. Tourism Exploratory Data Analysis and Feature Engineering"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">1. Data Preperation Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -42,7 +42,7 @@
           <div class="body" role="main">
             
   <div class="section" id="economic-data-processing-maddison">
-<h1>1.8. Economic Data Processing (MADDISON)<a class="headerlink" href="#economic-data-processing-maddison" title="Permalink to this headline">¶</a></h1>
+<h1>8. Economic Data Processing (MADDISON)<a class="headerlink" href="#economic-data-processing-maddison" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>Maddison Project Database, version 2018. Bolt, Jutta, Robert
 Inklaar, Herman de Jong and Jan Luiten van Zanden (2018), “Rebasing
@@ -50,7 +50,7 @@ Inklaar, Herman de Jong and Jan Luiten van Zanden (2018), “Rebasing
 economic development”, Maddison Project Working paper 10</p>
 </div></blockquote>
 <div class="section" id="data-dictionary">
-<h2>1.8.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
+<h2>8.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-center">
 <colgroup>
 <col style="width: 11%" />
@@ -101,7 +101,7 @@ economic development”, Maddison Project Working paper 10</p>
 </div>
 </div>
 <div class="section" id="load-the-file">
-<h2>1.8.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
+<h2>8.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/external/Economy/MADDISON/mpd2018.xlsx&quot;</span><span class="p">,</span>
                    <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Full data&#39;</span><span class="p">)</span>
 </pre></div>
@@ -139,57 +139,57 @@ economic development”, Maddison Project Working paper 10</p>
   </thead>
   <tbody>
     <tr>
-      <th>1092</th>
+      <th>16801</th>
+      <td>SWE</td>
+      <td>Sweden</td>
+      <td>1454</td>
+      <td>1017.000</td>
+      <td>1279.000</td>
+      <td>nan</td>
+      <td>Extrapolated</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1098</th>
       <td>BEL</td>
       <td>Belgium</td>
-      <td>1838</td>
+      <td>1844</td>
       <td>nan</td>
       <td>nan</td>
-      <td>4012.000</td>
+      <td>4223.000</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>12308</th>
-      <td>NGA</td>
-      <td>Nigeria</td>
-      <td>1982</td>
-      <td>5698.000</td>
-      <td>2917.000</td>
-      <td>79511.000</td>
-      <td>Interpolated</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>14915</th>
-      <td>PRT</td>
-      <td>Portugal</td>
-      <td>1751</td>
-      <td>1612.000</td>
-      <td>2100.000</td>
+      <th>14220</th>
+      <td>POL</td>
+      <td>Poland</td>
+      <td>1704</td>
+      <td>790.000</td>
+      <td>1198.000</td>
       <td>nan</td>
       <td>Extrapolated</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>11721</th>
-      <td>MNG</td>
-      <td>Mongolia</td>
-      <td>1991</td>
-      <td>2385.000</td>
-      <td>5124.000</td>
-      <td>2170.000</td>
-      <td>Extrapolated</td>
+      <th>277</th>
+      <td>ARE</td>
+      <td>United Arab Emirates</td>
+      <td>1981</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>1070.000</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>17840</th>
-      <td>TJK</td>
-      <td>Tajikistan</td>
-      <td>1967</td>
+      <th>12365</th>
+      <td>NIC</td>
+      <td>Nicaragua</td>
+      <td>1919</td>
       <td>nan</td>
       <td>nan</td>
-      <td>2672.000</td>
+      <td>631.000</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
@@ -197,7 +197,7 @@ economic development”, Maddison Project Working paper 10</p>
 </table>
 </div></div>
 <div class="section" id="standardize-country-codes">
-<h2>1.8.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
+<h2>8.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Only Select rows with valid country codes</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">country_locations</span> <span class="o">=</span> <span class="p">[]</span>
@@ -212,16 +212,16 @@ economic development”, Maddison Project Working paper 10</p>
 </div>
 </div>
 <div class="section" id="standardize-indexes">
-<h2>1.8.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
+<h2>8.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="years-1995-x-2017">
-<h3>1.8.4.1. Years (1995≤ x ≥2017)<a class="headerlink" href="#years-1995-x-2017" title="Permalink to this headline">¶</a></h3>
+<h3>8.4.1. Years (1995≤ x ≥2017)<a class="headerlink" href="#years-1995-x-2017" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1995</span><span class="p">]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">2017</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="reindex-rename">
-<h3>1.8.4.2. Reindex &amp; Rename<a class="headerlink" href="#reindex-rename" title="Permalink to this headline">¶</a></h3>
+<h3>8.4.2. Reindex &amp; Rename<a class="headerlink" href="#reindex-rename" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="s2">&quot;Year&quot;</span><span class="p">,</span>
@@ -238,9 +238,9 @@ economic development”, Maddison Project Working paper 10</p>
 </div>
 </div>
 <div class="section" id="clean-data">
-<h2>1.8.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
+<h2>8.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="remove-unneeded-variables">
-<h3>1.8.5.1. Remove unneeded variables<a class="headerlink" href="#remove-unneeded-variables" title="Permalink to this headline">¶</a></h3>
+<h3>8.5.1. Remove unneeded variables<a class="headerlink" href="#remove-unneeded-variables" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;i_cig&quot;</span><span class="p">,</span> <span class="s2">&quot;i_bm&quot;</span><span class="p">,</span> <span class="s2">&quot;rgdpnapc&quot;</span><span class="p">,</span> <span class="s2">&quot;pop&quot;</span><span class="p">],</span>
         <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span>
         <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -248,7 +248,7 @@ economic development”, Maddison Project Working paper 10</p>
 </div>
 </div>
 <div class="section" id="data-types">
-<h3>1.8.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<h3>8.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>
 </div>
@@ -259,7 +259,7 @@ economic development”, Maddison Project Working paper 10</p>
 </div>
 </div>
 <div class="section" id="save-data">
-<h2>1.8.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
+<h2>8.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;../data/processed/Economic_MADDISON.pickle&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -274,31 +274,31 @@ economic development”, Maddison Project Working paper 10</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">1.8. Economic Data Processing (MADDISON)</a><ul>
-<li><a class="reference internal" href="#data-dictionary">1.8.1. Data Dictionary</a></li>
-<li><a class="reference internal" href="#load-the-file">1.8.2. Load The File</a></li>
-<li><a class="reference internal" href="#standardize-country-codes">1.8.3. Standardize Country Codes</a></li>
-<li><a class="reference internal" href="#standardize-indexes">1.8.4. Standardize Indexes</a><ul>
-<li><a class="reference internal" href="#years-1995-x-2017">1.8.4.1. Years (1995≤ x ≥2017)</a></li>
-<li><a class="reference internal" href="#reindex-rename">1.8.4.2. Reindex &amp; Rename</a></li>
+<li><a class="reference internal" href="#">8. Economic Data Processing (MADDISON)</a><ul>
+<li><a class="reference internal" href="#data-dictionary">8.1. Data Dictionary</a></li>
+<li><a class="reference internal" href="#load-the-file">8.2. Load The File</a></li>
+<li><a class="reference internal" href="#standardize-country-codes">8.3. Standardize Country Codes</a></li>
+<li><a class="reference internal" href="#standardize-indexes">8.4. Standardize Indexes</a><ul>
+<li><a class="reference internal" href="#years-1995-x-2017">8.4.1. Years (1995≤ x ≥2017)</a></li>
+<li><a class="reference internal" href="#reindex-rename">8.4.2. Reindex &amp; Rename</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#clean-data">1.8.5. Clean Data</a><ul>
-<li><a class="reference internal" href="#remove-unneeded-variables">1.8.5.1. Remove unneeded variables</a></li>
-<li><a class="reference internal" href="#data-types">1.8.5.2. Data Types</a></li>
+<li><a class="reference internal" href="#clean-data">8.5. Clean Data</a><ul>
+<li><a class="reference internal" href="#remove-unneeded-variables">8.5.1. Remove unneeded variables</a></li>
+<li><a class="reference internal" href="#data-types">8.5.2. Data Types</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#save-data">1.8.6. Save Data</a></li>
+<li><a class="reference internal" href="#save-data">8.6. Save Data</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="3.html"
-                        title="previous chapter">1.7. Tourism Exploratory Data Analysis and Feature Engineering</a></p>
+                        title="previous chapter">7. Tourism Exploratory Data Analysis and Feature Engineering</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="5.html"
-                        title="next chapter">1.9. Economic Data Processing (WDI)</a></p>
+                        title="next chapter">9. Economic Data Processing (WDI)</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -327,13 +327,13 @@ economic development”, Maddison Project Working paper 10</p>
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="5.html" title="1.9. Economic Data Processing (WDI)"
+          <a href="5.html" title="9. Economic Data Processing (WDI)"
              >next</a> |</li>
         <li class="right" >
-          <a href="3.html" title="1.7. Tourism Exploratory Data Analysis and Feature Engineering"
+          <a href="3.html" title="7. Tourism Exploratory Data Analysis and Feature Engineering"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >1. Data Preperation Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
