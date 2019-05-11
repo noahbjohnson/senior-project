@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements docs notebooks sync_data_to_s3 sync_data_from_s3 prep data_dictionary
+.PHONY: clean data lint requirements docs notebooks sync_data_to_s3 sync_data_from_s3 prep data_dictionary modeling
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -53,13 +53,14 @@ prep:
 data_dictionary:
 	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/DataDictionary.ipynb --output-dir ../docs/notebooks/
     
-notebooks:
+modeling:
 	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/13.ipynb --output-dir docs/notebooks/analysis/
 	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/14.ipynb --output-dir docs/notebooks/analysis/
 	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/15.ipynb --output-dir docs/notebooks/analysis/
 	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/16.ipynb --output-dir docs/notebooks/analysis/
     
-    
+notebooks:
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/17.ipynb --output-dir docs/notebooks/analysis/
     
 
 
