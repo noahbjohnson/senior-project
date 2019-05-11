@@ -60,7 +60,9 @@ modeling:
 	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/16.ipynb --output-dir docs/notebooks/analysis/
     
 notebooks:
-	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/17.ipynb --output-dir docs/notebooks/analysis/
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/17.ipynb --output-dir docs/notebooks/analysis/  
+	jupyter nbconvert --ExecutePreprocessor.timeout=600 --execute --to rst notebooks/18.ipynb --output-dir docs/notebooks/analysis/  
+    
     
 
 
