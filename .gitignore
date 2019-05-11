@@ -89,6 +89,6 @@ target/
 .mypy_cache/
 
 
-docs/notebooks/*
+# docs/notebooks/*
 
 venv/
