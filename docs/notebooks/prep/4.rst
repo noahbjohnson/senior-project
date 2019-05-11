@@ -101,59 +101,59 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>13232</th>
-          <td>PAK</td>
-          <td>Pakistan</td>
-          <td>1992</td>
-          <td>2464.000</td>
-          <td>3290.000</td>
-          <td>120535.000</td>
+          <th>19727</th>
+          <td>ZAF</td>
+          <td>South Africa</td>
+          <td>2005</td>
+          <td>10241.000</td>
+          <td>10524.000</td>
+          <td>48071.000</td>
+          <td>Benchmark</td>
+          <td>ICP PPP estimates</td>
+        </tr>
+        <tr>
+          <th>5005</th>
+          <td>EGY</td>
+          <td>Egypt</td>
+          <td>1972</td>
+          <td>2196.000</td>
+          <td>3422.000</td>
+          <td>34807.000</td>
           <td>Interpolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>14797</th>
-          <td>PRT</td>
-          <td>Portugal</td>
-          <td>1633</td>
-          <td>1237.000</td>
-          <td>1611.000</td>
-          <td>nan</td>
+          <th>14578</th>
+          <td>PRI</td>
+          <td>Puerto Rico</td>
+          <td>1974</td>
+          <td>16036.000</td>
+          <td>16036.000</td>
+          <td>2887.000</td>
           <td>Extrapolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>9853</th>
-          <td>KOR</td>
-          <td>Republic of Korea</td>
-          <td>2000</td>
-          <td>22930.000</td>
-          <td>21420.000</td>
-          <td>47008.000</td>
+          <th>8495</th>
+          <td>IRL</td>
+          <td>Ireland</td>
+          <td>1943</td>
+          <td>4118.000</td>
+          <td>6172.000</td>
+          <td>2946.000</td>
           <td>Interpolated</td>
           <td>NaN</td>
         </tr>
         <tr>
-          <th>17821</th>
-          <td>THA</td>
-          <td>Thailand</td>
-          <td>2015</td>
-          <td>13938.000</td>
-          <td>15020.000</td>
-          <td>66886.000</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>17929</th>
-          <td>TKM</td>
-          <td>Turkmenistan</td>
-          <td>1989</td>
-          <td>6061.000</td>
-          <td>7524.000</td>
-          <td>3572.000</td>
-          <td>Extrapolated</td>
-          <td>NaN</td>
+          <th>3831</th>
+          <td>CSK</td>
+          <td>Czechoslovakia</td>
+          <td>2003</td>
+          <td>17925.000</td>
+          <td>18518.000</td>
+          <td>15667.000</td>
+          <td>Benchmark</td>
+          <td>ICP PPP estimates</td>
         </tr>
       </tbody>
     </table>

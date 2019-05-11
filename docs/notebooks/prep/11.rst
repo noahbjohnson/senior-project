@@ -184,123 +184,123 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>1781</th>
+          <th>1884</th>
+          <td>2001</td>
+          <td>YR2001</td>
+          <td>Cayman Islands</td>
+          <td>CYM</td>
+          <td>..</td>
+          <td>100</td>
+          <td>..</td>
+          <td>..</td>
+          <td>96.125</td>
+          <td>10.836</td>
+          <td>...</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>39.246</td>
+          <td>..</td>
+          <td>..</td>
+          <td>4.617</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>3789</th>
+          <td>2008</td>
+          <td>YR2008</td>
+          <td>Ireland</td>
+          <td>IRL</td>
+          <td>80.095</td>
+          <td>100</td>
+          <td>..</td>
+          <td>95.783</td>
+          <td>97.698</td>
+          <td>9.578</td>
+          <td>...</td>
+          <td>..</td>
+          <td>..</td>
+          <td>19.851</td>
+          <td>65.340</td>
+          <td>112.441</td>
+          <td>7</td>
+          <td>..</td>
+          <td>1.114</td>
+          <td>0.425</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>6231</th>
+          <td>2017</td>
+          <td>YR2017</td>
+          <td>Qatar</td>
+          <td>QAT</td>
+          <td>78.331</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>...</td>
+          <td>..</td>
+          <td>..</td>
+          <td>9.721</td>
+          <td>95.940</td>
+          <td>151.127</td>
+          <td>31</td>
+          <td>..</td>
+          <td>..</td>
+          <td>1.114</td>
+          <td>0.615</td>
+        </tr>
+        <tr>
+          <th>416</th>
+          <td>1995</td>
+          <td>YR1995</td>
+          <td>Papua New Guinea</td>
+          <td>PNG</td>
+          <td>60.418</td>
+          <td>8.816</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>0.421</td>
+          <td>...</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>0</td>
           <td>2000</td>
-          <td>YR2000</td>
-          <td>Tunisia</td>
-          <td>TUN</td>
-          <td>73.155</td>
-          <td>94.800</td>
-          <td>..</td>
-          <td>37.077</td>
-          <td>87.671</td>
-          <td>2.054</td>
-          <td>...</td>
-          <td>31.800</td>
           <td>..</td>
           <td>..</td>
-          <td>2.751</td>
-          <td>1.229</td>
-          <td>1207</td>
-          <td>..</td>
-          <td>..</td>
-          <td>1.460</td>
+          <td>0.185</td>
           <td>..</td>
         </tr>
         <tr>
-          <th>3071</th>
-          <td>2005</td>
-          <td>YR2005</td>
-          <td>Senegal</td>
-          <td>SEN</td>
-          <td>60.541</td>
-          <td>47.100</td>
-          <td>15.147</td>
-          <td>..</td>
-          <td>66.159</td>
-          <td>0.517</td>
-          <td>...</td>
-          <td>9.900</td>
-          <td>..</td>
-          <td>0.160</td>
-          <td>4.787</td>
-          <td>15.377</td>
-          <td>8671</td>
-          <td>..</td>
-          <td>9.306</td>
-          <td>0.588</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>5491</th>
+          <th>5466</th>
           <td>2014</td>
           <td>YR2014</td>
-          <td>Vietnam</td>
-          <td>VNM</td>
-          <td>75.855</td>
-          <td>99.200</td>
-          <td>85.613</td>
+          <td>Suriname</td>
+          <td>SUR</td>
+          <td>71.138</td>
+          <td>88.314</td>
+          <td>67.778</td>
           <td>..</td>
-          <td>89.866</td>
-          <td>1.804</td>
+          <td>94.685</td>
+          <td>3.634</td>
           <td>...</td>
-          <td>23.100</td>
+          <td>27.500</td>
           <td>..</td>
-          <td>6.484</td>
-          <td>41</td>
-          <td>147.116</td>
-          <td>313418</td>
-          <td>15.249</td>
-          <td>..</td>
-          <td>0.943</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>4490</th>
-          <td>2011</td>
-          <td>YR2011</td>
-          <td>Algeria</td>
-          <td>DZA</td>
-          <td>74.944</td>
-          <td>98.957</td>
-          <td>83.171</td>
-          <td>..</td>
-          <td>92.614</td>
-          <td>3.291</td>
-          <td>...</td>
-          <td>15.200</td>
-          <td>..</td>
-          <td>2.664</td>
-          <td>14.900</td>
-          <td>96.731</td>
-          <td>6121</td>
-          <td>..</td>
-          <td>0.760</td>
-          <td>2.793</td>
-          <td>..</td>
-        </tr>
-        <tr>
-          <th>2720</th>
-          <td>2004</td>
-          <td>YR2004</td>
-          <td>Guatemala</td>
-          <td>GTM</td>
-          <td>69.437</td>
-          <td>77.130</td>
-          <td>..</td>
-          <td>52.944</td>
-          <td>87.732</td>
-          <td>0.908</td>
-          <td>...</td>
+          <td>8.468</td>
+          <td>40.080</td>
+          <td>169.329</td>
+          <td>17</td>
           <td>..</td>
           <td>..</td>
-          <td>..</td>
-          <td>5.100</td>
-          <td>24.758</td>
-          <td>4376</td>
-          <td>..</td>
-          <td>35.219</td>
-          <td>1.043</td>
+          <td>0.933</td>
           <td>..</td>
         </tr>
       </tbody>
@@ -459,40 +459,90 @@ Data Types
       </thead>
       <tbody>
         <tr>
-          <th>BLZ</th>
-          <th>2013</th>
-          <td>69.895</td>
-          <td>91.554</td>
-          <td>83.959</td>
-          <td>nan</td>
-          <td>95.851</td>
-          <td>1.492</td>
+          <th>BHR</th>
+          <th>1995</th>
+          <td>73.413</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>40.331</td>
+          <td>nan</td>
+          <td>26.288</td>
+          <td>9.219</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
           <td>...</td>
           <td>nan</td>
           <td>nan</td>
-          <td>2.876</td>
-          <td>33.600</td>
-          <td>50.733</td>
-          <td>40.000</td>
           <td>nan</td>
-          <td>28.764</td>
-          <td>0.677</td>
+          <td>0.346</td>
+          <td>4.896</td>
+          <td>71.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>7.761</td>
           <td>nan</td>
         </tr>
         <tr>
-          <th>LTU</th>
-          <th>1997</th>
-          <td>70.909</td>
+          <th>MDG</th>
+          <th>2006</th>
+          <td>61.650</td>
+          <td>15.450</td>
+          <td>23.618</td>
+          <td>nan</td>
+          <td>41.777</td>
+          <td>0.089</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>0.745</td>
+          <td>...</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>0.007</td>
+          <td>0.608</td>
+          <td>5.540</td>
+          <td>260.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+        </tr>
+        <tr>
+          <th>NLD</th>
+          <th>2017</th>
+          <td>81.561</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>11.244</td>
+          <td>nan</td>
+          <td>44.614</td>
+          <td>...</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>42.327</td>
+          <td>93.197</td>
+          <td>120.522</td>
+          <td>34.000</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>0.450</td>
+          <td>0.800</td>
+        </tr>
+        <tr>
+          <th>BGR</th>
+          <th>2002</th>
+          <td>71.866</td>
           <td>100.000</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>4.290</td>
-          <td>26.790</td>
+          <td>97.211</td>
+          <td>99.743</td>
+          <td>5.695</td>
+          <td>13.721</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
@@ -500,87 +550,37 @@ Data Types
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
-          <td>0.978</td>
-          <td>4.618</td>
-          <td>649.000</td>
+          <td>9.080</td>
+          <td>33.022</td>
+          <td>2841.000</td>
           <td>nan</td>
-          <td>10.931</td>
-          <td>0.583</td>
+          <td>3.242</td>
+          <td>2.995</td>
           <td>nan</td>
         </tr>
         <tr>
-          <th>PER</th>
-          <th>1996</th>
-          <td>68.533</td>
-          <td>67.000</td>
+          <th>MOZ</th>
+          <th>2005</th>
+          <td>51.362</td>
+          <td>11.848</td>
           <td>nan</td>
           <td>nan</td>
+          <td>30.249</td>
+          <td>0.087</td>
+          <td>68.874</td>
           <td>nan</td>
-          <td>0.998</td>
-          <td>35.411</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
+          <td>2.186</td>
           <td>...</td>
+          <td>20.900</td>
           <td>nan</td>
           <td>nan</td>
+          <td>0.854</td>
+          <td>7.188</td>
+          <td>104.000</td>
           <td>nan</td>
-          <td>0.246</td>
-          <td>0.822</td>
-          <td>6696.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>1.882</td>
-          <td>nan</td>
-        </tr>
-        <tr>
-          <th>PSE</th>
-          <th>2003</th>
-          <td>71.277</td>
-          <td>99.100</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>88.173</td>
-          <td>0.406</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>...</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>4.131</td>
-          <td>7.675</td>
-          <td>350568.000</td>
-          <td>nan</td>
-          <td>2.732</td>
-          <td>nan</td>
-          <td>nan</td>
-        </tr>
-        <tr>
-          <th>NRU</th>
-          <th>2018</th>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>...</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
+          <td>5.205</td>
+          <td>0.114</td>
           <td>nan</td>
         </tr>
       </tbody>

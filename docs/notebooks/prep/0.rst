@@ -771,49 +771,49 @@ Cleaning data
       </thead>
       <tbody>
         <tr>
-          <th>14912</th>
-          <td>18795696.340</td>
-          <td>8.465</td>
-          <td>4802054562.545</td>
-          <td>nan</td>
-          <td>4128651604.950</td>
-          <td>nan</td>
-          <td>16.582</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>2004</td>
-          <td>OSS</td>
-        </tr>
-        <tr>
-          <th>14114</th>
+          <th>12544</th>
+          <td>373000.000</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
           <td>nan</td>
+          <td>781000000.000</td>
           <td>nan</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>1973</td>
-          <td>LAC</td>
-        </tr>
-        <tr>
-          <th>12559</th>
-          <td>567000.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>1122000000.000</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>2011</td>
+          <td>1996</td>
           <td>VIR</td>
+        </tr>
+        <tr>
+          <th>10577</th>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1976</td>
+          <td>ESP</td>
+        </tr>
+        <tr>
+          <th>8917</th>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>nan</td>
+          <td>1968</td>
+          <td>PAN</td>
         </tr>
       </tbody>
     </table>

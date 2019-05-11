@@ -165,12 +165,12 @@ Correlation Matrix Heatmap
 
 .. parsed-literal::
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f6b10fa1da0>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7fec39a1ba90>
 
 
 
 
-.. image:: ../docs/notebooks/prep/3_files/../docs/notebooks/prep/3_14_1.png
+.. image:: 3_files/3_14_1.png
 
 
 Data Profile Report
@@ -395,9 +395,9 @@ rest are in the pair plot below.
 
 .. parsed-literal::
 
-    /opt/conda/lib/python3.7/site-packages/numpy/lib/histograms.py:754: RuntimeWarning: invalid value encountered in greater_equal
+    /opt/conda/lib/python3.7/site-packages/numpy/lib/histograms.py:824: RuntimeWarning: invalid value encountered in greater_equal
       keep = (tmp_a >= first_edge)
-    /opt/conda/lib/python3.7/site-packages/numpy/lib/histograms.py:755: RuntimeWarning: invalid value encountered in less_equal
+    /opt/conda/lib/python3.7/site-packages/numpy/lib/histograms.py:825: RuntimeWarning: invalid value encountered in less_equal
       keep &= (tmp_a <= last_edge)
 
 
@@ -405,12 +405,12 @@ rest are in the pair plot below.
 
 .. parsed-literal::
 
-    <seaborn.axisgrid.PairGrid at 0x7f6b10c03278>
+    <seaborn.axisgrid.PairGrid at 0x7fec39052a58>
 
 
 
 
-.. image:: ../docs/notebooks/prep/3_files/../docs/notebooks/prep/3_22_2.png
+.. image:: 3_files/3_22_2.png
 
 
 Pair-plot analysis
@@ -540,7 +540,7 @@ EDA Part Two
 
 
 
-.. image:: ../docs/notebooks/prep/3_files/../docs/notebooks/prep/3_35_0.png
+.. image:: 3_files/3_35_0.png
 
 
 .. code:: ipython3
