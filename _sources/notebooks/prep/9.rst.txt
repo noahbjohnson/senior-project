@@ -78,64 +78,64 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>2382</th>
-          <td>2003</td>
-          <td>YR2003</td>
-          <td>India</td>
-          <td>IND</td>
-          <td>28.572</td>
-          <td>2.813</td>
+          <th>3349</th>
+          <td>2006</td>
+          <td>YR2006</td>
+          <td>Somalia</td>
+          <td>SOM</td>
+          <td>37.100</td>
+          <td>5.069</td>
           <td>..</td>
-          <td>12.795</td>
-          <td>5.533</td>
+          <td>13.724</td>
+          <td>36.992</td>
         </tr>
         <tr>
-          <th>4758</th>
-          <td>2012</td>
-          <td>YR2012</td>
-          <td>India</td>
-          <td>IND</td>
-          <td>31.634</td>
-          <td>2.399</td>
-          <td>..</td>
-          <td>14.092</td>
-          <td>5.872</td>
-        </tr>
-        <tr>
-          <th>5052</th>
-          <td>2013</td>
-          <td>YR2013</td>
-          <td>Belgium</td>
-          <td>BEL</td>
-          <td>97.789</td>
-          <td>0.517</td>
-          <td>..</td>
-          <td>26.694</td>
-          <td>18.068</td>
-        </tr>
-        <tr>
-          <th>198</th>
-          <td>1994</td>
-          <td>YR1994</td>
-          <td>Tonga</td>
-          <td>TON</td>
-          <td>22.832</td>
-          <td>0.339</td>
+          <th>994</th>
+          <td>1997</td>
+          <td>YR1997</td>
+          <td>Turks and Caicos Islands</td>
+          <td>TCA</td>
+          <td>81.890</td>
+          <td>4.643</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
         </tr>
         <tr>
-          <th>1106</th>
-          <td>1998</td>
-          <td>YR1998</td>
-          <td>Cambodia</td>
-          <td>KHM</td>
-          <td>18.355</td>
-          <td>4.257</td>
+          <th>1748</th>
+          <td>2000</td>
+          <td>YR2000</td>
+          <td>Portugal</td>
+          <td>PRT</td>
+          <td>54.399</td>
+          <td>1.916</td>
           <td>..</td>
-          <td>9.378</td>
-          <td>51.090</td>
+          <td>38.158</td>
+          <td>47.743</td>
+        </tr>
+        <tr>
+          <th>6048</th>
+          <td>2016</td>
+          <td>YR2016</td>
+          <td>Latin America &amp; the Caribbean (IDA &amp; IBRD coun...</td>
+          <td>TLA</td>
+          <td>80.156</td>
+          <td>1.414</td>
+          <td>..</td>
+          <td>37.308</td>
+          <td>22.531</td>
+        </tr>
+        <tr>
+          <th>4309</th>
+          <td>2010</td>
+          <td>YR2010</td>
+          <td>Gabon</td>
+          <td>GAB</td>
+          <td>85.533</td>
+          <td>3.991</td>
+          <td>..</td>
+          <td>..</td>
+          <td>46.230</td>
         </tr>
       </tbody>
     </table>
@@ -260,49 +260,49 @@ Data Types
       </thead>
       <tbody>
         <tr>
-          <th>PAK</th>
-          <th>2008</th>
-          <td>34.590</td>
-          <td>2.633</td>
+          <th>ARE</th>
+          <th>1995</th>
+          <td>78.319</td>
+          <td>4.841</td>
           <td>nan</td>
-          <td>19.271</td>
-          <td>21.196</td>
+          <td>55.266</td>
+          <td>33.879</td>
         </tr>
         <tr>
-          <th>GIB</th>
-          <th>1997</th>
-          <td>100.000</td>
-          <td>0.695</td>
-          <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
+          <th>UGA</th>
+          <th>2000</th>
+          <td>14.786</td>
+          <td>6.031</td>
+          <td>75.000</td>
+          <td>5.129</td>
+          <td>34.691</td>
         </tr>
         <tr>
-          <th>TJK</th>
-          <th>2012</th>
-          <td>26.545</td>
-          <td>2.356</td>
+          <th>CUB</th>
+          <th>2011</th>
+          <td>76.689</td>
+          <td>0.310</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>35.632</td>
+          <td>18.809</td>
+          <td>24.526</td>
         </tr>
         <tr>
-          <th>SVN</th>
-          <th>2013</th>
-          <td>53.332</td>
-          <td>0.557</td>
+          <th>NLD</th>
+          <th>2004</th>
+          <td>81.514</td>
+          <td>1.797</td>
           <td>nan</td>
-          <td>nan</td>
-          <td>nan</td>
+          <td>12.391</td>
+          <td>7.678</td>
         </tr>
         <tr>
-          <th>TCD</th>
-          <th>2016</th>
-          <td>22.677</td>
-          <td>3.831</td>
+          <th>NCL</th>
+          <th>2000</th>
+          <td>61.919</td>
+          <td>2.485</td>
           <td>nan</td>
-          <td>8.514</td>
-          <td>37.543</td>
+          <td>nan</td>
+          <td>nan</td>
         </tr>
       </tbody>
     </table>

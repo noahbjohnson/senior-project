@@ -96,35 +96,35 @@ Load The File
       </thead>
       <tbody>
         <tr>
-          <th>2051</th>
-          <td>2002</td>
-          <td>YR2002</td>
-          <td>Ukraine</td>
-          <td>UKR</td>
-          <td>3656343934.100</td>
+          <th>2286</th>
+          <td>2003</td>
+          <td>YR2003</td>
+          <td>Slovenia</td>
+          <td>SVN</td>
           <td>..</td>
-          <td>790</td>
-          <td>38205748207.755</td>
+          <td>..</td>
+          <td>12700</td>
+          <td>25347731710.743</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+        </tr>
+        <tr>
+          <th>952</th>
+          <td>1998</td>
+          <td>YR1998</td>
+          <td>Romania</td>
+          <td>ROU</td>
+          <td>539061482.100</td>
+          <td>..</td>
+          <td>1590</td>
+          <td>35752490065.498</td>
           <td>0</td>
           <td>..</td>
-          <td>83.300</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>29</td>
-        </tr>
-        <tr>
-          <th>1478</th>
-          <td>2000</td>
-          <td>YR2000</td>
-          <td>Puerto Rico</td>
-          <td>PRI</td>
-          <td>..</td>
-          <td>..</td>
-          <td>10550</td>
-          <td>40191416200.700</td>
-          <td>..</td>
-          <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
@@ -132,58 +132,58 @@ Load The File
           <td>..</td>
         </tr>
         <tr>
-          <th>3264</th>
-          <td>2007</td>
-          <td>YR2007</td>
-          <td>Italy</td>
-          <td>ITA</td>
+          <th>4017</th>
+          <td>2010</td>
+          <td>YR2010</td>
+          <td>Ecuador</td>
+          <td>ECU</td>
+          <td>444080218.700</td>
           <td>..</td>
-          <td>..</td>
-          <td>35820</td>
-          <td>2093357193146.289</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>..</td>
-          <td>32.900</td>
+          <td>4420</td>
+          <td>65949609527.978</td>
+          <td>0</td>
+          <td>150950000</td>
+          <td>32.800</td>
+          <td>22.500</td>
+          <td>53</td>
+          <td>12.700</td>
+          <td>48.700</td>
         </tr>
         <tr>
-          <th>2796</th>
-          <td>2005</td>
-          <td>YR2005</td>
-          <td>Poland</td>
-          <td>POL</td>
+          <th>4484</th>
+          <td>2011</td>
+          <td>YR2011</td>
+          <td>Sub-Saharan Africa (excluding high income)</td>
+          <td>SSA</td>
+          <td>20743257561.600</td>
+          <td>..</td>
+          <td>1504.068</td>
+          <td>1356523065730.330</td>
+          <td>1755144986.540</td>
+          <td>47284940000</td>
           <td>..</td>
           <td>..</td>
-          <td>7350</td>
-          <td>280464355269.875</td>
-          <td>..</td>
-          <td>..</td>
-          <td>19.100</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
-          <td>34.500</td>
         </tr>
         <tr>
-          <th>2438</th>
-          <td>2004</td>
-          <td>YR2004</td>
-          <td>Estonia</td>
-          <td>EST</td>
-          <td>..</td>
-          <td>..</td>
-          <td>7480</td>
-          <td>10191533285.758</td>
+          <th>6121</th>
+          <td>2018</td>
+          <td>YR2018</td>
+          <td>Cuba</td>
+          <td>CUB</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
           <td>..</td>
-          <td>33.600</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
+          <td>..</td>
         </tr>
       </tbody>
     </table>
