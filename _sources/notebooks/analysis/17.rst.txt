@@ -1,0 +1,446 @@
+
+Economic Data Analysis
+======================
+
+.. code:: ipython3
+
+    %matplotlib inline
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import seaborn as sns; sns.set()
+    import pandas as pd
+    import plotly.plotly as py
+    import cufflinks as cf
+    import plotly.graph_objs as go
+    from sklearn.cluster import KMeans
+    from sklearn.preprocessing import LabelEncoder
+    from sklearn.preprocessing import MinMaxScaler
+    from scipy.stats import pearsonr, spearmanr
+    %matplotlib inline
+    
+    cf.set_config_file(theme='space')
+    pd.set_option('display.max_colwidth', -1)
+
+Data Importing
+--------------
+
+.. code:: ipython3
+
+    df = pd.read_csv("../data/production/subject/Economic.csv").set_index(["Country Code","Year"])
+    dd = pd.read_csv("../data/production/data_dictionary.csv").set_index("Code").loc[df.columns]
+    tourism_columns = ['ST.INT.ARVL', 'ST.INT.XPND.MP.ZS', 'ST.INT.XPND.CD', 'ST.INT.DPRT',
+           'ST.INT.RCPT.XP.ZS', 'ST.INT.RCPT.CD', 'Tourist Defecit', 'Tourism Net',
+           'Tourist Avg Net', 'Population Estimate', 'ST.INT.ARVL.PER.CAPITA',
+           'ST.INT.DPRT.PER.CAPITA']
+
+.. code:: ipython3
+
+    dd
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Indicator Name</th>
+        </tr>
+        <tr>
+          <th>Code</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>ST.INT.ARVL</th>
+          <td>International tourism, number of arrivals</td>
+        </tr>
+        <tr>
+          <th>ST.INT.XPND.MP.ZS</th>
+          <td>International tourism, expenditures (% of total imports)</td>
+        </tr>
+        <tr>
+          <th>ST.INT.XPND.CD</th>
+          <td>International tourism, expenditures (current US$)</td>
+        </tr>
+        <tr>
+          <th>ST.INT.DPRT</th>
+          <td>International tourism, number of departures</td>
+        </tr>
+        <tr>
+          <th>ST.INT.RCPT.XP.ZS</th>
+          <td>International tourism, receipts (% of total exports)</td>
+        </tr>
+        <tr>
+          <th>ST.INT.RCPT.CD</th>
+          <td>International tourism, receipts (current US$)</td>
+        </tr>
+        <tr>
+          <th>Tourist Defecit</th>
+          <td>The difference in outbound-inbound tourists for a country</td>
+        </tr>
+        <tr>
+          <th>Tourism Net</th>
+          <td>The difference in tourism recepts-expenditures</td>
+        </tr>
+        <tr>
+          <th>Tourist Avg Net</th>
+          <td>The average net income per tourist</td>
+        </tr>
+        <tr>
+          <th>Population Estimate</th>
+          <td>The UNPD estimated population for the country</td>
+        </tr>
+        <tr>
+          <th>ST.INT.ARVL.PER.CAPITA</th>
+          <td>Inbound tourists per resident</td>
+        </tr>
+        <tr>
+          <th>ST.INT.DPRT.PER.CAPITA</th>
+          <td>Outbound tourists per resident</td>
+        </tr>
+        <tr>
+          <th>Maddison GDPPC</th>
+          <td>Real GDP per capita in 2011US$, 2011 benchmark (suitable for cross-country growth comparisons)</td>
+        </tr>
+        <tr>
+          <th>DT.DOD.DIMF.CD</th>
+          <td>Use of IMF credit (DOD, current US$)</td>
+        </tr>
+        <tr>
+          <th>NY.GNP.PCAP.CD</th>
+          <td>GNI per capita, Atlas method (current US$)</td>
+        </tr>
+        <tr>
+          <th>NY.GNP.ATLS.CD</th>
+          <td>GNI, Atlas method (current US$)</td>
+        </tr>
+        <tr>
+          <th>DT.DIS.IDAG.CD</th>
+          <td>IDA grants (current US$)</td>
+        </tr>
+        <tr>
+          <th>DT.ODA.ODAT.CD</th>
+          <td>Net official development assistance received (current US$)</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Correlations
+------------
+
+.. code:: ipython3
+
+    corr = df.corr().drop(tourism_columns,axis="columns").loc[tourism_columns]
+
+.. code:: ipython3
+
+    corr.iplot(kind='heatmap',colorscale='-rdbu',
+                                    filename='economic-heatmap',
+              title="Correlations between Tourism indicators and economic",
+              zerolinecolor="white",
+              dimensions=(640,500),margin=(150,150,150,50))
+
+
+.. parsed-literal::
+
+    /opt/conda/lib/python3.7/site-packages/IPython/core/display.py:689: UserWarning:
+    
+    Consider using IPython.display.IFrame instead
+    
+
+
+
+
+.. raw:: html
+
+    <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plot.ly/~NoahtTristan/11.embed" height="500px" width="640px"></iframe>
+
+
+
+Variable Distributions
+----------------------
+
+.. code:: ipython3
+
+    def get_layout(c):
+        n_columns = 1
+        n_rows = 1
+        while n_rows*n_columns != c:
+            if n_rows > 5:
+                n_rows = 1
+                n_columns +=1
+            else:
+                n_rows += 1
+        return (n_rows,n_columns)
+    
+    def draw_histograms(dataframe):
+        shape = get_layout(len(dataframe.columns))
+        ax = dataframe.iplot(kind='histogram', subplots=True, shape=shape)
+        return ax
+    
+    draw_histograms(df)
+
+
+.. parsed-literal::
+
+    /opt/conda/lib/python3.7/site-packages/IPython/core/display.py:689: UserWarning:
+    
+    Consider using IPython.display.IFrame instead
+    
+
+
+
+
+.. raw:: html
+
+    <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plot.ly/~NoahtTristan/26.embed" height="525px" width="100%"></iframe>
+
+
+
+Normalize
+~~~~~~~~~
+
+.. code:: ipython3
+
+    df_norm = (df - df.mean()) / (df.max() - df.min())
+    draw_histograms(df_norm)
+
+
+.. parsed-literal::
+
+    /opt/conda/lib/python3.7/site-packages/IPython/core/display.py:689: UserWarning:
+    
+    Consider using IPython.display.IFrame instead
+    
+
+
+
+
+.. raw:: html
+
+    <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plot.ly/~NoahtTristan/28.embed" height="525px" width="100%"></iframe>
+
+
+
+Analysis
+--------
+
+Economic Correlation with Tourism Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+More Tourists, More Tourism Income
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:math:`H_0: \rho = 0` >There is not a significant linear relationship
+between x and y
+
+:math:`H_a: \rho \neq 0` >There is a significant linear relationship
+between x and y
+
+:math:`\alpha = 0.01`
+
+.. code:: ipython3
+
+    x = df_norm['ST.INT.ARVL']
+    y = df_norm['ST.INT.RCPT.CD']
+    c = spearmanr(x,y)
+    print("The two variables have a spearman correlation of {} with a pvalue of {}.".format(c.correlation,c.pvalue))
+
+
+.. parsed-literal::
+
+    The two variables have a spearman correlation of 0.8494315433365026 with a pvalue of 0.0.
+
+
+:math:`\rho \neq 0` at :math:`\alpha = .01`
+
+The null hypothesis is rejected, and the variables are correlated.
+
+.. code:: ipython3
+
+    plt.scatter(x,y)
+    plt.xlabel("International Arrivals")
+    plt.ylabel("Receipts from international tourism");
+
+
+
+.. image:: 17_files/17_17_0.png
+
+
+More Tourists, Higher GNI
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:math:`H_0: \rho = 0` >There is not a significant linear relationship
+between x and y
+
+:math:`H_a: \rho \neq 0` >There is a significant linear relationship
+between x and y
+
+:math:`\alpha = 0.01`
+
+.. code:: ipython3
+
+    x = df_norm['ST.INT.ARVL']
+    y = df_norm['NY.GNP.ATLS.CD']
+    c = spearmanr(x,y)
+    print("The two variables have a spearman correlation of {} with a pvalue of {}.".format(c.correlation,c.pvalue))
+
+
+.. parsed-literal::
+
+    The two variables have a spearman correlation of 0.7475348432236621 with a pvalue of 0.0.
+
+
+:math:`\rho \neq 0` at :math:`\alpha = .01`
+
+The null hypothesis is rejected, and the variables are correlated.
+
+.. code:: ipython3
+
+    plt.scatter(x,y)
+    plt.xlabel("International Arrivals")
+    plt.ylabel("GNI, Atlas method");
+
+
+
+.. image:: 17_files/17_21_0.png
+
+
+Higher proportion of tourism for exports, higher gni
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:math:`H_0: \rho = 0` >There is not a significant linear relationship
+between x and y
+
+:math:`H_a: \rho \neq 0` >There is a significant linear relationship
+between x and y
+
+:math:`\alpha = 0.01`
+
+.. code:: ipython3
+
+    x = df_norm['ST.INT.RCPT.XP.ZS']
+    y = df_norm['NY.GNP.ATLS.CD']
+    c = spearmanr(x,y)
+    print("The two variables have a spearman correlation of {} with a pvalue of {}.".format(c.correlation,c.pvalue))
+
+
+.. parsed-literal::
+
+    The two variables have a spearman correlation of -0.4050386729748235 with a pvalue of 1.5739350237553317e-181.
+
+
+:math:`\rho \neq 0` at :math:`\alpha = .01`
+
+The null hypothesis is rejected, and the variables are negatively
+correlated.
+
+.. code:: ipython3
+
+    plt.scatter(x,y)
+    plt.xlabel("International tourism, receipts (% of total exports)")
+    plt.ylabel("GNI, Atlas method");
+
+
+
+.. image:: 17_files/17_25_0.png
+
+
+Richer countries send more tourists abroad
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:math:`H_0: \rho = 0` >There is not a significant linear relationship
+between x and y
+
+:math:`H_a: \rho \neq 0` >There is a significant linear relationship
+between x and y
+
+:math:`\alpha = 0.01`
+
+.. code:: ipython3
+
+    x = df_norm['NY.GNP.ATLS.CD']
+    y = df_norm['ST.INT.DPRT']
+    c = spearmanr(x,y)
+    print("The two variables have a spearman correlation of {} with a pvalue of {}.".format(c.correlation,c.pvalue))
+
+
+.. parsed-literal::
+
+    The two variables have a spearman correlation of 0.4356578869734564 with a pvalue of 7.509412337449959e-213.
+
+
+:math:`\rho \neq 0` at :math:`\alpha = .01`
+
+The null hypothesis is rejected, and the variables are correlated.
+
+.. code:: ipython3
+
+    plt.scatter(x,y)
+    plt.ylabel("Outbound tourists")
+    plt.xlabel("GNI, Atlas method");
+
+
+
+.. image:: 17_files/17_29_0.png
+
+
+Richer countries (per capita) send more tourists abroad (per capita)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:math:`H_0: \rho = 0` >There is not a significant linear relationship
+between x and y
+
+:math:`H_a: \rho \neq 0` >There is a significant linear relationship
+between x and y
+
+:math:`\alpha = 0.01`
+
+.. code:: ipython3
+
+    x = df_norm['NY.GNP.PCAP.CD']
+    y = df_norm['ST.INT.DPRT.PER.CAPITA']
+    c = spearmanr(x,y)
+    print("The two variables have a spearman correlation of {} with a pvalue of {}.".format(c.correlation,c.pvalue))
+
+
+.. parsed-literal::
+
+    The two variables have a spearman correlation of 0.5909813594083781 with a pvalue of 0.0.
+
+
+:math:`\rho \neq 0` at :math:`\alpha = .01`
+
+The null hypothesis is rejected, and the variables are correlated.
+
+.. code:: ipython3
+
+    plt.scatter(x,y)
+    plt.ylabel("Outbound tourists per capita")
+    plt.xlabel("GNI, Atlas method per capita");
+
+
+
+.. image:: 17_files/17_33_0.png
+
