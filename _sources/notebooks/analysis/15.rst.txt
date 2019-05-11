@@ -131,18 +131,18 @@ Linear Regression
 
 .. parsed-literal::
 
-    {'ST.INT.ARVL': 0.6767800910881236,
-     'ST.INT.XPND.MP.ZS': 0.29320192015402335,
-     'ST.INT.XPND.CD': 0.8436738687896184,
-     'ST.INT.DPRT': 0.5843581021349076,
+    {'ST.INT.ARVL': 0.6624251840648874,
+     'ST.INT.XPND.MP.ZS': 0.2496865807278508,
+     'ST.INT.XPND.CD': 0.8066544664301246,
+     'ST.INT.DPRT': 0.6104478435295644,
      'ST.INT.RCPT.XP.ZS': 0.33970490718496615,
-     'ST.INT.RCPT.CD': 0.8963962696663049,
-     'Tourist Defecit': 0.1567283755641693,
-     'Tourism Net': 0.249035267839405,
-     'Tourist Avg Net': 0.37358915778681057,
-     'Population Estimate': 0.6539278536868223,
+     'ST.INT.RCPT.CD': 0.88146225189333,
+     'Tourist Defecit': 0.17773458747463966,
+     'Tourism Net': 0.26156832607851865,
+     'Tourist Avg Net': 0.30991021162585486,
+     'Population Estimate': 0.5783441836493696,
      'ST.INT.ARVL.PER.CAPITA': 0.38167376802973163,
-     'ST.INT.DPRT.PER.CAPITA': 0.4228549320135835}
+     'ST.INT.DPRT.PER.CAPITA': 0.38615479373204176}
 
 
 
@@ -246,18 +246,18 @@ Y Selection
 
 .. parsed-literal::
 
-    0.6955767034402249 imputation 2
-    0.2558337126436795 imputation 4
-    0.8502573959319707 imputation 4
-    0.6357580998819229 imputation 3
-    0.3492508230910567 imputation 1
-    0.8571377466283896 imputation 4
-    0.14919700269108094 imputation 3
-    0.24363311805131405 imputation 2
-    0.364926140855361 imputation 4
-    0.6177921893432959 imputation 4
+    0.6626395154257232 imputation 4
+    0.19673799441698492 imputation 3
+    0.8406996319945441 imputation 4
+    0.5968667820927176 imputation 3
+    0.34476085823478003 imputation 1
+    0.8589938777342573 imputation 4
+    0.184700160859107 imputation 3
+    0.22379937336089806 imputation 2
+    0.3177162944199816 imputation 3
+    0.6245106833304013 imputation 1
     0.38167376802973163 median
-    0.3897509887408797 pca 0
+    0.3624594993732485 median
 
 
 .. code:: ipython3
@@ -269,18 +269,18 @@ Y Selection
 
 .. parsed-literal::
 
-    {'ST.INT.ARVL': 'imputation 2',
-     'ST.INT.XPND.MP.ZS': 'imputation 4',
+    {'ST.INT.ARVL': 'imputation 4',
+     'ST.INT.XPND.MP.ZS': 'imputation 3',
      'ST.INT.XPND.CD': 'imputation 4',
      'ST.INT.DPRT': 'imputation 3',
      'ST.INT.RCPT.XP.ZS': 'imputation 1',
      'ST.INT.RCPT.CD': 'imputation 4',
      'Tourist Defecit': 'imputation 3',
      'Tourism Net': 'imputation 2',
-     'Tourist Avg Net': 'imputation 4',
-     'Population Estimate': 'imputation 4',
+     'Tourist Avg Net': 'imputation 3',
+     'Population Estimate': 'imputation 1',
      'ST.INT.ARVL.PER.CAPITA': 'median',
-     'ST.INT.DPRT.PER.CAPITA': 'pca 0'}
+     'ST.INT.DPRT.PER.CAPITA': 'median'}
 
 
 
@@ -338,15 +338,15 @@ Y Selection
 
 .. parsed-literal::
 
-    0.8076261360420968
+    0.7657938486880209
 
 
 
-.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_16_1.png
+.. image:: 15_files/15_16_1.png
 
 
 
-.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_16_2.png
+.. image:: 15_files/15_16_2.png
 
 
 .. code:: ipython3
@@ -356,15 +356,15 @@ Y Selection
 
 .. parsed-literal::
 
-    0.7408512785675596
+    0.8059594219967596
 
 
 
-.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_17_1.png
+.. image:: 15_files/15_17_1.png
 
 
 
-.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_17_2.png
+.. image:: 15_files/15_17_2.png
 
 
 Regression With Tensorflow
@@ -456,15 +456,14 @@ Regression With Tensorflow
     Instructions for updating:
     Use tf.cast instead.
     
-    .........................
-    ........................
+    ..................
 
 
-.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_22_1.png
+.. image:: 15_files/15_22_1.png
 
 
 
-.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_22_2.png
+.. image:: 15_files/15_22_2.png
 
 
 .. code:: ipython3
@@ -475,7 +474,7 @@ Regression With Tensorflow
 
 .. parsed-literal::
 
-    Testing set Mean Abs Error: 0.017
+    Testing set Mean Abs Error: 0.044
 
 
 .. code:: ipython3
@@ -490,7 +489,7 @@ Regression With Tensorflow
 
 
 
-.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_24_0.png
+.. image:: 15_files/15_24_0.png
 
 
 .. code:: ipython3
@@ -503,7 +502,7 @@ Regression With Tensorflow
 
 
 
-.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_25_0.png
+.. image:: 15_files/15_25_0.png
 
 
 .. code:: ipython3
@@ -523,15 +522,14 @@ Regression With Tensorflow
 
     
     .........................
-    .........................
-    ........
+    ..........
 
 
-.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_26_1.png
+.. image:: 15_files/15_26_1.png
 
 
 
-.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_26_2.png
+.. image:: 15_files/15_26_2.png
 
 
 .. code:: ipython3
@@ -542,7 +540,7 @@ Regression With Tensorflow
 
 .. parsed-literal::
 
-    Testing set Mean Abs Error: 0.016
+    Testing set Mean Abs Error: 0.037
 
 
 .. code:: ipython3
@@ -559,7 +557,7 @@ Regression With Tensorflow
 
 
 
-.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_28_0.png
+.. image:: 15_files/15_28_0.png
 
 
 .. code:: ipython3
@@ -572,5 +570,5 @@ Regression With Tensorflow
 
 
 
-.. image:: ../docs/notebooks/analysis/15_files/../docs/notebooks/analysis/15_29_0.png
+.. image:: 15_files/15_29_0.png
 

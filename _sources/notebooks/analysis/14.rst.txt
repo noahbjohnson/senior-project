@@ -78,7 +78,7 @@ Component Count Selection
 
 
 
-.. image:: ../docs/notebooks/analysis/14_files/../docs/notebooks/analysis/14_10_0.png
+.. image:: 14_files/14_10_0.png
 
 
 .. code:: ipython3
@@ -132,7 +132,7 @@ Component Count Selection
 
 
 
-.. image:: ../docs/notebooks/analysis/14_files/../docs/notebooks/analysis/14_14_0.png
+.. image:: 14_files/14_14_0.png
 
 
 PCA Save
