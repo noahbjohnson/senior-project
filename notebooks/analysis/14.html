@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>2. Full Dataset PCA &#8212; Senior-Project 0.1 documentation</title>
+    <title>2.2. Full Dataset PCA &#8212; Senior-Project 0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
@@ -17,8 +17,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3. Full Linear Modeling" href="15.html" />
-    <link rel="prev" title="1. Full Dataset Cleaning and Imputation" href="13.html" /> 
+    <link rel="next" title="2.3. Full Linear Modeling" href="15.html" />
+    <link rel="prev" title="2.1. Full Dataset Cleaning and Imputation" href="13.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -27,13 +27,13 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="15.html" title="3. Full Linear Modeling"
+          <a href="15.html" title="2.3. Full Linear Modeling"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="13.html" title="1. Full Dataset Cleaning and Imputation"
+          <a href="13.html" title="2.1. Full Dataset Cleaning and Imputation"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" accesskey="U">Data Analysis Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" accesskey="U">2. Data Analysis Notebooks</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -43,7 +43,7 @@
           <div class="body" role="main">
             
   <div class="section" id="full-dataset-pca">
-<h1>2. Full Dataset PCA<a class="headerlink" href="#full-dataset-pca" title="Permalink to this headline">¶</a></h1>
+<h1>2.2. Full Dataset PCA<a class="headerlink" href="#full-dataset-pca" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -83,7 +83,7 @@
 </pre></div>
 </div>
 <div class="section" id="median-imputation">
-<h2>2.1. Median Imputation<a class="headerlink" href="#median-imputation" title="Permalink to this headline">¶</a></h2>
+<h2>2.2.1. Median Imputation<a class="headerlink" href="#median-imputation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Impute the missing values</span>
 <span class="n">imp</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">missing_values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">)</span>
 <span class="n">imputed</span> <span class="o">=</span> <span class="n">imp</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">factors_df</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -91,7 +91,7 @@
 </div>
 </div>
 <div class="section" id="scaling">
-<h2>2.2. Scaling<a class="headerlink" href="#scaling" title="Permalink to this headline">¶</a></h2>
+<h2>2.2.2. Scaling<a class="headerlink" href="#scaling" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_max_scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">MinMaxScaler</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">min_max_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">imputed</span><span class="p">)</span>
 <span class="n">data_imputed</span> <span class="o">=</span> <span class="p">[</span><span class="n">min_max_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">factors_imputed</span><span class="p">]</span>
@@ -99,7 +99,7 @@
 </div>
 </div>
 <div class="section" id="component-count-selection">
-<h2>2.3. Component Count Selection<a class="headerlink" href="#component-count-selection" title="Permalink to this headline">¶</a></h2>
+<h2>2.2.3. Component Count Selection<a class="headerlink" href="#component-count-selection" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Median imputed</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -156,7 +156,7 @@
 <img alt="../../_images/14_14_0.png" src="../../_images/14_14_0.png" />
 </div>
 <div class="section" id="pca-save">
-<h2>2.4. PCA Save<a class="headerlink" href="#pca-save" title="Permalink to this headline">¶</a></h2>
+<h2>2.2.4. PCA Save<a class="headerlink" href="#pca-save" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reduced</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="s2">&quot;../data/production/pca/x_median.pickle&quot;</span><span class="p">)</span>
 <span class="n">x_out</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;../data/production/pca/x_imputed_1.pickle&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;../data/production/pca/x_imputed_2.pickle&quot;</span><span class="p">,</span>
@@ -181,21 +181,21 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">2. Full Dataset PCA</a><ul>
-<li><a class="reference internal" href="#median-imputation">2.1. Median Imputation</a></li>
-<li><a class="reference internal" href="#scaling">2.2. Scaling</a></li>
-<li><a class="reference internal" href="#component-count-selection">2.3. Component Count Selection</a></li>
-<li><a class="reference internal" href="#pca-save">2.4. PCA Save</a></li>
+<li><a class="reference internal" href="#">2.2. Full Dataset PCA</a><ul>
+<li><a class="reference internal" href="#median-imputation">2.2.1. Median Imputation</a></li>
+<li><a class="reference internal" href="#scaling">2.2.2. Scaling</a></li>
+<li><a class="reference internal" href="#component-count-selection">2.2.3. Component Count Selection</a></li>
+<li><a class="reference internal" href="#pca-save">2.2.4. PCA Save</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="13.html"
-                        title="previous chapter">1. Full Dataset Cleaning and Imputation</a></p>
+                        title="previous chapter">2.1. Full Dataset Cleaning and Imputation</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="15.html"
-                        title="next chapter">3. Full Linear Modeling</a></p>
+                        title="next chapter">2.3. Full Linear Modeling</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -224,13 +224,13 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="15.html" title="3. Full Linear Modeling"
+          <a href="15.html" title="2.3. Full Linear Modeling"
              >next</a> |</li>
         <li class="right" >
-          <a href="13.html" title="1. Full Dataset Cleaning and Imputation"
+          <a href="13.html" title="2.1. Full Dataset Cleaning and Imputation"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" >Data Analysis Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" >2. Data Analysis Notebooks</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

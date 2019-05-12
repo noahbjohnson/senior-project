@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>3. Full Linear Modeling &#8212; Senior-Project 0.1 documentation</title>
+    <title>2.3. Full Linear Modeling &#8212; Senior-Project 0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
@@ -17,8 +17,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4. Subject Dataset Cleaning and Imputation" href="16.html" />
-    <link rel="prev" title="2. Full Dataset PCA" href="14.html" /> 
+    <link rel="next" title="2.4. Subject Dataset Cleaning and Imputation" href="16.html" />
+    <link rel="prev" title="2.2. Full Dataset PCA" href="14.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -27,13 +27,13 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="16.html" title="4. Subject Dataset Cleaning and Imputation"
+          <a href="16.html" title="2.4. Subject Dataset Cleaning and Imputation"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="14.html" title="2. Full Dataset PCA"
+          <a href="14.html" title="2.2. Full Dataset PCA"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" accesskey="U">Data Analysis Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" accesskey="U">2. Data Analysis Notebooks</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -43,7 +43,7 @@
           <div class="body" role="main">
             
   <div class="section" id="full-linear-modeling">
-<h1>3. Full Linear Modeling<a class="headerlink" href="#full-linear-modeling" title="Permalink to this headline">¶</a></h1>
+<h1>2.3. Full Linear Modeling<a class="headerlink" href="#full-linear-modeling" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -90,7 +90,7 @@
 </pre></div>
 </div>
 <div class="section" id="process-the-data">
-<h2>3.1. Process the Data<a class="headerlink" href="#process-the-data" title="Permalink to this headline">¶</a></h2>
+<h2>2.3.1. Process the Data<a class="headerlink" href="#process-the-data" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scale the data</span>
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">MinMaxScaler</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">imputations</span><span class="p">:</span>
@@ -114,7 +114,7 @@
 </div>
 </div>
 <div class="section" id="linear-regression">
-<h2>3.2. Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
+<h2>2.3.2. Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Impute the missing values</span>
 <span class="n">imp</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">missing_values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">)</span>
 <span class="n">median_imputed</span> <span class="o">=</span> <span class="n">clean_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -169,9 +169,9 @@
 </pre></div>
 </div>
 <div class="section" id="y-selection">
-<h3>3.2.1. Y Selection<a class="headerlink" href="#y-selection" title="Permalink to this headline">¶</a></h3>
+<h3>2.3.2.1. Y Selection<a class="headerlink" href="#y-selection" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="r-2-without-pca">
-<h4>3.2.1.1. <span class="math notranslate nohighlight">\(R^2\)</span> without PCA<a class="headerlink" href="#r-2-without-pca" title="Permalink to this headline">¶</a></h4>
+<h4>2.3.2.1.1. <span class="math notranslate nohighlight">\(R^2\)</span> without PCA<a class="headerlink" href="#r-2-without-pca" title="Permalink to this headline">¶</a></h4>
 <p>{‘ST.INT.ARVL’: 0.675852391062048,</p>
 <p>‘ST.INT.XPND.MP.ZS’: 0.21200341745156914,</p>
 <p>‘ST.INT.XPND.CD’: 0.8412919537938548,</p>
@@ -186,7 +186,7 @@
 <p>‘ST.INT.DPRT.PER.CAPITA’: 0.3624594993732483}</p>
 </div>
 <div class="section" id="r-2-with-pca">
-<h4>3.2.1.2. <span class="math notranslate nohighlight">\(R^2\)</span> With PCA<a class="headerlink" href="#r-2-with-pca" title="Permalink to this headline">¶</a></h4>
+<h4>2.3.2.1.2. <span class="math notranslate nohighlight">\(R^2\)</span> With PCA<a class="headerlink" href="#r-2-with-pca" title="Permalink to this headline">¶</a></h4>
 <p>{‘ST.INT.ARVL’: 0.6856360885037339,</p>
 <p>‘ST.INT.XPND.MP.ZS’: 0.23129413567801616,</p>
 <p>‘ST.INT.XPND.CD’: 0.8275349772305574,</p>
@@ -335,7 +335,7 @@
 </div>
 </div>
 <div class="section" id="regression-with-tensorflow">
-<h2>3.3. Regression With Tensorflow<a class="headerlink" href="#regression-with-tensorflow" title="Permalink to this headline">¶</a></h2>
+<h2>2.3.3. Regression With Tensorflow<a class="headerlink" href="#regression-with-tensorflow" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_history</span><span class="p">(</span><span class="n">history</span><span class="p">):</span>
   <span class="n">hist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">)</span>
   <span class="n">hist</span><span class="p">[</span><span class="s1">&#39;epoch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">epoch</span>
@@ -500,27 +500,27 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">3. Full Linear Modeling</a><ul>
-<li><a class="reference internal" href="#process-the-data">3.1. Process the Data</a></li>
-<li><a class="reference internal" href="#linear-regression">3.2. Linear Regression</a><ul>
-<li><a class="reference internal" href="#y-selection">3.2.1. Y Selection</a><ul>
-<li><a class="reference internal" href="#r-2-without-pca">3.2.1.1. <span class="math notranslate nohighlight">\(R^2\)</span> without PCA</a></li>
-<li><a class="reference internal" href="#r-2-with-pca">3.2.1.2. <span class="math notranslate nohighlight">\(R^2\)</span> With PCA</a></li>
+<li><a class="reference internal" href="#">2.3. Full Linear Modeling</a><ul>
+<li><a class="reference internal" href="#process-the-data">2.3.1. Process the Data</a></li>
+<li><a class="reference internal" href="#linear-regression">2.3.2. Linear Regression</a><ul>
+<li><a class="reference internal" href="#y-selection">2.3.2.1. Y Selection</a><ul>
+<li><a class="reference internal" href="#r-2-without-pca">2.3.2.1.1. <span class="math notranslate nohighlight">\(R^2\)</span> without PCA</a></li>
+<li><a class="reference internal" href="#r-2-with-pca">2.3.2.1.2. <span class="math notranslate nohighlight">\(R^2\)</span> With PCA</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#regression-with-tensorflow">3.3. Regression With Tensorflow</a></li>
+<li><a class="reference internal" href="#regression-with-tensorflow">2.3.3. Regression With Tensorflow</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="14.html"
-                        title="previous chapter">2. Full Dataset PCA</a></p>
+                        title="previous chapter">2.2. Full Dataset PCA</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="16.html"
-                        title="next chapter">4. Subject Dataset Cleaning and Imputation</a></p>
+                        title="next chapter">2.4. Subject Dataset Cleaning and Imputation</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -549,13 +549,13 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="16.html" title="4. Subject Dataset Cleaning and Imputation"
+          <a href="16.html" title="2.4. Subject Dataset Cleaning and Imputation"
              >next</a> |</li>
         <li class="right" >
-          <a href="14.html" title="2. Full Dataset PCA"
+          <a href="14.html" title="2.2. Full Dataset PCA"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" >Data Analysis Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../analysis_notebooks.html" >2. Data Analysis Notebooks</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
