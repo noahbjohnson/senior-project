@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.5. Dataset Joining &#8212; Senior-Project 0.1 documentation</title>
+    <title>5. Dataset Joining &#8212; Senior-Project 0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
@@ -17,8 +17,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.6. Tourism Missing Data" href="2.html" />
-    <link rel="prev" title="1.4. General Indicators Data Processing (WDI)" href="11.html" /> 
+    <link rel="next" title="6. Tourism Missing Data" href="2.html" />
+    <link rel="prev" title="4. General Indicators Data Processing (WDI)" href="11.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -27,13 +27,13 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="2.html" title="1.6. Tourism Missing Data"
+          <a href="2.html" title="6. Tourism Missing Data"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="11.html" title="1.4. General Indicators Data Processing (WDI)"
+          <a href="11.html" title="4. General Indicators Data Processing (WDI)"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">1. Data Preperation Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -43,7 +43,7 @@
           <div class="body" role="main">
             
   <div class="section" id="dataset-joining">
-<h1>1.5. Dataset Joining<a class="headerlink" href="#dataset-joining" title="Permalink to this headline">¶</a></h1>
+<h1>5. Dataset Joining<a class="headerlink" href="#dataset-joining" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.float_format&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
@@ -51,7 +51,7 @@
 </pre></div>
 </div>
 <div class="section" id="load-the-files">
-<h2>1.5.1. Load The Files<a class="headerlink" href="#load-the-files" title="Permalink to this headline">¶</a></h2>
+<h2>5.1. Load The Files<a class="headerlink" href="#load-the-files" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tourism</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;../data/processed/Tourism.pickle&#39;</span><span class="p">)</span>
 <span class="n">Inequality_WIID</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;../data/processed/Inequality_WIID.pickle&#39;</span><span class="p">)</span>
 <span class="n">Inequality_WDI</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;../data/processed/Inequality_WDI.pickle&#39;</span><span class="p">)</span>
@@ -65,9 +65,9 @@
 </div>
 </div>
 <div class="section" id="join-by-subject">
-<h2>1.5.2. Join By Subject<a class="headerlink" href="#join-by-subject" title="Permalink to this headline">¶</a></h2>
+<h2>5.2. Join By Subject<a class="headerlink" href="#join-by-subject" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="inequality">
-<h3>1.5.2.1. Inequality<a class="headerlink" href="#inequality" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.1. Inequality<a class="headerlink" href="#inequality" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Inequality</span> <span class="o">=</span> <span class="n">Tourism</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Inequality_WDI</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Inequality_WIID</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -439,7 +439,7 @@
 </table>
 </div></div>
 <div class="section" id="general">
-<h3>1.5.2.2. General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.2. General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">General</span> <span class="o">=</span> <span class="n">Tourism</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">General_WDI</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -811,7 +811,7 @@
 </table>
 </div></div>
 <div class="section" id="economic">
-<h3>1.5.2.3. Economic<a class="headerlink" href="#economic" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.3. Economic<a class="headerlink" href="#economic" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Economic</span> <span class="o">=</span> <span class="n">Tourism</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Economic_MADDISON</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Economic_WDI</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1036,7 +1036,7 @@
 </table>
 </div></div>
 <div class="section" id="education">
-<h3>1.5.2.4. Education<a class="headerlink" href="#education" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.4. Education<a class="headerlink" href="#education" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Education</span> <span class="o">=</span> <span class="n">Tourism</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Education_WDI</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1226,7 +1226,7 @@
 </table>
 </div></div>
 <div class="section" id="labor">
-<h3>1.5.2.5. Labor<a class="headerlink" href="#labor" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.5. Labor<a class="headerlink" href="#labor" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Labor</span> <span class="o">=</span> <span class="n">Tourism</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Labor_WDI</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1458,7 +1458,7 @@
 </table>
 </div></div>
 <div class="section" id="urbanization">
-<h3>1.5.2.6. Urbanization<a class="headerlink" href="#urbanization" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.6. Urbanization<a class="headerlink" href="#urbanization" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Urbanization</span> <span class="o">=</span> <span class="n">Tourism</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Urbanization_UNPD</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1635,7 +1635,7 @@
 </div></div>
 </div>
 <div class="section" id="full-dataset-join">
-<h2>1.5.3. Full Dataset Join<a class="headerlink" href="#full-dataset-join" title="Permalink to this headline">¶</a></h2>
+<h2>5.3. Full Dataset Join<a class="headerlink" href="#full-dataset-join" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Full</span> <span class="o">=</span> <span class="n">Tourism</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
     <span class="n">Inequality_WIID</span><span class="p">,</span>
     <span class="n">Inequality_WDI</span><span class="p">,</span>
@@ -1648,7 +1648,7 @@
 </div>
 </div>
 <div class="section" id="save-files">
-<h2>1.5.4. Save Files<a class="headerlink" href="#save-files" title="Permalink to this headline">¶</a></h2>
+<h2>5.4. Save Files<a class="headerlink" href="#save-files" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">General</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/processed/General.csv&quot;</span><span class="p">)</span>
 <span class="n">Labor</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/processed/Labor.csv&quot;</span><span class="p">)</span>
 <span class="n">Urbanization</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/processed/Urbanization.csv&quot;</span><span class="p">)</span>
@@ -1669,29 +1669,29 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">1.5. Dataset Joining</a><ul>
-<li><a class="reference internal" href="#load-the-files">1.5.1. Load The Files</a></li>
-<li><a class="reference internal" href="#join-by-subject">1.5.2. Join By Subject</a><ul>
-<li><a class="reference internal" href="#inequality">1.5.2.1. Inequality</a></li>
-<li><a class="reference internal" href="#general">1.5.2.2. General</a></li>
-<li><a class="reference internal" href="#economic">1.5.2.3. Economic</a></li>
-<li><a class="reference internal" href="#education">1.5.2.4. Education</a></li>
-<li><a class="reference internal" href="#labor">1.5.2.5. Labor</a></li>
-<li><a class="reference internal" href="#urbanization">1.5.2.6. Urbanization</a></li>
+<li><a class="reference internal" href="#">5. Dataset Joining</a><ul>
+<li><a class="reference internal" href="#load-the-files">5.1. Load The Files</a></li>
+<li><a class="reference internal" href="#join-by-subject">5.2. Join By Subject</a><ul>
+<li><a class="reference internal" href="#inequality">5.2.1. Inequality</a></li>
+<li><a class="reference internal" href="#general">5.2.2. General</a></li>
+<li><a class="reference internal" href="#economic">5.2.3. Economic</a></li>
+<li><a class="reference internal" href="#education">5.2.4. Education</a></li>
+<li><a class="reference internal" href="#labor">5.2.5. Labor</a></li>
+<li><a class="reference internal" href="#urbanization">5.2.6. Urbanization</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#full-dataset-join">1.5.3. Full Dataset Join</a></li>
-<li><a class="reference internal" href="#save-files">1.5.4. Save Files</a></li>
+<li><a class="reference internal" href="#full-dataset-join">5.3. Full Dataset Join</a></li>
+<li><a class="reference internal" href="#save-files">5.4. Save Files</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="11.html"
-                        title="previous chapter">1.4. General Indicators Data Processing (WDI)</a></p>
+                        title="previous chapter">4. General Indicators Data Processing (WDI)</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="2.html"
-                        title="next chapter">1.6. Tourism Missing Data</a></p>
+                        title="next chapter">6. Tourism Missing Data</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -1720,13 +1720,13 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="2.html" title="1.6. Tourism Missing Data"
+          <a href="2.html" title="6. Tourism Missing Data"
              >next</a> |</li>
         <li class="right" >
-          <a href="11.html" title="1.4. General Indicators Data Processing (WDI)"
+          <a href="11.html" title="4. General Indicators Data Processing (WDI)"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >1. Data Preperation Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

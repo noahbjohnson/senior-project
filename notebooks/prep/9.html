@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.13. Urbanization Data Processing (UNPD) &#8212; Senior-Project 0.1 documentation</title>
+    <title>13. Urbanization Data Processing (UNPD) &#8212; Senior-Project 0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
@@ -17,8 +17,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2. Data Analysis Notebooks" href="../../analysis_notebooks.html" />
-    <link rel="prev" title="1.12. Education Data Processing (WDI)" href="8.html" /> 
+    <link rel="next" title="Data Analysis Notebooks" href="../../analysis_notebooks.html" />
+    <link rel="prev" title="12. Education Data Processing (WDI)" href="8.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -27,13 +27,13 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../../analysis_notebooks.html" title="2. Data Analysis Notebooks"
+          <a href="../../analysis_notebooks.html" title="Data Analysis Notebooks"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="8.html" title="1.12. Education Data Processing (WDI)"
+          <a href="8.html" title="12. Education Data Processing (WDI)"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">1. Data Preperation Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" accesskey="U">Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -43,9 +43,9 @@
           <div class="body" role="main">
             
   <div class="section" id="urbanization-data-processing-unpd">
-<h1>1.13. Urbanization Data Processing (UNPD)<a class="headerlink" href="#urbanization-data-processing-unpd" title="Permalink to this headline">¶</a></h1>
+<h1>13. Urbanization Data Processing (UNPD)<a class="headerlink" href="#urbanization-data-processing-unpd" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="data-dictionary">
-<h2>1.13.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
+<h2>13.1. Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-center">
 <colgroup>
 <col style="width: 17%" />
@@ -93,7 +93,7 @@ Y.UR.ZS</p></td>
 </div>
 </div>
 <div class="section" id="load-the-file">
-<h2>1.13.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
+<h2>13.2. Load The File<a class="headerlink" href="#load-the-file" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/external/Urbanization/UNPD/Data_Extract_From_World_Development_Indicators.xlsx&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -194,7 +194,7 @@ Y.UR.ZS</p></td>
 </table>
 </div></div>
 <div class="section" id="standardize-country-codes">
-<h2>1.13.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
+<h2>13.3. Standardize Country Codes<a class="headerlink" href="#standardize-country-codes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Only Select rows with valid country codes</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">country_locations</span> <span class="o">=</span> <span class="p">[]</span>
@@ -209,7 +209,7 @@ Y.UR.ZS</p></td>
 </div>
 </div>
 <div class="section" id="standardize-indexes">
-<h2>1.13.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
+<h2>13.4. Standardize Indexes<a class="headerlink" href="#standardize-indexes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="s2">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;Year&quot;</span>
@@ -223,9 +223,9 @@ Y.UR.ZS</p></td>
 </div>
 </div>
 <div class="section" id="clean-data">
-<h2>1.13.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
+<h2>13.5. Clean Data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="header">
-<h3>1.13.5.1. Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
+<h3>13.5.1. Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Time Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Country Name&quot;</span><span class="p">],</span>
         <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span>
         <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -244,7 +244,7 @@ Y.UR.ZS</p></td>
 </div>
 </div>
 <div class="section" id="data-types">
-<h3>1.13.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<h3>13.5.2. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Replace &#39;..&#39; with np.nan for better parsing</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">)</span>
@@ -342,7 +342,7 @@ Y.UR.ZS</p></td>
 </div></div>
 </div>
 <div class="section" id="save-data">
-<h2>1.13.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
+<h2>13.6. Save Data<a class="headerlink" href="#save-data" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;../data/processed/Urbanization_UNPD.pickle&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -357,27 +357,27 @@ Y.UR.ZS</p></td>
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">1.13. Urbanization Data Processing (UNPD)</a><ul>
-<li><a class="reference internal" href="#data-dictionary">1.13.1. Data Dictionary</a></li>
-<li><a class="reference internal" href="#load-the-file">1.13.2. Load The File</a></li>
-<li><a class="reference internal" href="#standardize-country-codes">1.13.3. Standardize Country Codes</a></li>
-<li><a class="reference internal" href="#standardize-indexes">1.13.4. Standardize Indexes</a></li>
-<li><a class="reference internal" href="#clean-data">1.13.5. Clean Data</a><ul>
-<li><a class="reference internal" href="#header">1.13.5.1. Header</a></li>
-<li><a class="reference internal" href="#data-types">1.13.5.2. Data Types</a></li>
+<li><a class="reference internal" href="#">13. Urbanization Data Processing (UNPD)</a><ul>
+<li><a class="reference internal" href="#data-dictionary">13.1. Data Dictionary</a></li>
+<li><a class="reference internal" href="#load-the-file">13.2. Load The File</a></li>
+<li><a class="reference internal" href="#standardize-country-codes">13.3. Standardize Country Codes</a></li>
+<li><a class="reference internal" href="#standardize-indexes">13.4. Standardize Indexes</a></li>
+<li><a class="reference internal" href="#clean-data">13.5. Clean Data</a><ul>
+<li><a class="reference internal" href="#header">13.5.1. Header</a></li>
+<li><a class="reference internal" href="#data-types">13.5.2. Data Types</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#save-data">1.13.6. Save Data</a></li>
+<li><a class="reference internal" href="#save-data">13.6. Save Data</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="8.html"
-                        title="previous chapter">1.12. Education Data Processing (WDI)</a></p>
+                        title="previous chapter">12. Education Data Processing (WDI)</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../../analysis_notebooks.html"
-                        title="next chapter">2. Data Analysis Notebooks</a></p>
+                        title="next chapter">Data Analysis Notebooks</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -406,13 +406,13 @@ Y.UR.ZS</p></td>
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../../analysis_notebooks.html" title="2. Data Analysis Notebooks"
+          <a href="../../analysis_notebooks.html" title="Data Analysis Notebooks"
              >next</a> |</li>
         <li class="right" >
-          <a href="8.html" title="1.12. Education Data Processing (WDI)"
+          <a href="8.html" title="12. Education Data Processing (WDI)"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Senior-Project 0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >1. Data Preperation Notebooks</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../../prep_notebooks.html" >Data Preperation Notebooks</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
