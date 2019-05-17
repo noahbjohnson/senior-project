@@ -11,6 +11,8 @@ Full Dataset Cleaning and Imputation
 
 .. parsed-literal::
 
+    /home/jupyter/.local/lib/python3.5/site-packages/sklearn/externals/six.py:31: DeprecationWarning: The module is deprecated in version 0.21 and will be removed in version 0.23 since we've dropped support for Python 2.7. Please rely on the official version of six (https://pypi.org/project/six/).
+      "(https://pypi.org/project/six/).", DeprecationWarning)
     Using TensorFlow backend.
 
 
@@ -213,101 +215,101 @@ Check The Integrity of Imputed Dataframes
       <thead>
         <tr style="text-align: right;">
           <th></th>
+          <th>Changed Values</th>
           <th>DF ONE</th>
           <th>DF TWO</th>
-          <th>Changed Values</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <th>0</th>
+          <td>149842</td>
           <td>df</td>
           <td>df1</td>
-          <td>149842</td>
         </tr>
         <tr>
           <th>1</th>
+          <td>149842</td>
           <td>df</td>
           <td>df2</td>
-          <td>149842</td>
         </tr>
         <tr>
           <th>2</th>
+          <td>149842</td>
           <td>df</td>
           <td>df3</td>
-          <td>149842</td>
         </tr>
         <tr>
           <th>3</th>
+          <td>149842</td>
           <td>df</td>
           <td>df4</td>
-          <td>149842</td>
         </tr>
         <tr>
           <th>4</th>
+          <td>149842</td>
           <td>df</td>
           <td>df5</td>
-          <td>149842</td>
         </tr>
         <tr>
           <th>5</th>
+          <td>149842</td>
           <td>df1</td>
           <td>df2</td>
-          <td>149842</td>
         </tr>
         <tr>
           <th>6</th>
+          <td>149842</td>
           <td>df1</td>
           <td>df3</td>
-          <td>149842</td>
         </tr>
         <tr>
           <th>7</th>
+          <td>149842</td>
           <td>df1</td>
           <td>df4</td>
-          <td>149842</td>
         </tr>
         <tr>
           <th>8</th>
+          <td>149842</td>
           <td>df1</td>
           <td>df5</td>
-          <td>149842</td>
         </tr>
         <tr>
           <th>9</th>
+          <td>149842</td>
           <td>df2</td>
           <td>df3</td>
-          <td>149842</td>
         </tr>
         <tr>
           <th>10</th>
+          <td>149842</td>
           <td>df2</td>
           <td>df4</td>
-          <td>149842</td>
         </tr>
         <tr>
           <th>11</th>
+          <td>149842</td>
           <td>df2</td>
           <td>df5</td>
-          <td>149842</td>
         </tr>
         <tr>
           <th>12</th>
+          <td>149842</td>
           <td>df3</td>
           <td>df4</td>
-          <td>149842</td>
         </tr>
         <tr>
           <th>13</th>
+          <td>149842</td>
           <td>df3</td>
           <td>df5</td>
-          <td>149842</td>
         </tr>
         <tr>
           <th>14</th>
+          <td>149842</td>
           <td>df4</td>
           <td>df5</td>
-          <td>149842</td>
         </tr>
       </tbody>
     </table>

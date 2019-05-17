@@ -11,6 +11,7 @@ Full Linear Modeling
     from sklearn.impute import SimpleImputer
     from sklearn.decomposition import PCA
     from sklearn import preprocessing
+    from sklearn.metrics import mean_squared_error
     import pandas as pd
     import statsmodels.api as sm
     from sklearn.linear_model import LinearRegression
@@ -21,6 +22,44 @@ Full Linear Modeling
     import tensorflow as tf
     from tensorflow import keras
     from tensorflow.keras import layers
+    from bokeh.plotting import figure, ColumnDataSource
+    from bokeh.io import output_notebook, show
+    from bokeh.models import HoverTool
+    output_notebook()
+
+
+
+.. raw:: html
+
+            <script type="text/javascript">
+            window.PlotlyConfig = {MathJaxConfig: 'local'};
+            if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+            if (typeof require !== 'undefined') {
+            require.undef("plotly");
+            requirejs.config({
+                paths: {
+                    'plotly': ['https://cdn.plot.ly/plotly-latest.min']
+                }
+            });
+            require(['plotly'], function(Plotly) {
+                window._Plotly = Plotly;
+            });
+            }
+            </script>
+            
+
+
+
+.. raw:: html
+
+    
+        <div class="bk-root">
+            <a href="https://bokeh.pydata.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
+            <span id="1001">Loading BokehJS ...</span>
+        </div>
+
+
+
 
 .. code:: ipython3
 
@@ -42,6 +81,91 @@ Full Linear Modeling
                        'Tourist Defecit', 'Tourism Net', 'Tourist Avg Net',
                        'Population Estimate', 'ST.INT.ARVL.PER.CAPITA',
                        'ST.INT.DPRT.PER.CAPITA']
+    data_dictionary = pd.read_csv("../data/production/data_dictionary.csv")
+
+.. code:: ipython3
+
+    def scatter_with_hover(df, x, y,
+                           fig=None, cols=None, name=None, marker='o',
+                           fig_width=500, fig_height=500, **kwargs):
+        """
+        Plots an interactive scatter plot of `x` vs `y` using bokeh, with automatic
+        tooltips showing columns from `df`.
+    
+        Parameters
+        ----------
+        df : pandas.DataFrame
+            DataFrame containing the data to be plotted
+        x : str
+            Name of the column to use for the x-axis values
+        y : str
+            Name of the column to use for the y-axis values
+        fig : bokeh.plotting.Figure, optional
+            Figure on which to plot (if not given then a new figure will be created)
+        cols : list of str
+            Columns to show in the hover tooltip (default is to show all)
+        name : str
+            Bokeh series name to give to the scattered data
+        marker : str
+            Name of marker to use for scatter plot
+        **kwargs
+            Any further arguments to be passed to fig.scatter
+    
+        Returns
+        -------
+        bokeh.plotting.Figure
+            Figure (the same as given, or the newly created figure)
+    
+        Example
+        -------
+        fig = scatter_with_hover(df, 'A', 'B')
+        show(fig)
+    
+        fig = scatter_with_hover(df, 'A', 'B', cols=['C', 'D', 'E'], marker='x', color='red')
+        show(fig)
+    
+        Author
+        ------
+        Robin Wilson <robin@rtwilson.com>
+        with thanks to Max Albert for original code example
+        """
+    
+        # If we haven't been given a Figure obj then create it with default
+        # size etc.
+        if fig is None:
+            fig = figure(width=fig_width, height=fig_height, tools=['box_zoom', 'reset'])
+    
+        # We're getting data from the given dataframe
+        source = ColumnDataSource(data=df)
+    
+        # We need a name so that we can restrict hover tools to just this
+        # particular 'series' on the plot. You can specify it (in case it
+        # needs to be something specific for other reasons), otherwise
+        # we just use 'main'
+        if name is None:
+            name = 'main'
+    
+        # Actually do the scatter plot - the easy bit
+        # (other keyword arguments will be passed to this function)
+        fig.scatter(x, y, source=source, name=name, marker=marker, **kwargs)
+    
+        # Now we create the hover tool, and make sure it is only active with
+        # the series we plotted in the previous line
+        hover = HoverTool(names=[name])
+    
+        if cols is None:
+            # Display *all* columns in the tooltips
+            hover.tooltips = [(c, '@' + c) for c in df.columns]
+        else:
+            # Display just the given columns in the tooltips
+            hover.tooltips = [(c, '@' + c) for c in cols]
+    
+        hover.tooltips.append(('index', '$index'))
+    
+        # Finally add/enable the tool
+        fig.add_tools(hover)
+    
+        return fig
 
 .. code:: ipython3
 
@@ -61,15 +185,6 @@ Process the Data
         df[:] = scaler.fit_transform(df[:])
     y_df[:] = scaler.fit_transform(y_df[:])
     clean_df[:] = scaler.fit_transform(clean_df[:]);
-
-
-.. parsed-literal::
-
-    /opt/conda/lib/python3.7/site-packages/sklearn/preprocessing/data.py:334: DataConversionWarning:
-    
-    Data with input dtype int64, float64 were all converted to float64 by MinMaxScaler.
-    
-
 
 .. code:: ipython3
 
@@ -131,18 +246,18 @@ Linear Regression
 
 .. parsed-literal::
 
-    {'ST.INT.ARVL': 0.6624251840648874,
-     'ST.INT.XPND.MP.ZS': 0.2496865807278508,
-     'ST.INT.XPND.CD': 0.8066544664301246,
-     'ST.INT.DPRT': 0.6104478435295644,
-     'ST.INT.RCPT.XP.ZS': 0.33970490718496615,
-     'ST.INT.RCPT.CD': 0.88146225189333,
-     'Tourist Defecit': 0.17773458747463966,
-     'Tourism Net': 0.26156832607851865,
-     'Tourist Avg Net': 0.30991021162585486,
-     'Population Estimate': 0.5783441836493696,
-     'ST.INT.ARVL.PER.CAPITA': 0.38167376802973163,
-     'ST.INT.DPRT.PER.CAPITA': 0.38615479373204176}
+    {'Population Estimate': 0.6498074890577036,
+     'ST.INT.ARVL': 0.6593072814602154,
+     'ST.INT.ARVL.PER.CAPITA': 0.6408087587279374,
+     'ST.INT.DPRT': 0.5694936652377871,
+     'ST.INT.DPRT.PER.CAPITA': 0.38954183304553036,
+     'ST.INT.RCPT.CD': 0.8532741563809851,
+     'ST.INT.RCPT.XP.ZS': 0.4233413648817498,
+     'ST.INT.XPND.CD': 0.8297909396158916,
+     'ST.INT.XPND.MP.ZS': 0.22068081144598994,
+     'Tourism Net': 0.18730888763845188,
+     'Tourist Avg Net': 0.34691864672397643,
+     'Tourist Defecit': 0.19475497901814953}
 
 
 
@@ -152,59 +267,61 @@ Y Selection
 :math:`R^2` without PCA
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-{‘ST.INT.ARVL’: 0.675852391062048,
+{'ST.INT.ARVL': 0.675852391062048,
 
-‘ST.INT.XPND.MP.ZS’: 0.21200341745156914,
+'ST.INT.XPND.MP.ZS': 0.21200341745156914,
 
-‘ST.INT.XPND.CD’: 0.8412919537938548,
+'ST.INT.XPND.CD': 0.8412919537938548,
 
-‘ST.INT.DPRT’: 0.6113813727042621,
+'ST.INT.DPRT': 0.6113813727042621,
 
-‘ST.INT.RCPT.XP.ZS’: 0.3644287678690312,
+'ST.INT.RCPT.XP.ZS': 0.3644287678690312,
 
-‘ST.INT.RCPT.CD’: 0.8535041218396786,
+'ST.INT.RCPT.CD': 0.8535041218396786,
 
-‘Tourist Defecit’: 0.13105893926103807,
+'Tourist Defecit': 0.13105893926103807,
 
-‘Tourism Net’: 0.24427317525706657,
+'Tourism Net': 0.24427317525706657,
 
-‘Tourist Avg Net’: 0.34475616068936765,
+'Tourist Avg Net': 0.34475616068936765,
 
-‘Population Estimate’: 0.636766087835353,
+'Population Estimate': 0.636766087835353,
 
-‘ST.INT.ARVL.PER.CAPITA’: 0.46876625238076747,
+'ST.INT.ARVL.PER.CAPITA': 0.46876625238076747,
 
-‘ST.INT.DPRT.PER.CAPITA’: 0.3624594993732483}
+'ST.INT.DPRT.PER.CAPITA': 0.3624594993732483}
 
 :math:`R^2` With PCA
 ^^^^^^^^^^^^^^^^^^^^
 
-{‘ST.INT.ARVL’: 0.6856360885037339,
+{'ST.INT.ARVL': 0.6856360885037339,
 
-‘ST.INT.XPND.MP.ZS’: 0.23129413567801616,
+'ST.INT.XPND.MP.ZS': 0.23129413567801616,
 
-‘ST.INT.XPND.CD’: 0.8275349772305574,
+'ST.INT.XPND.CD': 0.8275349772305574,
 
-‘ST.INT.DPRT’: 0.5836403128964276,
+'ST.INT.DPRT': 0.5836403128964276,
 
-‘ST.INT.RCPT.XP.ZS’: 0.4014869884684903,
+'ST.INT.RCPT.XP.ZS': 0.4014869884684903,
 
-‘ST.INT.RCPT.CD’: 0.8883785813247653,
+'ST.INT.RCPT.CD': 0.8883785813247653,
 
-‘Tourist Defecit’: 0.1752872287880265,
+'Tourist Defecit': 0.1752872287880265,
 
-‘Tourism Net’: 0.23271929515733414,
+'Tourism Net': 0.23271929515733414,
 
-‘Tourist Avg Net’: 0.3562943380288015,
+'Tourist Avg Net': 0.3562943380288015,
 
-‘Population Estimate’: 0.5736344237791429,
+'Population Estimate': 0.5736344237791429,
 
-‘ST.INT.ARVL.PER.CAPITA’: 0.4843666779553838,
+'ST.INT.ARVL.PER.CAPITA': 0.4843666779553838,
 
-‘ST.INT.DPRT.PER.CAPITA’: 0.3624594993732483}
+'ST.INT.DPRT.PER.CAPITA': 0.3624594993732483}
 
 .. code:: ipython3
 
+    """ Get basic OLS scores for all response vars to choose targets
+    """
     ols_models = {}
     for y in y_list:
         top_score = 0
@@ -246,17 +363,17 @@ Y Selection
 
 .. parsed-literal::
 
-    0.6626395154257232 imputation 4
-    0.19673799441698492 imputation 3
-    0.8406996319945441 imputation 4
-    0.5968667820927176 imputation 3
-    0.34476085823478003 imputation 1
-    0.8589938777342573 imputation 4
-    0.184700160859107 imputation 3
-    0.22379937336089806 imputation 2
-    0.3177162944199816 imputation 3
-    0.6245106833304013 imputation 1
-    0.38167376802973163 median
+    0.6158198110573296 imputation 0
+    0.23472318220720487 imputation 0
+    0.8259229865306066 imputation 4
+    0.6200992604732054 imputation 0
+    0.42151374899819494 imputation 0
+    0.8690135716952789 imputation 2
+    0.20454194805709605 imputation 3
+    0.2235631366432509 imputation 1
+    0.32241016412931156 imputation 3
+    0.5740237337934315 imputation 1
+    0.5362096675389183 imputation 0
     0.3624594993732485 median
 
 
@@ -269,18 +386,18 @@ Y Selection
 
 .. parsed-literal::
 
-    {'ST.INT.ARVL': 'imputation 4',
-     'ST.INT.XPND.MP.ZS': 'imputation 3',
+    {'Population Estimate': 'imputation 1',
+     'ST.INT.ARVL': 'imputation 0',
+     'ST.INT.ARVL.PER.CAPITA': 'imputation 0',
+     'ST.INT.DPRT': 'imputation 0',
+     'ST.INT.DPRT.PER.CAPITA': 'median',
+     'ST.INT.RCPT.CD': 'imputation 2',
+     'ST.INT.RCPT.XP.ZS': 'imputation 0',
      'ST.INT.XPND.CD': 'imputation 4',
-     'ST.INT.DPRT': 'imputation 3',
-     'ST.INT.RCPT.XP.ZS': 'imputation 1',
-     'ST.INT.RCPT.CD': 'imputation 4',
-     'Tourist Defecit': 'imputation 3',
-     'Tourism Net': 'imputation 2',
+     'ST.INT.XPND.MP.ZS': 'imputation 0',
+     'Tourism Net': 'imputation 1',
      'Tourist Avg Net': 'imputation 3',
-     'Population Estimate': 'imputation 1',
-     'ST.INT.ARVL.PER.CAPITA': 'median',
-     'ST.INT.DPRT.PER.CAPITA': 'median'}
+     'Tourist Defecit': 'imputation 3'}
 
 
 
@@ -295,7 +412,8 @@ Y Selection
         score = res.score(test.drop(tourism_columns,axis="columns"),test[y])
         y_hat = res.predict(test.drop(tourism_columns,axis="columns"))
         y_actual = test[y]
-        print(score)
+        print("R2 TEST: {}".format(score))
+        print("MSE TEST: {}".format(mean_squared_error(y_actual,y_hat)))
         g = sns.scatterplot(y_actual, y_hat)
         plt.plot([1, 0], [1, 0], linewidth=1,color="red")
         g.set_xlabel("Expected Y")
@@ -307,6 +425,7 @@ Y Selection
         g.set_ylabel("Residual Y")
         g.set_xlabel("Actual Y")
         g.set_title('ST.INT.XPND.CD Multiple Linear Regression');
+        return res
     def lin_model_np(dataset, y):
         msk = np.random.rand(len(dataset)) < 0.8
         train = dataset[msk]
@@ -318,7 +437,8 @@ Y Selection
         score = res.score(test,test_y)
         y_hat = res.predict(test)
         y_actual = test_y
-        print(score)
+        print("R2 TEST: {}".format(score))
+        print("MSE TEST: {}".format(mean_squared_error(y_actual,y_hat)))
         g = sns.scatterplot(y_actual, y_hat)
         plt.plot([1, 0], [1, 0], linewidth=1,color="red")
         g.set_xlabel("Expected Y")
@@ -330,41 +450,897 @@ Y Selection
         g.set_ylabel("Residual Y")
         g.set_xlabel("Actual Y")
         g.set_title('Multiple Linear Regression');
+        return res
+
+Spending Abroad
+~~~~~~~~~~~~~~~
 
 .. code:: ipython3
 
-    lin_model(imputations[0],'ST.INT.XPND.CD')
+    res = lin_model(imputations[0],'ST.INT.XPND.CD')
 
 
 .. parsed-literal::
 
-    0.7657938486880209
+    R2 TEST: 0.8190594618320861
+    MSE TEST: 0.0007413203068456076
 
 
 
-.. image:: 15_files/15_16_1.png
+.. image:: 15_files/15_18_1.png
 
 
 
-.. image:: 15_files/15_16_2.png
+.. image:: 15_files/15_18_2.png
 
 
 .. code:: ipython3
 
-    lin_model_np(pca_x_arrays[4],median_imputed['ST.INT.RCPT.CD'])
+    res_df = pd.DataFrame([res.coef_,df.columns.values]).transpose()
+    res_df.sort_values(0).set_index(1).head(10).join(data_dictionary.set_index("Code"))
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>0</th>
+          <th>Indicator Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>EN.ATM.CO2E.PC</th>
+          <td>-0.0196841</td>
+          <td>CO2 emissions (metric tons per capita)</td>
+        </tr>
+        <tr>
+          <th>EN.CO2.TRAN.ZS</th>
+          <td>-0.196525</td>
+          <td>CO2 emissions from transport (% of total fuel ...</td>
+        </tr>
+        <tr>
+          <th>SE.SEC.NENR</th>
+          <td>-0.0246065</td>
+          <td>School enrollment, secondary (% net)</td>
+        </tr>
+        <tr>
+          <th>SI.POV.GINI</th>
+          <td>-0.0352534</td>
+          <td>GINI index (World Bank estimate)</td>
+        </tr>
+        <tr>
+          <th>SI.POV.GINI</th>
+          <td>-0.0352534</td>
+          <td>GINI index (World Bank estimate)</td>
+        </tr>
+        <tr>
+          <th>SL.TLF.CACT.ZS</th>
+          <td>-0.0363036</td>
+          <td>Labor force participation rate, total (% of to...</td>
+        </tr>
+        <tr>
+          <th>d2</th>
+          <td>-0.0450791</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>d7</th>
+          <td>-0.0371491</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>exchangerate</th>
+          <td>-0.0388421</td>
+          <td>Conversion rate from local currency units (LCU...</td>
+        </tr>
+        <tr>
+          <th>mean</th>
+          <td>-0.0154067</td>
+          <td>Survey mean given with the same underlying def...</td>
+        </tr>
+        <tr>
+          <th>q5</th>
+          <td>-0.102047</td>
+          <td>Quintile group shares of resource</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+.. code:: ipython3
+
+    res_df.sort_values(0, ascending=False).set_index(1).head(10).join(data_dictionary.set_index("Code"))
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>0</th>
+          <th>Indicator Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>FB.CBK.DPTR.P3</th>
+          <td>0.0807018</td>
+          <td>Depositors with commercial banks (per 1,000 ad...</td>
+        </tr>
+        <tr>
+          <th>MS.MIL.TOTL.TF.ZS</th>
+          <td>47.4269</td>
+          <td>Armed forces personnel (% of total labor force)</td>
+        </tr>
+        <tr>
+          <th>Maddison GDPPC</th>
+          <td>29.502</td>
+          <td>Real GDP per capita in 2011US$, 2011 benchmark...</td>
+        </tr>
+        <tr>
+          <th>SE.ENR.PRSC.FM.ZS</th>
+          <td>42.4256</td>
+          <td>School enrollment, primary and secondary (gros...</td>
+        </tr>
+        <tr>
+          <th>SL.AGR.EMPL.ZS</th>
+          <td>0.0246659</td>
+          <td>Employment in agriculture (% of total employme...</td>
+        </tr>
+        <tr>
+          <th>SL.EMP.MPYR.ZS</th>
+          <td>1.30839</td>
+          <td>Employers, total (% of total employment) (mode...</td>
+        </tr>
+        <tr>
+          <th>SL.IND.EMPL.ZS</th>
+          <td>0.469348</td>
+          <td>Employment in industry (% of total employment)...</td>
+        </tr>
+        <tr>
+          <th>SL.TLF.CACT.FM.ZS</th>
+          <td>0.0335405</td>
+          <td>Ratio of female to male labor force participat...</td>
+        </tr>
+        <tr>
+          <th>gdp_ppp_pc_usd2011</th>
+          <td>0.166158</td>
+          <td>Gross Domestic Product (GDP) is converted to U...</td>
+        </tr>
+        <tr>
+          <th>q4</th>
+          <td>0.115961</td>
+          <td>Quintile group shares of resource</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Tourism Receipts
+~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    res1 = lin_model_np(pca_x_arrays[4],median_imputed['ST.INT.RCPT.CD'])
 
 
 .. parsed-literal::
 
-    0.8059594219967596
+    R2 TEST: 0.8458092720404874
+    MSE TEST: 0.0007867515506129497
 
 
 
-.. image:: 15_files/15_17_1.png
+.. image:: 15_files/15_22_1.png
 
 
 
-.. image:: 15_files/15_17_2.png
+.. image:: 15_files/15_22_2.png
+
+
+.. code:: ipython3
+
+    res1_df = pd.DataFrame([res1.coef_,df.columns.values]).transpose()
+    res1_df.sort_values(0).set_index(1).head(10).join(data_dictionary.set_index("Code"))
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>0</th>
+          <th>Indicator Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>FB.CBK.BRWR.P3</th>
+          <td>-0.142937</td>
+          <td>Borrowers from commercial banks (per 1,000 adu...</td>
+        </tr>
+        <tr>
+          <th>IT.CEL.SETS.P2</th>
+          <td>-0.198384</td>
+          <td>Mobile cellular subscriptions (per 100 people)</td>
+        </tr>
+        <tr>
+          <th>IT.NET.BBND.P2</th>
+          <td>-0.0622003</td>
+          <td>Fixed broadband subscriptions (per 100 people)</td>
+        </tr>
+        <tr>
+          <th>SP.DYN.LE00.IN</th>
+          <td>-0.0425942</td>
+          <td>Life expectancy at birth, total (years)</td>
+        </tr>
+        <tr>
+          <th>ST.INT.ARVL.PER.CAPITA</th>
+          <td>-0.0553222</td>
+          <td>Inbound tourists per resident</td>
+        </tr>
+        <tr>
+          <th>d2</th>
+          <td>-0.037613</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>d8</th>
+          <td>-0.0975713</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>mean</th>
+          <td>-0.0646923</td>
+          <td>Survey mean given with the same underlying def...</td>
+        </tr>
+        <tr>
+          <th>q1</th>
+          <td>-0.0913874</td>
+          <td>Quintile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>q2</th>
+          <td>-0.0499383</td>
+          <td>Quintile group shares of resource</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+.. code:: ipython3
+
+    res1_df.sort_values(0, ascending=False).set_index(1).head(10).join(data_dictionary.set_index("Code"))
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>0</th>
+          <th>Indicator Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>IT.NET.USER.ZS</th>
+          <td>0.062024</td>
+          <td>Individuals using the Internet (% of population)</td>
+        </tr>
+        <tr>
+          <th>SH.H2O.SMDW.ZS</th>
+          <td>0.0894908</td>
+          <td>People using safely managed drinking water ser...</td>
+        </tr>
+        <tr>
+          <th>SH.STA.SUIC.P5</th>
+          <td>0.0869622</td>
+          <td>Suicide mortality rate (per 100,000 population)</td>
+        </tr>
+        <tr>
+          <th>d1</th>
+          <td>0.151069</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>d3</th>
+          <td>0.246551</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>d6</th>
+          <td>0.133092</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>d7</th>
+          <td>0.19243</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>q3</th>
+          <td>0.0685652</td>
+          <td>Quintile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>q4</th>
+          <td>0.0567458</td>
+          <td>Quintile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>q5</th>
+          <td>0.117435</td>
+          <td>Quintile group shares of resource</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Tourism Arrivals
+~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    res1 = lin_model_np(pca_x_arrays[2],median_imputed['ST.INT.ARVL'])
+
+
+.. parsed-literal::
+
+    R2 TEST: 0.4527402674752537
+    MSE TEST: 0.006349840986196685
+
+
+
+.. image:: 15_files/15_26_1.png
+
+
+
+.. image:: 15_files/15_26_2.png
+
+
+.. code:: ipython3
+
+    res1_df = pd.DataFrame([res1.coef_,df.columns.values]).transpose()
+    res1_df.sort_values(0).set_index(1).head(10).join(data_dictionary.set_index("Code"))
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>0</th>
+          <th>Indicator Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>EG.ELC.ACCS.ZS</th>
+          <td>-0.212654</td>
+          <td>Access to electricity (% of population)</td>
+        </tr>
+        <tr>
+          <th>EN.CO2.TRAN.ZS</th>
+          <td>-0.0660761</td>
+          <td>CO2 emissions from transport (% of total fuel ...</td>
+        </tr>
+        <tr>
+          <th>IT.NET.BBND.P2</th>
+          <td>-0.227144</td>
+          <td>Fixed broadband subscriptions (per 100 people)</td>
+        </tr>
+        <tr>
+          <th>Population Estimate</th>
+          <td>-0.188934</td>
+          <td>The UNPD estimated population for the country</td>
+        </tr>
+        <tr>
+          <th>SH.H2O.BASW.ZS</th>
+          <td>-0.100953</td>
+          <td>People using at least basic drinking water ser...</td>
+        </tr>
+        <tr>
+          <th>SH.H2O.SMDW.ZS</th>
+          <td>-0.451457</td>
+          <td>People using safely managed drinking water ser...</td>
+        </tr>
+        <tr>
+          <th>d10</th>
+          <td>-0.0655574</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>d3</th>
+          <td>-0.0761207</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>gini_reported</th>
+          <td>-0.119887</td>
+          <td>Gini coefficient as reported by the source (in...</td>
+        </tr>
+        <tr>
+          <th>q1</th>
+          <td>-0.157426</td>
+          <td>Quintile group shares of resource</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+.. code:: ipython3
+
+    res1_df.sort_values(0, ascending=False).set_index(1).head(10).join(data_dictionary.set_index("Code"))
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>0</th>
+          <th>Indicator Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>FB.ATM.TOTL.P5</th>
+          <td>0.251318</td>
+          <td>Automated teller machines (ATMs) (per 100,000 ...</td>
+        </tr>
+        <tr>
+          <th>FB.CBK.BRCH.P5</th>
+          <td>0.232901</td>
+          <td>Commercial bank branches (per 100,000 adults)</td>
+        </tr>
+        <tr>
+          <th>SH.STA.SUIC.P5</th>
+          <td>0.28758</td>
+          <td>Suicide mortality rate (per 100,000 population)</td>
+        </tr>
+        <tr>
+          <th>SI.DST.10TH.10</th>
+          <td>0.083648</td>
+          <td>Income share held by highest 10%</td>
+        </tr>
+        <tr>
+          <th>SP.DYN.IMRT.IN</th>
+          <td>0.198337</td>
+          <td>Mortality rate, infant (per 1,000 live births)</td>
+        </tr>
+        <tr>
+          <th>d1</th>
+          <td>0.259183</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>d2</th>
+          <td>0.190927</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>d6</th>
+          <td>0.17127</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>q4</th>
+          <td>0.125485</td>
+          <td>Quintile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>q5</th>
+          <td>0.231053</td>
+          <td>Quintile group shares of resource</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Tourism Departures
+~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    res1 = lin_model_np(pca_x_arrays[0],median_imputed['ST.INT.DPRT'])
+
+
+.. parsed-literal::
+
+    R2 TEST: 0.4928783579741234
+    MSE TEST: 0.0036321792773549
+
+
+
+.. image:: 15_files/15_30_1.png
+
+
+
+.. image:: 15_files/15_30_2.png
+
+
+.. code:: ipython3
+
+    res1_df = pd.DataFrame([res1.coef_,df.columns.values]).transpose()
+    res1_df.sort_values(0).set_index(1).head(10).join(data_dictionary.set_index("Code"))
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>0</th>
+          <th>Indicator Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>EG.ELC.ACCS.ZS</th>
+          <td>-0.0741613</td>
+          <td>Access to electricity (% of population)</td>
+        </tr>
+        <tr>
+          <th>EN.ATM.CO2E.PC</th>
+          <td>-0.0854307</td>
+          <td>CO2 emissions (metric tons per capita)</td>
+        </tr>
+        <tr>
+          <th>FB.ATM.TOTL.P5</th>
+          <td>-0.0783431</td>
+          <td>Automated teller machines (ATMs) (per 100,000 ...</td>
+        </tr>
+        <tr>
+          <th>SH.STA.SUIC.P5</th>
+          <td>-0.131836</td>
+          <td>Suicide mortality rate (per 100,000 population)</td>
+        </tr>
+        <tr>
+          <th>SI.DST.10TH.10</th>
+          <td>-0.158703</td>
+          <td>Income share held by highest 10%</td>
+        </tr>
+        <tr>
+          <th>ST.INT.DPRT.PER.CAPITA</th>
+          <td>-0.0737461</td>
+          <td>Outbound tourists per resident</td>
+        </tr>
+        <tr>
+          <th>d2</th>
+          <td>-0.142284</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>d7</th>
+          <td>-0.106777</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>exchangerate</th>
+          <td>-0.151243</td>
+          <td>Conversion rate from local currency units (LCU...</td>
+        </tr>
+        <tr>
+          <th>median</th>
+          <td>-0.134855</td>
+          <td>Survey median given with the same underlying d...</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+.. code:: ipython3
+
+    res1_df.sort_values(0, ascending=False).set_index(1).head(10).join(data_dictionary.set_index("Code"))
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>0</th>
+          <th>Indicator Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>EN.CO2.TRAN.ZS</th>
+          <td>0.406829</td>
+          <td>CO2 emissions from transport (% of total fuel ...</td>
+        </tr>
+        <tr>
+          <th>FB.CBK.BRCH.P5</th>
+          <td>0.0850161</td>
+          <td>Commercial bank branches (per 100,000 adults)</td>
+        </tr>
+        <tr>
+          <th>FB.CBK.BRWR.P3</th>
+          <td>0.162642</td>
+          <td>Borrowers from commercial banks (per 1,000 adu...</td>
+        </tr>
+        <tr>
+          <th>SH.H2O.BASW.ZS</th>
+          <td>0.152324</td>
+          <td>People using at least basic drinking water ser...</td>
+        </tr>
+        <tr>
+          <th>SH.H2O.SMDW.ZS</th>
+          <td>0.137289</td>
+          <td>People using safely managed drinking water ser...</td>
+        </tr>
+        <tr>
+          <th>SP.DYN.LE00.IN</th>
+          <td>0.156747</td>
+          <td>Life expectancy at birth, total (years)</td>
+        </tr>
+        <tr>
+          <th>d3</th>
+          <td>0.0956231</td>
+          <td>Decile group shares of resource</td>
+        </tr>
+        <tr>
+          <th>gini_reported</th>
+          <td>0.0871011</td>
+          <td>Gini coefficient as reported by the source (in...</td>
+        </tr>
+        <tr>
+          <th>mean</th>
+          <td>0.143743</td>
+          <td>Survey mean given with the same underlying def...</td>
+        </tr>
+        <tr>
+          <th>q2</th>
+          <td>0.128083</td>
+          <td>Quintile group shares of resource</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+LASSO
+-----
+
+.. code:: ipython3
+
+    from sklearn import linear_model
+
+.. code:: ipython3
+
+    lin_df = imputations[4]
+
+.. code:: ipython3
+
+    x_lin = lin_df.drop(tourism_columns, axis="columns").normalize()
+
+.. code:: ipython3
+
+    reg = linear_model.LassoCV(cv=10)
+
+.. code:: ipython3
+
+    reg.fit(x_lin,lin_df['ST.INT.RCPT.CD'])
+
+
+
+
+.. parsed-literal::
+
+    LassoCV(alphas=None, copy_X=True, cv=10, eps=0.001, fit_intercept=True,
+            max_iter=1000, n_alphas=100, n_jobs=None, normalize=False,
+            positive=False, precompute='auto', random_state=None,
+            selection='cyclic', tol=0.0001, verbose=False)
+
+
+
+.. code:: ipython3
+
+    reg.score(x_lin,lin_df['ST.INT.RCPT.CD'])
+
+
+
+
+.. parsed-literal::
+
+    0.8073282252445724
+
+
+
+.. code:: ipython3
+
+    mean_squared_error(reg.predict(x_lin),lin_df['ST.INT.RCPT.CD'])
+
+
+
+
+.. parsed-literal::
+
+    0.0006220161475204201
+
+
+
+.. code:: ipython3
+
+    lin_df['LASSO'] = reg.predict(x_lin)
+
+.. code:: ipython3
+
+    p = figure(title = "LASSO w/ CV Predicted v Actual")
+    scatter_with_hover(lin_df.reset_index(), 'ST.INT.RCPT.CD','LASSO',cols=['{Country Code}','Year'], fig=p)
+    p.xaxis.axis_label = 'International tourism receipts Actual'
+    p.yaxis.axis_label = 'International tourism receipts Predicted'
+    p.line([0,1], [0,1], line_dash=(4, 4), line_color="orange", line_width=2)
+    show(p)
+
+
+
+.. raw:: html
+
+    
+    
+    
+    
+    
+    
+      <div class="bk-root" id="776b0735-6e3e-4516-af7f-21956caaac22" data-root-id="1002"></div>
+
+
+
 
 
 Regression With Tensorflow
@@ -446,24 +1422,25 @@ Regression With Tensorflow
 
 .. parsed-literal::
 
-    WARNING:tensorflow:From /opt/conda/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+    WARNING:tensorflow:From /home/jupyter/.local/lib/python3.5/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
     Instructions for updating:
     Colocations handled automatically by placer.
-    WARNING:tensorflow:From /opt/conda/lib/python3.7/site-packages/tensorflow/python/keras/utils/losses_utils.py:170: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+    WARNING:tensorflow:From /home/jupyter/.local/lib/python3.5/site-packages/tensorflow/python/keras/utils/losses_utils.py:170: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
     Instructions for updating:
     Use tf.cast instead.
-    WARNING:tensorflow:From /opt/conda/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+    WARNING:tensorflow:From /home/jupyter/.local/lib/python3.5/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
     Instructions for updating:
     Use tf.cast instead.
     
-    ..................
+    .........................
+    ..
 
 
-.. image:: 15_files/15_22_1.png
+.. image:: 15_files/15_47_1.png
 
 
 
-.. image:: 15_files/15_22_2.png
+.. image:: 15_files/15_47_2.png
 
 
 .. code:: ipython3
@@ -474,7 +1451,7 @@ Regression With Tensorflow
 
 .. parsed-literal::
 
-    Testing set Mean Abs Error: 0.044
+    Testing set Mean Abs Error: 0.027
 
 
 .. code:: ipython3
@@ -489,7 +1466,7 @@ Regression With Tensorflow
 
 
 
-.. image:: 15_files/15_24_0.png
+.. image:: 15_files/15_49_0.png
 
 
 .. code:: ipython3
@@ -502,7 +1479,7 @@ Regression With Tensorflow
 
 
 
-.. image:: 15_files/15_25_0.png
+.. image:: 15_files/15_50_0.png
 
 
 .. code:: ipython3
@@ -521,15 +1498,14 @@ Regression With Tensorflow
 .. parsed-literal::
 
     
-    .........................
-    ..........
+    ................
 
 
-.. image:: 15_files/15_26_1.png
+.. image:: 15_files/15_51_1.png
 
 
 
-.. image:: 15_files/15_26_2.png
+.. image:: 15_files/15_51_2.png
 
 
 .. code:: ipython3
@@ -540,7 +1516,7 @@ Regression With Tensorflow
 
 .. parsed-literal::
 
-    Testing set Mean Abs Error: 0.037
+    Testing set Mean Abs Error: 0.012
 
 
 .. code:: ipython3
@@ -557,7 +1533,7 @@ Regression With Tensorflow
 
 
 
-.. image:: 15_files/15_28_0.png
+.. image:: 15_files/15_53_0.png
 
 
 .. code:: ipython3
@@ -570,5 +1546,6 @@ Regression With Tensorflow
 
 
 
-.. image:: 15_files/15_29_0.png
+.. image:: 15_files/15_54_0.png
+
 

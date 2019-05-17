@@ -11,6 +11,8 @@ Subject Dataset Cleaning and Imputation
 
 .. parsed-literal::
 
+    /home/jupyter/.local/lib/python3.5/site-packages/sklearn/externals/six.py:31: DeprecationWarning: The module is deprecated in version 0.21 and will be removed in version 0.23 since we've dropped support for Python 2.7. Please rely on the official version of six (https://pypi.org/project/six/).
+      "(https://pypi.org/project/six/).", DeprecationWarning)
     Using TensorFlow backend.
 
 
@@ -36,20 +38,20 @@ Remove Sparse Variables
                 Inequality,
                 Economic]:
         ds = df.describe().transpose()
-        # columns with <50% values
-        sparse = ds[(ds["count"] < 2000)].index.values.tolist()
+        # columns with <25% values
+        sparse = ds[(ds["count"] < 1000)].index.values.tolist()
         print(sparse)
         df.drop(sparse,axis=1,inplace=True)
 
 
 .. parsed-literal::
 
-    ['SH.STA.HYGN.ZS', 'SH.H2O.SMDW.ZS', 'ER.LND.PTLD.ZS', 'DT.DOD.PVLX.GN.ZS', 'FB.CBK.DPTR.P3', 'FB.CBK.BRWR.P3', 'SG.VAW.1549.ZS', 'SG.DMK.ALLD.FN.ZS', 'SG.DMK.SRCR.FN.ZS', 'SH.STA.SUIC.P5', 'SH.STA.WASH.P5', 'SH.STA.BRTW.ZS', 'SH.STA.ANVC.ZS', 'SH.STA.FGMS.ZS', 'SH.PRV.SMOK', 'SH.ALC.PCAP.LI', 'per_si_allsi.cov_pop_tot', 'HD.HCI.OVRL']
+    ['SH.STA.HYGN.ZS', 'ER.LND.PTLD.ZS', 'DT.DOD.PVLX.GN.ZS', 'SG.VAW.1549.ZS', 'SG.DMK.ALLD.FN.ZS', 'SG.DMK.SRCR.FN.ZS', 'SH.STA.SUIC.P5', 'SH.STA.WASH.P5', 'SH.STA.BRTW.ZS', 'SH.STA.ANVC.ZS', 'SH.STA.FGMS.ZS', 'SH.ALC.PCAP.LI', 'per_si_allsi.cov_pop_tot', 'HD.HCI.OVRL']
     ['SL.TLF.0714.SW.TM', 'SL.TLF.0714.WK.TM', 'SL.ISV.IFRM.ZS', 'per_lm_alllm.cov_pop_tot']
     ['EN.POP.SLUM.UR.ZS']
-    ['SE.ADT.LITR.ZS', 'SE.SEC.NENR']
-    ['SI.POV.GINI', 'SI.POV.RUGP', 'SI.POV.URGP', 'SI.POV.NAGP', 'SI.DST.10TH.10', 'SI.DST.FRST.10', 'id', 'gini_reported', 'q1', 'q2', 'q3', 'q4', 'q5', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10', 'bottom5', 'top5', 'mean', 'median', 'exchangerate', 'mean_usd', 'median_usd', 'gdp_ppp_pc_usd2011', 'population', 'quality_score']
-    ['DT.DOD.PVLX.CD', 'SI.POV.NAHC', 'SI.POV.URHC', 'SI.POV.RUHC', 'SI.POV.NAGP', 'SI.POV.GINI']
+    ['SE.ADT.LITR.ZS']
+    ['SI.POV.RUGP', 'SI.POV.URGP', 'SI.POV.NAGP', 'bottom5', 'top5', 'mean_usd', 'median_usd']
+    ['DT.DOD.PVLX.CD', 'SI.POV.NAHC', 'SI.POV.URHC', 'SI.POV.RUHC', 'SI.POV.NAGP']
 
 
 .. code:: ipython3
@@ -65,12 +67,12 @@ Remove Sparse Variables
 
 .. parsed-literal::
 
-    29
+    33
     23
     18
-    19
-    14
     20
+    40
+    21
 
 
 Impute Remaining NaNs
@@ -243,7 +245,7 @@ Check The Integrity of Imputed Dataframes
       <tbody>
         <tr>
           <th>0</th>
-          <td>33926</td>
+          <td>47839</td>
         </tr>
         <tr>
           <th>1</th>
@@ -255,15 +257,15 @@ Check The Integrity of Imputed Dataframes
         </tr>
         <tr>
           <th>3</th>
-          <td>24801</td>
+          <td>27565</td>
         </tr>
         <tr>
           <th>4</th>
-          <td>14102</td>
+          <td>104141</td>
         </tr>
         <tr>
           <th>5</th>
-          <td>22065</td>
+          <td>25391</td>
         </tr>
       </tbody>
     </table>
